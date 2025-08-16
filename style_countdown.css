@@ -1,0 +1,21 @@
+#countdown-timer {
+  display: flex;
+  justify-items: center;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+}
+
+.time-unit {
+  text-align: center;
+}
+
+.time-unit span {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.time-unit p {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
