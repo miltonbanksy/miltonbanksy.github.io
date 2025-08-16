@@ -6,10 +6,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Blank template</title>
+    <title>Steve & Joy's Website</title>
 
     <!-- Load external CSS styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_countdown.css">
 
 </head>
 
@@ -20,9 +20,26 @@
     <br>
     <a href="sj_blog.html">Steve & Joy's Blog</a>
     <br><br>
-    <div>At the moment, our page is a bit empty, but we are going to fill it with good stuff soon!</div>
+    <div id="countdown-timer">
+        <div class="time-unit">
+            <span> id="days">00</span>
+            <p>Days</p>
+        </div>
+        <div class="time-unit">
+            <span id="hours">00</span>
+            <p>Hours</p>
+        </div>
+        <div class="time-unit">
+            <span id="minutes">00</span>
+            <p>Minutes</p>
+        </div>
+        <div class="time-unit">
+            <span id="seconds">00</span>
+            <p>Seconds</p>
+        </div>
+    </div>
     <!-- Load external JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="script_countdown.js"></script>
     <br><br>
     <button id="button_click_me" onclick="buttonClick()">Click Me!</button>
     <br><br>
