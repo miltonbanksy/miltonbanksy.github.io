@@ -1,39 +1,31 @@
- <!DOCTYPE html>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <html>
- <head>
-   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-     <title>joyspage</title>
-     <link rel="stylesheet" href="styles.css">
-     </head>
-     <body>
-      <a href="index.html">Go back to our Home Page...</a>
-    <hr>
-       <h1>CURLY BEAUTIK</h1>
-               <h2>My Favorite Things!</h2>
-                 <a href="https://livingdeaddolls.fandom.com/wiki/Main_Page">Living Dead Dolls (Webpage)</a>
-                 <br>
-                   <img id="image_maggot" src="maggot.jpg" onclick="message()">
-                     
-                       
-<script>
-  const bodyElement = document.body;
-  var backgroundColor = "white";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joy's Page</title>
+  <link rel="stylesheet" href="joy1.css">
+</head>
+<body>
+    <a href="index.html">Go back to our Home Page...</a>
+  <header>
+    <h1>CURLY BEAUTIK</h1>
+    <h2>My Favorites</h2>
+  </header>
 
-
-  function message() {
-    alert("This is Maggot");
-    if (backgroundColor == "white") {
-      backgroundColor = "turq";
-      bodyElement.style.backgroundColor = '#40e0d0';
-    } else {
-      backgroundColor = "white";
-      bodyElement.style.backgroundColor = "white";
-    }
-  }
-</script>
-                                           
-                                               
+  <main class="favorites">
+    <div class="card">
+      <img src="maggot.jpg" alt="Favorite 1">
+      <p>Living Dead Dolls</p>
+    </div>
+    <div class="card">
+      <img src="grayson1.jpg" alt="Favorite 2">
+      <p>Grayson Chance</p>
+    </div>
+    <div class="card">
+      <img src="capinpin.jpg" alt="Favorite 3">
+      <p>Capinpin Brothers</p>
+    </div>
+  </main>
 </body>
 </html>
-                                               
