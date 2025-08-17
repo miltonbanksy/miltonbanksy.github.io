@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steve's Page</title>
+  <link rel="stylesheet" href="steve1.css">
+</head>
+<body>
+    <a href="index.html">Go back to our Home Page...</a>
+    <br><br>
+  <header>
+    <h1>Steve's Story Game Page</h1>
+  </header>
+
+  <main class="favorites">
+    <div class="card">
+      <p>Ironsworn Oracle</p>
+      <button class="btnOracle" onclick="btnIronDetails()">Very Likely</button>
+      <button class="btnOracle" onclick="btnIronDetails()">Likely</button>
+      <button class="btnOracle" onclick="btnIronDetails()">50/50</button>
+      <button class="btnOracle" onclick="btnIronDetails()">Unlikely</button>
+      <button class="btnOracle" onclick="btnIronDetails()">Very Unlikely</button>
+      <p id="display_iron_oracle"></p>
+    </div>
+    <div class="card">
+      <p>Ironsworn</p>
+      <button onclick="btnIronDetails()">Details</button>
+      <p id="display_iron_details"></p>
+    </div>
+    <div class="card">
+      <p>Ironsworn</p>
+      <button onclick="btnIronOverland()">Overland Travel</button>
+      <p id="display_iron_overland"></p>
+    </div>
+  </main>
+  <script src="iron_action.js"></script>
+  <script src="iron_descriptor.js"></script>
+  <script src="iron_focus.js"></script>
+  <script src="iron_theme.js"></script>
+  <script src="iron_overland_landmark.js"></script>
+  <script src="iron_overland_waypoint.js"></script>
+  <script>
+    const iron_details_lists = [ironactionList, irondescriptorList, ironfocusList, ironthemeList];
+    const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
+    
+    function btnIronDetails() {
+      let results = [];
+
+      for (let list of iron_details_lists) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        const randomElement = list[randomIndex];
+        results.push(randomElement);
+      }
+      
+      document.getElementById("display_iron_details").innerHTML = results.join(", ");
+    }
+
+    function btnIronOverland() {
+      let results = [];
+
+      for (let list of iron_overland_lists) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        const randomElement = list[randomIndex];
+        results.push(randomElement);
+      }
+      
+      document.getElementById("display_iron_overland").innerHTML = results.join("<br>");
+    }
+
+    dict_iron_oracle = {
+      "very likely": 90,
+      "likely": 75,
+      "50/50": 50,
+      "unlikely": 25,
+      "very unlikely": 10
+    }
+  </script>
+</body>
+</html>
