@@ -10,30 +10,31 @@
     <a href="index.html">Go back to our Home Page...</a>
     <br><br>
   <header>
-    <h1>Steve's Story Game Page</h1>
+    <h1>Steve's Story Sparks</h1>
   </header>
 
   <main class="favorites">
-    <div class="card">
+    <div class="card" id="oracleCard">
       <p>Ironsworn Oracle</p>
-      <button class="btnOracle" onclick="btnIronDetails()">Very Likely</button>
-      <button class="btnOracle" onclick="btnIronDetails()">Likely</button>
-      <button class="btnOracle" onclick="btnIronDetails()">50/50</button>
-      <button class="btnOracle" onclick="btnIronDetails()">Unlikely</button>
-      <button class="btnOracle" onclick="btnIronDetails()">Very Unlikely</button>
+      <button class="btnOracle" data-value="very likely">Very Likely</button>
+      <button class="btnOracle" data-value="likely">Likely</button>
+      <button class="btnOracle" data-value="50/50">50/50</button>
+      <button class="btnOracle" data-value="unlikely">Unlikely</button>
+      <button class="btnOracle" data-value="very unlikely">Very Unlikely</button>
       <p id="display_iron_oracle"></p>
     </div>
-    <div class="card">
+    <div class="card" id="detailsCard">
       <p>Ironsworn</p>
-      <button onclick="btnIronDetails()">Details</button>
+      <button id="btnDetails">Details</button>
       <p id="display_iron_details"></p>
     </div>
-    <div class="card">
+    <div class="card" id="overlandCard">
       <p>Ironsworn</p>
-      <button onclick="btnIronOverland()">Overland Travel</button>
+      <button id="btnOverland">Overland Travel</button>
       <p id="display_iron_overland"></p>
     </div>
   </main>
+
   <script src="iron_action.js"></script>
   <script src="iron_descriptor.js"></script>
   <script src="iron_focus.js"></script>
@@ -44,13 +45,21 @@
     const iron_details_lists = [ironactionList, irondescriptorList, ironfocusList, ironthemeList];
     const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
     
+    const dict_iron_oracle = {
+      "very likely": 90,
+      "likely": 75,
+      "50/50": 50,
+      "unlikely": 25,
+      "very unlikely": 10
+    }
+
+
     function btnIronDetails() {
       let results = [];
 
       for (let list of iron_details_lists) {
         const randomIndex = Math.floor(Math.random() * list.length);
-        const randomElement = list[randomIndex];
-        results.push(randomElement);
+        results.push(list[randomIndex]);
       }
       
       document.getElementById("display_iron_details").innerHTML = results.join(", ");
@@ -61,20 +70,31 @@
 
       for (let list of iron_overland_lists) {
         const randomIndex = Math.floor(Math.random() * list.length);
-        const randomElement = list[randomIndex];
-        results.push(randomElement);
+        results.push(list[randomIndex]);
       }
       
       document.getElementById("display_iron_overland").innerHTML = results.join("<br>");
     }
 
-    dict_iron_oracle = {
-      "very likely": 90,
-      "likely": 75,
-      "50/50": 50,
-      "unlikely": 25,
-      "very unlikely": 10
+
+    function btnIronOracle(event) {
+      const button = event.target;
+      const choice = button.dataset.value;
+      const target = dict_iron_oracle[choice];
+
+      document.getElementById("display_iron_oracle").innerHTML = `${button.innerHTML} -> Target Number: ${target}`;
     }
+
+    // Listeners
+    document.querySelectorAll("#oracleCard .btnOracle").forEach(btn => {
+      btn.addEventListener("click", btnIronOracle);
+    });
+
+    // Details button
+    document.getElementById("btnDetails").addEventListener("click", btnIronDetails);
+
+    // Overland button
+    document.getElementById("btnOverland").addEventListener("click", btnIronOverland);
   </script>
 </body>
 </html>
