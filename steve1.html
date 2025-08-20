@@ -82,7 +82,15 @@
       const choice = button.dataset.value;
       const target = dict_iron_oracle[choice];
 
-      document.getElementById("display_iron_oracle").innerHTML = `${button.innerHTML} -> Target Number: ${target}`;
+      console.log(target)
+
+      let d100 = Math.floor(Math.random() * 100) +1;
+      console.log(d100)
+      if (d100 <= target) {
+        document.getElementById("display_iron_oracle").innerHTML = `Yes`;
+      } else {
+        document.getElementById("display_iron_oracle").innerHTML = `No`;
+      }
     }
 
     // Listeners
