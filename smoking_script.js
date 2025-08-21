@@ -89,6 +89,29 @@ function prompts_start() {
   promptIndex = (promptIndex + 1) % prompts.length;
 }
 
+const clickCigPrompts = [
+  "I understand that nicotine is an addictive drug.",
+  "Nicotine withdrawal causes the stress and anxiety.",
+  "I don't want to smoke a cigarette.",
+  "I don't need to smoke a cigarette.",
+  "I am free to choose not to smoke.",
+  "I don't like the smell of smoke.",
+  "The taste is vile.",
+  "I can't stand coughing.",
+  "I don't smoke.",
+  "I am certain that smoking does nothing for me.",
+  "Smoking doesn't provide me with any pleasure or support.",
+  "I understand that I am not giving up anything.",
+  "I understand that no smoker has every enjoyed smoking.",
+  "I understand that willpower won't help me to quit - if anything it will make it harder.",
+  "I understand that my addiction to nicotine is all to do with the drug and nothing to do with my personality.",
+  "I understand that there is no need to avoid the triggers when I have no desire to smoke."
+];
+
+function clickCig(){
+  alert(clickCigPrompts.join("\n"))
+}
+
 
 // When page loads...
 window.addEventListener("load", load_last_log); // 'load' waits for everything to load first.
