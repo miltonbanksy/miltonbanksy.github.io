@@ -1,0 +1,31 @@
+html, body {
+  background-color: burlywood;
+}
+
+#input_number_of_dice {
+  height: 12px;
+}
+
+#dice_container {
+  width: 100vp;
+  height: 20px;
+}
+
+#dice_image {
+  width: 10px;
+  height: 100%;
+  object-fit: contain;  /* keep aspect ratio without distortion */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+.spinner {
+  animation: spin 2s ease infinite; /* Applies the 'spin' animation */
+}
