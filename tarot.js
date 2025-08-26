@@ -61,6 +61,61 @@ const tarot_cards = {
                     "overturned cups (past failures, negativity)",
                     "bridge in distance (ability to overcome obstacles)"
                 ]
+            },
+            "Six of Cups":{
+                "value": 6,
+                "yes-no": "yes",
+                "upright keywords": "nostalgia, memories, familiarity, healing, comfort, sentimentality, pleasure, joy of childhood",
+                "reversed keywords": "stuck in the past, clinging to memories, inability to move on, lack of growth, feeling disconnected",
+                "symbols": [
+                    "castle (security, comfort, protection)",
+                    "children (innocence, nostalgia, memories)",
+                    "flowers (growth, beauty, renewal)"
+                ]
+            },
+            "Seven of Cups":{
+                "value": 7,
+                "yes-no": "no",
+                "upright keywords": "choices, searching for purpose, illusion, fantasy, daydreaming, wishful thinking, indecision",
+                "reversed keywords": "lack of purpose, disarray, confusion, distractions, avoidance, clarity in choices, facing reality",
+                "symbols": [
+                    "jewelry (wealth, money)",
+                    "clouds (confusion, uncertainty, contemplation)",
+                    "snake (warning, consequences)"
+                ]
+            },
+            "Eight of Cups":{
+                "value": 8,
+                "yes-no": "maybe",
+                "upright keywords": "abandonment, walking away, letting go, searching for truth, leaving behind, self-discovery",
+                "reversed keywords": "staying in comfort zone, fear of change, lack of direction, emotional attachment, avoiding decisions",
+                "symbols": [
+                    "mountains (obstacles, difficulties, struggles)",
+                    "moon (intuition, subconscious, the unknown)",
+                    "pathway (journey, transition, moving on)"
+                ]
+            },
+            "Nine of Cups":{
+                "value": 9,
+                "yes-no": "yes",
+                "upright keywords": "wishes coming true, contentment, satisfaction, success, achievements, recognition, pleasure",
+                "reversed keywords": "unhappiness, lack of fulfillment, disappointment, superficiality, disillusionment, inner conflict",
+                "symbols": [
+                    "red hat (passion, vitality)",
+                    "white robe (purity, innocence)",
+                    "confident pose (pride, achievement)"
+                ]
+            },
+            "Ten of Cups":{
+                "value": 10,
+                "yes-no": "yes",
+                "upright keywords": "happiness, fulfillment, emotional stability, domestic harmony, security, love, family connections",
+                "reversed keywords": "unhappy home, separation, domestic conflict, disharmony, isolation, unmet expectations, emotional distance",
+                "symbols": [
+                    "adults (partnership, respect, understanding)",
+                    "rainbow (dreamings coming true, fulfillment",
+                    "children (love, affection, family)"
+                ]
             }
         }
         
