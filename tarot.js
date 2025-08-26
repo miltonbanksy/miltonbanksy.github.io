@@ -5,7 +5,7 @@ const tarot_cards = {
         "suit duality": "passive, receptive",
         "suit astrology": "cancer, scorpio, pisces",
         "suit alt names": "chalices, goblets, vessels",
-        "suit jung": "feeling", "suit direction": "west", "suit time": "autumn, dusk",
+        "suit jung": "feeling", "suit direction": "West", "suit time": "Autumn, Dusk",
         "cards":{
             "Ace of Cups":{
                 "value": 1,
@@ -162,39 +162,79 @@ const tarot_cards = {
                 ]
             }
         }
-        
     },
     "Pentacles":{
-        "suit": "Pentacles",
-        "suit element": "",
-        "suit keywords": "",
-        "suit duality": "",
-        "suit astrology": "",
-        "suit alt names": "",
-        "suit jung": "",
-        "suit direction": "",
-        "suit time": ""
+        "suit": "Pentacles", "suit element": "earth",
+        "suit keywords": "nature, body, material world, stability, responsibility, practicality, experience, reliability",
+        "suit duality": "passive",
+        "suit astrology": "Taurus, Virgo, Capricorn",
+        "suit alt names": "coins, disks",
+        "suit jung": "sensation", "suit direction": "North", "suit time": "Winter, Midnight",
+        "cards":{
+            "Ace of Pentacles":{
+                "value": 1,
+                "yes-no": "yes",
+                "upright keywords": "new opportunities, resources, abundance, prosperity, security, stability, manifestation",
+                "reversed keywords": "missed opportunities, financial instability, poor investments, scarcity mindset, emotional insecurity",
+                "symbols": [
+                    "hand (divine intervention, opportunity)",
+                    "garden (abundance, fertility)",
+                    "mountains behind (effort, obstacles to be overcome)"
+                ]
+            },
+            "Two of Pentacles":{
+                "value": 2,
+                "yes-no": "maybe",
+                "upright keywords": "balancing resources, adaptation, resourcefulness, flexibility, managing priorities, juggling responsibilities",
+                "reversed keywords": "imbalance, unorganized, overwhelmed, messiness, chaos, overextending, rejecting love, too many bills",
+                "symbols": [
+                    "ocean wave (fluctuations, ebb and flow)",
+                    "infinity (balance, possibilities)",
+                    "juggling (adaptability, speed)"
+                ]
+            }
+        }
     },
     "Swords":{
-        "suit": "Pentacles",
-        "suit element": "",
-        "suit keywords": "",
-        "suit duality": "",
-        "suit astrology": "",
-        "suit alt names": "",
-        "suit jung": "",
-        "suit direction": "",
-        "suit time": ""
+        "suit": "Swords", "suit element": "air",
+        "suit keywords": "awareness, logic, ideas, intellect, communication",
+        "suit duality": "active",
+        "suit astrology": "Gemini, Libra, Aquarius",
+        "suit alt names": "spades",
+        "suit jung": "thinking", "suit direction": "East", "suit time": "Spring, Dawn",
+        "cards":{
+            "Ace of Swords":{
+                "value": 1,
+                "yes-no": "yes",
+                "upright keywords": "clarity, breakthrough, new ideas, concentration, vision, force, focus, truth",
+                "reversed keywords": "confusion, miscommunication, hostility, arguments, destruction, chaos, uncertainty",
+                "symbols": [
+                    "sword (truth, clarity, knowledge)",
+                    "clouds (conflict, confusion)",
+                    "laurel wreath (victory, achievement)"
+                ]
+            }
+        }
     },
     "Wands":{
-        "suit": "Pentacles",
-        "suit element": "",
-        "suit keywords": "",
-        "suit duality": "",
-        "suit astrology": "",
-        "suit alt names": "",
-        "suit jung": "",
-        "suit direction": "",
-        "suit time": ""
+        "suit": "Wands", "suit element": "fire",
+        "suit keywords": "courage, energy, desire, drive, willpower, creativity, power",
+        "suit duality": "active",
+        "suit astrology": "Aries, Leo, Sagitarius",
+        "suit alt names": "rods, clubs, scepters",
+        "suit jung": "intuition", "suit direction": "South", "suit time": "Summer, Noon",
+        "cards":{
+            "Ace of Wands":{
+                "value": 1,
+                "yes-no": "yes",
+                "upright keywords": "inspiration, creative spark, new initiative, passion, enthusiasm, energy, growth, opportunities",
+                "reversed keywords": "delays, blocks, lack of passion, lack of energy, hesitancy, creative blocks, uninspired",
+                "symbols": [
+                    "wand (creativity, inspiration, potential)",
+                    "flame (passion, energy, transformation)",
+                    "hand (divine intervention, opportunity)"
+                ]
+            }
+        }
     }
 }
