@@ -116,6 +116,50 @@ const tarot_cards = {
                     "rainbow (dreamings coming true, fulfillment",
                     "children (love, affection, family)"
                 ]
+            },
+            "Page of Cups":{
+                "value": 11,
+                "yes-no": "yes",
+                "upright keywords": "idealism, sensitivity, creativity, intuition, emotional openness, new beginnings, self-expression",
+                "reversed keywords": "emotional block, creative stagnation, insecurity in relationships, avoidance of reality, self-doubt",
+                "symbols": [
+                    "lotuses on tunic (enlightenment, rebirth, fertility)",
+                    "fish (messages, inspiration, new ideas)",
+                    "sea (creativity, dreams, emotions)"
+                ]
+            },
+            "Knight of Cups":{
+                "value": 12,
+                "yes-no": "yes",
+                "upright keywords": "idealist, charming, artistic, graceful, tactful, diplomatic, mediator, negotiator",
+                "reversed keywords": "disappointment, tantrums, moodiness, turmoil, avoiding conflict, vanity, emotional instability",
+                "symbols": [
+                    "winged helm (divine creativity, messenger)",
+                    "river (emotional movement, fluidity)",
+                    "fish on cloak (intuition, creativity)"
+                ]
+            },
+            "Queen of Cups":{
+                "value": 13,
+                "yes-no": "yes",
+                "upright keywords": "compassion, warmth, kindness, intuition, healer, supportive, emotional health, self-love",
+                "reversed keywords": "insecurity, neediness, emotional instability, dependence, overwhelm, neglecting self-care, martyrdom",
+                "symbols": [
+                    "water nymphs (inner child, unconsciousness)",
+                    "shells (inner wisdom, protection, mystery)",
+                    "blue robes (wisdom, serenity, unconscious)"
+                ]
+            },
+            "King of Cups":{
+                "value": 14,
+                "yes-no": "yes",
+                "upright keywords": "wise, diplomatic, emotional balance, creativity, compassion, advisor, self-awareness",
+                "reversed keywords": "overwhelmed, anxious, cold, repressed, withdrawn, manipulative, selfish, emotionally unstable",
+                "symbols": [
+                    "fish (messages, inspiration, new ideas)",
+                    "ship (exploration, movement)",
+                    "scepter (authority, power)"
+                ]
             }
         }
         
