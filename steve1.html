@@ -100,6 +100,9 @@
     }
 
     function btnTarot(){
+      // Get card direction
+      const cardDirection = checkTarotCardDirection();
+      // Get Random Suit
       const keys = Object.keys(tarot_cards);
       const randomIndex = Math.floor(Math.random() * keys.length);
       const randomKey = keys[randomIndex];
@@ -108,17 +111,34 @@
       const suitKeywords = tarot_cards[randomKey]['suit keywords'];
       const suitDuality = tarot_cards[randomKey]['suit duality'];
       const jung = tarot_cards[randomKey]['suit jung'];
-      const cardSymbols = tarot_cards[randomKey]['symbols'];
       
-      displayTarot.innerHTML = `${suit} (${element})<br>`+
-      `${suitKeywords}<br>`+
-      `${suitDuality}<br>`+
-      `${jung}<br><br>`+
-      `<b>${randomKey}</b><br>`+
-      `${cardSymbols.join('<br>')}`
+      // Get Random Card from Suit
+      const cardKeys = Object.keys(tarot_cards[randomKey]['cards']);
+      const randomCardIndex = Math.floor(Math.random() * cardKeys.length);
+      const randomCardKey = cardKeys[randomCardIndex];
+
+      // Get Details from Card
+      const uprightKeywords = tarot_cards[randomKey]['cards'][randomCardKey]['upright keywords'];
+      const reversedKeywords = tarot_cards[randomKey]['cards'][randomCardKey]['reversed keywords'];
+      const symbols = tarot_cards[randomKey]['cards'][randomCardKey]['symbols'];
+      
+      displayTarot.innerHTML = 
+      `<b>${randomKey} (${element}, ${suitDuality}, ${jung})</b><br>` +
+      `${suitKeywords}<br><br>`+
+      `<b>${randomCardKey} (${cardDirection})</b><br><br>` +
+      `Upright Keywords:<br>${uprightKeywords}<br><br>` +
+      `Reversed Keywords:<br>${reversedKeywords}<br><br>` +
+      `Symbols:<br>${symbols.join('<br>')}`
+    }
+
+    function checkTarotCardDirection(){
+      const chosenOption = Math.random() > 0.5 ? "upright" : "reversed";
+      return chosenOption;
     }
 
     // Listeners
+
+    // Iron Oracle button
     document.querySelectorAll("#oracleCard .btnOracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
     });
