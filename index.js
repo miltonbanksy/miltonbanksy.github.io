@@ -1,4 +1,6 @@
-const imgBtnJoy = document.getElementById('frame_flower');
+const imgBtnJoy = document.getElementById('flex-box1');
+const imgBtnSteve = document.getElementById('flex-box2');
+
 
 
 // FUNCTIONS:
@@ -6,5 +8,10 @@ const imgBtnJoy = document.getElementById('frame_flower');
 function openPageJoy(){
     window.open("joy1.html", "_self");
 }
+
+function openPageSteve(){
+    window.open('steve1.html', '_self');
+}
 // LISTENERS:
 imgBtnJoy.addEventListener('click', openPageJoy);
+imgBtnSteve.addEventListener('click', openPageSteve);
