@@ -15,5 +15,22 @@ const animalSymbols = [
     "Elephant: large, powerful, battle, military might and triumph",
     "Fox: sly, cunning, deceitful, devil-like qualities, wealth, fertility, agriculture",
     "Goat: maintaining life, creating life, fertility, abundance, lust, vitality, creativity, virility",
-    "Grasshopper: constantly on-the-move, take a leap of faith, good luck, good vibes, break confliction, make a decision"
+    "Grasshopper: constantly on-the-move, take a leap of faith, good luck, good vibes, break confliction, make a decision",
+    "Hawk: valiance, pride, courage, self-awareness, truth, perspective, intuition, inner wisdom, assessment",
+    "Horse: powerhouse, strength, power, resiliency, stamina, wisdom, freedom, wildness, intellect, loyalty, nobility, divination, prophecy",
+    "Hummingbird: optimism, speed, lightness, connection, playfulness, adaptability, don't take things so seriously!",
+    "Leopard: speed, ferocity, aggression, courage, activity",
+    "Longhorn: masculinity, tenacity, determination, strength, power, abundance, wealth",
+    "Monkey: quick, keen wit, high observance, curiosity, devilish, fall of man, earthly desires, copycat",
+    "Peacock: magic, immortality, resurrection of Christ, eternal life, majesty, pride, vanity, self-assurance",
+    "Phoenix: rise from ashes, rebirth, hope, renewal, progress, eternity, prosperity, happiness",
+    "Owl: rare, spirituality, wisdom, patience, solitude, deep connection, intuitive knowledge, wide-eyes piercing through deceit, seeing beyond illusions",
+    "Rabbit: always on the move, alert, lust, sexual desire",
+    "Ram: leading with horns, breakthrough, full speed, sacrifice, achievement, sun, creativity, virility",
+    "Raven: mystery, mysterious, trickster, shape shifter, dark side, death, high intelligence, wisdom, cleverness",
+    "Snake: regeneration, renewal, female sexuality, agricultural fertility, underworld, temptation, forbidden fruit, malice, poison",
+    "Spider: intricacy, webs, inspiration, fate, destiny, creator of possibilities",
+    "Tiger: king of beasts, ferocity, earth, power, anger, strength, courage, determination, military prowess, protection, awareness, confidence, ward off malevolent spirits",
+    "Unicorn: mystical, purity, grace, virginity, dreams, virtue, integrity, healing, freedom",
+    "Wolf: sharp intelligence, self reliance, appetite for freedom, mysterious, intimidating, perseverance, stability, intuition, loyalty, success"
 ]
