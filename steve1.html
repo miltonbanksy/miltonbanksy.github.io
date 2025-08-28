@@ -15,6 +15,7 @@
   </header>
 
   <main class="favorites">
+
     <div class="card" id="oracleCard">
       <p>Ironsworn</p>
       <button class="btnOracle" data-value="very likely">Very Likely</button>
@@ -28,13 +29,17 @@
       <button id="btnOverland">Overland Travel</button>
       <p id="display_iron_overland"></p>
     </div>
+
     <div class="card" id="tarotCard">
       <p>Tarot</p>
       <button id="btnTarot">Draw a Card</button>
       <p id="displayTarot"></p>
     </div>
     
-    <div class="card" id="overlandCard">
+    <div class="card" id="card_animal_symbols">
+      <p>Animal Symbols</p>
+      <button id="btnAnimalSymbols">Draw an Animal</button>
+      <p id="display_animal_symbols"></p>
     </div>
   </main>
 
@@ -45,6 +50,7 @@
   <script src="iron_overland_landmark.js"></script>
   <script src="iron_overland_waypoint.js"></script>
   <script src="tarot.js"></script>
+  <script src="animal_symbols.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
@@ -136,6 +142,12 @@
       return chosenOption;
     }
 
+    function btnAnimalSymbol(){
+      const randomIndex = Math.floor(Math.random() * animalSymbols.length);
+      const randomItem = animalSymbols[randomIndex];
+      document.getElementById("display_animal_symbols").innerHTML = randomItem;
+    }
+
     // Listeners
 
     // Iron Oracle button
@@ -151,6 +163,9 @@
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
+
+    // Animal Symbol button
+    document.getElementById('btnAnimalSymbols').addEventListener('click', btnAnimalSymbol);
   </script>
 </body>
 </html>
