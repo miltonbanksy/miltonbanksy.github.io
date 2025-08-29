@@ -192,6 +192,72 @@ const tarot_cards = {
                     "infinity (balance, possibilities)",
                     "juggling (adaptability, speed)"
                 ]
+            },
+            "Three of Pentacles":{
+                "value": 3,
+                "yes-no": "yes",
+                "upright keywords": "teamwork, collaboration, shared goals, apprenticeship, effort, pooling energy, diverse skills",
+                "reversed keywords": "lack of coheshion, lack of teamwork, apathy, poor motivation, conflict, ego, competition",
+                "symbols": [
+                    "apprentice (skill, learning)",
+                    "priests (planning, vision, trust)",
+                    "stone structure (foundation, stability)"
+                ]
+            },
+            "Four of Pentacles":{
+                "value": 4,
+                "yes-no": "no",
+                "upright keywords": "possessiveness, insecurity, hoarding, stablility, security, materialism, wealth, boundaries",
+                "reversed keywords": "generosity, giving, spending, openness, financial insecurity, reckless spending, release from past",
+                "symbols": [
+                    "pentacles under feet (suppression, oppression)",
+                    "crown (focus, authority, control)",
+                    "city (protection, boundaries, isolation)"
+                ]
+            },
+            "Five of Pentacles":{
+                "value": 5,
+                "yes-no": "no",
+                "upright keywords": "hardship, loss, isolation, feeling abandoned, adversity, struggle, unemployment, alienation",
+                "reversed keywords": "positive changes, recovery from loss, overcoming adversity, forgiveness, feeling welcomed, renewed hope",
+                "symbols": [
+                    "snow (isolation, struggle, purification)",
+                    "windows (hope, opportunity, safety)",
+                    "crutches (support, reliance, dependency)"
+                ]
+            },
+            "Six of Pentacles":{
+                "value": 6,
+                "yes-no": "yes",
+                "upright keywords": "generosity, charity, community, support, sharing, giving and receiving, gratitude, reciprocity, kindness",
+                "reversed keywords": "power struggles, selfishness, inequality, exploitation, unreciprocated generosity, financial instability",
+                "symbols": [
+                    "giving figure (generosity, wealth)",
+                    "scales (balance, fairness)",
+                    "beggars (charity, gratitude)"
+                ]
+            },
+            "Seven of Pentacles":{
+                "value": 7,
+                "yes-no": "maybe",
+                "upright keywords": "harvest, rewards, growth, progress, perseverance, patience, planning, long-term vision",
+                "reversed keywords": "unfinished work, procrastination, low effort, waste of time, lack of growth, setbacks, impatience",
+                "symbols": [
+                    "crops (growth, fruit of one's laboor)",
+                    "field (growth, cultivation, labor)",
+                    "figure's pose (exhaustion, disatisfaction)"
+                ]
+            },
+            "Eight of Pentacles":{
+                "value": 8,
+                "yes-no": "yes",
+                "upright keywords": "skill, talent, craftmanship, dedication, commitment, mastery, accomplishment, high standards",
+                "reversed keywords": "lack of quality, rushed job, bad reputation, lack of motivation, mediocrity, laziness, low skill",
+                "symbols": [
+                    "hammer (development, hard work)",
+                    "town (home, distractions)",
+                    "figure's clothes (red for passion, blue for wisdom)"
+                ]
             }
         }
     },
