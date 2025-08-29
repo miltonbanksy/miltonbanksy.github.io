@@ -41,6 +41,12 @@
       <button id="btnAnimalSymbols">Draw an Animal</button>
       <p id="display_animal_symbols"></p>
     </div>
+
+    <div class="card" id="card_color_symbols">
+      <p>Color Symbols</p>
+      <button id="btnColorSymbols">Draw a Color</button>
+      <p id="display_color_symbols"></p>
+    </div>
   </main>
 
   <script src="iron_action.js"></script>
@@ -51,11 +57,14 @@
   <script src="iron_overland_waypoint.js"></script>
   <script src="tarot.js"></script>
   <script src="animal_symbols.js"></script>
+  <script src="colors.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
     const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
-    let displayTarot = document.getElementById('displayTarot');
+    const displayTarot = document.getElementById('displayTarot');
+    const displayAnimal = document.getElementById('display_animal_symbols');
+    const displayColor = document.getElementById('display_color_symbols');
     
     const dict_iron_oracle = {
       "very likely": 90,
@@ -145,7 +154,13 @@
     function btnAnimalSymbol(){
       const randomIndex = Math.floor(Math.random() * animalSymbols.length);
       const randomItem = animalSymbols[randomIndex];
-      document.getElementById("display_animal_symbols").innerHTML = randomItem;
+      displayAnimal.innerHTML = randomItem;
+    }
+
+    function btnColorSymbol(){
+      const randomIndex = Math.floor(Math.random() * color_symbols.length);
+      const randomItem = color_symbols[randomIndex];
+      displayColor.innerHTML = randomItem;
     }
 
     // Listeners
@@ -166,6 +181,9 @@
 
     // Animal Symbol button
     document.getElementById('btnAnimalSymbols').addEventListener('click', btnAnimalSymbol);
+
+    // Color Symbol button
+    document.getElementById('btnColorSymbols').addEventListener('click', btnColorSymbol);
   </script>
 </body>
 </html>
