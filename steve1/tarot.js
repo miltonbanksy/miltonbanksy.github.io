@@ -258,6 +258,72 @@ const tarot_cards = {
                     "town (home, distractions)",
                     "figure's clothes (red for passion, blue for wisdom)"
                 ]
+            },
+            "Nine of Pentacles":{
+                "value": 9,
+                "yes-no": "yes",
+                "upright keywords": "rewarded efforts, success, achievement, independence, leisure, material security, self-sufficiency",
+                "reversed keywords": "being guarded, living beyond means, material instability, reckless spending, superficiality",
+                "symbols": [
+                    "walled garden (luxury, protection)",
+                    "falcon (freedom, ambition)",
+                    "grapes (abundance, prosperity, havest)"
+                ]
+            },
+            "Ten of Pentacles":{
+                "value": 10,
+                "yes-no": "yes",
+                "upright keywords": "legacy, roots, family, ancestry, inheritance, windfall, foundations, privilege, affluence, stability, tradition",
+                "reversed keywords": "family disputes, bankruptcy, debt, fleeting success, conflict over money, instability, breaking traditions",
+                "symbols": [
+                    "bridge (connections, harmony)",
+                    "family (legacy, heritage, relationships)",
+                    "dogs (loyalty, companionship)"
+                ]
+            },
+            "Page of Pentacles":{
+                "value": 11,
+                "yes-no": "yes",
+                "upright keywords": "ambitious, diligent, goal oriented, planner, consistent, star student, studious, grounded, loyal, faithful, dependable",
+                "reversed keywords": "foolish, immature, irresponsible, lazy, underachiever, procrastinator, missed chances, poor prospects",
+                "symbols": [
+                    "green robes (spiritual growth, harmony)",
+                    "landscape (growth, fertility, potential)",
+                    "red hat (passion, vitality)"
+                ]
+            },
+            "Knight of Pentacles":{
+                "value": 12,
+                "yes-no": "yes",
+                "upright keywords": "practical, reliable, efficient, stoic, slow and steady, hard-working, committed, patient, conservative",
+                "reversed keywords": "workaholic, laziness, dull, boring, no initiative, cheap, irresponsible, gambler, risky investments",
+                "symbols": [
+                    "field (growth, cultivation, labor)",
+                    "black horse (unseen strengths, instinct)",
+                    "red robes and bridle (passion, vitality)"
+                ]
+            },
+            "Queen of Pentacles":{
+                "value": 13,
+                "yes-no": "yes",
+                "upright keywords": "generous, caring, nurturing, homebody, good business sense, practical, comforting, welcoming, sensible, luxurious",
+                "reversed keywords": "selfish, unkempt, jealous, insecure, greedy, materialistic, gold digger, intolerant, self-absorbed, envious",
+                "symbols": [
+                    "red robes and bridle (passion, vitality)",
+                    "rabbit (fertility, prosperity)",
+                    "floral arbor (beauty, nature)"
+                ]
+            },
+            "King of Pentacles":{
+                "value": 14,
+                "yes-no": "yes",
+                "upright keywords": "abundance, prosperity, security, ambitious, safe, kind, patriarchal, protective, businessman, provider, sensual, reliable",
+                "reversed keywords": "greed, materialistic, wasteful, chauvanist, poor financial decisions, gambler, exploitative, possessive",
+                "symbols": [
+                    "grapes (abundance, prosperity, harvest)",
+                    "bulls on throne (strength, determination, groundedness)",
+                    "castle (security, foundation, stability)"
+                ]
             }
         }
     },
@@ -278,6 +344,149 @@ const tarot_cards = {
                     "sword (truth, clarity, knowledge)",
                     "clouds (conflict, confusion)",
                     "laurel wreath (victory, achievement)"
+                ]
+            },
+            "Two of Swords":{
+                "value": 2,
+                "yes-no": "maybe",
+                "upright keywords": "stalemate, difficult choices, stuck in the middle, denial, hidden information",
+                "reversed keywords": "indecision, hesitancy, anxiety, too much information, no right choice, truth revealed",
+                "symbols": [
+                    "moon (intuition, hidden truths)",
+                    "blindfold (indecision, lack of clarity)",
+                    "crossed swords (conflict, stalemate)"
+                ]
+            },
+            "Three of Swords":{
+                "value": 3,
+                "yes-no": "no",
+                "upright keywords": "heartbreak, separation, sadness, grief, sorrow, upset, loss, trauma, tears",
+                "reversed keywords": "healing, forgiveness, recovery, reconciliation, repressing emotions",
+                "symbols": [
+                    "heart (feelings in anguish)",
+                    "rain (sadness, grief, temporary sorrow)",
+                    "piercing swords (harsh words, criticism)"
+                ]
+            },
+            "Four of Swords":{
+                "value": 4,
+                "yes-no": "maybe",
+                "upright keywords": "rest, relaxation, peace, sanctuary, recuperation, self-protection, rejuvenation",
+                "reversed keywords": "recovery, awakening, re-entering world, release from isolation, restlessness, burnout",
+                "symbols": [
+                    "three swords (hardships faced in life)",
+                    "coffin (ending, rest, pause)",
+                    "stained glass window (guidance, spirituality)"
+                ]
+            },
+            "Five of Swords":{
+                "value": 5,
+                "yes-no": "no",
+                "upright keywords": "arguments, disputes, aggression, bullying, intimidation, conflict, hostility, stress",
+                "reversed keywords": "reconciliation, resolution, compromise, revenge, regret, remorse, cutting losses",
+                "symbols": [
+                    "figures in background (defeat, loss, sadness)",
+                    "storm (continued conflict, restlessness)",
+                    "swords being held (brutality, advantage, resourcefulness)"
+                ]
+            },
+            "Six of Swords":{
+                "value": 6,
+                "yes-no": "yes",
+                "upright keywords": "moving on, departure, leaving behind, distance, accepting lessons",
+                "reversed keywords": "stuck in past, returning to trouble, running away from problems, trapped",
+                "symbols": [
+                    "still water (calm, serenity, making peace)",
+                    "waves (worry, stress)",
+                    "boat (transition, journeys)"
+                ]
+            },
+            "Seven of Swords":{
+                "value": 7,
+                "yes-no": "no",
+                "upright keywords": "lies, trickery, scheming, strategy, resourcefulness,sneakiness, cunning",
+                "reversed keywords": "confession, conscience, regret, maliciousness, truth revealed",
+                "symbols": [
+                    "tents (civilization, wealth, power)",
+                    "carried swords (stolen goods, advantages)",
+                    "sneaking figure (secrecy, stealth)"
+                ]
+            },
+            "Eight of Swords":{
+                "value": 8,
+                "yes-no": "no",
+                "upright keywords": "trapped, restricted, victimised, paralysed, helpless, powerless, imprisonment",
+                "reversed keywords": "freedom, release, taking control, survivor, facing fears, empowered, surrender",
+                "symbols": [
+                    "castle in background (proximity to safety, protection)",
+                    "blindfold (restriction, lack of clarity)",
+                    "puddles (intuition, subconscious)"
+                ]
+            },
+            "Nine of Swords":{
+                "value": 9,
+                "yes-no": "no",
+                "upright keywords": "fear, anxiety, negativity, breaking point, despair, nightmares, isolation",
+                "reversed keywords": "recovery, learning to cope, facing life, finding help, shame, guilt, mental health issues",
+                "symbols": [
+                    "roses on quilt (beauty arising from truth)",
+                    "dark background (fear, hopelessness)",
+                    "sitting figure (isolation, vulnerability)"
+                ]
+            },
+            "Ten of Swords":{
+                "value": 10,
+                "yes-no": "no",
+                "upright keywords": "ruin, failure, bitterness, collapse, exhaustion, dead end, victimization, betrayal",
+                "reversed keywords": "survival, improvement, healing, lessons learned, despair, relapse",
+                "symbols": [
+                    "yellow sky (dawn, morning, rebirth)",
+                    "dark sky (despair, hopelessness)",
+                    "face down figure (surrender, acceptance)"
+                ]
+            },
+            "Page of Swords":{
+                "value": 11,
+                "yes-no": "yes",
+                "upright keywords": "curious, witty, chatty, communicative, inspired, vigilant, alert, mental agility",
+                "reversed keywords": "scatterbrained, cynical, sarcastic, gossipy, insulting, rude, lack of planning",
+                "symbols": [
+                    "wind (agility, speed, movement)",
+                    "figure's stance (preparation, readiness to leap)",
+                    "clouds and birds (coming storm, tension)"
+                ]
+            },
+            "Knight of Swords":{
+                "value": 12,
+                "yes-no": "yes",
+                "upright keywords": "assertive, direct, impatient, intellectual, daring, focused, perfectionist, ambitious",
+                "reversed keywords": "rude, tactless, forceful, bully, aggressive, vicious, ruthless, arrogant",
+                "symbols": [
+                    "trees and clouds (storm, destruction)",
+                    "charging stance (aggression, attack, action, speed)",
+                    "butterflies on horse (transformation, psyche, soul)"
+                ]
+            },
+            "Queen of Swords":{
+                "value": 13,
+                "yes-no": "yes",
+                "upright keywords": "honest, independent, principled, fair, constructive criticism, objective, perceptive",
+                "reversed keywords": "pessimistic, malicious, manipulative, harsh, bitter, spiteful, cruel, deceitful, unforgiving",
+                "symbols": [
+                    "cherub on throne (messengers, watchers, guardians)",
+                    "butterflies (transformation, psyche, soul)",
+                    "clouds on cloak (motion, air element)"
+                ]
+            },
+            "King of Swords":{
+                "value": 14,
+                "yes-no": "yes",
+                "upright keywords": "reason, authority, discipline, integrity, morality, serious, high standards, strict",
+                "reversed keywords": "irrational, dictator, oppressive, inhumane, controlling, cold, ruthless, dishonest",
+                "symbols": [
+                    "butterflies on throne (transformation, psyche, soul)",
+                    "blue roses (serenity, wisdom, maturity)",
+                    "moons on throne (intuition, subconscious, the unknown)"
                 ]
             }
         }
