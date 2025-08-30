@@ -2,6 +2,10 @@
     font-size: 50px;
 }
 
+#sj_title {
+    width: 100%;
+}
+
 .flex-container {
     display: flex;
 }
