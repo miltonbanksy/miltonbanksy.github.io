@@ -14,8 +14,8 @@ h1 {
 
 .flex-container > div {
     background-color: rgb(0, 0, 0);
-    margin: 10px;
-    padding: 10px; /* default 1px */
+    margin: 1px; /* default 10px*/
+    padding: 2px; /* default 1px */
     font-size: 30px;
     width: 100%;
 }
