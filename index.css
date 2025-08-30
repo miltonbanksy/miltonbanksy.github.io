@@ -20,8 +20,8 @@ h1 {
 #flex-box1, #flex-box2, #flex-box3 {
     position: relative;
     text-align: center;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     clip-path: circle(50%);
 }
 
