@@ -9,6 +9,7 @@ h1 {
 
 .flex-container {
     display: flex;
+    width: 100%;
 }
 
 .flex-container > div {
@@ -16,6 +17,7 @@ h1 {
     margin: 10px;
     padding: 10px; /* default 1px */
     font-size: 30px;
+    width: 100%;
 }
 #flex-box1, #flex-box2, #flex-box3 {
     position: relative;
