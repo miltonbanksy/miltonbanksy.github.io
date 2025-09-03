@@ -30,6 +30,12 @@
       <p id="display_iron_overland"></p>
     </div>
 
+    <div class="card" id="lenormandExpanded">
+      <p>Lenormand (Expanded)</p>
+      <button id="btnLenormandExpanded">Draw a Card</button>
+      <p id="displayLenormandExpanded"></p>
+    </div>
+
     <div class="card" id="tarotCard">
       <p>Tarot</p>
       <button id="btnTarot">Draw a Card</button>
@@ -55,6 +61,7 @@
   <script src="iron_theme.js"></script>
   <script src="iron_overland_landmark.js"></script>
   <script src="iron_overland_waypoint.js"></script>
+  <script src="lenormandExpanded.js"></script>
   <script src="tarot.js"></script>
   <script src="animal_symbols.js"></script>
   <script src="colors.js"></script>
@@ -62,6 +69,7 @@
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
     const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
+    const displayLenormandExpanded = document.getElementById('displayLenormandExpanded');
     const displayTarot = document.getElementById('displayTarot');
     const displayAnimal = document.getElementById('display_animal_symbols');
     const displayColor = document.getElementById('display_color_symbols');
@@ -112,6 +120,12 @@
       } else {
         document.getElementById("display_iron_oracle").innerHTML = `No`;
       }
+    }
+
+    function btnLenormandExpanded() {
+      const randomIndex = Math.floor(Math.random() * lenormandExpanded.length);
+      const randomItem = lenormandExpanded[randomIndex];
+      displayLenormandExpanded.innerHTML = randomItem;
     }
 
     function btnTarot(){
@@ -175,6 +189,9 @@
 
     // Overland button
     document.getElementById("btnOverland").addEventListener("click", btnIronOverland);
+
+    // Lenormand Expanded button
+    document.getElementById('btnLenormandExpanded').addEventListener("click", btnLenormandExpanded);
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
