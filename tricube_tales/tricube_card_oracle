@@ -1,0 +1,34 @@
+const tricubeCardOracle = [
+    "Joker of Clubs: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Joker of Spades: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Joker of Diamonds: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Joker of Hearts: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Ace of Clubs: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Ace of Spades: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Ace of Diamonds: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Ace of Hearts: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "King of Clubs: Advance Main Plot (Negative). Interpret the result. Draw again.",
+    "King of Spades: Advance Main Plot (Negative). Interpret the result. Draw again.",
+    "King of Diamonds: Advance Main Plot (Positive). Interpret the result. Draw again.",
+    "King of Hearts: Advance Main Plot (Positive). Interpret the result. Draw again.",
+    "Queen of Clubs: Advance Primary Sub-Plot (Negative). Interpret the result. Draw again.",
+    "Queen of Spades: Advance Primary Sub-Plot (Negative). Interpret the result. Draw again.",
+    "Queen of Diamonds: Advance Primary Sub-Plot (Positive). Interpret the result. Draw again.",
+    "Queen of Diamonds: Advance Primary Sub-Plot (Positive). Interpret the result. Draw again.",
+    "Jack of Clubs: Advance Primary Secondary Sub-Plot (Negative). Interpret the result. Draw again.",
+    "Jack of Spades: Advance Primary Secondary Sub-Plot (Negative). Interpret the result. Draw again.",
+    "Jack of Diamonds: Advance Primary Secondary Sub-Plot (Positive). Interpret the result. Draw again.",
+    "Jack of Hearts: Advance Primary Secondary Sub-Plot (Positive). Interpret the result. Draw again.",
+    "10 of Clubs: Hard Crafty Challenge. "
+
+]
+
+// Scene Change Table
+const tricubeSceneChange = [
+    "Positive for you. Interpret the result. Draw again.",
+    "Negative for you. Interpret the result. Draw again.",
+    "Twist! Roll on the Twist Table. Interpret the result. Draw again.",
+    "New Location. Create, choose, or roll a new location. Interpret the result. Draw again.",
+    "New Person. Create, choose, or roll a new Person. Interpret the result. Draw again.",
+    "New Event. Create, choose, or roll a new Event. Interpret the result. Draw again."
+]
