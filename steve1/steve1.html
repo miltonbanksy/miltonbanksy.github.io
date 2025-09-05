@@ -7,14 +7,17 @@
   <link rel="stylesheet" href="steve1.css">
 </head>
 <body>
-    <a href="../index.html">Go back to our Home Page...</a>
-    <a href="../steve_smoke/smoking.html">Steve's Smoking Tracker...</a>
+    <a href="../index.html">Go back to our Home Page</a>
+    <br>
+    <a href="../steve_smoke/smoking.html">Steve's Smoking Tracker</a>
+    <br>
+    <a href="../tricube_tales/tricube.html">Tricube Tales</a>
     <br><br>
   <header>
     <h1>Steve's Story Sparks</h1>
   </header>
 
-  <main class="favorites">
+  <div class="ironsworn">
 
     <div class="card" id="oracleCard">
       <p>Ironsworn</p>
@@ -29,7 +32,9 @@
       <button id="btnOverland">Overland Travel</button>
       <p id="display_iron_overland"></p>
     </div>
+  </div> <!--End of Ironsworn Block-->
 
+  <div class="tarot">
     <div class="card" id="lenormandExpanded">
       <p>Lenormand (Expanded)</p>
       <button id="btnLenormandExpanded">Draw a Card</button>
@@ -53,12 +58,13 @@
       <button id="btnColorSymbols">Draw a Color</button>
       <p id="display_color_symbols"></p>
     </div>
+  </div> <!--End of Tarot block-->
 
-    <div class="card" id="card_favorite_links">
-      <p>Favorite Links</p>
-      <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
-    </div>
-  </main>
+  <div class="card" id="card_favorite_links">
+    <p>Favorite Links</p>
+    <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
+  </div>
+  
 
   <script src="iron_action.js"></script>
   <script src="iron_descriptor.js"></script>
