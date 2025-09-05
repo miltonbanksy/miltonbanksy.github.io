@@ -1,8 +1,12 @@
-
+header {
+    background-color: rgb(28, 58, 53);
+    box-shadow: 5px 5px 5px;
+    max-width: 500px;
+}
 
 #sj_title {
     width: 100%;
-    max-width: 550px;
+    max-width: 500px;
 }
 
 .flex-container {
@@ -79,6 +83,9 @@
 }
 
 #countdown-timer {
+    max-width: 500px;
     border: 1px solid red;
+    background-color: ivory;
     text-align: center;
+    box-shadow: 5px 5px 5px;
 }
