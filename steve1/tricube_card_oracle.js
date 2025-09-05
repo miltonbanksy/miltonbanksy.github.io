@@ -1,12 +1,12 @@
 const tricubeCardOracle = [
-    "Joker of Clubs: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Joker of Spades: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Joker of Diamonds: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Joker of Hearts: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Ace of Clubs: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Ace of Spades: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Ace of Diamonds: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
-    "Ace of Hearts: Unexpected Scene change! (Roll on the 'Scene Change' table.)",
+    "Joker of Clubs: Unexpected Scene change!",
+    "Joker of Spades: Unexpected Scene change!",
+    "Joker of Diamonds: Unexpected Scene change!",
+    "Joker of Hearts: Unexpected Scene change!",
+    "Ace of Clubs: Unexpected Scene change!",
+    "Ace of Spades: Unexpected Scene change!",
+    "Ace of Diamonds: Unexpected Scene change!",
+    "Ace of Hearts: Unexpected Scene change!",
     "King of Clubs: Advance Main Plot (Negative). Interpret the result. Draw again.",
     "King of Spades: Advance Main Plot (Negative). Interpret the result. Draw again.",
     "King of Diamonds: Advance Main Plot (Positive). Interpret the result. Draw again.",
@@ -61,8 +61,8 @@ const tricubeCardOracle = [
 const tricubeSceneChange = [
     "Positive for you. Interpret the result. Draw again.",
     "Negative for you. Interpret the result. Draw again.",
-    "Twist! Roll on the Twist Table. Interpret the result. Draw again.",
-    "New Location. Create, choose, or roll a new location. Interpret the result. Draw again.",
-    "New Person. Create, choose, or roll a new Person. Interpret the result. Draw again.",
-    "New Event. Create, choose, or roll a new Event. Interpret the result. Draw again."
+    "Roll on a <i>Twist Table</i>. Interpret the result. Draw again.",
+    "Create, choose, or roll a <b>NEW LOCATION</b>. Interpret the result. Draw again.",
+    "Create, choose, or roll a <b>NEW PERSON</b>. Interpret the result. Draw again.",
+    "Create, choose, or roll a <b>NEW EVENT</b>. Interpret the result. Draw again."
 ]

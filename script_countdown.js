@@ -16,6 +16,6 @@ const countdown = setInterval(function() {
 
     if (distance < 0) {
         clearInterval(countdown);
-        document.getElementById("countdown-timer").innerHTML = "<h2>Happy Big 11 Years! Steve & Joy!</h2>";
+        document.getElementById("countdown-timer").innerHTML = "<h2>Happy Big 12 Years! Steve & Joy!</h2>";
     }
 }, 1000);

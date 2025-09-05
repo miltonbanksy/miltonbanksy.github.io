@@ -1,6 +1,4 @@
-h1 {
-    text-align: center;
-}
+
 
 #sj_title {
     width: 100%;
@@ -78,4 +76,9 @@ h1 {
 
 .element {
     animation: rollIn 1s ease-out forwards; /* default 1s */
+}
+
+#countdown-timer {
+    border: 1px solid red;
+    text-align: center;
 }

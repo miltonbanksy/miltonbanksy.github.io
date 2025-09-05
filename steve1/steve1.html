@@ -10,14 +10,17 @@
     <a href="../index.html">Go back to our Home Page</a>
     <br>
     <a href="../steve_smoke/smoking.html">Steve's Smoking Tracker</a>
-    <br>
-    <a href="../tricube_tales/tricube.html">Tricube Tales</a>
     <br><br>
   <header>
     <h1>Steve's Story Sparks</h1>
   </header>
 
-  <div class="ironsworn">
+  <div class="simpleD6">
+
+
+  </div> <!--End of Simple D6-->
+
+  <div class="flexbox-container">
 
     <div class="card" id="oracleCard">
       <p>Ironsworn</p>
@@ -34,36 +37,49 @@
     </div>
   </div> <!--End of Ironsworn Block-->
 
-  <div class="tarot">
+
+  <div class="flexbox-container">
     <div class="card" id="lenormandExpanded">
-      <p>Lenormand (Expanded)</p>
-      <button id="btnLenormandExpanded">Draw a Card</button>
+      <button id="btnLenormandExpanded">Lenormand (Expanded)</button>
       <p id="displayLenormandExpanded"></p>
     </div>
 
     <div class="card" id="tarotCard">
-      <p>Tarot</p>
-      <button id="btnTarot">Draw a Card</button>
+      <button id="btnTarot">Tarot (Minor Arcana)</button>
       <p id="displayTarot"></p>
     </div>
-    
+  </div> <!--End of Tarot block-->
+
+
+  <div class="flexbox-container">
     <div class="card" id="card_animal_symbols">
-      <p>Animal Symbols</p>
-      <button id="btnAnimalSymbols">Draw an Animal</button>
+      <button id="btnAnimalSymbols">Animal Symbols</button>
       <p id="display_animal_symbols"></p>
     </div>
 
     <div class="card" id="card_color_symbols">
-      <p>Color Symbols</p>
-      <button id="btnColorSymbols">Draw a Color</button>
+      <button id="btnColorSymbols">Color Symbols</button>
       <p id="display_color_symbols"></p>
     </div>
-  </div> <!--End of Tarot block-->
+  </div> <!--End of Symbols block-->
 
+
+  <div class="flexbox-container">
+
+    <div class="card" id="tricube_deck">
+      <p>Tricube Tales Solo</p>
+      <button id="newTricubeCard">Draw Card</button>
+      <p id="display_new_tricube_card"></p>
+    </div>
+
+  </div> <!--End of Tricube Block-->
+
+<div class="flexbox-container">
   <div class="card" id="card_favorite_links">
     <p>Favorite Links</p>
     <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
   </div>
+</div>
   
 
   <script src="iron_action.js"></script>
@@ -76,6 +92,7 @@
   <script src="tarot.js"></script>
   <script src="animal_symbols.js"></script>
   <script src="colors.js"></script>
+  <script src="tricube_card_oracle.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
@@ -84,6 +101,8 @@
     const displayTarot = document.getElementById('displayTarot');
     const displayAnimal = document.getElementById('display_animal_symbols');
     const displayColor = document.getElementById('display_color_symbols');
+
+    
     
     const dict_iron_oracle = {
       "very likely": 90,
@@ -212,6 +231,22 @@
 
     // Color Symbol button
     document.getElementById('btnColorSymbols').addEventListener('click', btnColorSymbol);
+
+    // Tricube Card
+    document.getElementById('newTricubeCard').addEventListener('click', function() {
+      const randomIndex = Math.floor(Math.random() * tricubeCardOracle.length);
+      const randomItem = tricubeCardOracle[randomIndex];
+      let randomItem2 = "";
+
+      if (randomIndex >= 0 && randomIndex <= 7) {
+        const randomIndex2 = Math.floor(Math.random() * tricubeSceneChange.length);
+        randomItem2 = tricubeSceneChange[randomIndex2];
+      }
+      else {
+        randomItem2 = "";
+      }
+      document.getElementById("display_new_tricube_card").innerHTML = `${randomItem}<br>${randomItem2}`;
+    });
   </script>
 </body>
 </html>

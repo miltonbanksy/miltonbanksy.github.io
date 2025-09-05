@@ -23,15 +23,8 @@ h2 {
   color: #555;
 }
 
-/* Flexbox layout for favorites */
-.ironsworn {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 30px;
-}
-
-.tarot {
+/* Card Group Containers */
+.flexbox-container {
   display: flex;
   justify-content: center;
   gap: 10px;
