@@ -75,7 +75,7 @@ const startDate = new Date("2014-08-26T00:00:00"); // wedding date
         `<span>${cdHours} hours</span>` +
         `<span>${cdMinutes} minutes</span>` +
         `<span>${cdSeconds} seconds</span>` +
-        `<span>until your ${anniversaryLabel} anniversary 🎉</span>`;
+        `<span>until our ${anniversaryLabel} anniversary!</span>`;
     }
 
     setInterval(updateTimers, 1000);
