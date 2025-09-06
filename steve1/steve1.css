@@ -3,13 +3,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   text-align: center;
-  background: #f9f9f9;
+  background: #b4f0a2;
   color: #333;
 }
 
 header {
   padding: 20px;
-  background: #b4f0a2;
+  background: #85b178;
 }
 
 h1 {
@@ -48,6 +48,13 @@ h2 {
 .card p {
   margin-top: 10px;
   font-size: 1em;
+}
+
+#oracleCard {
+  background-image: url(image_iron1.jpg);
+  background-size: 120%;
+  box-shadow: 5px 5px 5px black;
+  color: #ffffff;
 }
 
 /* 📱 Responsive tweak */
