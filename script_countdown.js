@@ -71,7 +71,7 @@ const startDate = new Date("2014-08-26T00:00:00"); // wedding date
       cdSeconds %= 60;
 
       document.getElementById("countdown").innerHTML =
-        `<span>Only ${cdDays} days</span>` +
+        `<span>${cdDays} days</span>` +
         `<span>${cdHours} hours</span>` +
         `<span>${cdMinutes} minutes</span>` +
         `<span>${cdSeconds} seconds</span>` +
