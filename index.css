@@ -53,6 +53,7 @@ h1 {
 .flex-container {
     display: flex;
     width: 100%;
+    justify-content: center;
 }
 
 .flex-container > div {
@@ -98,6 +99,8 @@ h1 {
     transform: translate(-50%, -50%);
     font-weight: bold;
     color:rgb(255, 255, 255);
+    cursor: pointer;
+
 }
 
 .element {
