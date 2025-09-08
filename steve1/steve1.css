@@ -23,6 +23,10 @@ h2 {
   color: #555;
 }
 
+.inputNumber {
+  width: 20px;
+}
+
 /* Card Group Containers */
 .flexbox-container {
   display: flex;

@@ -15,10 +15,18 @@
     <h1>Steve's Story Sparks</h1>
   </header>
 
-  <div class="simpleD6">
-
-
-  </div> <!--End of Simple D6-->
+  <div class="flexbox-container">
+    <div class="card" id="uni-dice">
+      <h2>Dice Roller</h2>
+      Enter dice (e.g. 2d6)
+      <input id="inputNumberOfDice" class="inputNumber" type="number">
+      <span>d</span>
+      <input id="inputSizeOfDice" class="inputNumber" type="number">
+      <button onclick="rollDice()">Roll Dice!</button>
+  
+  <p id="displayHistory"></p>
+    </div>
+  </div>
 
   <div class="flexbox-container">
 
@@ -93,6 +101,7 @@
   <script src="animal_symbols.js"></script>
   <script src="colors.js"></script>
   <script src="tricube_card_oracle.js"></script>
+  <script src="uni_dice.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
