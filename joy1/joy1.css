@@ -7,9 +7,13 @@ body {
   color: #333;
 }
 
-header {
+.header-master {
   padding: 20px;
-  background: #ffcccc;
+  background-color: #ffcccc;
+}
+
+#header-grayson {
+  background-color: #ffe5cc;
 }
 
 h1 {
