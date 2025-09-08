@@ -23,8 +23,10 @@
       <span>d</span>
       <input id="inputSizeOfDice" class="inputNumber" type="number">
       <button onclick="rollDice()">Roll Dice!</button>
-  
-  <p id="displayHistory"></p>
+      <div id="dice-scroll-box">
+        <p id="displayHistory"></p>
+      </div>
+      
     </div>
   </div>
 
@@ -32,11 +34,11 @@
 
     <div class="card" id="oracleCard">
       <p>Ironsworn</p>
-      <button class="btnOracle" data-value="very likely">Very Likely</button>
+      <button class="btnOracle" data-value="very likely">V Likely</button>
       <button class="btnOracle" data-value="likely">Likely</button>
       <button class="btnOracle" data-value="50/50">50/50</button>
       <button class="btnOracle" data-value="unlikely">Unlikely</button>
-      <button class="btnOracle" data-value="very unlikely">Very Unlikely</button>
+      <button class="btnOracle" data-value="very unlikely">V Unlikely</button>
       <p id="display_iron_oracle"></p>
       <button id="btnDetails">Details</button>
       <p id="display_iron_details"></p>

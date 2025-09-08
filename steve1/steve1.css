@@ -20,11 +20,16 @@ h1 {
 h2 {
   margin: 10px 0 0;
   font-weight: normal;
-  color: #555;
+  color: #000000;
+}
+
+button {
+  font-size: 12px;
 }
 
 .inputNumber {
-  width: 20px;
+  width: 40px;
+  font-size: 12px;
 }
 
 /* Card Group Containers */
@@ -52,6 +57,17 @@ h2 {
 .card p {
   margin-top: 10px;
   font-size: 1em;
+}
+
+#uni-dice {
+  background-color: rgb(243, 255, 173);
+  box-shadow: 5px 5px 5px black;
+}
+
+#dice-scroll-box {
+  height: 100px;
+  overflow-y:scroll;
+  font-size: 14px;
 }
 
 #oracleCard {
