@@ -1,0 +1,32 @@
+/* Card Group Containers */
+.flexbox-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+}
+
+/* Each card */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 350px;
+  font-size: 30px;
+}
+
+
+/* 📱 Responsive tweak */
+@media (max-width: 768px) {
+  .favorites {
+    flex-direction: column;   /* stack vertically */
+    align-items: center;      /* center the stacked cards */
+  }
+}
+
+.greyson-text {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+  font-style: italic;
+}
