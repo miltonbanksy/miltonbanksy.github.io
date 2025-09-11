@@ -100,7 +100,6 @@ h1 {
     font-weight: bold;
     color:rgb(255, 255, 255);
     cursor: pointer;
-
 }
 
 .element {
@@ -124,5 +123,21 @@ h1 {
 
 .element {
     animation: rollIn 1s ease-out forwards; /* default 1s */
+}
+
+#now-reading-box {
+    margin:auto;
+    width: 90%;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: #d17a00;
+    box-shadow: 5px 5px rgb(0, 0, 0);
+}
+
+#aouad {
+    width:90%;
+    border: 2px solid black;
+    border-radius: 50px;
+    align-self: center;
 }
 
