@@ -33,7 +33,7 @@
   <div class="flexbox-container">
 
     <div class="card" id="oracleCard">
-      <p>Ironsworn</p>
+      <h2>Ironsworn</h2>
       <button class="btnOracle" data-value="very likely">V Likely</button>
       <button class="btnOracle" data-value="likely">Likely</button>
       <button class="btnOracle" data-value="50/50">50/50</button>
@@ -46,6 +46,25 @@
       <p id="display_iron_overland"></p>
     </div>
   </div> <!--End of Ironsworn Block-->
+
+
+  <div class="flexbox-container">
+
+    <div class="card" id="frame-names">
+      <h2>Names</h2>
+      <button id="name_british_male">British Male</button>
+      <button id="name_british_female">British female</button>
+      <button id="name_british_any">British (Random)</button>
+      <button id="name_filipino_male">Filipino Male</button>
+      <button id="name_filipino_female">Filipino female</button>
+      <button id="name_british_any">Filipino (Random)</button>
+      <button id="name_mixed_male">Random Male</button>
+      <button id="name_mixed_female">Random Fenale</button>
+      <button id="name_mixed_any">Random Name</button>
+      <p id="display_new_tricube_card"></p>
+    </div>
+
+  </div> <!--End of Names block-->
 
 
   <div class="flexbox-container">
@@ -104,6 +123,8 @@
   <script src="colors.js"></script>
   <script src="tricube_card_oracle.js"></script>
   <script src="uni_dice.js"></script>
+  <script src="names_british.js"></script>
+  <script src="names_filipino.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
