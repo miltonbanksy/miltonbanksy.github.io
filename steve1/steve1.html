@@ -52,16 +52,16 @@
 
     <div class="card" id="frame-names">
       <h2>Names</h2>
-      <button id="name_british_male">British Male</button>
-      <button id="name_british_female">British female</button>
-      <button id="name_british_any">British (Random)</button>
-      <button id="name_filipino_male">Filipino Male</button>
-      <button id="name_filipino_female">Filipino female</button>
-      <button id="name_british_any">Filipino (Random)</button>
-      <button id="name_mixed_male">Random Male</button>
-      <button id="name_mixed_female">Random Fenale</button>
-      <button id="name_mixed_any">Random Name</button>
-      <p id="display_new_tricube_card"></p>
+      <button class="btn-name" id="name_british_male">British Male</button>
+      <button class="btn-name" id="name_british_female">British female</button>
+      <button class="btn-name" id="name_british_any">British (Random)</button>
+      <button class="btn-name" id="name_filipino_male">Filipino Male</button>
+      <button class="btn-name" id="name_filipino_female">Filipino female</button>
+      <button class="btn-name" id="name_british_any">Filipino (Random)</button>
+      <button class="btn-name" id="name_mixed_male">Random Male</button>
+      <button class="btn-name" id="name_mixed_female">Random Fenale</button>
+      <button class="btn-name" id="name_mixed_any">Random Name</button>
+      <p id="display_name"></p>
     </div>
 
   </div> <!--End of Names block-->
@@ -279,6 +279,8 @@
       }
       document.getElementById("display_new_tricube_card").innerHTML = `${randomItem}<br>${randomItem2}`;
     });
+
+    
   </script>
 </body>
 </html>
