@@ -1,9 +1,14 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    margin-top: 60px;
     background: #fffdf9;
+    border: 2px solid black;
     color: #333;
+    animation-name: colorCycle; /* Name of the keyframes */
+    animation-duration: 20s; /* Duration of one animation cycle */
+    animation-iteration-count: infinite; /* Loop indefinitely */
+    animation-direction: alternate; /* Play forwards and then backwards for a smoother transition */
+    animation-timing-function: ease-in-out; /* Control the speed curve of the animation */
 }
 
 header {
@@ -119,6 +124,14 @@ h1 {
     transform: rotate(20deg);
     opacity: 1;
     }
+}
+
+@keyframes colorCycle {
+  0% { background-color: #ffc60b; } /* Start color */
+  25% { background-color: #ff6666; } /* First transition color */
+  50% { background-color: #90a0d6; } /* Second transition color */
+  75% { background-color: #23d5ab; } /* Third transition color */
+  100% { background-color: #ffc60b; } /* Return to start color for smooth loop */
 }
 
 .element {
