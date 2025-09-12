@@ -383,6 +383,20 @@
       document.getElementById('display-name').innerHTML = nameAnyFemale + " " + nameAnyFemaleSurname;
     });
 
+    // ANY RANDOM NAME:
+    document.getElementById("name_mixed_any").addEventListener('click', function() {
+      const combinedArrayAllFirstNames = [...namesBritishFemales, ...namesBritishMales, ...namesFilipinoFemales, ...namesFilipinoMales];
+      const combinedArrayAllSurnames = [...namesBritishSurnames, ...namesFilipinoSurnames];
+
+      const anyFirstNameIndex = Math.floor(Math.random() * combinedArrayAllFirstNames.length);
+      const anyFirstName = combinedArrayAllFirstNames[anyFirstNameIndex];
+
+      const anySurnameIndex = Math.floor(Math.random() * combinedArrayAllSurnames.length);
+      const anySurname = combinedArrayAllSurnames[anySurnameIndex];
+
+      document.getElementById("display-name").innerHTML = anyFirstName + " " + anySurname;
+    });
+
     
   </script>
 </body>
