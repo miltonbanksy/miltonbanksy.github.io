@@ -48,9 +48,10 @@ button {
 .card {
   background-color: rgb(243, 255, 173);
   color: #000000;
+  border: 1px solid #85b178;
   border-radius: 10px;
   padding: 5px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 5px 5px 10px rgb(117, 117, 117);
   width: 370px;
 }
 
@@ -64,10 +65,6 @@ button {
   font-size: 1em;
 }
 
-#uni-dice {
-  background-color: rgb(243, 255, 173);
-  box-shadow: 5px 5px 5px black;
-}
 
 #dice-scroll-box {
   height: 100px;
@@ -78,7 +75,6 @@ button {
 #oracleCard {
   background-color: rgb(243, 255, 173);
   background-size: 120%;
-  box-shadow: 5px 5px 5px black;
 }
 
 /* 📱 Responsive tweak */
