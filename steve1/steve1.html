@@ -18,6 +18,7 @@
   <div class="flexbox-container">
     <div class="card" id="uni-dice">
       <h2>Dice Roller</h2>
+      <br>
       Enter dice (e.g. 2d6)
       <input id="inputNumberOfDice" class="inputNumber" type="number">
       <span>d</span>
@@ -34,6 +35,7 @@
 
     <div class="card" id="oracleCard">
       <h2>Ironsworn</h2>
+      <br>
       <button class="btnOracle" data-value="very likely">V Likely</button>
       <button class="btnOracle" data-value="likely">Likely</button>
       <button class="btnOracle" data-value="50/50">50/50</button>
@@ -52,18 +54,21 @@
 
     <div class="card" id="frame-names">
       <h2>Names</h2>
-      <button class="btn-name" id="name_mixed_any">Random Name</button>
       <br>
-      <button class="btn-name" id="name_british_male">British Male</button>
-      <button class="btn-name" id="name_british_female">British female</button>
-      <button class="btn-name" id="name_british_any">British (Random)</button>
-      <br>
-      <button class="btn-name" id="name_filipino_male">Filipino Male</button>
-      <button class="btn-name" id="name_filipino_female">Filipino female</button>
-      <button class="btn-name" id="name_filipino_any">Filipino (Random)</button>
+      <button class="btn-name" id="name_mixed_male">Male</button>
+      <button class="btn-name" id="name_mixed_any">Any</button>
+      <button class="btn-name" id="name_mixed_female">Female</button>
       <br><br>
-      <button class="btn-name" id="name_mixed_male">Random Male</button>
-      <button class="btn-name" id="name_mixed_female">Random Fenale</button>
+      <button class="btn-name" id="name_british_male">British Male</button>
+      <button class="btn-name" id="name_british_any">British (Any)</button>
+      <button class="btn-name" id="name_british_female">British Female</button>
+      <br><br>
+      <button class="btn-name" id="name_filipino_male">Filipino Male</button>
+      <button class="btn-name" id="name_filipino_any">Filipino (Any)</button>
+      <button class="btn-name" id="name_filipino_female">Filipino Female</button>
+      <br><br>
+      
+      
       
       <p id="display-name"></p>
     </div>
@@ -348,6 +353,34 @@
       const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
        
       document.getElementById("display-name").innerHTML = nameFilipinoAny + " " + nameFilipinoSurname;
+    });
+
+    // RANDOM MALE (MIXED)
+    document.getElementById("name_mixed_male").addEventListener('click', function() {
+      const combinedArray = [...namesBritishMales, ...namesFilipinoMales];
+      const combinedSurnames = [...namesBritishSurnames, ...namesFilipinoSurnames];
+
+      const nameAnyMaleIndex = Math.floor(Math.random() * combinedArray.length);
+      const nameAnyMale = combinedArray[nameAnyMaleIndex];
+
+      const nameAnyMaleSurnameIndex = Math.floor(Math.random() * combinedSurnames.length);
+      const nameAnyMaleSurname = combinedSurnames[nameAnyMaleSurnameIndex];
+
+      document.getElementById('display-name').innerHTML = nameAnyMale + " " + nameAnyMaleSurname;
+    });
+
+    // RANDOM FEMALE (MIXED)
+    document.getElementById("name_mixed_female").addEventListener('click', function() {
+      const combinedArray = [...namesBritishFemales, ...namesFilipinoFemales];
+      const combinedSurnames = [...namesBritishSurnames, ...namesFilipinoSurnames];
+
+      const nameAnyFemaleIndex = Math.floor(Math.random() * combinedArray.length);
+      const nameAnyFemale = combinedArray[nameAnyFemaleIndex];
+
+      const nameAnyFemaleSurnameIndex = Math.floor(Math.random() * combinedSurnames.length);
+      const nameAnyFemaleSurname = combinedSurnames[nameAnyFemaleSurnameIndex];
+
+      document.getElementById('display-name').innerHTML = nameAnyFemale + " " + nameAnyFemaleSurname;
     });
 
     
