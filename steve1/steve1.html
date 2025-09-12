@@ -52,16 +52,20 @@
 
     <div class="card" id="frame-names">
       <h2>Names</h2>
+      <button class="btn-name" id="name_mixed_any">Random Name</button>
+      <br>
       <button class="btn-name" id="name_british_male">British Male</button>
       <button class="btn-name" id="name_british_female">British female</button>
       <button class="btn-name" id="name_british_any">British (Random)</button>
+      <br>
       <button class="btn-name" id="name_filipino_male">Filipino Male</button>
       <button class="btn-name" id="name_filipino_female">Filipino female</button>
-      <button class="btn-name" id="name_british_any">Filipino (Random)</button>
+      <button class="btn-name" id="name_filipino_any">Filipino (Random)</button>
+      <br><br>
       <button class="btn-name" id="name_mixed_male">Random Male</button>
       <button class="btn-name" id="name_mixed_female">Random Fenale</button>
-      <button class="btn-name" id="name_mixed_any">Random Name</button>
-      <p id="display_name"></p>
+      
+      <p id="display-name"></p>
     </div>
 
   </div> <!--End of Names block-->
@@ -240,7 +244,7 @@
     }
 
     // Listeners
-
+    
     // Iron Oracle button
     document.querySelectorAll("#oracleCard .btnOracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
@@ -278,6 +282,72 @@
         randomItem2 = "";
       }
       document.getElementById("display_new_tricube_card").innerHTML = `${randomItem}<br>${randomItem2}`;
+    });
+
+    // Names British
+    document.getElementById("name_british_male").addEventListener('click', function() {
+      const nameBritishMaleIndex = Math.floor(Math.random() * namesBritishMales.length);
+      const nameBritishMale = namesBritishMales[nameBritishMaleIndex];
+      
+      const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
+      const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameBritishMale + " " + nameBritishSurname;
+    });
+
+    document.getElementById("name_british_female").addEventListener('click', function() {
+      const nameBritishFemaleIndex = Math.floor(Math.random() * namesBritishFemales.length);
+      const nameBritishFemale = namesBritishFemales[nameBritishFemaleIndex];
+      
+      const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
+      const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameBritishFemale + " " + nameBritishSurname;
+    });
+
+    document.getElementById("name_british_any").addEventListener('click', function() {
+      const combinedArray = [...namesBritishMales, ...namesBritishFemales];
+
+      const nameBritishAnyIndex = Math.floor(Math.random() * combinedArray.length);
+      const nameBritishAny = combinedArray[nameBritishAnyIndex];
+      
+      const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
+      const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameBritishAny + " " + nameBritishSurname;
+    });
+
+    // Names Filipino
+    document.getElementById("name_filipino_male").addEventListener('click', function() {
+      const nameFilipinoMaleIndex = Math.floor(Math.random() * namesFilipinoMales.length);
+      const nameFilipinoMale = namesFilipinoMales[nameFilipinoMaleIndex];
+      
+      const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
+      const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameFilipinoMale + " " + nameFilipinoSurname;
+    });
+
+    document.getElementById("name_filipino_female").addEventListener('click', function() {
+      const nameFilipinoFemaleIndex = Math.floor(Math.random() * namesFilipinoFemales.length);
+      const nameFilipinoFemale = namesFilipinoFemales[nameFilipinoFemaleIndex];
+      
+      const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
+      const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameFilipinoFemale + " " + nameFilipinoSurname;
+    });
+
+    document.getElementById("name_filipino_any").addEventListener('click', function() {
+      const combinedArray = [...namesFilipinoMales, ...namesFilipinoFemales];
+
+      const nameFilipinoAnyIndex = Math.floor(Math.random() * combinedArray.length);
+      const nameFilipinoAny = combinedArray[nameFilipinoAnyIndex];
+      
+      const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
+      const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
+       
+      document.getElementById("display-name").innerHTML = nameFilipinoAny + " " + nameFilipinoSurname;
     });
 
     
