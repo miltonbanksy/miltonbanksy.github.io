@@ -1,15 +1,21 @@
 
 const namesBritishFemales = [
-    "Abigail", "Ada", "Alexandra", "Alice", "Amelia", "Amy", "Anna", "Annabelle", "Aria", "Ariana",
-    "Ava", "Beatrice", "Bethany", "Bonnie", "Brooke", "Camilla", "Carla", "Catherine", "Charlotte", "Chloe",
-    "Clara", "Cleo", "Daisy", "Daphne", "Darcy", "Delilah", "Diana", "Edith", "Eleanor", "Eliza",
-    "Elizabeth", "Ella", "Ellie", "Elsie", "Emily", "Emma", "Erin", "Esme", "Eva", "Evelyn",
-    "Evie", "Faith", "Faye", "Florence", "Freya", "Georgia", "Georgina", "Grace", "Hallie", "Hannah",
-    "Harper", "Harriet", "Hazel", "Heidi", "Holly", "Imogen", "India", "Isabel", "Isabella", "Isla",
+    "Abigail", "Ada", "Adele", "Alexandra", "Alice", "Amber", "Amelia", "Amy", "Anna", "Annabelle", "Anne", "Aria", "Ariana", "Ariel", "Asher", "Ashley", "Audrey", "Aurora",
+    "Ava", 
+    "Beatrice", "Bella", "Bethany", "Bianca", "Bonnie", "Brianna", "Brooke", 
+    "Camilla", "Carla", "Catherine", "Charlotte", "Chloe", "Clara", "Cleo", 
+    "Daisy", "Daphne", "Darcy", "Delilah", "Diana", 
+    "Edith", "Eleanor", "Eliza", "Elizabeth", "Ella", "Ellie", "Elsie", "Emily", "Emma", "Erin", "Esme", "Eva", "Evelyn",
+    "Evie", 
+    "Faith", "Faye", "Fern","Florence", "Freya", 
+    "Georgia", "Georgina", "Gertrude","Gillian","Grace", "Hallie", "Hannah",
+    "Harper", "Harriet", "Hazel", "Heidi", "Holly", "Imogen", "India", "Isabella", "Isla",
     "Ivy", "Jasmine", "Jessica", "Joanna", "Josephine", "Julia", "Kate", "Katherine", "Katie", "Lara",
     "Laura", "Lauren", "Layla", "Leah", "Lilly", "Lily", "Lucy", "Luna", "Lydia", "Maisie",
-    "Martha", "Mary", "Matilda", "Maya", "Megan", "Millie", "Molly", "Nancy", "Naomi", "Niamh",
-    "Olivia", "Ophelia", "Orla", "Paige", "Phoebe", "Poppy", "Rebecca", "Rosie", "Ruby", "Sophie"
+    "Martha", "Mary", "Matilda", "Maya", "Megan", "Millie", "Molly", "Nancy", "Naomi", "Natasha", "Niamh",
+    "Olivia", "Ophelia", "Orla", "Paige", "Phoebe", "Poppy", "Rebecca", "Rosie", "Ruby", "Sophie",
+    "Tamara", "Teri", "Tess", "Trudy", 
+    "Valentina", "Valerie", "Vanessa", "Venus", "Vera", "Veronica", "Victoria", "Vienna", "Viola", "Violet", "Virginia", "Vivienne"
 ]
 const namesBritishMales = [
     "Adam", "Adrian", "Albie", "Albert", "Alexander", "Alfie", "Alfred", "Andrew", "Angus", "Anthony",

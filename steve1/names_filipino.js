@@ -3,7 +3,7 @@ const namesFilipinoFemales = [
     "Bea", "Bella", "Bernadette", "Bianca", "Blessie", "Camille", "Carla", "Carmina", "Cassandra", "Catherine",
     "Celeste", "Charmaine", "Chelsea", "Cherry", "Cheska", "Christine", "Clarisse", "Coleen", "Cristine", "Czarina",
     "Danica", "Danna", "Daphne", "Debbie", "Denise", "Diana", "Divine", "Donna", "Doreen", "Elaine",
-    "Elena", "Eliza", "Ella", "Ellie", "Elvie", "Emerald", "Erika", "Erin", "Faith", "Fatima",
+    "Elena", "Eliza", "Ella", "Ellie", "Elvie", "Emerald", "Erika", "Erin", "Faith", "Fatima", "Feren", "Flor",
     "Frances", "Gabriela", "Gelli", "Genevieve", "Georgina", "Giselle", "Glaiza", "Grace", "Gretchen", "Hanna",
     "Hazel", "Heart", "Heaven", "Iana", "Irene", "Irish", "Isabel", "Isabella", "Jana", "Janelle",
     "Jasmine", "Jean", "Jessa", "Jessica", "Jewel", "Jillian", "Joanna", "Joy", "Joyce", "Judith",
