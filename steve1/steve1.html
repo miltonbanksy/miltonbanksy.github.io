@@ -34,13 +34,17 @@
   
 
     <div class="card" id="oracleCard">
-      <h2>Ironsworn</h2>
+      <h2>Likelihood</h2>
       <br>
-      <button class="btnOracle" data-value="very likely">V Likely</button>
-      <button class="btnOracle" data-value="likely">Likely</button>
-      <button class="btnOracle" data-value="50/50">50/50</button>
-      <button class="btnOracle" data-value="unlikely">Unlikely</button>
-      <button class="btnOracle" data-value="very unlikely">V Unlikely</button>
+      <button class="btn-oracle" data-value="very likely">V Likely</button>
+      <br>
+      <button class="btn-oracle" data-value="likely">Likely</button>
+      <br>
+      <button class="btn-oracle" data-value="50/50">50/50</button>
+      <br>
+      <button class="btn-oracle" data-value="unlikely">Unlikely</button>
+      <br>
+      <button class="btn-oracle" data-value="very unlikely">V Unlikely</button>
       <p id="display_iron_oracle"></p>
       <button id="btnDetails">Details</button>
       <p id="display_iron_details"></p>
@@ -251,7 +255,7 @@
     // Listeners
     
     // Iron Oracle button
-    document.querySelectorAll("#oracleCard .btnOracle").forEach(btn => {
+    document.querySelectorAll("#oracleCard .btn-oracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
     });
 
