@@ -1,4 +1,248 @@
-const tarot_cards = {
+const tarot_major_arcana = {
+    "The Fool (Air)":{
+        "value": 0,
+        "yes-no": "yes",
+        "upright keywords": "beginnings, freedom, innocence, originality, adventure, idealism, spontaneity",
+        "reversed keywords": "reckless, careless, distracted, naive, foolish, gullible, stale, dull",
+        "symbols": [
+            "cliff (consequences, risks)",
+            "dog (warning, companion)",
+            "white rose (purity, innocence)",
+        ]
+    },
+    "The Magician (Air)":{
+        "value": 1,
+        "yes-no": "yes",
+        "upright keywords": "willpower, desire, being resourceful,, skill, ability, concentration, manifestation",
+        "reversed keywords": "manipulation, cunning, trickery, wasted talent, illusion, deception",
+        "symbols": [
+            "tools (skills, abilities)",
+            "pointed hands (inspiration, manifestation)",
+            "infinity (creation)",
+        ]
+    },
+    "The High Priestess (Water)":{
+        "value": 2,
+        "yes-no": "maybe",
+        "upright keywords": "unconscious, intuition, mystery, spirituality, higher power, inner voice",
+        "reversed keywords": "repressed intuition, hidden motives, superficiality, confusion, cognitive dissonance",
+        "symbols": [
+            "pillars (dualities, balance)",
+            "crescent moon (femininity, cycles)",
+            "veil (mystery, hidden truth)",
+        ]
+    },
+    "The Empress (Earth)":{
+        "value": 3,
+        "yes-no": "yes",
+        "upright keywords": "divine feminine, sensuality, fertility, nurturing, creativity, beauty, abundance, nature",
+        "reversed keywords": "insecurity, overbearing, negligence, smothering, lack of growth, lack of progress",
+        "symbols": [
+            "wheat (fertitily, abundance)",
+            "venus (beauty, love)",
+            "crown (authority, power)",
+        ]
+    },"The Emperor (Fire)":{
+        "value": 4,
+        "yes-no": "maybe",
+        "upright keywords": "stability, structure, protection, authority, control, practicality, focus, discipline",
+        "reversed keywords": "tyrant, domineering, rigid, stubborn, lack of discipline, recklessness",
+        "symbols": [
+            "rams heads (strength, assertiveness)",
+            "scepter (influence, responsibility)",
+            "mountains (stability, obstacles overcome)",
+        ]
+    },
+    "The Hierophant (Earth)":{
+        "value": 5,
+        "yes-no": "maybe",
+        "upright keywords": "tradition, social groups, conventionality, conformity, education, knowledge, beliefs",
+        "reversed keywords": "rebellion, unconventionality, non-conformity, new methods, ignorance",
+        "symbols": [
+            "temple crown (spriritual authority, wisdom)",
+            "keys (knowledge, reavealing mysteries)",
+            "hand gesture (blessing, guidance)",
+        ]
+    },
+    "The Lovers (Air)":{
+        "value": 6,
+        "yes-no": "yes",
+        "upright keywords": "love, unions, partnerships, relationships, choices, romance, balance, unity",
+        "reversed keywords": "disharmony, imbalance, conflict, detachment, bad choices, indecision",
+        "symbols": [
+            "angel (divine guidance, protection)",
+            "sun (clarity, joy)",
+            "tree of knowledge (commitment, evolution)",
+        ]
+    },
+    "The Chariot (Water)":{
+        "value": 7,
+        "yes-no": "yes",
+        "upright keywords": "success, ambition, determination, willpower, control, self-discipline, focus",
+        "reversed keywords": "forceful, no direction, no control, powerless, aggression, obstacles",
+        "symbols": [
+            "sphinxes (unifying opposing forces)",
+            "winged shield (protection, inspiration, navigation)",
+            "chariot cover (connection to celestial)",
+        ]
+    },
+    "Strength (Fire)":{
+        "value": 8,
+        "yes-no": "yes",
+        "upright keywords": "courage, bravery, confidence, compassion, self-confidence, inner power",
+        "reversed keywords": "self-doubt, weakness, low confidence, inadequacy, cowardice, forcefulness",
+        "symbols": [
+            "lion (animal nature, courage)",
+            "infinity (endurance, resilience)",
+            "flowers (beauty, serenity)",
+        ]
+    },
+    "The Hermit (Earth)":{
+        "value": 9,
+        "yes-no": "maybe",
+        "upright keywords": "self-reflection, introspection, contemplation, withdrawal, solitude, search for self",
+        "reversed keywords": "loneliness, isolation, recluse, being anti-social, rejection, returning to society",
+        "symbols": [
+            "lantern (wisdom, knowledge, illumination)",
+            "staff (authority, guidance)",
+            "robes (invisibility, concealment)",
+        ]
+    },
+    "The Wheel of Fortune (Fire)":{
+        "value": 10,
+        "yes-no": "yes",
+        "upright keywords": "change, cycles, fate, decisive moments, luck, fortune, unexpected events",
+        "reversed keywords": "bad luck, lack of control, clinging to control, unwelcome changes, delays",
+        "symbols": [
+            "sphinx (equilibrium)",
+            "serpent (descent of evil)",
+            "anubis (rise of good fortune)",
+        ]
+    },
+    "Justice (Air)":{
+        "value": 11,
+        "yes-no": "maybe",
+        "upright keywords": "justice, karma, consequence, accountability, law, truth, honesty, integrity, cause and effect",
+        "reversed keywords": "injustice, retribution, dishonesty, corruption, dishonesty, unfairness, avoiding accountability",
+        "symbols": [
+            "sword (cause and effect, logic)",
+            "scales (objectivity, fairness)",
+            "pillars (balance, law, structure)",
+        ]
+    },
+    "The Hanged Man (Water)":{
+        "value": 12,
+        "yes-no": "maybe",
+        "upright keywords": "sacrifice, waiting, uncertainty, lack of direction, perspective, contemplation",
+        "reversed keywords": "stalling, disinterest, stagnation, avoiding sacrifice, standstill, apathy",
+        "symbols": [
+            "halo (enlightenment from surrender)",
+            "reversed position (new perspective)",
+            "bound foot (sacrifice, acceptance, surrender)",
+        ]
+    },
+    "Death (Water)":{
+        "value": 13,
+        "yes-no": "no",
+        "upright keywords": "transformation, endings, change, transition, letting go, release",
+        "reversed keywords": "fear of change, repeating negative patterns, resisting change, stagnancy, decay",
+        "symbols": [
+            "skeleton (that which endures death)",
+            "armor (invincibility)",
+            "white rose (purification, immortality)",
+        ]
+    },
+    "Temperance (Fire)":{
+        "value": 14,
+        "yes-no": "yes",
+        "upright keywords": "balance, peace, patience, moderation, calm, tranquillity, harmony, serenity",
+        "reversed keywords": "imbalance, excess, extremes, discord, recklessness, hastiness",
+        "symbols": [
+            "yellow triange (harmony between earthly and spiritual)",
+            "pouring cups (creating unity)",
+            "foot in water (connection to unconscious)",
+        ]
+    },
+    "The Devil (Earth)":{
+        "value": 15,
+        "yes-no": "no",
+        "upright keywords": "oppression, addiction, obsession, dependency, excess, powerlessness, limitations",
+        "reversed keywords": "independence, freedom, revelation, release, reclaiming power, reclaiming control",
+        "symbols": [
+            "nudity (lack of protection, vulnerability)",
+            "chains (bondage, addiction, enslavement)",
+            "demon (ego, illusion, base desires)",
+        ]
+    },
+    "The Tower (Fire)":{
+        "value": 16,
+        "yes-no": "no",
+        "upright keywords": "disaster, destruction, upheaval, trauma, sudden change, chaos",
+        "reversed keywords": "averting disaster, delaying the inevitable, resisting change",
+        "symbols": [
+            "lightning bolt (sudden change, upheaval)",
+            "crumbling tower (destruction of false beliefs, revelation)",
+            "falling people (loss of control, liberation from constraints)",
+        ]
+    },
+    "The Star (Air)":{
+        "value": 17,
+        "yes-no": "yes",
+        "upright keywords": "hope, inspiration, positivity, faith, renewal, healing, rejuvenation",
+        "reversed keywords": "hopelessness, despair, negativity, lack of faith, despondent",
+        "symbols": [
+            "eight pointed star (morning star, direction)",
+            "pouring water (aquarius, calmness to life's flow)",
+            "fertile ground (new growth, rejuvination)",
+        ]
+    },
+    "The Moon (Water)":{
+        "value": 18,
+        "yes-no": "no",
+        "upright keywords": "illusion, intuition, uncertainty, confusion, complexity, secrets, unconscious",
+        "reversed keywords": "fear, deception, anxiety, misunderstanding, misinterpretation, clarity, understanding",
+        "symbols": [
+            "wolves (tame vs wild aspect of mind)",
+            "crawfish (subconscious, dreams)",
+            "towers (severity vs mercy)",
+        ]
+    },
+    "The Sun (Fire)":{
+        "value": 19,
+        "yes-no": "yes",
+        "upright keywords": "happiness, success, optimism, vitality, joy, confidence, happiness, truth",
+        "reversed keywords": "blocked happiness, excessive enthusiasm, pessimism, unrealistic expectations, conceitedness",
+        "symbols": [
+            "sun (clarity, joy, success)",
+            "child (innocence, playfulness)",
+            "sunflowers (growth, vitality, positivity)",
+        ]
+    },
+    "Judgement (Fire)":{
+        "value": 20,
+        "yes-no": "yes",
+        "upright keywords": "self-evaluation, awakening, renewal, purpose, reflection, reckoning",
+        "reversed keywords": "self-doubt, lack of self-awareness, failure to learn lessons, self-loathing",
+        "symbols": [
+            "angel (divine guidance, awakening)",
+            "trumpet (call to action, revelation)",
+            "rising dead (rebirth, transformation)",
+        ]
+    },
+    "The World (Earth)":{
+        "value": 21,
+        "yes-no": "yes",
+        "upright keywords": "completion, achievement, fulfilment, sense of belonging, wholeness, harmony",
+        "reversed keywords": "lack of closure, lack of achievement, feeling incomplete, emptiness",
+        "symbols": [
+            "laurel wreath (achievement, completion)",
+            "dancer (harmony, balance, movement, change)",
+            "four elements (wholeness, integration)",
+        ]
+    }
+}
+
+const tarot_minor_arcana = {
     "Cups":{
         "suit": "Cups", "suit element": "water",
         "suit keywords": "emotion, feelings, habits, healing, intuition, relationships, spirituality",
@@ -508,6 +752,149 @@ const tarot_cards = {
                     "wand (creativity, inspiration, potential)",
                     "flame (passion, energy, transformation)",
                     "hand (divine intervention, opportunity)"
+                ]
+            },
+            "Two of Wands":{
+                "value": 2,
+                "yes-no": "yes",
+                "upright keywords": "planning, first steps, making decisions, leaving comfort, taking risks",
+                "reversed keywords": "bad planning, overanalyzing, not taking action, playing it safe, avoiding risk",
+                "symbols": [
+                    "globe (exploration, ambition)",
+                    "castle (stability, future planning)",
+                    "mountains (distant plans, obstacles)"
+                ]
+            },
+            "Three of Wands":{
+                "value": 3,
+                "yes-no": "yes",
+                "upright keywords": "momentum, confidence, expansion, growth, foresight, looking ahead",
+                "reversed keywords": "restriction, limitations, lack of progress, obstacles, delays, frustration",
+                "symbols": [
+                    "stone floor (achievements, firm foundations)",
+                    "green cloak (renewed energy, growth)",
+                    "wands in ground (stability, groundwork being laid)"
+                ]
+            },
+            "Four of Wands":{
+                "value": 4,
+                "yes-no": "yes",
+                "upright keywords": "community, home, celebrations, reunions, parties, gatherings, stability, belonging",
+                "reversed keywords": "lack of support, instability, feeling unwelcome, transience, lack of roots, home conflict",
+                "symbols": [
+                    "dancing figures (happiness, harmony, freedom)",
+                    "floral canopy (joy, abundance)",
+                    "castle (security, foundation, stability)"
+                ]
+            },
+            "Five of Wands":{
+                "value": 5,
+                "yes-no": "no",
+                "upright keywords": "conflict, competition, arguments, aggression, tension, rivals, clashes of ego",
+                "reversed keywords": "end of conflict, cooperation, agreements, truces, harmony, peace, avoiding conflict",
+                "symbols": [
+                    "five wands (unique idea or goal)",
+                    "five figures (competition, conflict, rivalry)",
+                    "battle (internal discord, external conflict)"
+                ]
+            },
+            "Six of Wands":{
+                "value": 6,
+                "yes-no": "yes",
+                "upright keywords": "success, victory, triumph, rewards, recognition, praise, acclaim, pride",
+                "reversed keywords": "failure, lack of recognition, no rewards, lack of achievement",
+                "symbols": [
+                    "horse (strength, intuition)",
+                    "laurel wreath (victory, achievement, honor)",
+                    "crowd (recognition, support)"
+                ]
+            },
+            "Seven of Wands":{
+                "value": 7,
+                "yes-no": "no",
+                "upright keywords": "protectiveness, standing up for yourself, defending yourself, protecting territory",
+                "reversed keywords": "giving up, admitting defeat, yielding, lack of self belief, surrender",
+                "symbols": [
+                    "clear skies (wisdom, clarity)",
+                    "hill (advantage, confidence, higher ground)",
+                    "other wands (challenges)"
+                ]
+            },
+            "Eight of Wands":{
+                "value": 8,
+                "yes-no": "yes",
+                "upright keywords": "movement, speed, progress, quick decisions, sudden changes, excitement",
+                "reversed keywords": "waiting, slowness, chaos, delays, losing momentum, hastiness, being unprepared",
+                "symbols": [
+                    "landscape (peace, growth, goals)",
+                    "flight (speed, communication)",
+                    "clear skies (no obstacles, wisdom)"
+                ]
+            },
+            "Nine of Wands":{
+                "value": 9,
+                "yes-no": "yes",
+                "upright keywords": "last stand, persistence, grit, resilience, perseverance, close to success, fatigue",
+                "reversed keywords": "stubbornness, rigidity, defensiveness, refusing compromise, giving up",
+                "symbols": [
+                    "distant mountains (unnoticed possibilities)",
+                    "bandage (healing, past struggles, distress)",
+                    "fence of wands (defense, vigilance, fortification)"
+                ]
+            },
+            "Ten of Wands":{
+                "value": 10,
+                "yes-no": "no",
+                "upright keywords": "burden, responsibility, duty, stress, obligation, burning out, struggles",
+                "reversed keywords": "failure to delegate, shouldering too much responsibility, collapse, breakdown",
+                "symbols": [
+                    "bend back (stress, difficulty)",
+                    "mountain (struggles, challenges, obstacles)",
+                    "house in distance (shelter, security)"
+                ]
+            },
+            "Page of Wands":{
+                "value": 11,
+                "yes-no": "yes",
+                "upright keywords": "adventure, excitement, fresh ideas, cheerfulness, energetic, fearless, extroverted",
+                "reversed keywords": "hasty, impatient, lacking ideas, tantrums, laziness, boring, unreliable, distracted",
+                "symbols": [
+                    "desert (resilience in hars environment)",
+                    "salamanders (adaptability, renewal, transformation)",
+                    "pyramids (goals, thriving in harsh conditions)"
+                ]
+            },
+            "Knight of Wands":{
+                "value": 12,
+                "yes-no": "yes",
+                "upright keywords": "courageous, energetic, charming, hero, rebellious, hot tempered, free spirit",
+                "reversed keywords": "arrogant, reckless, impatient, lack of self control, passive, volatile, domineering",
+                "symbols": [
+                    "salamanders (adaptability, renewal, transformation)",
+                    "Horse (stamina, strength)",
+                    "desert (resilience in hars environment)",
+                ]
+            },
+            "Queen of Wands":{
+                "value": 13,
+                "yes-no": "yes",
+                "upright keywords": "confident, self-assured, passionate, determined, social, charismatic, vivacious, optimistic",
+                "reversed keywords": "demanding, vengeful, low confidence, jealous, selfish, temperamental, bully",
+                "symbols": [
+                    "lions on throne (leo, instinct, majesty)",
+                    "black cat (intuition, independence, mystery)",
+                    "sunflower (vitality, warmth, positivity)",
+                ]
+            },
+            "King of Wands":{
+                "value": 14,
+                "yes-no": "yes",
+                "upright keywords": "leadership, vision, big picture, taking control, daring decisions, boldness, optimism",
+                "reversed keywords": "forceful, domineering, tyrant, vicious, powerless, ineffective, weak leader",
+                "symbols": [
+                    "lions on throne (leo, instinct, majesty)",
+                    "salamanders (adaptability, renewal, transformation)",
+                    "crown (status, honor)",
                 ]
             }
         }

@@ -15,6 +15,8 @@
     <h1>Steve's Story Sparks</h1>
   </header>
 
+
+
   <div class="flexbox-container">
     <div class="card" id="uni-dice">
       <h2>Dice Roller</h2>
@@ -29,9 +31,7 @@
       </div>
       
     </div>
-  </div>
-
-  <div class="flexbox-container">
+  
 
     <div class="card" id="oracleCard">
       <h2>Ironsworn</h2>
@@ -203,24 +203,24 @@
       // Get card direction
       const cardDirection = checkTarotCardDirection();
       // Get Random Suit
-      const keys = Object.keys(tarot_cards);
+      const keys = Object.keys(tarot_minor_arcana);
       const randomIndex = Math.floor(Math.random() * keys.length);
       const randomKey = keys[randomIndex];
-      const element = tarot_cards[randomKey]['suit element'];
-      const suit = tarot_cards[randomKey]['suit'];
-      const suitKeywords = tarot_cards[randomKey]['suit keywords'];
-      const suitDuality = tarot_cards[randomKey]['suit duality'];
-      const jung = tarot_cards[randomKey]['suit jung'];
+      const element = tarot_minor_arcana[randomKey]['suit element'];
+      const suit = tarot_minor_arcana[randomKey]['suit'];
+      const suitKeywords = tarot_minor_arcana[randomKey]['suit keywords'];
+      const suitDuality = tarot_minor_arcana[randomKey]['suit duality'];
+      const jung = tarot_minor_arcana[randomKey]['suit jung'];
       
       // Get Random Card from Suit
-      const cardKeys = Object.keys(tarot_cards[randomKey]['cards']);
+      const cardKeys = Object.keys(tarot_minor_arcana[randomKey]['cards']);
       const randomCardIndex = Math.floor(Math.random() * cardKeys.length);
       const randomCardKey = cardKeys[randomCardIndex];
 
       // Get Details from Card
-      const uprightKeywords = tarot_cards[randomKey]['cards'][randomCardKey]['upright keywords'];
-      const reversedKeywords = tarot_cards[randomKey]['cards'][randomCardKey]['reversed keywords'];
-      const symbols = tarot_cards[randomKey]['cards'][randomCardKey]['symbols'];
+      const uprightKeywords = tarot_minor_arcana[randomKey]['cards'][randomCardKey]['upright keywords'];
+      const reversedKeywords = tarot_minor_arcana[randomKey]['cards'][randomCardKey]['reversed keywords'];
+      const symbols = tarot_minor_arcana[randomKey]['cards'][randomCardKey]['symbols'];
       
       displayTarot.innerHTML = 
       `<b>${randomKey} (${element}, ${suitDuality}, ${jung})</b><br>` +
