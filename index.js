@@ -10,12 +10,15 @@ function openPageJoy(){
 }
 
 function openPageSteve(){
-    window.open('../steve1/steve1.html', '_self');
+    //window.open('../steve1/steve1.html', '_self'); DEFAULT
+    window.open('../steve1/steve1_menu.html', '_self'); // TRIAL menu
 }
 
 function openPageBlog(){
-    window.open('../stevejoyblog/sj_blog.html');
+    window.open('../stevejoyblog/sj_blog.html', '_self');
 }
+
+
 // LISTENERS:
 imgBtnJoy.addEventListener('click', openPageJoy);
 imgBtnSteve.addEventListener('click', openPageSteve);
