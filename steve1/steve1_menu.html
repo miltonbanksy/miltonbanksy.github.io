@@ -7,15 +7,20 @@
   <link rel="stylesheet" href="steve1_menu.css">
 </head>
 <body>
-    <div class="portal">
-      <div class="portal_side" id="portal_left">
-        <img class="tann" src="tann1_left.png">
-      </div>
-    
-      <div class="portal_side" id="portal_right">
-        <img class="tann" src="tann1_right.png">
-      </div>
+  <img class="menu_btn" id="menu_btn_dice_sparks" src="menu_btn_dice_sparks.jpg">
+  <div class="portal">
+    <div class="portal_side" id="portal_left">
+      <img class="tann" src="tann1_left.png">
+      <img id="tann_bird" src="tann_bird.png">
     </div>
+    
+    <div class="portal_side" id="portal_right">
+      <img class="tann" src="tann1_right.png">
+      
+    </div>
+  </div>
+
+  
 
     <button id="btn_enter_portal" onclick="openPortal()">ENTER</button>
 
@@ -27,10 +32,15 @@
     function openPortal() {
       const btnEnterPortal = document.getElementById("btn_enter_portal");
       btnEnterPortal.classList.add("hide_element");
+      
       const portalLeft = document.getElementById("portal_left");
-      const portalRight = document.getElementById("portal_right");
       portalLeft.classList.add("animate_left");
+      
+      const portalRight = document.getElementById("portal_right");
       portalRight.classList.add("animate_right");
+
+      const tannBird = document.getElementById("tann_bird");
+      tannBird.classList.add("animate_left2");
     }
   </script>
 </body>
