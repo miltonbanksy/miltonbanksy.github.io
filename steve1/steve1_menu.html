@@ -8,21 +8,30 @@
 </head>
 <body>
     <div class="portal">
-      <div class="portal_side portal_left">
-
+      <div class="portal_side" id="portal_left">
+        <img class="tann" src="tann1_left.png">
       </div>
     
-      <div class="portal_side portal_right">
-
+      <div class="portal_side" id="portal_right">
+        <img class="tann" src="tann1_right.png">
       </div>
     </div>
+
+    <button id="btn_enter_portal" onclick="openPortal()">ENTER</button>
 
 
 
   
   
   <script>
-    
+    function openPortal() {
+      const btnEnterPortal = document.getElementById("btn_enter_portal");
+      btnEnterPortal.classList.add("hide_element");
+      const portalLeft = document.getElementById("portal_left");
+      const portalRight = document.getElementById("portal_right");
+      portalLeft.classList.add("animate_left");
+      portalRight.classList.add("animate_right");
+    }
   </script>
 </body>
 </html>
