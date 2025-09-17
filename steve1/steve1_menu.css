@@ -9,9 +9,41 @@ body {
 
 .menu_btn {
     position: fixed;
+    
+}
+
+#menu_btn_dice_sparks {
     top: 100px;
-    width: 100px;
-    height: 100px;
+    left: 50px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+
+#menu_btn_dice_sparks:hover {
+    box-shadow: none;
+    border: none;
+    top: 105px;
+    left: 55px; /* orig value 10px */
+    /*top: 110px;*/
+}
+
+#menu_btn_reading {
+    top: 400px;
+    left: 50px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+
+#menu_btn_reading:hover {
+    box-shadow: none;
+    border: none;
+    top: 405px;
+    left: 55px;
+    /*top: 110px;*/
 }
 
 .portal {

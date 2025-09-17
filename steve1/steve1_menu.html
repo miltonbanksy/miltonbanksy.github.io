@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="steve1_menu.css">
 </head>
 <body>
-  <img class="menu_btn" id="menu_btn_dice_sparks" src="menu_btn_dice_sparks.jpg">
+  <img class="menu_btn" id="menu_btn_dice_sparks" src="menu_btn_dice_sparks.png">
+  <img class="menu_btn" id="menu_btn_reading" src="menu_btn_reading.png">
   <div class="portal">
     <div class="portal_side" id="portal_left">
       <img class="tann" src="tann1_left.png">
@@ -20,15 +21,10 @@
     </div>
   </div>
 
-  
-
-    <button id="btn_enter_portal" onclick="openPortal()">ENTER</button>
+  <button id="btn_enter_portal" onclick="openPortal()">ENTER</button>
 
 
-
-  
-  
-  <script>
+<script>
     function openPortal() {
       const btnEnterPortal = document.getElementById("btn_enter_portal");
       btnEnterPortal.classList.add("hide_element");
@@ -42,6 +38,16 @@
       const tannBird = document.getElementById("tann_bird");
       tannBird.classList.add("animate_left2");
     }
+
+    const menu_btn_dice_sparks = document.getElementById("menu_btn_dice_sparks");
+    menu_btn_dice_sparks.addEventListener('click', function() {
+      window.open('../steve1/steve1.html', '_self');
+    });
+
+    const menu_btn_reading = document.getElementById("menu_btn_reading");
+    menu_btn_reading.addEventListener('click', function() {
+      window.open('../steve_reading.html', '_self');
+    });
   </script>
 </body>
 </html>
