@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <title>Living Dead Doll Hangman</title>
+  <style>
+    .hide {
+      visibility: hidden;
+    }
+
+    .show {
+      visibility: visible;
+    }
+
+    .grid_container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .grid_column {
+      flex: 1;
+    }
+
+    #underscores {
+      font-size: 40px;
+      color: purple;
+    }
+
+    .doll_template {
+      width: 140px;
+      height: 180px;
+      /*border: 1px solid black;*/
+    }
+  </style>
+</head>
+<body>
+  <h1>Living Dead Dolls 💀 Hangman 💀</h1>
+  <button class="hide_during_game" id="btn_new_game">New Game</button>
+
+  <div class="grid_container">
+    <div class="grid_column">
+      <p id="underscores"></p>
+    </div>
+    <div class="grid_column">
+      <img class="doll_template hide" id="img_gallows">
+    </div>
+  </div>
+
+  <h1 id="doll_name"></h1>
+
+  <div class="grid_container">
+    <div class="grid_column">
+      <img src="images/doll_shadow.png" class="doll_template hide" id="doll_img">
+    </div>
+    <div class="grid_column">
+      <h2 id="doll_poem_title"></h2>
+      <pre id="doll_poem"></pre>
+      <h2 id="doll_epitaph_title"></h2>
+      <pre id="doll_epitaph"></pre>
+    </div>
+  </div>
+  
+  <input class="inputs hide" id="input_try" type="text" placeholder="Enter 1 letter or full name">
+  <button class="inputs hide" id="btn_try">Ok</button>
+  <br><br>
+  <button class="inputs hide" id="btn_TEST_reveal_answer">Give up? Reveal Answer</button>
+
+  <!-- <script src="script.js"></script> -->
+  <script>
+    const gallowFrames = ["0_frame.png", "1_frame.png", "2_frame.png", "3_frame.png", "4_frame.png", "5_frame.png", "6_frame.png"];
+
+    const dictDollNames = {
+      damien:{
+        name: "Damien",
+        img: "images/damien.webp",
+        poem: `This little boy has a trick,
+Up his sleeve.
+At least one slingshot,
+And three books to read bleed.`,
+        epitaph: `And then there was Damien,
+With a soul as empty as his eyes,
+This wee little lad pronounced D.O.A.,
+Was already dead inside.`
+      },
+      eggzorcist: {
+        name: "Eggzorcist",
+        img: "images/Eggzorcist.webp",
+        poem:`This little bunny,
+Is digging for sweets.
+Roaches in baskets,
+Are her favorite treats.`,
+      epitaph: `A drawstring,
+Used to fasten ears of a rabbit,
+Put this little bunny,
+In a kiddie casket.`
+      },
+      posie: {
+        name: "Posie",
+        img: "images/Posey.webp",
+        poem: `This little girl is
+Out of the grave
+With one simple rose,
+Bloodied with rage.`,
+        epitaph: `Poor little Posey
+Was buried alive.
+Some things won't stay dead,
+Even after they've died.`
+      },
+      sadie: {
+        name: "Sadie",
+        img: "images/Sadie.webp",
+        poem: `Watch this little one,
+She's pining away,
+With her butcher's knife,
+Coffin purse
+And black bouquet.`,
+        epitaph: `No one cared how she turned up dead.
+So Sadie chose to rise instead.
+Being easily forgotten wouldn't be fair,
+Death was something this child had to share.`
+      },
+      sin: {
+        name: "Sin",
+        img: "images/Sin.webp",
+        poem: `This little devil has a
+Pitchfork she uses.
+She gives you a poke,
+Instead of little bruises.`,
+        epitaph: `Sweet little Sin,
+Consumed by flames at seven.
+Better to forever serve in hell,
+than grow up and play in heaven.`
+      }
+    } // End of objDollNames
+
+
+  let randomDoll = "";
+  let gallowFrame = 0;
+  let arrayOfUnderscores = [];
+  let arrayOfCharacters = [];
+  let wrongGuesses = 0;
+  const maxWrongGuesses = 6;
+
+
+  function getRandomDoll() {
+    const keys = Object.keys(dictDollNames);
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    const randomKey = keys[randomIndex];
+    return randomKey;
+  }
+
+
+  function getArrayOfUnderscores(randomDoll) {
+    let randomDollLength = randomDoll.length;
+    for (let i = 1; i <= randomDollLength; i++) {
+      arrayOfUnderscores.push("_");
+    }
+    let arrayOfUnderscoresPrint = arrayOfUnderscores.join(" ");
+    return arrayOfUnderscoresPrint;
+  }
+
+  
+  // NEW GAME BUTTON PRESSED
+  document.getElementById("btn_new_game").addEventListener('click', function() {
+    wrongGuesses = 0;
+    gallowFrame = 0;
+    randomDoll = getRandomDoll();
+    arrayOfUnderscores = [];
+    arrayOfCharacters = [];
+    arrayOfUnderscoresPrint = getArrayOfUnderscores(randomDoll);
+    arrayOfCharacters = randomDoll.split('');
+
+    // Hide elements
+    let elements = document.querySelectorAll('.hide_during_game');
+    elements.forEach(el => {
+      el.classList.add('hide');
+    });
+    
+    // Show images on start New Game:
+    let images = document.querySelectorAll('.doll_template');
+    images.forEach(el => {
+      el.classList.remove('hide');
+      el.classList.add('show');
+    });
+
+    // Show input tools on start New Game:
+    let inputs = document.querySelectorAll('.inputs');
+    inputs.forEach(imps => {
+      imps.classList.remove('hide');
+      imps.classList.add('show');
+    });
+
+    
+    document.getElementById("underscores").innerHTML = arrayOfUnderscoresPrint;
+    document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+    document.getElementById("doll_img").src = "images/doll_shadow.png";
+    document.getElementById("doll_name").innerHTML = "";
+    document.getElementById("doll_poem_title").innerHTML = "";
+    document.getElementById("doll_poem").innerHTML = "";
+    document.getElementById("doll_epitaph_title").innerHTML = "";
+    document.getElementById("doll_epitaph").innerHTML = "";
+  }); // End of btnNewGame click.
+
+
+  // GUESS BUTTON PRESSED
+  document.getElementById("btn_try").addEventListener('click', function() {
+    let guess = document.getElementById("input_try").value.toLowerCase();
+    // Clear Input box:
+    document.getElementById("input_try").value = "";
+
+    if (guess === "") {
+    alert("Enter a letter or full name!");
+    return;
+  }
+
+
+  // FULL NAME GUESS
+if (guess.length > 1) {
+  if (guess === randomDoll.toLowerCase()) {
+    // Fill underscores with the correct name
+    
+
+    alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
+    revealDoll();
+    return; // ✅ stop here so the general win check doesn't run
+  } else {
+    gallowFrame++;
+    wrongGuesses++;
+    document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+    alert(`Wrong name! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+  }
+}
+
+
+  // SINGLE LETTER GUESS
+  else {
+    const indices = [];
+    arrayOfCharacters.forEach((char, index) => {
+      if (char === guess) {
+        indices.push(index);
+      }
+    });
+
+    if (indices.length > 0) {
+      // replace underscores at all found positions:
+      indices.forEach(i => {
+        arrayOfUnderscores[i] = guess;
+      });
+    } else {
+      gallowFrame++;
+      wrongGuesses++;
+      document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+      alert(`Letter not found! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+    }
+
+    // Update Display:
+    let arrayOfUnderscoresPrint = arrayOfUnderscores.join(" ");
+    document.getElementById("underscores").innerHTML = arrayOfUnderscoresPrint;
+  }
+
+  // Win Check (for letter guesses):
+  if (!arrayOfUnderscores.includes("_")) {
+    alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
+    revealDoll();
+  }
+
+  // Loss Check:
+  if (wrongGuesses >= maxWrongGuesses) {
+    alert("💀 Game Over! The doll is " + dictDollNames[randomDoll].name);
+    revealDoll();
+  }
+});
+
+
+  function revealDoll() {
+    arrayOfUnderscores = arrayOfCharacters.slice(); // copy actual letters
+    document.getElementById("underscores").innerHTML = arrayOfUnderscores.join(" ");
+    document.getElementById("doll_img").src = dictDollNames[randomDoll].img;
+    document.getElementById("doll_name").innerHTML = dictDollNames[randomDoll].name;
+    document.getElementById("doll_poem_title").innerHTML = `${dictDollNames[randomDoll].name}'s Poem`;
+    document.getElementById("doll_poem").innerHTML = dictDollNames[randomDoll].poem;
+    document.getElementById("doll_epitaph_title").innerHTML = `${dictDollNames[randomDoll].name}'s Epitaph`;
+    document.getElementById("doll_epitaph").innerHTML = dictDollNames[randomDoll].epitaph;
+
+    // Hide elements
+    let elementsToShow = document.querySelectorAll('.hide_during_game');
+    elementsToShow.forEach(el => {
+      el.classList.remove('hide');
+      el.classList.add('show');
+    });
+
+    let elementsToHide = document.querySelectorAll('.inputs');
+    elementsToHide.forEach(el => {
+      el.classList.remove('show');
+      el.classList.add('hide');
+    });
+}
+
+
+  document.getElementById("btn_TEST_reveal_answer").addEventListener('click', function() {
+    revealDoll();
+  });
+
+
+  </script>
+</body>
+</html>
