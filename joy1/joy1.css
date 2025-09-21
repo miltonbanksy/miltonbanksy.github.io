@@ -35,6 +35,7 @@ h2 {
   padding: 30px;
 }
 
+
 /* Each card */
 .card {
   background: white;
@@ -52,6 +53,10 @@ h2 {
 .card p {
   margin-top: 10px;
   font-size: 1em;
+}
+
+.fit_width {
+  width: 100%;
 }
 
 /* 📱 Responsive tweak */
