@@ -31,12 +31,15 @@
 
     .doll_template {
       width: 140px;
-      height: 180px;
+      height: 200px;
       /*border: 1px solid black;*/
     }
   </style>
 </head>
 <body>
+  <a href="../../index.html">Our Home Page...</a>
+    <a href="../joy1.html">Joy's Home Page</a>
+    <hr>
   <h1>Living Dead Dolls 💀 Hangman 💀</h1>
   <button class="hide_during_game" id="btn_new_game">New Game</button>
 
@@ -75,6 +78,7 @@
   const sound_right = new Audio('sound-yay.mp3');
   const sound_wrong = new Audio('sound-wrong.mp3');
   const sound_fail = new Audio('sound-fail.mp3');
+  const sound_win = new Audio('sound-win.mp3');
 
   let randomDoll = "";
   let gallowFrame = 0;
@@ -164,7 +168,8 @@
       let cleanAnswer = dictDollNames[randomDoll].name.toLowerCase().replace(/\s+/g, "");
 
       if (cleanGuess === cleanAnswer) {
-        alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
+        sound_win.play();
+        //alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
         revealDoll();
         return;
       } else {
