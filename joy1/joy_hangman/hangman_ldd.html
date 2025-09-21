@@ -72,14 +72,16 @@
   <!-- <script src="script.js"></script> -->
   <script>
     const gallowFrames = ["0_frame.png", "1_frame.png", "2_frame.png", "3_frame.png", "4_frame.png", "5_frame.png", "6_frame.png"];
+    const sound_right = new Audio('sound-yay.mp3');
+    const sound_wrong = new Audio('sound-wrong.mp3');
+    const sound_fail = new Audio('sound-fail.mp3');
 
-
-  let randomDoll = "";
-  let gallowFrame = 0;
-  let arrayOfUnderscores = [];
-  let arrayOfCharacters = [];
-  let wrongGuesses = 0;
-  const maxWrongGuesses = 6;
+    let randomDoll = "";
+    let gallowFrame = 0;
+    let arrayOfUnderscores = [];
+    let arrayOfCharacters = [];
+    let wrongGuesses = 0;
+    const maxWrongGuesses = 6;
 
 
   function getRandomDoll() {
@@ -154,23 +156,22 @@
     return;
   }
 
-
   // FULL NAME GUESS
-if (guess.length > 1) {
-  if (guess === randomDoll.toLowerCase()) {
-    // Fill underscores with the correct name
-    
+  if (guess.length > 1) {
+    if (guess === randomDoll.toLowerCase()) {
+      // Fill underscores with the correct name
+      
 
-    alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
-    revealDoll();
-    return; // ✅ stop here so the general win check doesn't run
-  } else {
-    gallowFrame++;
-    wrongGuesses++;
-    document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
-    alert(`Wrong name! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+      alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
+      revealDoll();
+      return; // ✅ stop here so the general win check doesn't run
+    } else {
+      gallowFrame++;
+      wrongGuesses++;
+      document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+      alert(`Wrong name! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+    }
   }
-}
 
 
   // SINGLE LETTER GUESS
@@ -179,6 +180,7 @@ if (guess.length > 1) {
     arrayOfCharacters.forEach((char, index) => {
       if (char === guess) {
         indices.push(index);
+        sound_right.play();
       }
     });
 
@@ -191,6 +193,7 @@ if (guess.length > 1) {
       gallowFrame++;
       wrongGuesses++;
       document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+      sound_wrong.play();
       alert(`Letter not found! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
     }
 
@@ -207,6 +210,7 @@ if (guess.length > 1) {
 
   // Loss Check:
   if (wrongGuesses >= maxWrongGuesses) {
+    sound_fail.play();
     alert("💀 Game Over! The doll is " + dictDollNames[randomDoll].name);
     revealDoll();
   }
@@ -239,6 +243,7 @@ if (guess.length > 1) {
 
 
   document.getElementById("btn_TEST_reveal_answer").addEventListener('click', function() {
+    sound_fail.play();
     revealDoll();
   });
 
