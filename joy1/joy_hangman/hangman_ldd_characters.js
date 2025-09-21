@@ -47,6 +47,30 @@ V - is for vengeance and unholy pride.
 I - is for infidels shall be eaten by ghouls.
 L - is for lustfully disposing of fools`
       },
+      lizzie_borden: {
+        name: "Lizzie Borden",
+        img: "images/Lizzieborden",
+        poem: `This lovely child,
+Comes with an axe.
+Back from the grave,
+And on the attack.`,
+        epitaph: `Lizzie Borden took an axe,
+And gave her mother forty whacks.
+And when she saw what she had done,
+She gave her father forty-one.`
+      },
+      lou_sapphire: {
+        name:"Lou Sapphire",
+        img: "images/Lousapphire",
+        poem: `A cane, a contract,
+Your hope quite grim.
+Adopt this boy,
+And hell comes with him.`,
+        epitaph: `He died by flame,
+But has returned.
+His clothes quite cool,
+Now souls will burn.`
+      },
       posie: {
         name: "Posie",
         img: "images/Posey.webp",
