@@ -88,12 +88,16 @@
     const keys = Object.keys(dictDollNames);
     const randomIndex = Math.floor(Math.random() * keys.length);
     const randomKey = keys[randomIndex];
+
     return randomKey;
   }
 
+  
+
 
   function getArrayOfUnderscores(randomDoll) {
-    let randomDollLength = randomDoll.length;
+    console.log(`Real Name: ${dictDollNames[randomDoll].name}`)
+    let randomDollLength = dictDollNames[randomDoll].name.length;
     for (let i = 1; i <= randomDollLength; i++) {
       arrayOfUnderscores.push("_");
     }
