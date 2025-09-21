@@ -11,6 +11,18 @@ With a soul as empty as his eyes,
 This wee little lad pronounced D.O.A.,
 Was already dead inside.`
       },
+      deadbra_ann: {
+        name: "Deadbra Ann",
+        img: "images/Deadbra-ann.webp",
+        poem: `Our prom queen comes,
+With a bouquet and tiara.
+Risen from the dead,
+and ready to scare ya.`,
+        epitaph: `Maimed by jealous rivals on prom night,
+Turned queen to carcass by morning light.
+Deadbra Ann is back without a breath,
+To turn each night into a dance of death.`
+      },
       eggzorcist: {
         name: "Eggzorcist",
         img: "images/Eggzorcist.webp",
