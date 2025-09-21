@@ -71,70 +71,6 @@
   <script>
     const gallowFrames = ["0_frame.png", "1_frame.png", "2_frame.png", "3_frame.png", "4_frame.png", "5_frame.png", "6_frame.png"];
 
-    const dictDollNames = {
-      damien:{
-        name: "Damien",
-        img: "images/damien.webp",
-        poem: `This little boy has a trick,
-Up his sleeve.
-At least one slingshot,
-And three books to read bleed.`,
-        epitaph: `And then there was Damien,
-With a soul as empty as his eyes,
-This wee little lad pronounced D.O.A.,
-Was already dead inside.`
-      },
-      eggzorcist: {
-        name: "Eggzorcist",
-        img: "images/Eggzorcist.webp",
-        poem:`This little bunny,
-Is digging for sweets.
-Roaches in baskets,
-Are her favorite treats.`,
-      epitaph: `A drawstring,
-Used to fasten ears of a rabbit,
-Put this little bunny,
-In a kiddie casket.`
-      },
-      posie: {
-        name: "Posie",
-        img: "images/Posey.webp",
-        poem: `This little girl is
-Out of the grave
-With one simple rose,
-Bloodied with rage.`,
-        epitaph: `Poor little Posey
-Was buried alive.
-Some things won't stay dead,
-Even after they've died.`
-      },
-      sadie: {
-        name: "Sadie",
-        img: "images/Sadie.webp",
-        poem: `Watch this little one,
-She's pining away,
-With her butcher's knife,
-Coffin purse
-And black bouquet.`,
-        epitaph: `No one cared how she turned up dead.
-So Sadie chose to rise instead.
-Being easily forgotten wouldn't be fair,
-Death was something this child had to share.`
-      },
-      sin: {
-        name: "Sin",
-        img: "images/Sin.webp",
-        poem: `This little devil has a
-Pitchfork she uses.
-She gives you a poke,
-Instead of little bruises.`,
-        epitaph: `Sweet little Sin,
-Consumed by flames at seven.
-Better to forever serve in hell,
-than grow up and play in heaven.`
-      }
-    } // End of objDollNames
-
 
   let randomDoll = "";
   let gallowFrame = 0;
@@ -175,6 +111,7 @@ than grow up and play in heaven.`
     // Hide elements
     let elements = document.querySelectorAll('.hide_during_game');
     elements.forEach(el => {
+      el.classList.remove('show');
       el.classList.add('hide');
     });
     
@@ -303,7 +240,8 @@ if (guess.length > 1) {
     revealDoll();
   });
 
-
+    
   </script>
+  <script src="hangman_ldd_characters.js"></script>
 </body>
 </html>
