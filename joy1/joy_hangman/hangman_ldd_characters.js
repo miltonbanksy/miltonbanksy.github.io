@@ -49,7 +49,7 @@ L - is for lustfully disposing of fools`
       },
       lizzie_borden: {
         name: "Lizzie Borden",
-        img: "images/Lizzieborden",
+        img: "images/Lizzieborden.webp",
         poem: `This lovely child,
 Comes with an axe.
 Back from the grave,
@@ -61,7 +61,7 @@ She gave her father forty-one.`
       },
       lou_sapphire: {
         name:"Lou Sapphire",
-        img: "images/Lousapphire",
+        img: "images/Lousapphire.webp",
         poem: `A cane, a contract,
 Your hope quite grim.
 Adopt this boy,

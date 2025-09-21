@@ -71,50 +71,50 @@
 
   <!-- <script src="script.js"></script> -->
   <script>
-    const gallowFrames = ["0_frame.png", "1_frame.png", "2_frame.png", "3_frame.png", "4_frame.png", "5_frame.png", "6_frame.png"];
-    const sound_right = new Audio('sound-yay.mp3');
-    const sound_wrong = new Audio('sound-wrong.mp3');
-    const sound_fail = new Audio('sound-fail.mp3');
+  const gallowFrames = ["0_frame.png", "1_frame.png", "2_frame.png", "3_frame.png", "4_frame.png", "5_frame.png", "6_frame.png"];
+  const sound_right = new Audio('sound-yay.mp3');
+  const sound_wrong = new Audio('sound-wrong.mp3');
+  const sound_fail = new Audio('sound-fail.mp3');
 
-    let randomDoll = "";
-    let gallowFrame = 0;
-    let arrayOfUnderscores = [];
-    let arrayOfCharacters = [];
-    let wrongGuesses = 0;
-    const maxWrongGuesses = 6;
+  let randomDoll = "";
+  let gallowFrame = 0;
+  let arrayOfUnderscores = [];
+  let arrayOfCharacters = [];
+  let wrongGuesses = 0;
+  const maxWrongGuesses = 6;
 
-
+  // pick random doll key
   function getRandomDoll() {
     const keys = Object.keys(dictDollNames);
     const randomIndex = Math.floor(Math.random() * keys.length);
-    const randomKey = keys[randomIndex];
-
-    return randomKey;
+    return keys[randomIndex];
   }
 
-  
-
-
+  // make underscores with * where spaces are
   function getArrayOfUnderscores(randomDoll) {
-    console.log(`Real Name: ${dictDollNames[randomDoll].name}`)
-    let randomDollLength = dictDollNames[randomDoll].name.length;
-    for (let i = 1; i <= randomDollLength; i++) {
-      arrayOfUnderscores.push("_");
+    arrayOfUnderscores = [];
+    const dollName = dictDollNames[randomDoll].name.toLowerCase();
+
+    for (let i = 0; i < dollName.length; i++) {
+      if (dollName[i] === " ") {
+        arrayOfUnderscores.push("*");
+      } else {
+        arrayOfUnderscores.push("_");
+      }
     }
-    let arrayOfUnderscoresPrint = arrayOfUnderscores.join(" ");
-    return arrayOfUnderscoresPrint;
+    return arrayOfUnderscores.join(" ");
   }
 
-  
   // NEW GAME BUTTON PRESSED
-  document.getElementById("btn_new_game").addEventListener('click', function() {
+  document.getElementById("btn_new_game").addEventListener('click', function () {
     wrongGuesses = 0;
     gallowFrame = 0;
     randomDoll = getRandomDoll();
     arrayOfUnderscores = [];
     arrayOfCharacters = [];
+
     arrayOfUnderscoresPrint = getArrayOfUnderscores(randomDoll);
-    arrayOfCharacters = randomDoll.split('');
+    arrayOfCharacters = dictDollNames[randomDoll].name.toLowerCase().split("");
 
     // Hide elements
     let elements = document.querySelectorAll('.hide_during_game');
@@ -122,22 +122,21 @@
       el.classList.remove('show');
       el.classList.add('hide');
     });
-    
-    // Show images on start New Game:
+
+    // Show images on start New Game
     let images = document.querySelectorAll('.doll_template');
     images.forEach(el => {
       el.classList.remove('hide');
       el.classList.add('show');
     });
 
-    // Show input tools on start New Game:
+    // Show input tools
     let inputs = document.querySelectorAll('.inputs');
     inputs.forEach(imps => {
       imps.classList.remove('hide');
       imps.classList.add('show');
     });
 
-    
     document.getElementById("underscores").innerHTML = arrayOfUnderscoresPrint;
     document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
     document.getElementById("doll_img").src = "images/doll_shadow.png";
@@ -146,83 +145,78 @@
     document.getElementById("doll_poem").innerHTML = "";
     document.getElementById("doll_epitaph_title").innerHTML = "";
     document.getElementById("doll_epitaph").innerHTML = "";
-  }); // End of btnNewGame click.
-
+  });
 
   // GUESS BUTTON PRESSED
-  document.getElementById("btn_try").addEventListener('click', function() {
-    let guess = document.getElementById("input_try").value.toLowerCase();
-    // Clear Input box:
+  document.getElementById("btn_try").addEventListener('click', function () {
+    let guess = document.getElementById("input_try").value.toLowerCase().trim();
     document.getElementById("input_try").value = "";
 
     if (guess === "") {
-    alert("Enter a letter or full name!");
-    return;
-  }
+      alert("Enter a letter or full name!");
+      return;
+    }
 
-  // FULL NAME GUESS
-  if (guess.length > 1) {
-    if (guess === randomDoll.toLowerCase()) {
-      // Fill underscores with the correct name
-      
+    // FULL NAME GUESS
+    if (guess.length > 1) {
+      // strip spaces for comparison
+      let cleanGuess = guess.replace(/\s+/g, "");
+      let cleanAnswer = dictDollNames[randomDoll].name.toLowerCase().replace(/\s+/g, "");
 
+      if (cleanGuess === cleanAnswer) {
+        alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
+        revealDoll();
+        return;
+      } else {
+        gallowFrame++;
+        wrongGuesses++;
+        document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+        alert(`Wrong name! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+      }
+    }
+
+    // SINGLE LETTER GUESS
+    else {
+      const indices = [];
+      arrayOfCharacters.forEach((char, index) => {
+        if (char === guess) {
+          indices.push(index);
+          sound_right.play();
+        }
+      });
+
+      if (indices.length > 0) {
+        indices.forEach(i => {
+          arrayOfUnderscores[i] = guess;
+        });
+      } else {
+        gallowFrame++;
+        wrongGuesses++;
+        document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
+        sound_wrong.play();
+        alert(`Letter not found! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
+      }
+
+      let arrayOfUnderscoresPrint = arrayOfUnderscores.join(" ");
+      document.getElementById("underscores").innerHTML = arrayOfUnderscoresPrint;
+    }
+
+    // Win Check
+    if (!arrayOfUnderscores.includes("_")) {
       alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
       revealDoll();
-      return; // ✅ stop here so the general win check doesn't run
-    } else {
-      gallowFrame++;
-      wrongGuesses++;
-      document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
-      alert(`Wrong name! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
-    }
-  }
-
-
-  // SINGLE LETTER GUESS
-  else {
-    const indices = [];
-    arrayOfCharacters.forEach((char, index) => {
-      if (char === guess) {
-        indices.push(index);
-        sound_right.play();
-      }
-    });
-
-    if (indices.length > 0) {
-      // replace underscores at all found positions:
-      indices.forEach(i => {
-        arrayOfUnderscores[i] = guess;
-      });
-    } else {
-      gallowFrame++;
-      wrongGuesses++;
-      document.getElementById("img_gallows").src = gallowFrames[gallowFrame];
-      sound_wrong.play();
-      alert(`Letter not found! You have ${maxWrongGuesses - wrongGuesses} guesses left.`);
     }
 
-    // Update Display:
-    let arrayOfUnderscoresPrint = arrayOfUnderscores.join(" ");
-    document.getElementById("underscores").innerHTML = arrayOfUnderscoresPrint;
-  }
-
-  // Win Check (for letter guesses):
-  if (!arrayOfUnderscores.includes("_")) {
-    alert("🎉 You win! The doll is " + dictDollNames[randomDoll].name);
-    revealDoll();
-  }
-
-  // Loss Check:
-  if (wrongGuesses >= maxWrongGuesses) {
-    sound_fail.play();
-    alert("💀 Game Over! The doll is " + dictDollNames[randomDoll].name);
-    revealDoll();
-  }
-});
-
+    // Loss Check
+    if (wrongGuesses >= maxWrongGuesses) {
+      sound_fail.play();
+      alert("💀 Game Over! The doll is " + dictDollNames[randomDoll].name);
+      revealDoll();
+    }
+  });
 
   function revealDoll() {
-    arrayOfUnderscores = arrayOfCharacters.slice(); // copy actual letters
+    arrayOfUnderscores = arrayOfCharacters.slice();
     document.getElementById("underscores").innerHTML = arrayOfUnderscores.join(" ");
     document.getElementById("doll_img").src = dictDollNames[randomDoll].img;
     document.getElementById("doll_name").innerHTML = dictDollNames[randomDoll].name;
@@ -231,28 +225,27 @@
     document.getElementById("doll_epitaph_title").innerHTML = `${dictDollNames[randomDoll].name}'s Epitaph`;
     document.getElementById("doll_epitaph").innerHTML = dictDollNames[randomDoll].epitaph;
 
-    // Hide elements
+    // Show New Game button
     let elementsToShow = document.querySelectorAll('.hide_during_game');
     elementsToShow.forEach(el => {
       el.classList.remove('hide');
       el.classList.add('show');
     });
 
+    // Hide input tools
     let elementsToHide = document.querySelectorAll('.inputs');
     elementsToHide.forEach(el => {
       el.classList.remove('show');
       el.classList.add('hide');
     });
-}
+  }
 
-
-  document.getElementById("btn_TEST_reveal_answer").addEventListener('click', function() {
+  document.getElementById("btn_TEST_reveal_answer").addEventListener('click', function () {
     sound_fail.play();
     revealDoll();
   });
+</script>
 
-    
-  </script>
   <script src="hangman_ldd_characters.js"></script>
 </body>
 </html>
