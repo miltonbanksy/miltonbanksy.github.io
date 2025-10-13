@@ -16,7 +16,7 @@
     <a href="../steve_smoke/smoking.html">Steve's Smoking Tracker</a>
     <br><br>
   <header>
-    <h1>Steve's Story Sparks</h1>
+    <h1>Story Sparks</h1>
   </header>
 
 
@@ -41,19 +41,35 @@
     <div class="card" id="oracleCard">
       <h2>Likelihood</h2>
       <br>
-      <button class="btn-oracle" data-value="very likely">V Likely</button>
+      <button class="btn-lists btn-oracle" data-value="very likely">V Likely</button>
       <br>
-      <button class="btn-oracle" data-value="likely">Likely</button>
+      <button class="btn-lists btn-oracle" data-value="likely">Likely</button>
       <br>
-      <button class="btn-oracle" data-value="50/50">50/50</button>
+      <button class="btn-lists btn-oracle" data-value="50/50">50/50</button>
       <br>
-      <button class="btn-oracle" data-value="unlikely">Unlikely</button>
+      <button class="btn-lists btn-oracle" data-value="unlikely">Unlikely</button>
       <br>
-      <button class="btn-oracle" data-value="very unlikely">V Unlikely</button>
+      <button class="btn-lists btn-oracle" data-value="very unlikely">V Unlikely</button>
       <p id="display_iron_oracle"></p>
-      
-      <button id="btnOverland">Overland Travel</button>
-      <p id="display_iron_overland"></p>
+    </div>
+  </div>
+
+  <div class="flexbox-container"></div>
+    <div class="card" id="difficultyCard">
+      <h2>Difficulty</h2>
+      <br>
+      <button class="btn-lists btn-random-difficulty">Random</button>
+      <br><br>
+      <button class="btn-lists btn-difficulty" data-value="very easy">V Easy</button>
+      <br>
+      <button class="btn-lists btn-difficulty" data-value="easy">Easy</button>
+      <br>
+      <button class="btn-lists btn-difficulty" data-value="moderate">Moderate</button>
+      <br>
+      <button class="btn-lists btn-difficulty" data-value="difficult">Difficult</button>
+      <br>
+      <button class="btn-lists btn-difficulty" data-value="very difficult">V Difficult</button>
+      <p id="display_difficulty"></p>
     </div>
   </div>
 
@@ -110,10 +126,17 @@
   <div class="flexbox-container">
     <div class="card" id="tarotCard">
       <button id="btnTarot">Tarot</button>
-      <span id="display-tarot-card"></span>
+      <p id="display-tarot-card"></p>
       <p id="displayTarot"></p>
     </div>
   </div> <!--End of Lenormand block-->
+
+  <div class="flexbox-container">
+    <div class="card" id="overland">
+      <button id="btnOverland">Overland Travel</button>
+      <p id="display_iron_overland"></p>
+    </div>
+  </div>
 
 
   <div class="flexbox-container">
@@ -163,7 +186,15 @@
       "50/50": 50,
       "unlikely": 25,
       "very unlikely": 10
-    }
+    };
+
+    const difficulties = {
+      "very easy": 2,
+      "easy": 3,
+      "moderate": 4,
+      "difficult": 5,
+      "very difficult": 6
+    };
 
 
     function btnIronDetails() {
@@ -200,6 +231,20 @@
         document.getElementById("display_iron_oracle").innerHTML = `Yes`;
       } else {
         document.getElementById("display_iron_oracle").innerHTML = `No`;
+      }
+    }
+
+    function btnDifficulty(event) {
+      const button = event.target;
+      const choice = button.dataset.value;
+      const target = difficulties[choice];
+
+      let d6 = Math.floor(Math.random() * 6) +1;
+
+      if (d6 >= target) {
+        document.getElementById("display_difficulty").innerHTML = `Target: ${target}, Roll: ${d6}, Result: Yes`;
+      } else {
+        document.getElementById("display_difficulty").innerHTML = `Target: ${target}, Roll: ${d6}, Result: No`;
       }
     }
 
@@ -303,9 +348,14 @@
 
     // Listeners
     
-    // Iron Oracle button
+    // Likelihood Buttons
     document.querySelectorAll("#oracleCard .btn-oracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
+    });
+
+    // Difficulty Buttons
+    document.querySelectorAll("#difficultyCard .btn-difficulty").forEach(btn => {
+      btn.addEventListener("click", btnDifficulty);
     });
 
     // Overland button
