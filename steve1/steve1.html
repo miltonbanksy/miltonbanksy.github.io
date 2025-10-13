@@ -29,14 +29,15 @@
       <input id="inputNumberOfDice" class="inputNumber" type="number">
       <span>d</span>
       <input id="inputSizeOfDice" class="inputNumber" type="number">
-      <button onclick="rollDice()">Roll Dice!</button>
+      <button onclick="rollDice()">Roll!</button>
       <div id="dice-scroll-box">
         <p id="displayHistory"></p>
       </div>
-      
     </div>
+  </div>
   
 
+  <div class="flexbox-container"></div>
     <div class="card" id="oracleCard">
       <h2>Likelihood</h2>
       <br>
@@ -50,39 +51,35 @@
       <br>
       <button class="btn-oracle" data-value="very unlikely">V Unlikely</button>
       <p id="display_iron_oracle"></p>
-      <button id="btnDetails">Details</button>
-      <p id="display_iron_details"></p>
+      
       <button id="btnOverland">Overland Travel</button>
       <p id="display_iron_overland"></p>
     </div>
-  </div> <!--End of Ironsworn Block-->
+  </div>
 
 
   <div class="flexbox-container">
-
     <div class="card" id="frame-fate_dice">
       <h2>Fate Dice</h2>
       <br>
       <div class="container" onclick="rollFateDice()">
-    <div class="square">
-      <img class="dice_image" id="dice_img1" src="fate_start.png">
+        <div class="square">
+          <img class="dice_image" id="dice_img1" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img2" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img3" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img4" src="fate_start.png">
+        </div>
+      </div>
     </div>
-    <div class="square">
-      <img class="dice_image" id="dice_img2" src="fate_start.png">
-    </div>
-    <div class="square">
-      <img class="dice_image" id="dice_img3" src="fate_start.png">
-    </div>
-    <div class="square">
-      <img class="dice_image" id="dice_img4" src="fate_start.png">
-    </div>
-</div>
-    </div>
-  </div> <!--End of Fate block-->
-
+  </div>
 
   <div class="flexbox-container">
-
     <div class="card" id="frame-names">
       <h2>Names</h2>
       <br>
@@ -120,36 +117,20 @@
 
 
   <div class="flexbox-container">
-    <div class="card" id="card_animal_symbols">
-      <button id="btnAnimalSymbols">Animal Symbols</button>
-      <p id="display_animal_symbols"></p>
-    </div>
-  </div>
-
-  <div class="flexbox-container">
-    <div class="card" id="card_color_symbols">
-      <button id="btnColorSymbols">Color Symbols</button>
-      <p id="display_color_symbols"></p>
-    </div>
-  </div> <!--End of Symbols block-->
-
-
-  <div class="flexbox-container">
-
     <div class="card" id="tricube_deck">
       <p>Tricube Tales Solo</p>
       <button id="newTricubeCard">Draw Card</button>
       <p id="display_new_tricube_card"></p>
     </div>
-
   </div> <!--End of Tricube Block-->
+  
 
-<div class="flexbox-container">
-  <div class="card" id="card_favorite_links">
-    <p>Favorite Links</p>
-    <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
+  <div class="flexbox-container">
+    <div class="card" id="card_favorite_links">
+      <p>Favorite Links</p>
+      <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
+    </div>
   </div>
-</div>
   
 
   <script src="iron_action.js"></script>
@@ -176,8 +157,6 @@
     const displayAnimal = document.getElementById('display_animal_symbols');
     const displayColor = document.getElementById('display_color_symbols');
 
-    
-    
     const dict_iron_oracle = {
       "very likely": 90,
       "likely": 75,
@@ -188,14 +167,14 @@
 
 
     function btnIronDetails() {
-      let results = [];
+      let ironResults = [];
 
       for (let list of iron_details_lists) {
         const randomIndex = Math.floor(Math.random() * list.length);
-        results.push(list[randomIndex]);
+        ironResults.push(list[randomIndex]);
       }
-      
-      document.getElementById("display_iron_details").innerHTML = results.join(", ");
+      return ironResults;
+      document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
     }
 
     function btnIronOverland() {
@@ -215,10 +194,8 @@
       const choice = button.dataset.value;
       const target = dict_iron_oracle[choice];
 
-      console.log(target)
-
       let d100 = Math.floor(Math.random() * 100) +1;
-      console.log(d100)
+      
       if (d100 <= target) {
         document.getElementById("display_iron_oracle").innerHTML = `Yes`;
       } else {
@@ -229,7 +206,17 @@
     function btnLenormandExpanded() {
       const randomIndex = Math.floor(Math.random() * lenormandExpanded.length);
       const randomItem = lenormandExpanded[randomIndex];
-      displayLenormandExpanded.innerHTML = `Lenormand: ${randomItem}`;
+
+      // Get animal...
+      randomAnimal = btnAnimalSymbol();
+      randomColor = btnColorSymbol();
+      ironResults = btnIronDetails();
+      displayLenormandExpanded.innerHTML = `
+        Ironsworn: ${ironResults.join(", ")}
+        <br><br>Lenormand: ${randomItem}
+        <br><br>Animal: ${randomAnimal}
+        <br><br>Color: ${randomColor}
+      `;
     }
 
     function btnTarot(){
@@ -237,8 +224,6 @@
       const cardDirection = checkTarotCardDirection();
 
       checkTarotArcanaType();
-
-      
     }
 
     function checkTarotArcanaType() {
@@ -304,14 +289,16 @@
 
     function btnAnimalSymbol(){
       const randomIndex = Math.floor(Math.random() * animalSymbols.length);
-      const randomItem = animalSymbols[randomIndex];
-      displayAnimal.innerHTML = randomItem;
+      const randomAnimal = animalSymbols[randomIndex];
+      return randomAnimal;
+      //displayAnimal.innerHTML = randomItem;
     }
 
     function btnColorSymbol(){
       const randomIndex = Math.floor(Math.random() * color_symbols.length);
-      const randomItem = color_symbols[randomIndex];
-      displayColor.innerHTML = randomItem;
+      const randomColor = color_symbols[randomIndex];
+      return randomColor;
+      //displayColor.innerHTML = randomItem;
     }
 
     // Listeners
@@ -321,9 +308,6 @@
       btn.addEventListener("click", btnIronOracle);
     });
 
-    // Details button
-    document.getElementById("btnDetails").addEventListener("click", btnIronDetails);
-
     // Overland button
     document.getElementById("btnOverland").addEventListener("click", btnIronOverland);
 
@@ -332,12 +316,6 @@
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
-
-    // Animal Symbol button
-    document.getElementById('btnAnimalSymbols').addEventListener('click', btnAnimalSymbol);
-
-    // Color Symbol button
-    document.getElementById('btnColorSymbols').addEventListener('click', btnColorSymbol);
 
     // Tricube Card
     document.getElementById('newTricubeCard').addEventListener('click', function() {
