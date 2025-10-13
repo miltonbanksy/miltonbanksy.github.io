@@ -105,7 +105,7 @@
 
   <div class="flexbox-container">
     <div class="card" id="lenormandExpanded">
-      <button id="btnLenormandExpanded">Lenormand (Expanded)</button>
+      <button id="btnLenormandExpanded">Pythia Oracle</button>
       <p id="displayLenormandExpanded"></p>
     </div>
   </div>
@@ -229,7 +229,7 @@
     function btnLenormandExpanded() {
       const randomIndex = Math.floor(Math.random() * lenormandExpanded.length);
       const randomItem = lenormandExpanded[randomIndex];
-      displayLenormandExpanded.innerHTML = randomItem;
+      displayLenormandExpanded.innerHTML = `Lenormand: ${randomItem}`;
     }
 
     function btnTarot(){
