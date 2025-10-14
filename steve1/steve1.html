@@ -58,7 +58,7 @@
     <div class="card" id="difficultyCard">
       <h2>Difficulty</h2>
       <br>
-      <button class="btn-lists btn-random-difficulty">Random</button>
+      <button class="btn-lists" id="btn-random-difficulty">Random</button>
       <br><br>
       <button class="btn-lists btn-difficulty" data-value="very easy">V Easy</button>
       <br>
@@ -351,6 +351,14 @@
     // Likelihood Buttons
     document.querySelectorAll("#oracleCard .btn-oracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
+    });
+
+    // Random Difficulty
+    document.getElementById("btn-random-difficulty").addEventListener("click", () => {
+      difficultiesKeys = Object.keys(difficulties);
+      randomDifficultiesIndex = Math.floor(Math.random() * difficultiesKeys.length);
+      randomDifficultiesKey = difficultiesKeys[randomDifficultiesIndex];
+      alert(randomDifficultiesKey);
     });
 
     // Difficulty Buttons
