@@ -235,17 +235,27 @@
     }
 
     function btnDifficulty(event) {
+      let difficultyResult = "";
+      let difficultyTwist = "";
       const button = event.target;
       const choice = button.dataset.value;
       const target = difficulties[choice];
 
       let d6 = Math.floor(Math.random() * 6) +1;
+      let d6_2 = Math.floor(Math.random() * 6) +1;
 
       if (d6 >= target) {
-        document.getElementById("display_difficulty").innerHTML = `Target: ${target}, Roll: ${d6}, Result: Yes`;
+        difficultyResult = `Target: ${target}, Roll: ${d6}, Result: Yes`;
       } else {
-        document.getElementById("display_difficulty").innerHTML = `Target: ${target}, Roll: ${d6}, Result: No`;
+        difficultyResult = `Target: ${target}, Roll: ${d6}, Result: No`;
       }
+
+      if (d6 == d6_2) {
+        difficultyTwist = "Random Event, Interruption or Twist!"
+      } else {
+        difficultyTwist = "No Event"
+      }
+      document.getElementById("display_difficulty").innerHTML = `${difficultyResult}<br>${difficultyTwist}`;
     }
 
     function btnLenormandExpanded() {
