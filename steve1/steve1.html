@@ -20,6 +20,28 @@
   </header>
 
 
+  <div class="flexbox-container">
+    <div class="card" id="frame-fate_dice">
+      <h2>Fate Dice</h2>
+      <br>
+      <div class="container" onclick="rollFateDice()">
+        <div class="square">
+          <img class="dice_image" id="dice_img1" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img2" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img3" src="fate_start.png">
+        </div>
+        <div class="square">
+          <img class="dice_image" id="dice_img4" src="fate_start.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="flexbox-container">
     <div class="card" id="uni-dice">
@@ -74,26 +96,33 @@
   </div>
 
 
+
   <div class="flexbox-container">
-    <div class="card" id="frame-fate_dice">
-      <h2>Fate Dice</h2>
-      <br>
-      <div class="container" onclick="rollFateDice()">
-        <div class="square">
-          <img class="dice_image" id="dice_img1" src="fate_start.png">
-        </div>
-        <div class="square">
-          <img class="dice_image" id="dice_img2" src="fate_start.png">
-        </div>
-        <div class="square">
-          <img class="dice_image" id="dice_img3" src="fate_start.png">
-        </div>
-        <div class="square">
-          <img class="dice_image" id="dice_img4" src="fate_start.png">
-        </div>
-      </div>
+    <div class="card" id="lenormandExpanded">
+      <button id="btnLenormandExpanded">Pythia Oracle</button>
+      <p id="displayLenormandExpanded"></p>
     </div>
   </div>
+
+
+  <div class="flexbox-container">
+    <div class="card" id="tarotCard">
+      <button id="btnTarot">Tarot</button>
+      <p id="display-tarot-card"></p>
+      <p id="displayTarot"></p>
+    </div>
+  </div>
+
+
+  <div class="flexbox-container">
+    <div class="card" id="characterCreator">
+      <button id="btnCharacterCreator">Character Creator</button>
+      <p id="displayCharacterCreator"></p>
+    </div>
+  </div>
+
+
+  
 
   <div class="flexbox-container">
     <div class="card" id="frame-names">
@@ -116,20 +145,9 @@
   </div> <!--End of Names block-->
 
 
-  <div class="flexbox-container">
-    <div class="card" id="lenormandExpanded">
-      <button id="btnLenormandExpanded">Pythia Oracle</button>
-      <p id="displayLenormandExpanded"></p>
-    </div>
-  </div>
   
-  <div class="flexbox-container">
-    <div class="card" id="tarotCard">
-      <button id="btnTarot">Tarot</button>
-      <p id="display-tarot-card"></p>
-      <p id="displayTarot"></p>
-    </div>
-  </div> <!--End of Lenormand block-->
+  
+  
 
   <div class="flexbox-container">
     <div class="card" id="overland">
@@ -356,6 +374,11 @@
       //displayColor.innerHTML = randomItem;
     }
 
+    function roll1d6() {
+      let result1d6 = Math.floor(Math.random() * 6) +1;
+      return result1d6;
+    }
+
     // Listeners
     
     // Likelihood Buttons
@@ -384,6 +407,230 @@
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
+
+    // Character Creator
+    const characterPresentationFemale = [
+      { value: 12, trait: "very masculine" },
+      { value: 11, trait: "masculine" },
+      { value: 10, trait: "slight masculine" },
+      { value: 6, trait: "feminine" },
+      { value: 2, trait: "very masculine" },
+    ];
+
+    const characterPresentationMale = [
+      { value: 12, trait: "very feminine" },
+      { value: 11, trait: "feminine" },
+      { value: 10, trait: "slight feminine" },
+      { value: 6, trait: "masculine" },
+      { value: 2, trait: "very masculine" },
+    ];
+
+    document.getElementById('btnCharacterCreator').addEventListener('click', () => {
+      let result1 = 0;
+      let result2 = 0;
+      let sum2d6 = 0;
+      let presentation = "";
+      result1 = roll1d6();
+      let sex = (result1 <= 3) ? "female" : "male";
+      
+      result1 = roll1d6();
+      result2 = roll1d6();
+      sum2d6 = result1 + result2;
+      
+      if (sex == "female") {
+        if (sum2d6 >= 12) {
+          presentation = "very masculine";
+        } else if (sum2d6 >= 11) {
+          presentation = "traits of masculinity";
+        } else if (sum2d6 >= 10) {
+          presentation = "slightly masculine";
+        } else if (sum2d6 >= 6) {
+          presentation = "typically feminine";
+        } else if (sum2d6 >= 2) {
+          presentation = "very feminine";
+        }
+      } else {
+        if (sum2d6 >= 12) {
+          presentation = "very feminine";
+        } else if (sum2d6 >= 11) {
+          presentation = "traits of femininity";
+        } else if (sum2d6 >= 10) {
+          presentation = "slightly feminine";
+        } else if (sum2d6 >= 6) {
+          presentation = "typically masculine";
+        } else if (sum2d6 >= 2) {
+          presentation = "very masculine";
+        }
+      }
+      
+      let ageLook = "";
+      result1 = roll1d6();
+      result2 = roll1d6();
+      sum2d6 = result1 + result2;
+
+      if (sum2d6 >= 11) {
+        ageLook = "looks much older than actual age";
+      } else if (sum2d6 >= 9) {
+        ageLook = "looks slightly older than actual age";
+      } else if (sum2d6 >= 6) {
+        ageLook = "as expected";
+      } else if (sum2d6 >= 4) {
+        ageLook = "looks slightly younger than actual age";
+      } else if (sum2d6 >= 2) {
+        ageLook = "looks much younger than actual age";
+      }
+
+
+      let characterHeight = "";
+      result1 = roll1d6();
+      result2 = roll1d6();
+      sum2d6 = result1 + result2;
+
+      if (sum2d6 >= 11) {
+        characterHeight = "very tall";
+      } else if (sum2d6 >= 9) {
+        characterHeight = "above average";
+      } else if (sum2d6 >= 8) {
+        characterHeight = "slightly taller than average";
+      } else if (sum2d6 >= 7) {
+        characterHeight = "average";
+      } else if (sum2d6 >= 6) {
+        characterHeight = "slightly shorter than average";
+      } else if (sum2d6 >= 4) {
+        characterHeight = "below average";
+      } else if (sum2d6 >= 2) {
+        characterHeight = "very short";
+      }
+
+      let characterWeightType = 0;
+      let characterWeight = 0;
+
+      result1 = roll1d6();
+
+      if (result1 <= 3) {
+        result1 = roll1d6();
+        result2 = roll1d6();
+        sum2d6 = result1 + result2;
+
+        if (sum2d6 >= 11) {
+          characterWeight = "obese";
+        } else if (sum2d6 >= 9) {
+          characterWeight = "chubby";
+        } else if (sum2d6 >= 8) {
+          characterWeight = "slightly overweight";
+        } else if (sum2d6 >= 7) {
+          characterWeight = "average";
+        } else if (sum2d6 >= 6) {
+          characterWeight = "slightly underweight";
+        } else if (sum2d6 >= 4) {
+          characterWeight = "slim";
+        } else if (sum2d6 >= 2) {
+          characterWeight = "bony / gaunt";
+        }
+      } else {
+        result1 = roll1d6();
+        result2 = roll1d6();
+        sum2d6 = result1 + result2;
+
+        if (sum2d6 >= 11) {
+          characterWeight = "ripped!";
+        } else if (sum2d6 >= 9) {
+          characterWeight = "well-toned";
+        } else if (sum2d6 >= 8) {
+          characterWeight = "toned";
+        } else if (sum2d6 >= 7) {
+          characterWeight = "average";
+        } else if (sum2d6 >= 6) {
+          characterWeight = "slim";
+        } else if (sum2d6 >= 4) {
+          characterWeight = "skinny";
+        } else if (sum2d6 >= 2) {
+          characterWeight = "bony / gaunt";
+        }
+      }
+
+      let characterHair = "";
+      result1 = roll1d6();
+      characterHair = (result1 <= 3) ? "Expected / Typical" : "Distinct / Unusual";
+
+      let characterAttire = "";
+      result1 = roll1d6();
+      characterAttire = (result1 <= 3) ? "Expected / Typical" : "Distinct / Unusual";
+
+      let characterAttireQuality = "";
+      result1 = roll1d6();
+      result2 = roll1d6();
+      sum2d6 = result1 + result2;
+
+      if (sum2d6 >= 11 ) {
+        characterAttireQuality = "Pristine / Starched";
+      } else if (sum2d6 >= 9 ) {
+        characterAttireQuality = "Clean / New";
+      } else if (sum2d6 >= 6 ) {
+        characterAttireQuality = "Average";
+      } else if (sum2d6 >= 4 ) {
+        characterAttireQuality = "Worn / Faded / Aging / Spot Stains";
+      } else if (sum2d6 >= 2 ) {
+        characterAttireQuality = "Very Worn / Damaged / Dirty";
+      }
+
+
+      let characterExpression = "";
+      result1 = roll1d6();
+      if (result1 <= 3) {
+        result2 = roll1d6();
+        if (result2 == 1) {
+          characterExpression = "happy / contented";
+        } else if (result2 == 2) {
+          characterExpression = "sad / unhappy / upset / melancholy";
+        } else if (result2 == 3) {
+          characterExpression = "surprised / shocked / stunned";
+        } else if (result2 == 4) {
+          characterExpression = "angry / aggravated / annoyed";
+        } else if (result2 == 5) {
+          characterExpression = "disgusted / nauseated / sickened";
+        } else if (result2 == 6) {
+          characterExpression = "afraid / frantic";
+        }
+      } else {
+        result2 = roll1d6();
+        if (result2 == 1) {
+          characterExpression = "nervous / jittery";
+        } else if (result2 == 2) {
+          characterExpression = "embarrassed / ashamed / humbled / humiliated";
+        } else if (result2 == 3) {
+          characterExpression = "amused / entertained / tickled";
+        } else if (result2 == 4) {
+          characterExpression = "concentrated / immersed / focused";
+        } else if (result2 == 5) {
+          characterExpression = "confused / puzzled";
+        } else if (result2 == 6) {
+          characterExpression = "pained / insulted / wounded";
+        }
+      }
+
+      let characterIdentityConfidence = "";
+      result1 = roll1d6();
+      characterIdentityConfidence = (result1 <= 3) ? "Assertive, Self-Assured, Even-Tempered, Stress-Resistant" : "Turbulent, Self-Conscious, Stress-Sensitive";
+
+
+      document.getElementById("displayCharacterCreator").innerHTML = `
+        NAME: (Choose or Roll)
+        <br>ROLE: (Choose)
+        <br>GROUPS & RANK: (Choose)
+        <br>SEX: ${sex} (${presentation})
+        <br>AGE: (Choose, but...${ageLook})
+        <br>HEIGHT: ${characterHeight}
+        <br>BUILD: ${characterWeight}
+        <br>HAIR: ${characterHair}
+        <br>ATTIRE: ${characterAttire}
+        <br>ATTIRE QUALITY: ${characterAttireQuality}
+        <br> CURRENT EXPRESSION: ${characterExpression}
+        <br>IDENTITY CONFIDENCE: ${characterIdentityConfidence}
+      `;
+
+      
+    });
 
     // Tricube Card
     document.getElementById('newTricubeCard').addEventListener('click', function() {
