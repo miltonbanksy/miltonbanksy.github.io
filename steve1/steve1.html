@@ -189,6 +189,7 @@
   <script src="uni_dice.js"></script>
   <script src="names_british.js"></script>
   <script src="names_filipino.js"></script>
+  <script src="personalities.js"></script>
   
   <script>
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
@@ -613,11 +614,22 @@
       result1 = roll1d6();
       characterIdentityConfidence = (result1 <= 3) ? "Assertive, Self-Assured, Even-Tempered, Stress-Resistant" : "Turbulent, Self-Conscious, Stress-Sensitive";
 
+      let personalityIndex = Math.floor(Math.random() * personalities2.length);
+      
+      let characterType = personalities2[personalityIndex]["type"];
+      let characterClass = personalities2[personalityIndex]["class"];
+      let characterEnergy = personalities2[personalityIndex]["energy"];
+      let characterMind = personalities2[personalityIndex]["mind"];
+      let characterNature = personalities2[personalityIndex]["nature"];
+      let characterTactics = personalities2[personalityIndex]["tactics"];
+      let characterSummary = personalities2[personalityIndex]["summary"];
+
 
       document.getElementById("displayCharacterCreator").innerHTML = `
         NAME: (Choose or Roll)
         <br>ROLE: (Choose)
         <br>GROUPS & RANK: (Choose)
+        <br><br><b style="color:blue">APPEARANCE</b>
         <br>SEX: ${sex} (${presentation})
         <br>AGE: (Choose, but...${ageLook})
         <br>HEIGHT: ${characterHeight}
@@ -626,7 +638,15 @@
         <br>ATTIRE: ${characterAttire}
         <br>ATTIRE QUALITY: ${characterAttireQuality}
         <br> CURRENT EXPRESSION: ${characterExpression}
+        <br><br><b style="color:blue">PERSONALITY</b>
         <br>IDENTITY CONFIDENCE: ${characterIdentityConfidence}
+        <br>TYPE: ${characterType}
+        <br>CLASS: ${characterClass}
+        <br>ENERGY: ${characterEnergy}
+        <br>MIND: ${characterMind}
+        <br>NATURE: ${characterNature}
+        <br>TACTICS: ${characterTactics}
+        <br>SUMMARY: ${characterSummary}
       `;
 
       
