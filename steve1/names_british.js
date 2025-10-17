@@ -43,5 +43,26 @@ const namesBritishSurnames = [
 ]
 
 const oddNames = [
-    "shackle", "winter"
+    "ample", "angle", 
+    "bag", "bake", "barn", "beat", "bellow", "bend", "bird", "bite", "blink", "bloom", "blunt", "blush", "bottom", "bow", "brace", "breast", "bright", "brim", "brow", "buckle",
+    "candle", "chin", "clock", "cobble", "cockle", "collar", "conker", "crab", "crack", "crest", "cross", "curve", 
+    "dandy", "drape", "drop", "dry",
+    "egg", "ember", 
+    "fang", "far", "father", "feather", "flake", "flannel", "foot", "frock", "funnel", "fur",
+    "gap", "gold", "grain", "grass", "gull", "gum", "gut",
+    "hair", "hall", "hand", "harm", "hat", "hay", "head", "health", "heap", "heart", "hit", "hint", "hold", "honey", "honor",
+    "idol", "imp", "iron", 
+    "jug", "juice",
+    "karma", "keep", "keg", "kennel", "kettle", "key", "kick", "kid", "kidney", "king", "knuckle",
+    "lamp", "leather", "leg", "lever", "lime", "lip", "lung",
+    "meal", "minute", "monk", "motor", 
+    "nail", "nap", "near", "neat", "neck", "nest", "new", "night", "nip", "noon", "nose", "nut",
+    "olive", "omen", "organ",
+    "patch", "peach", "peel", "pin", "pint", "pond", "pop", "pouch", "pringle",
+    "reach", "rib", "ridge", "ring", "ripple", "rose", 
+    "sack", "shackle", "shake", "silver", "skip", "snort", "spine", "spring", "sprout", "star", "starch", "steam", "stiff", "stone", "strap", "study", "sweet",
+    "tall", "table", "tail", "tea", "temper", "tank", "tart", "tent", "thread", "time", "tool", "top", "tower", "track", "tread", "treat", "trump", "twitch", 
+    "usher", 
+    "veil", "vine", 
+    "waft", "war", "wart", "waste", "wave", "wear", "weasle", "west", "whistle", "wick", "wine", "winter", "witch", "worn", 
 ];

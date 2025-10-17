@@ -218,27 +218,19 @@
     };
 
 
-    // HELPER FUNCTIONS
-  function capitalizeFirstLetter(val) {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+    
+
+
+  function btnIronDetails() {
+    let ironResults = [];
+
+    for (let list of iron_details_lists) {
+      const randomIndex = Math.floor(Math.random() * list.length);
+      ironResults.push(list[randomIndex]);
+    }
+    return ironResults;
+    document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
   }
-
-  function roll1d6() {
-      let result1d6 = Math.floor(Math.random() * 6) +1;
-      return result1d6;
-    }
-
-
-    function btnIronDetails() {
-      let ironResults = [];
-
-      for (let list of iron_details_lists) {
-        const randomIndex = Math.floor(Math.random() * list.length);
-        ironResults.push(list[randomIndex]);
-      }
-      return ironResults;
-      document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
-    }
 
     function btnIronOverland() {
       let results = [];
@@ -273,8 +265,8 @@
       const choice = button.dataset.value;
       const target = difficulties[choice];
 
-      let d6 = Math.floor(Math.random() * 6) +1;
-      let d6_2 = Math.floor(Math.random() * 6) +1;
+      let d6 = roll1d6();
+      let d6_2 = roll1d6();
 
       if (d6 >= target) {
         difficultyResult = `Target: ${target}, Roll: ${d6}, Result: Yes`;
@@ -788,10 +780,82 @@
     });
 
     document.getElementById("name_surname_odd").addEventListener("click", () => {
+      let oddNamesIndex = 0;
+      let oddNamesIndex2 = 0;
+      let oddName = "";
+      let oddName2 = "";
+      let oddNameDisplay = "";
+      let oddNameCapFirst = "";
+      let newName = "";
+      let oddNameSlice = "";
+      const numberOfComboChoices = 5; // !! UPDATE THIS AS WE ADD MORE CHOICES !!
+      let rndComboChoice = Math.floor(Math.random() * numberOfComboChoices ) + 1;
+      
+      if (rndComboChoice == 1) {
+        // one singular noun
+        oddNamesIndex = Math.floor(Math.random() * oddNames.length);
+        oddNameDisplay = oddNames[oddNamesIndex];
+      
+      } else if (rndComboChoice == 2) {
+        // two singular nouns combined
+        oddNamesIndex = Math.floor(Math.random() * oddNames.length);
+        oddName = oddNames[oddNamesIndex];
+        oddNamesIndex2 = Math.floor(Math.random() * oddNames.length);
+        oddName2 = oddNames[oddNamesIndex2];
+        oddNameDisplay = oddName + oddName2
+      
+      } else if (rndComboChoice == 3) {
+        // one plural noun (add 's')
+        oddNamesIndex = Math.floor(Math.random() * oddNames.length);
+        oddName = oddNames[oddNamesIndex];
+        if (oddName.endsWith("ch") || oddName.endsWith("s")) {
+          oddNameDisplay = oddNames[oddNamesIndex] + "es";
+        } else {
+          oddNameDisplay = oddNames[oddNamesIndex] + "s";
+        }
+        
+      } else if (rndComboChoice == 4) {
+        // one singular and one plural noun combined (add 's' or 'es')
+        const index1 = Math.floor(Math.random() * oddNames.length);
+        const index2 = Math.floor(Math.random() * oddNames.length);
 
+        const noun1 = oddNames[index1];
+        let noun2 = oddNames[index2];
+
+        // pluralize noun2
+        if (noun2.endsWith("h") || noun2.endsWith("s")) {
+          noun2 = noun2 + "es";
+        } else {
+          noun2 = noun2 + "s";
+        }
+
+        oddNameDisplay = noun1 + noun2;
+      
+      } else if (rndComboChoice == 5) {
+        // one plural noun (add 'ing')
+        // NEED TO ACCOUNT FOR WORDS ENDING IN 'E'. IF 'E' REMOVE 'E'.
+        oddNamesIndex = Math.floor(Math.random() * oddNames.length);
+        oddName = oddNames[oddNamesIndex];
+        if (oddName.endsWith("e")) {
+          oddNameSlice = oddName.slice(0, -1);
+          oddName = oddNameSlice;
+        } 
+        oddNameDisplay = oddName + "ing";
+      }
+
+      oddNameCapFirst = capitalizeFirstLetter(oddNameDisplay);
+      displayName.innerHTML = oddNameCapFirst;
     });
 
+// HELPER FUNCTIONS
+  function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+  }
 
+  function roll1d6() {
+    let result1d6 = Math.floor(Math.random() * 6) +1;
+    return result1d6;
+  }
   
   </script>
 </body>
