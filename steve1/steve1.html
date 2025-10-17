@@ -140,6 +140,7 @@
       <button class="btn-name" id="name_filipino_any">Filipino (Any)</button>
       <button class="btn-name" id="name_filipino_female">Filipino Female</button>
       <br><br>
+      <button class="btn-name" id="name_surname_odd">Odd Surnames</button>
       <p id="display-name"></p>
     </div>
   </div> <!--End of Names block-->
@@ -198,6 +199,7 @@
     const displayTarot = document.getElementById('displayTarot');
     const displayAnimal = document.getElementById('display_animal_symbols');
     const displayColor = document.getElementById('display_color_symbols');
+    const displayName = document.getElementById('display-name');
 
     const dict_iron_oracle = {
       "very likely": 90,
@@ -214,6 +216,17 @@
       "difficult": 5,
       "very difficult": 6
     };
+
+
+    // HELPER FUNCTIONS
+  function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+  }
+
+  function roll1d6() {
+      let result1d6 = Math.floor(Math.random() * 6) +1;
+      return result1d6;
+    }
 
 
     function btnIronDetails() {
@@ -375,10 +388,7 @@
       //displayColor.innerHTML = randomItem;
     }
 
-    function roll1d6() {
-      let result1d6 = Math.floor(Math.random() * 6) +1;
-      return result1d6;
-    }
+    
 
     // Listeners
     
@@ -616,8 +626,8 @@
 
       let personalityIndex = Math.floor(Math.random() * personalities2.length);
       
-      let characterType = personalities2[personalityIndex]["type"].toUpperCase();
-      let chararacterTypeCapFirst = capitalizeFirstLetter();
+      let characterType = personalities2[personalityIndex]["type"];
+      let chararacterTypeCapFirst = capitalizeFirstLetter(characterType);
       let characterClass = personalities2[personalityIndex]["class"];
       let characterEnergy = personalities2[personalityIndex]["energy"];
       let characterMind = personalities2[personalityIndex]["mind"];
@@ -677,7 +687,7 @@
       const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
       const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameBritishMale + " " + nameBritishSurname;
+      displayName.innerHTML = nameBritishMale + " " + nameBritishSurname;
     });
 
     document.getElementById("name_british_female").addEventListener('click', function() {
@@ -687,7 +697,7 @@
       const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
       const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameBritishFemale + " " + nameBritishSurname;
+      displayName.innerHTML = nameBritishFemale + " " + nameBritishSurname;
     });
 
     document.getElementById("name_british_any").addEventListener('click', function() {
@@ -699,7 +709,7 @@
       const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
       const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameBritishAny + " " + nameBritishSurname;
+      displayName.innerHTML = nameBritishAny + " " + nameBritishSurname;
     });
 
     // Names Filipino
@@ -710,7 +720,7 @@
       const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
       const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameFilipinoMale + " " + nameFilipinoSurname;
+      displayName.innerHTML = nameFilipinoMale + " " + nameFilipinoSurname;
     });
 
     document.getElementById("name_filipino_female").addEventListener('click', function() {
@@ -720,7 +730,7 @@
       const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
       const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameFilipinoFemale + " " + nameFilipinoSurname;
+      displayName.innerHTML = nameFilipinoFemale + " " + nameFilipinoSurname;
     });
 
     document.getElementById("name_filipino_any").addEventListener('click', function() {
@@ -732,7 +742,7 @@
       const nameFilipinoSurnamesIndex = Math.floor(Math.random() * namesFilipinoSurnames.length);
       const nameFilipinoSurname = namesFilipinoSurnames[nameFilipinoSurnamesIndex];
        
-      document.getElementById("display-name").innerHTML = nameFilipinoAny + " " + nameFilipinoSurname;
+      displayName.innerHTML = nameFilipinoAny + " " + nameFilipinoSurname;
     });
 
     // RANDOM MALE (MIXED)
@@ -774,12 +784,15 @@
       const anySurnameIndex = Math.floor(Math.random() * combinedArrayAllSurnames.length);
       const anySurname = combinedArrayAllSurnames[anySurnameIndex];
 
-      document.getElementById("display-name").innerHTML = anyFirstName + " " + anySurname;
+      displayName.innerHTML = anyFirstName + " " + anySurname;
     });
 
-    function capitalizeFirstLetter(val) {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
-}
+    document.getElementById("name_surname_odd").addEventListener("click", () => {
+
+    });
+
+
+  
   </script>
 </body>
 </html>

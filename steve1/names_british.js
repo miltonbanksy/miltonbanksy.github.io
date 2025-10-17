@@ -16,7 +16,7 @@ const namesBritishFemales = [
     "Olivia", "Ophelia", "Orla", "Paige", "Phoebe", "Poppy", "Rebecca", "Rosie", "Ruby", "Sophie",
     "Tamara", "Teri", "Tess", "Trudy", 
     "Valentina", "Valerie", "Vanessa", "Venus", "Vera", "Veronica", "Victoria", "Vienna", "Viola", "Violet", "Virginia", "Vivienne"
-]
+];
 const namesBritishMales = [
     "Adam", "Adrian", "Albie", "Albert", "Alexander", "Alfie", "Alfred", "Andrew", "Angus", "Anthony",
     "Archie", "Arthur", "Asher", "Austin", "Barney", "Ben", "Benjamin", "Blake", "Bobby", "Bradley",
@@ -28,7 +28,7 @@ const namesBritishMales = [
     "Jayden", "Jenson", "Joel", "John", "Jonathan", "Joseph", "Joshua", "Jude", "Kai", "Kian",
     "Kyle", "Laurence", "Leo", "Leon", "Leonard", "Lewis", "Liam", "Logan", "Louis", "Lucas",
     "Luke", "Malcolm", "Marcus", "Mason", "Matthew", "Max", "Michael", "Milo", "Nathan", "Nicholas"
-]
+];
 const namesBritishSurnames = [
     "Adams", "Allen", "Anderson", "Armstrong", "Atkinson", "Bailey", "Baker", "Barker", "Barnes", "Bell",
     "Bennett", "Black", "Blake", "Booth", "Bradley", "Brown", "Bryant", "Burton", "Butler", "Campbell",
@@ -41,3 +41,7 @@ const namesBritishSurnames = [
     "King", "Knight", "Lane", "Lawrence", "Lawson", "Lee", "Lewis", "Lloyd", "Martin", "Mason",
     "Matthews", "Miller", "Mitchell", "Moore", "Morgan", "Morris", "Murphy", "Murray", "Nelson", "Newton"
 ]
+
+const oddNames = [
+    "shackle", "winter"
+];
