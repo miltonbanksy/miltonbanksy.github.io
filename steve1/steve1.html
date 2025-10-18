@@ -269,17 +269,17 @@
       let d6_2 = roll1d6();
 
       if (d6 >= target) {
-        difficultyResult = `Target: ${target}, Roll: ${d6}, Result: Yes`;
+        difficultyResult = `Target: ${target}, Roll: ${d6}<br><br><b>Result: Yes</b>`;
       } else {
-        difficultyResult = `Target: ${target}, Roll: ${d6}, Result: No`;
+        difficultyResult = `Target: ${target}, Roll: ${d6}<br><br><b>Result: No</b>`;
       }
 
       if (d6 == d6_2) {
-        difficultyTwist = "Random Event, Interruption or Twist!"
+        difficultyTwist = `<b style="color:purple">Random Event, Interruption or Twist!</b>`
       } else {
         difficultyTwist = "No Event"
       }
-      document.getElementById("display_difficulty").innerHTML = `${difficultyResult}<br>${difficultyTwist}`;
+      document.getElementById("display_difficulty").innerHTML = `${difficultyResult}<br><br>${difficultyTwist}`;
     }
 
     function btnLenormandExpanded() {
