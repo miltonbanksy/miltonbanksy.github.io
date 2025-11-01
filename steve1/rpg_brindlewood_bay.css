@@ -8,6 +8,7 @@ header {
     border-left: 10px solid rgb(207, 134, 24);
     border-right: 10px solid rgb(207, 134, 24);
     box-shadow: 4px 4px 4px black;
+    border-radius: 6px;
 }
 
 .limelight-regular {
