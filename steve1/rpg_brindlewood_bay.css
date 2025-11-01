@@ -1,5 +1,13 @@
+html {
+    padding: 2em;
+}
+
 header {
     background-color: rgb(245, 212, 168);
+    padding-left: 10px;
+    border-left: 10px solid rgb(207, 134, 24);
+    border-right: 10px solid rgb(207, 134, 24);
+    box-shadow: 4px 4px 4px black;
 }
 
 .limelight-regular {
@@ -11,7 +19,7 @@ header {
 .text-frame {
     border: 1px solid black;
     background-color: rgb(245, 212, 168);
-    padding: 4px;
+    padding: 10px;
 }
 
 details[open] > *:not(summary) {
