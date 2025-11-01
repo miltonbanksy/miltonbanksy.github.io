@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brindlewood Bay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rpg_brindlewood_bay.css">
+</head>
+<body>
+    <header>
+        <h1 class="limelight-regular">Brindlewood Bay 🔍</h1>
+    </header>
+    <details>
+        <summary>Basic Moves</summary>
+        <details>
+            <summary>The Day Move</summary>
+            <p id="display-bb-moves-day"></p>
+            <p class="text-frame" id="display-bb-post-roll"></p>
+        </details>
+        <details>
+            <summary>The Night Move</summary>
+            <p id="display-bb-moves-night"></p>
+            <p class="text-frame" id="display-bb-post-roll2"></p>
+        </details>
+        <details>
+            <summary>The Cozy Move</summary>
+            <p id="display-bb-moves-cozy"></p>
+        </details>
+        <details>
+            <summary>The Meddling Move</summary>
+            <p id="display-bb-moves-meddling"></p>
+            <p class="text-frame" id="display-bb-post-roll3"></p>
+        </details>
+        <details>
+            <summary>The Theorize Move</summary>
+            <p id="display-bb-moves-theorize"></p>
+            <p class="text-frame" id="display-bb-post-roll4"></p>
+        </details>
+        <details>
+            <summary>The 'This Reminds Me of...!' Move</summary>
+            <p id="display-bb-moves-reminder"></p>
+        </details>
+        <details>
+            <summary>The Occult Move</summary>
+            <p id="display-bb-moves-occult"></p>
+            <p class="text-frame" id="display-bb-post-roll5"></p>
+        </details>
+    </details>
+    <details>
+        <summary>Put on a Crown</summary>
+        <details>
+            <summary>The Crown of the Queen (Choose and mark one.)</summary>
+            <ul>
+                <li>A flashback of your fondest memory of your late partner.</li>
+                <li>A flashback showing how you were an imperfect sister or daughter.</li>
+                <li>A flashback showing how you were an imperfect mother.</li>
+                <li>A flashback of your fondest memory with one of your children.</li>
+                <li>A scene in the present day showing a private side of you very few get to see.</li>
+                <li>A scene in the present day showing a burgeoning romance.</li>
+                <li>A scene in the present day showing how you satisfy your physical desires.</li>
+            </ul>
+        </details>
+        <details>
+            <summary>The Crown of the Void (Mark the first empty box)</summary>
+            <ul>
+                <li><b>A Shadow in the Garden.</b> Hereafter, during cozy vignettes focused on you or Cozy Move scenes involving you, you must also narrate how dark entities subtly reveal themselves in the scene.</li>
+                <li><b>The Chariot.</b> Your Reason modifier is reduced by 1 and your Sensitivity modifier is increased by 1.</li>
+                <li><b>Pallid Mask.</b> Hereafter, during any intimate conversation with another character, you must make a casual reference to death, dying, the afterlife, or the End of All Things—no matter the subject at-hand.</li>
+                <li><b>The Pomegranate Kernel.</b> You take the Condition: Obsessed with the Void. It can never be cleared.</li>
+                <li><b>The Void.</b> Retire your character in a way that shows how they are lost to the Void.</li>
+            </ul>
+        </details>     
+    </details>
+    <details>
+        <summary>End of Session Questions</summary>
+        <p>The first question is always marked. Mark 2 more at the start of each session.</p>
+        <ul>
+            <li>✔ Did the Murder Mavens solve a mystery?</li>
+            <li>Did you secretly undermine the authority of a local official?</li>
+            <li>Did you share your wisdom with a young person?</li>
+            <li>Did you share a memory of a late family member?</li>
+            <li>Did you behave like a woman half your age?</li>
+            <li>Did you dote on someone?</li>
+            <li>Did you show someone that you've “still got it?”</li>
+        </ul>
+    </details>
+    <script>
+        const displayBBMovesDay = document.getElementById("display-bb-moves-day");
+        const displayBBPostRoll = document.getElementById("display-bb-post-roll");
+        const displayBBMovesNight = document.getElementById("display-bb-moves-night");
+        const displayBBPostRoll2 = document.getElementById("display-bb-post-roll2");
+        const displayBBMovesCozy = document.getElementById("display-bb-moves-cozy");
+        const displayBBMovesMeddling = document.getElementById("display-bb-moves-meddling");
+        const displayBBPostRoll3 = document.getElementById("display-bb-post-roll3");
+        const displayBBMovesTheorize = document.getElementById("display-bb-moves-theorize");
+        const displayBBPostRoll4 = document.getElementById("display-bb-post-roll4");
+        const displayBBMovesReminder = document.getElementById("display-bb-moves-reminder");
+        const displayBBMovesOccult = document.getElementById("display-bb-moves-occult");
+        const displayBBPostRoll5 = document.getElementById("display-bb-post-roll5");
+        
+        const bb_post_roll = `
+        After a die roll, and after an outcome has been narrated, you can choose to put on a Crown and increase your die result by one tier (so, a miss becomes a 7-9, a 7-9 becomes a 10-11, and a 10-11 becomes a 12).
+        `;
+
+        const bb_post_theorize = `
+        The success tier can be increased by putting on a Crown, but only if every Maven does so.
+        `;
+        
+        const bb_basic_moves_day = `
+        <i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve, then roll with an appropriate ability.</i>
+        <br><br>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.
+        <br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.
+        <br><br>On a 7-9, the Keeper will tell you how your actions would leave you vulnerable, and you can choose to back down or go through with it. If you go through with it, the Keeper describes what it looks like.
+        `;
+
+        const bb_basic_moves_night = `
+        <i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve. The Keeper will tell you how it is worse than you fear. You can choose to back down or go through with it. If you go through with it, roll with an appropriate ability.</i>
+        <br><br>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.
+        <br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.
+        <br><br>On a 7-9, you do what you intended or you hold steady, but there is a complication or cost; the Keeper describes what it looks like.
+        `;
+
+        const bb_basic_moves_cozy = `
+        <i>When you have an intimate moment with another Maven while one of you is engaged in your cozy activity, you may each clear an appropriate Condition.</i>
+        <br><br>If it's your cozy activity, you can also stumble on a Clue relevant to the active mystery. Tell the Keeper what it is. The Clue cannot conclusively solve the mystery by itself.
+        `;
+
+        const bb_basic_moves_meddling = `
+        <i>When you search for a clue, conduct research, or otherwise gather information, describe how you're doing so and roll with an appropriate ability.</i>
+        <br><br>On a 12+, you find a clue. The keeper will tell you what it is. You also find a Void Clue OR you learn something about the Dark Conspiracy in Brindlewood Bay (Keeper's choice).
+        <br><br>On a 10-11, you find a clue. The keeper will tell you what it is.
+        <br><br>On a 7-9, you find a clue but there's a complication, either with the clue itself, or a complication you encounter while searching. The Keeper will tell you what the clue and the complication is.
+        `;
+
+        const bb_basic_moves_theorize = `
+        <i>When the Mavens have an open, freewheeling discussion about the solution to a mystery once they have gathered a number of Clues equal to at least half the mystery's Complexity (rounded up) - and reach a consensus.</i>
+        <br><br>• It doesn't matter who rolls The Theorize Move.
+        <br><br>• Theorize cannot be taken with advantage or disadvantage, nor is it subject to the effects of other moves.
+        <br><br>• Roll plus the number of clues incorporated into the theory or otherwise explained away, minus the mystery's Complexity.
+        <br><br>On a 12+, it's the correct solution. The Keeper will present an opportunity to take down the culprit or otherwise save the day. a person involved in the Dark Conspiracy of Brindlewood Bay also reveals themself to the Mavens.
+        <br><br>On a 10-11, it's the correct solution. the Keeper will present an opportunity to take down the culprit or otherwise save the day.
+        <br><br>On a 7-9, it's the correct solution, but the Keeper will either add an unwelcome complication to the solution itself, or present a complicated or dangerous opportunity to take down the culprit or save the day.
+        <br><br>On a 6-, the solution is incorrect. The Keeper reacts.
+        `;
+
+        const bb_basic_moves_reminder = `
+        <i>Once per mystery, when any Maven says “This reminds me of something that happened to Amanda Delacourt!”</i>
+        <br><br>Work with the other players to describe how something that is happening in the situation reminds the Mavens of an event from one of the Gold Crown Mysteries. At a minimum, you must provide the following information:
+        <br><br>• The name of the Gold Crown Mystery in question (no repeats, please!).
+        <br><br>• The problem or situation Amanda found herself in that is similar to what the Mavens are experiencing.
+        <br><br>• How Amanda eventually overcame the problem or resolved the situation.
+        <br><br>Then, take a 12+ to a single relevant roll OR state a fact about the current situation that the Keeper must incorporate.
+        `;
+
+        const bb_basic_moves_occult = `
+        <i>When you engage in an activity related to the supernatural or the occult for the first time, imagine what your actions would look like as a move. Say what triggers the move and roll with Sensitivity.</i>
+        <br><br>The Keeper can require you to have a strong ficional justification for doing so before attempting to trigger this move.
+        <br><br>On a 10+, it works. Work with the Keeper to write the move. It is now a move all Mavens can use for the rest of the game and your roll stands.
+        <br><br>On a 7-9, it works. Work with the Keeper to write the move. It is now a move all Mavens can use for the rest of the game and your roll stands. <b>You must also mark the Crown of the Void.</b>
+        <br><br>On a 6-, it's not something the Mavens can ever do. <b>You must also mark the Crown of the Void.</b>
+        `;
+
+        const bb_maven_moves_baracus = `
+        <b>B. A. Baracus</b>
+        <br<br>Once per mystery, if you and/or any number of your fellow Mavens would suffer physical harm, you can describe how that physical harm is just narrowly avoided.
+        `;
+
+        displayBBMovesDay.innerHTML = bb_basic_moves_day;
+        displayBBPostRoll.innerHTML = bb_post_roll;
+        displayBBMovesNight.innerHTML = bb_basic_moves_night;
+        displayBBPostRoll2.innerHTML = bb_post_roll;
+        displayBBMovesCozy.innerHTML = bb_basic_moves_cozy;
+        displayBBMovesMeddling.innerHTML = bb_basic_moves_meddling;
+        displayBBPostRoll3.innerHTML = bb_post_roll;
+        displayBBMovesTheorize.innerHTML = bb_basic_moves_theorize;
+        displayBBPostRoll4.innerHTML = bb_post_theorize;
+        displayBBMovesReminder.innerHTML = bb_basic_moves_reminder;
+        displayBBMovesOccult.innerHTML = bb_basic_moves_occult;
+        displayBBPostRoll5.innerHTML = bb_post_roll;
+        
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

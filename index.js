@@ -11,7 +11,7 @@ function openPageJoy(){
 
 function openPageSteve(){
     //window.open('../steve1/steve1.html', '_self'); DEFAULT
-    window.open('../steve1/steve1_menu.html', '_self'); // TRIAL menu
+    window.open('../steve1/steve1_menu2.html', '_self'); // TRIAL menu
 }
 
 function openPageBlog(){
