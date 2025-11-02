@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Brindlewood Bay Character Keeper</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.input-short {
+    width: 30px;
+}
+</style>
+
+  </head>
+
+  <body>
+    <h2>Brindlewood Bay Character Keeper</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Character</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
+
+<div id="London" class="tabcontent">
+  <label for="bb-input-char-name" >Name</label>
+  <br>
+  <input id="bb-input-char-name" type="text">
+  <br><br>
+
+  <label for="bb-input-char-style" >Style</label>
+  <br>
+  <input id="bb-input-char-style" type="text">
+  <br><br>
+
+  <label for="bb-input-char-activity" >Cozy Activity</label>
+  <br>
+  <input id="bb-input-char-activity" type="text">
+
+  <h3>Abilities</h3>
+  <label for="bb-input-char-vitality" >Vitality</label>
+  <input class="input-short" id="bb-input-char-vitality" type="number">
+  <label for="bb-input-char-composure" >Composure</label>
+  <input class="input-short" id="bb-input-char-composure" type="number">
+  <label for="bb-input-char-reason" >Reason</label>
+  <input class="input-short" id="bb-input-char-reason" type="number">
+  <label for="bb-input-char-presence" >Presence</label>
+  <input class="input-short" id="bb-input-char-presence" type="number">
+  <label for="bb-input-char-sensitivity" >Sensitivity</label>
+  <input class="input-short" id="bb-input-char-sensitivity" type="number">
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+    <!-- <script src="index.js"></script> -->
+  <script>
+    
+
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+  </script>
+  </body>
+</html>
