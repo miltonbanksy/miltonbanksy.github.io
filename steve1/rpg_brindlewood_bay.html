@@ -360,6 +360,36 @@
         <li>Brindlewood Bay is a time-capsual town turned tourist-spot, with antique shops, dining spots, fishing trips, and sometimes B-List celebrity sightings.</li>
         <li>You enjoy your golden years by pursuing hobbies, and finding comfort and companionship in each other.</li>
     </details>
+    <details>
+        <summary>Create Characters</summary>
+        <li>Name (Create or Roll)
+            <button class="bb-button" id="bb_random_name_f">Female</button>
+            <button class="bb-button" id="bb_random_name_m">Male</button>
+        </li>
+        <li>Fashion Style (Create or Roll)
+            <button class="bb-button" id="bb_random_style">Random Style</button>
+        </li>
+        <li>Cozy Activity (Create or Roll)
+            <button class="bb-button" id="bb_random_cozy_activity">Random Cozy Activity</button>
+        </li>
+        <li>Mark 2 more 'End of Sesson Questions' (3 Total) which represent roleplaying prompts and XP-based session goals.</li>
+        <li>Note the default 'Ability' scores:
+            <ul>
+                <li><b>Vitality</b> +0 (strength, dexterity, endurance, athleticism, raw physicality)</li>
+                <li><b>Composure</b> +1 (steadiness, calmness, concentration, avoiding fear)</li>
+                <li><b>Reason</b> +1 (study, research, examination, mental faculty)</li>
+                <li><b>Presence</b> +0 (charm, intimidation, persuasion)</li>
+                <li><b>Sensitivity</b> -1 (supernatural, spiritual, occult)</li>
+            </ul>
+        </li>
+        <li>Add +1 to any one 'Ability'.</li>
+        <li>Choose or create a special 'Maven Move'.</li>
+        <li>Introduce the player-characters to the group (Name, Style, Cozy Activity, Maven Move).</li>
+        <li>Player may want to introduce personal details such as: their deceased partner, children's whereabouts, pets, & past careers.</li>
+        <li>Players introduce their character's 'Cozy Little Place'.</li>
+        <li>Players identify one item in their 'Cozy Little Place'. (Remind players that this item can be marked off to roll with advantage.)</li>
+        <li>Players should look out new items to add to their 'Cozy Little Place' during the game.</li>
+    </details>
 
     <header>
         <h1 class="limelight-regular"> 🔍 Mysteries</h1>
@@ -485,7 +515,42 @@
         </details>
     </details>
     
+    <script src="../steve1/names_british.js"></script>
+
     <script>
+        
+        const btnBBRandomNameFemale = document.getElementById("bb_random_name_f");
+        btnBBRandomNameFemale.addEventListener("click", () => {
+            const nameBritishFemaleIndex = Math.floor(Math.random() * namesBritishFemales.length);
+            const nameBritishFemale = namesBritishFemales[nameBritishFemaleIndex];
+            const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
+            const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
+            alert(nameBritishFemale + " " + nameBritishSurname);      
+        });
+
+        const btnBBRandomNameMale = document.getElementById("bb_random_name_m");
+        btnBBRandomNameMale.addEventListener("click", () => {
+            const nameBritishMaleIndex = Math.floor(Math.random() * namesBritishMales.length);
+            const nameBritishMale = namesBritishMales[nameBritishMaleIndex];
+            const nameBritishSurnamesIndex = Math.floor(Math.random() * namesBritishSurnames.length);
+            const nameBritishSurname = namesBritishSurnames[nameBritishSurnamesIndex];
+            alert(nameBritishMale + " " + nameBritishSurname);      
+        });
+
+        const btnBBRandomStyle = document.getElementById("bb_random_style");
+        btnBBRandomStyle.addEventListener("click", () => {
+            const randomStyleIndex = Math.floor(Math.random() * fashion_styles.length);
+            const randomStyle  = fashion_styles[randomStyleIndex];
+            alert(randomStyle);
+        });
+
+        const btnBBRandomCozyActivity = document.getElementById("bb_random_cozy_activity");
+        btnBBRandomCozyActivity.addEventListener("click", () => {
+            const randomCozyActivityIndex = Math.floor(Math.random() * cozyActivity.length);
+            const randomCozyActivity = cozyActivity[randomCozyActivityIndex];
+            alert(randomCozyActivity);
+        })
+
         const displayBBMovesDay = document.getElementById("display-bb-moves-day");
         const displayBBPostRoll = document.getElementById("display-bb-post-roll");
         const displayBBMovesNight = document.getElementById("display-bb-moves-night");
@@ -812,6 +877,5 @@
         displayBBMovesSpecialWright.innerHTML = bb_maven_moves_wright;
         
     </script>
-    <!-- <script src="script.js"></script> -->
 </body>
 </html>
