@@ -5,99 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Brindlewood Bay Character Keeper</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-  <style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-
-.input-short {
-    width: 30px;
-}
-</style>
-
+    <link rel="stylesheet" href="bb_character_keeper.css">
   </head>
-
+  
+  
   <body>
     <h2>Brindlewood Bay Character Keeper</h2>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Character</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  <button class="tablinks" onclick="openCity(event, 'character')" id="defaultOpen">Character</button>
+  <button class="tablinks" onclick="openCity(event, 'crowns')">Crowns</button>
+  <button class="tablinks" onclick="openCity(event, 'advance')">Advance</button>
+  <button class="tablinks" onclick="openCity(event, 'mystery')">Mystery</button>
 </div>
 
-<div id="London" class="tabcontent">
-  <label for="bb-input-char-name" >Name</label>
-  <br>
-  <input id="bb-input-char-name" type="text">
-  <br><br>
+<div id="character" class="tabcontent">
+  <div class="flex-container">
+    <div class="colunm">
+      <label for="bb-input-char-name" >Name</label>
+      <br>
+      <input id="bb-input-char-name" type="text">
+      <br><br>
 
-  <label for="bb-input-char-style" >Style</label>
-  <br>
-  <input id="bb-input-char-style" type="text">
-  <br><br>
+      <label for="bb-input-char-style" >Style</label>
+      <br>
+      <textarea id="bb-input-char-style"></textarea>
+      <br><br>
 
-  <label for="bb-input-char-activity" >Cozy Activity</label>
-  <br>
-  <input id="bb-input-char-activity" type="text">
+      <label for="bb-input-char-activity" >Cozy Activity</label>
+      <br>
+      <textarea id="bb-input-char-activity"></textarea>
+    </div> <!--End of Flex Column 1-->
+    
+    <div class="colunm">
+      <h3>Abilites</h3>
 
-  <h3>Abilities</h3>
-  <label for="bb-input-char-vitality" >Vitality</label>
-  <input class="input-short" id="bb-input-char-vitality" type="number">
-  <label for="bb-input-char-composure" >Composure</label>
-  <input class="input-short" id="bb-input-char-composure" type="number">
-  <label for="bb-input-char-reason" >Reason</label>
-  <input class="input-short" id="bb-input-char-reason" type="number">
-  <label for="bb-input-char-presence" >Presence</label>
-  <input class="input-short" id="bb-input-char-presence" type="number">
-  <label for="bb-input-char-sensitivity" >Sensitivity</label>
-  <input class="input-short" id="bb-input-char-sensitivity" type="number">
+      <table>
+        <tr>
+          <td>Vitality</td>
+          <td><input class="input-short" id="bb-input-char-vitality" type="number"></td>
+        </tr>
+        <tr>
+          <td>Composure</td>
+          <td><input class="input-short" id="bb-input-char-composure" type="number"></td>
+        </tr>
+        <tr>
+          <td>Reason</td>
+          <td><input class="input-short" id="bb-input-char-reason" type="number"></td>
+        </tr>
+        <tr>
+          <td>Presence</td>
+          <td><input class="input-short" id="bb-input-char-presence" type="number"></td>
+        </tr>
+        <tr>
+          <td>Sensitivity</td>
+          <td><input class="input-short" id="bb-input-char-sensitivity" type="number"></td>
+        </tr>
+      </table>
+    </div> <!--End of Flex Column 2-->
+  </div> <!-- End of Flex Container-->
+
+
+  <div class="flex-container">
+    <div class="column">
+      <h3>Conditions</h3>
+      Condition 1
+      <br>
+      <textarea class="text-area-character" id="text-area-character-conditions-1"></textarea>
+      <br>
+      Condition 2
+      <br>
+      <textarea class="text-area-character" id="text-area-character-conditions-2"></textarea>
+      <br>
+      Condition 3
+      <br>
+      <textarea class="text-area-character" id="text-area-character-conditions-3"></textarea>
+      <br>
+    </div>
+    <div class="column">
+      <h3>Cozy Little Place</h3>
+      Description
+      <br>
+      <textarea class="text-area-character" id="text-area-character-cozyplace-description"></textarea>
+      <br>
+      Items
+      <br>
+      <textarea class="text-area-character" id="text-area-character-cozyplace-items"></textarea>
+      <br>
+    </div> <!-- End of column-->
+  </div> <!-- End of Flex Container-->
+
+</div> <!-- End of Character Tab-->
+
+<div id="crowns" class="tabcontent">
+  <h3>The Crown of the Queen</h3>
+  <p><i>When you put on this Crown, mark and narrate any you wish.</i></p>
+  <input type="checkbox" id="queen1", name="queen1" value="Queen1">
+  <label for="queen1">A flashback of your fondest memory of your late partner.</label>
+  <br>
+  <input type="checkbox" id="queen2", name="queen2" value="Queen2">
+  <label for="queen2">A flashback showing how you were an imperfect sister or daughter.</label>
+  <br>
+  <input type="checkbox" id="queen3", name="queen3" value="Queen3">
+  <label for="queen3">A flashback showing how you were an imperfect mother.</label>
+  <br>
+  <input type="checkbox" id="queen4", name="queen4" value="Queen4">
+  <label for="queen4">A flashback of your fondest memory with one of your children.</label>
+  <br>
+  <input type="checkbox" id="queen5", name="queen5" value="Queen5">
+  <label for="queen5">A scene in the present day showing a private side of you very few get to see.</label>
+  <br>
+  <input type="checkbox" id="queen6", name="queen6" value="Queen6">
+  <label for="queen6">A scene in the present day showing a burgeoning romance.</label>
+  <br>
+  <input type="checkbox" id="queen7", name="queen7" value="Queen7">
+  <label for="queen7">A scene in the present day showing how you satisfy your physical desires.</label>
+  <h3>The Crown of the Void</h3>
+  <p><i>When you put on this Crown, mark the first empty box.</i></p>
+  <input type="checkbox" id="void1", name="void1" value="Void1">
+  <label for="void1"><b>A Shadow in the Garden.</b> Hereafter, during cozy vignettes focused on you or Cozy Move scenes involving you, you must also narrate how dark entities subtly reveal themselves in the scene.</label>
+  <br>
 </div>
 
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
+<div id="advance" class="tabcontent">
+  <h3>Advancement</h3>
+  <p>crowns is the capital of France.</p> 
 </div>
 
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
+<div id="mystery" class="tabcontent">
+  <h3>mystery</h3>
+  <p>mystery is the capital of Japan.</p>
 </div>
     <!-- <script src="index.js"></script> -->
   <script>
