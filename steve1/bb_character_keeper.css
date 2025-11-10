@@ -10,13 +10,12 @@ body {font-family: Arial;}
 /* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
-  float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 4px 10px;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 /* Change background color of buttons on hover */
@@ -37,6 +36,11 @@ body {font-family: Arial;}
   border-top: none;
 }
 
+#b-save {
+  /*width: 100%;*/
+  background-color: palevioletred;
+}
+
 .flex-container {
     display: flex;
     gap: 20px; /* Space between columns */
@@ -51,5 +55,10 @@ body {font-family: Arial;}
 }
 
 #text-area-character-cozyplace-items {
+  height: 100px;
+}
+
+.text-area-mystery {
+  width: 100%;
   height: 100px;
 }

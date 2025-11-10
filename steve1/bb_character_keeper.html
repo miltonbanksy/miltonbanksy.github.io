@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Brindlewood Bay Character Keeper</title>
-    <link rel="stylesheet" href="bb_character_keeper.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Brindlewood Bay Character Keeper</title>
+  <link rel="stylesheet" href="bb_character_keeper.css">
+</head>
   
-  
-  <body>
-    <h2>Brindlewood Bay Character Keeper</h2>
-
+<body>
+    
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'character')" id="defaultOpen">Character</button>
   <button class="tablinks" onclick="openCity(event, 'crowns')">Crowns</button>
   <button class="tablinks" onclick="openCity(event, 'advance')">Advance</button>
   <button class="tablinks" onclick="openCity(event, 'mystery')">Mystery</button>
+  <button class="tablinks" id="b-save">SAVE!</button>
 </div>
+
 
 <div id="character" class="tabcontent">
   <div class="flex-container">
@@ -82,6 +82,7 @@
       <textarea class="text-area-character" id="text-area-character-conditions-3"></textarea>
       <br>
     </div>
+
     <div class="column">
       <h3>Cozy Little Place</h3>
       Description
@@ -100,63 +101,208 @@
 <div id="crowns" class="tabcontent">
   <h3>The Crown of the Queen</h3>
   <p><i>When you put on this Crown, mark and narrate any you wish.</i></p>
-  <input type="checkbox" id="queen1", name="queen1" value="Queen1">
+  <input type="checkbox" id="queen1" name="queen1" value="Queen1">
   <label for="queen1">A flashback of your fondest memory of your late partner.</label>
   <br>
-  <input type="checkbox" id="queen2", name="queen2" value="Queen2">
+  <input type="checkbox" id="queen2" name="queen2" value="Queen2">
   <label for="queen2">A flashback showing how you were an imperfect sister or daughter.</label>
   <br>
-  <input type="checkbox" id="queen3", name="queen3" value="Queen3">
+  <input type="checkbox" id="queen3" name="queen3" value="Queen3">
   <label for="queen3">A flashback showing how you were an imperfect mother.</label>
   <br>
-  <input type="checkbox" id="queen4", name="queen4" value="Queen4">
+  <input type="checkbox" id="queen4" name="queen4" value="Queen4">
   <label for="queen4">A flashback of your fondest memory with one of your children.</label>
   <br>
-  <input type="checkbox" id="queen5", name="queen5" value="Queen5">
+  <input type="checkbox" id="queen5" name="queen5" value="Queen5">
   <label for="queen5">A scene in the present day showing a private side of you very few get to see.</label>
   <br>
-  <input type="checkbox" id="queen6", name="queen6" value="Queen6">
+  <input type="checkbox" id="queen6" name="queen6" value="Queen6">
   <label for="queen6">A scene in the present day showing a burgeoning romance.</label>
   <br>
-  <input type="checkbox" id="queen7", name="queen7" value="Queen7">
+  <input type="checkbox" id="queen7" name="queen7" value="Queen7">
   <label for="queen7">A scene in the present day showing how you satisfy your physical desires.</label>
+  
   <h3>The Crown of the Void</h3>
   <p><i>When you put on this Crown, mark the first empty box.</i></p>
-  <input type="checkbox" id="void1", name="void1" value="Void1">
+  <input type="checkbox" id="void1" name="void1" value="Void1">
   <label for="void1"><b>A Shadow in the Garden.</b> Hereafter, during cozy vignettes focused on you or Cozy Move scenes involving you, you must also narrate how dark entities subtly reveal themselves in the scene.</label>
+  <br>
+  <input type="checkbox" id="void2" name="void2" value="Void2">
+  <label for="void2"><b>The Chariot.</b> Your Reason modifier is reduced by 1 and your Sensitivity modifier is increased by 1.</label>
+  <br>
+  <input type="checkbox" id="void3" name="void3" value="Void3">
+  <label for="void3"><b>The Pallid Mask.</b> Hereafter, during any intimate conversation with another character, you must make a casual reference to death, dying, the afterlife, or the End of All Things—no matter the subject at-hand.</label>
+  <br>
+  <input type="checkbox" id="void4" name="void4" value="Void4">
+  <label for="void4"><b>The Pomegranate Kernel.</b> You take the Condition: Obsessed with the Void. It can never be cleared.</label>
+  <br>
+  <input type="checkbox" id="void5" name="void5" value="Void5">
+  <label for="void5"><b>The Void.</b> Retire your character in a way that shows how they are lost to the Void.</label>
   <br>
 </div>
 
 <div id="advance" class="tabcontent">
-  <h3>Advancement</h3>
-  <p>crowns is the capital of France.</p> 
+  <h3>End of Sesson</h3>
+  <p><i>The first is always marked. At the beginning of a session, mark two more (three total marked).</i></p> 
+  <input type="checkbox" id="sessionEnd1" name="sessionEnd1" value="sessionEnd1" checked disabled>
+  <label for="sessionEnd1">Did the Murder Mavens solve a mystery?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd2" name="sessionEnd2" value="sessionEnd2">
+  <label for="sessionEnd2">Did you secretly undermine the authority of a local official?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd3" name="sessionEnd3" value="sessionEnd3">
+  <label for="sessionEnd3">Did you share your wisdom with a young person?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd4" name="sessionEnd4" value="sessionEnd4">
+  <label for="sessionEnd4">Did you share a memory of a late family member?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd5" name="sessionEnd5" value="sessionEnd5">
+  <label for="sessionEnd5">Did you behave like a woman half your age?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd6" name="sessionEnd6" value="sessionEnd6">
+  <label for="sessionEnd6">Did you dote on someone?</label>
+  <br>
+  <input type="checkbox" id="sessionEnd7" name="sessionEnd7" value="sessionEnd7">
+  <label for="sessionEnd7">Did you show someone that you've “still got it?”</label>
+  <br><br>
+
+  XP
+  <input type="checkbox" id="xp1" name="xp1" value="xp1">
+  <input type="checkbox" id="xp2" name="xp2" value="xp2">
+  <input type="checkbox" id="xp3" name="xp3" value="xp3">
+  <input type="checkbox" id="xp4" name="xp4" value="xp4">
+  <input type="checkbox" id="xp5" name="xp5" value="xp5">
+  
+  <h3>Advancements</h3>
+  <input type="checkbox" id="adv1" name="adv1" value="adv1">
+  <label for="adv1">Increase an ability modifier by 1 (max 3).</label>
+  <br>
+  <input type="checkbox" id="adv2" name="adv2" value="adv2">
+  <label for="adv2">Increase an ability modifier by 1 (max 3).</label>
+  <br>
+  <input type="checkbox" id="adv3" name="adv3" value="adv3">
+  <label for="adv3">Choose an additional Maven move.</label>
+  <br>
+  <input type="checkbox" id="adv4" name="adv4" value="adv4">
+  <label for="adv4">Choose an additional Maven move.</label>
+  <br>
+  <input type="checkbox" id="adv5" name="adv5" value="adv5">
+  <label for="adv5">Unmark all the items in your Cozy Little Place.</label>
+  <br>
 </div>
 
 <div id="mystery" class="tabcontent">
-  <h3>mystery</h3>
-  <p>mystery is the capital of Japan.</p>
+  <h3>Suspects / Witnesses</h3>
+  <textarea class="text-area-mystery" id="text-area-mystery-suspects"></textarea>
+  <h3>Locations</h3>
+  <textarea class="text-area-mystery" id="text-area-mystery-locations"></textarea>
+  <h3>Clues</h3>
+  <textarea class="text-area-mystery" id="text-area-mystery-clues"></textarea>
+  <h3>Void Clues</h3>
+  <textarea class="text-area-mystery" id="text-area-mystery-voidclues"></textarea>
 </div>
     <!-- <script src="index.js"></script> -->
-  <script>
-    
+<script>
+  const storedString = localStorage.getItem("savedCharacter");
+  let objCharacter = JSON.parse(storedString) || {};
+
+  const bSave = document.getElementById("b-save");
+  const inName = document.getElementById("bb-input-char-name");
+  const inStyle = document.getElementById("bb-input-char-style");
+  const inCozyActivity = document.getElementById("bb-input-char-activity");
+
+  const inVitality = document.getElementById("bb-input-char-vitality");
+  const inComposure = document.getElementById("bb-input-char-composure");
+  const inReason = document.getElementById("bb-input-char-reason");
+  const inPresence = document.getElementById("bb-input-char-presence");
+  const inSensitivity = document.getElementById("bb-input-char-sensitivity");
+
+  const inCondition1 = document.getElementById("text-area-character-conditions-1");
+  const inCondition2 = document.getElementById("text-area-character-conditions-2");
+  const inCondition3 = document.getElementById("text-area-character-conditions-3");
+
+  const inCozy = document.getElementById("text-area-character-cozyplace-description");
+  const inCozyItems = document.getElementById("text-area-character-cozyplace-items");
+  
 
 
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
+  inName.value = objCharacter.cName;
+  inStyle.value = objCharacter.cStyle;
+  inCozyActivity.value = objCharacter.cCozyActivity;
+
+  inVitality.value = objCharacter.cVitality;
+  inComposure.value = objCharacter.cComposure;
+  inReason.value = objCharacter.cReason;
+  inPresence.value = objCharacter.cPresence;
+  inSensitivity.value = objCharacter.cSensitivity;
+
+  inCondition1.value = objCharacter.cCondition1;
+  inCondition2.value = objCharacter.cCondition2;
+  inCondition3.value = objCharacter.cCondition3;
+
+  inCozy.value = objCharacter.cCozy;
+  inCozyItems.value = objCharacter.cCozyItems;
+
+  // LISTENERS
+  bSave.addEventListener("click", () => {
+    const cName = inName.value;
+    const cStyle = inStyle.value;
+    const cCozyActivity = inCozyActivity.value;
+
+    const cVitality = inVitality.value;
+    const cComposure = inComposure.value;
+    const cReason = inReason.value;
+    const cPresence = inPresence.value;
+    const cSensitivity = inSensitivity.value;
+
+    const cCondition1 = inCondition1.value;
+    const cCondition2 = inCondition2.value;
+    const cCondition3 = inCondition3.value;
+
+    const cCozy = inCozy.value;
+    const cCozyItems = inCozyItems.value;
+
+    objCharacter = {
+      cName,
+      cStyle,
+      cCozyActivity,
+      cVitality,
+      cComposure,
+      cReason,
+      cPresence,
+      cSensitivity,
+      cCondition1,
+      cCondition2,
+      cCondition3,
+      cCozy,
+      cCozyItems
     }
 
-    document.getElementById("defaultOpen").click();
-  </script>
-  </body>
+    const objCharacterString = JSON.stringify(objCharacter);
+    localStorage.setItem("savedCharacter", objCharacterString);
+    alert("Saved!");
+  });
+
+  
+  // TAB MECHANICS
+  function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+      }
+      
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+  }
+
+  document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+
 </html>
