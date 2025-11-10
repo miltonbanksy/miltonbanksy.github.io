@@ -9,7 +9,8 @@
 </head>
   
 <body>
-    
+  
+
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'character')" id="defaultOpen">Character</button>
   <button class="tablinks" onclick="openCity(event, 'crowns')">Crowns</button>
@@ -20,83 +21,68 @@
 
 
 <div id="character" class="tabcontent">
-  <div class="flex-container">
-    <div class="colunm">
-      <label for="bb-input-char-name" >Name</label>
-      <br>
-      <input id="bb-input-char-name" type="text">
-      <br><br>
+  <div id="frame-name">
+    <label class="label-character" for="bb-input-char-name" >Name</label>
+    <input class="in-character" id="bb-input-char-name" type="text">
+  </div>
+  <br>
 
-      <label for="bb-input-char-style" >Style</label>
-      <br>
-      <textarea id="bb-input-char-style"></textarea>
-      <br><br>
+  <label class="label-character" for="bb-input-char-style" >Style</label>
+  <textarea class="txtarea-character" id="bb-input-char-style"></textarea>
+  <br><br>
 
-      <label for="bb-input-char-activity" >Cozy Activity</label>
-      <br>
-      <textarea id="bb-input-char-activity"></textarea>
-    </div> <!--End of Flex Column 1-->
-    
-    <div class="colunm">
-      <h3>Abilites</h3>
+  <table id="table-conditions">
+    <tr>
+      <td>Condition 1</td><td>Condition 2</td><td>Condition 3</td>
+    </tr>
+    <tr>
+      <td><textarea class="txtarea-character" id="text-area-character-conditions-1"></textarea></td>
+      <td><textarea class="txtarea-character" id="text-area-character-conditions-2"></textarea></td>
+      <td><textarea class="txtarea-character" id="text-area-character-conditions-3"></textarea></td>
+    </tr>
+  </table>
+  <br>
 
-      <table>
-        <tr>
-          <td>Vitality</td>
-          <td><input class="input-short" id="bb-input-char-vitality" type="number"></td>
-        </tr>
-        <tr>
-          <td>Composure</td>
-          <td><input class="input-short" id="bb-input-char-composure" type="number"></td>
-        </tr>
-        <tr>
-          <td>Reason</td>
-          <td><input class="input-short" id="bb-input-char-reason" type="number"></td>
-        </tr>
-        <tr>
-          <td>Presence</td>
-          <td><input class="input-short" id="bb-input-char-presence" type="number"></td>
-        </tr>
-        <tr>
-          <td>Sensitivity</td>
-          <td><input class="input-short" id="bb-input-char-sensitivity" type="number"></td>
-        </tr>
-      </table>
-    </div> <!--End of Flex Column 2-->
-  </div> <!-- End of Flex Container-->
+  
+
+  <table>
+    <tr>
+      <td>Vitality</td>
+      <td><input class="input-short" id="bb-input-char-vitality" type="number"></td>
+    </tr>
+    <tr>
+      <td>Composure</td>
+      <td><input class="input-short" id="bb-input-char-composure" type="number"></td>
+    </tr>
+    <tr>
+      <td>Reason</td>
+      <td><input class="input-short" id="bb-input-char-reason" type="number"></td>
+    </tr>
+    <tr>
+      <td>Presence</td>
+      <td><input class="input-short" id="bb-input-char-presence" type="number"></td>
+    </tr>
+    <tr>
+      <td>Sensitivity</td>
+      <td><input class="input-short" id="bb-input-char-sensitivity" type="number"></td>
+    </tr>
+  </table>
+  <br>
 
 
-  <div class="flex-container">
-    <div class="column">
-      <h3>Conditions</h3>
-      Condition 1
-      <br>
-      <textarea class="text-area-character" id="text-area-character-conditions-1"></textarea>
-      <br>
-      Condition 2
-      <br>
-      <textarea class="text-area-character" id="text-area-character-conditions-2"></textarea>
-      <br>
-      Condition 3
-      <br>
-      <textarea class="text-area-character" id="text-area-character-conditions-3"></textarea>
-      <br>
-    </div>
+    <label class="label-character" for="bb-input-char-activity" >Cozy Activity</label>
+    <textarea class="txtarea-character" id="bb-input-char-activity"></textarea>
+    <br><br>
 
-    <div class="column">
-      <h3>Cozy Little Place</h3>
-      Description
-      <br>
-      <textarea class="text-area-character" id="text-area-character-cozyplace-description"></textarea>
-      <br>
-      Items
-      <br>
-      <textarea class="text-area-character" id="text-area-character-cozyplace-items"></textarea>
-      <br>
-    </div> <!-- End of column-->
-  </div> <!-- End of Flex Container-->
+    <label class="label-character" for="text-area-character-cozyplace-description" >Cozy Place</label>
+    <textarea class="txtarea-character" id="text-area-character-cozyplace-description"></textarea>
+    <br><br>
+
+    <label class="label-character" for="text-area-character-cozyplace-description" >Cozy Place Items</label>
+    <textarea class="txtarea-character" id="text-area-character-cozyplace-items"></textarea>
 
 </div> <!-- End of Character Tab-->
+
 
 <div id="crowns" class="tabcontent">
   <h3>The Crown of the Queen</h3>
@@ -223,6 +209,11 @@
 
   const inCozy = document.getElementById("text-area-character-cozyplace-description");
   const inCozyItems = document.getElementById("text-area-character-cozyplace-items");
+
+  const inSuspects = document.getElementById("text-area-mystery-suspects");
+  const inLocations = document.getElementById("text-area-mystery-locations");
+  const inClues = document.getElementById("text-area-mystery-clues");
+  const inVClues = document.getElementById("text-area-mystery-voidclues");
   
 
 
@@ -243,6 +234,11 @@
   inCozy.value = objCharacter.cCozy;
   inCozyItems.value = objCharacter.cCozyItems;
 
+  inSuspects.value = objCharacter.cSuspects;
+  inLocations.value = objCharacter.cLocations;
+  inClues.value = objCharacter.cClues;
+  inVClues.value = objCharacter.cVClues;
+
   // LISTENERS
   bSave.addEventListener("click", () => {
     const cName = inName.value;
@@ -262,6 +258,11 @@
     const cCozy = inCozy.value;
     const cCozyItems = inCozyItems.value;
 
+    const cSuspects = inSuspects.value;
+    const cLocations = inLocations.value;
+    const cClues = inClues.value;
+    const cVClues = inVClues.value;
+
     objCharacter = {
       cName,
       cStyle,
@@ -275,7 +276,11 @@
       cCondition2,
       cCondition3,
       cCozy,
-      cCozyItems
+      cCozyItems,
+      cSuspects,
+      cLocations,
+      cClues,
+      cVClues
     }
 
     const objCharacterString = JSON.stringify(objCharacter);
