@@ -214,6 +214,11 @@
   const inLocations = document.getElementById("text-area-mystery-locations");
   const inClues = document.getElementById("text-area-mystery-clues");
   const inVClues = document.getElementById("text-area-mystery-voidclues");
+
+  // NEW CHECKBOXES - SESSION END
+  let checkboxStatuses = {};
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
   
 
 
@@ -239,7 +244,37 @@
   inClues.value = objCharacter.cClues;
   inVClues.value = objCharacter.cVClues;
 
+
+  // Restore checkboxes from localStorage if present
+  if (objCharacter.cCheckboxes) {
+    Object.entries(objCharacter.cCheckboxes).forEach(([id, state]) => {
+      const box = document.getElementById(id);
+      if (box) {
+        box.checked = state.checked;
+        box.disabled = state.disabled;
+      }
+    });
+  }
+
+  // FUNCTIONS
+
+  // Update Checkboxes Object
+  function updateCheckboxStatuses() {
+    checkboxes.forEach(checkbox => {
+      checkboxStatuses[checkbox.id] = {
+        checked: checkbox.checked,
+        disabled: checkbox.disabled
+      };
+    });
+    return checkboxStatuses;
+  }
+
   // LISTENERS
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateCheckboxStatuses);
+  });
+
   bSave.addEventListener("click", () => {
     const cName = inName.value;
     const cStyle = inStyle.value;
@@ -263,6 +298,9 @@
     const cClues = inClues.value;
     const cVClues = inVClues.value;
 
+    // New Checkboxes
+    const cCheckboxes = updateCheckboxStatuses();
+
     objCharacter = {
       cName,
       cStyle,
@@ -280,8 +318,11 @@
       cSuspects,
       cLocations,
       cClues,
-      cVClues
+      cVClues,
+      cCheckboxes
     }
+
+    console.log(objCharacter);
 
     const objCharacterString = JSON.stringify(objCharacter);
     localStorage.setItem("savedCharacter", objCharacterString);
@@ -306,6 +347,9 @@
   }
 
   document.getElementById("defaultOpen").click();
+
+  updateCheckboxStatuses();
+
 </script>
 
 </body>
