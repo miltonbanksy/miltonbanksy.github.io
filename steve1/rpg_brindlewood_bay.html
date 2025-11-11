@@ -271,6 +271,11 @@
         </details>
     </details>
 
+    <!--I want to try to dynamically create details / summary here-->
+    <div id="frame-maven-moves">
+
+    </div>
+
     <details>
         <summary>Putting on a Crown</summary>
         <p>When text from those sections is marked during play, the player of the Maven in question must do as the text instructs. This frequently means narrating a very specific type of scene. Players can narrate such scenes whenever they wish, but must do so before the End of Session</p>
@@ -613,6 +618,7 @@
     </details>
     
     <script src="../steve1/names_british.js"></script>
+    <script src="bb_maven_moves.js"></script>
 
     <script>
         
@@ -660,6 +666,14 @@
         const displayBBMovesReminder = document.getElementById("display-bb-moves-reminder");
         const displayBBMovesOccult = document.getElementById("display-bb-moves-occult");
         const displayBBPostRoll5 = document.getElementById("display-bb-post-roll5");
+
+        // TRYING TO CREATE DYNAMIC MAVEN MOVES LIST...
+        Object.keys(MAVEN_MOVES).forEach(key => {
+            const value = MAVEN_MOVES[key];
+            console.log(`${key}: ${value}`);
+        });
+
+
 
         const displayBBMovesSpecialBaracus = document.getElementById("display-bb-moves-special-baracus");
         const displayBBMovesSpecialBrown = document.getElementById("display-bb-moves-special-brown");
@@ -767,9 +781,11 @@
         <br><br>On a 6-, it's not something the Mavens can ever do. <b>You must also mark the Crown of the Void.</b>
         `;
 
+        /*
         const bb_maven_moves_baracus = `
         Once per mystery, if you and/or any number of your fellow Mavens would suffer physical harm, you can describe how that physical harm is just narrowly avoided.
         `;
+        */
 
         const bb_maven_moves_brown = `
         Once per mystery, you can narrate a flashback from the perspective of the unknown killer. Nothing in the flashback is necessarily true, but when you're done, ask the other Mavens to define a Clue based on what you narrated. The Clue cannot conclusively solve the mystery by itself.
@@ -935,7 +951,8 @@
         displayBBMovesOccult.innerHTML = bb_basic_moves_occult;
         displayBBPostRoll5.innerHTML = bb_post_roll;
 
-        displayBBMovesSpecialBaracus.innerHTML = bb_maven_moves_baracus;
+        // displayBBMovesSpecialBaracus.innerHTML = bb_maven_moves_baracus;
+        displayBBMovesSpecialBaracus.innerHTML = `${MAVEN_MOVES.b_a_baracus.name}<br>${MAVEN_MOVES.b_a_baracus.description}`;
         displayBBMovesSpecialBrown.innerHTML = bb_maven_moves_brown;
         displayBBMovesSpecialBrowne.innerHTML = bb_maven_moves_browne;
         displayBBMovesSpecialCadfael.innerHTML = bb_maven_moves_cadfael;
