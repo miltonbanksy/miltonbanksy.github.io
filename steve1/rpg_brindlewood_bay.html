@@ -119,163 +119,12 @@
             <p class="text-frame" id="display-bb-post-roll5"></p>
         </details>
     </details>
-    <details>
+    <details id="maven-moves-top">
         <summary>Moves - Maven</summary>
-        <details>
-            <summary>B. A. Baracus</summary>
-            <div id="display-bb-moves-special-baracus"></div>
-        </details>
-        <details>
-            <summary>Father Brown</summary>
-            <div id="display-bb-moves-special-brown"></div>
-        </details>
-        <details>
-            <summary>Encyclopedia Brown</summary>
-            <div id="display-bb-moves-special-browne"></div>
-        </details>
-        <details>
-            <summary>Cadfael</summary>
-            <div id="display-bb-moves-special-cadfael"></div>
-        </details>
-        <details>
-            <summary>Frank Columbo</summary>
-            <div id="display-bb-moves-special-columbo"></div>
-        </details>
-        <details>
-            <summary>Dale Cooper</summary>
-            <div id="display-bb-moves-special-dalecooper"></div>
-        </details>
-        <details>
-            <summary>Sonny Crocket</summary>
-            <div id="display-bb-moves-special-sonnycrockett"></div>
-        </details>
-        <details>
-            <summary>Frank Dowling</summary>
-            <div id="display-bb-moves-special-frankdowling"></div>
-        </details>
-        <details>
-            <summary>Nancy Drew</summary>
-            <div id="display-bb-moves-special-drew"></div>
-        </details>
-        <details>
-            <summary>Auguste Dupin</summary>
-            <div id="display-bb-moves-special-dupin"></div>
-        </details>
-        <details>
-            <summary>Frank & Joe</summary>
-            <div id="display-bb-moves-special-joe"></div>
-        </details>
-        <details>
-            <summary>Tom Hanson</summary>
-            <div id="display-bb-moves-special-tomhanson"></div>
-        </details>
-        <details>
-            <summary>Milton Hardcastle</summary>
-            <div id="display-bb-moves-special-hardcastle"></div>
-        </details>
-        <details>
-            <summary>Jonathan Hart</summary>
-            <div id="display-bb-moves-special-hart"></div>
-        </details>
-        <details>
-            <summary>Sherlock Holmes</summary>
-            <div id="display-bb-moves-special-holmes"></div>
-        </details>
-        <details>
-            <summary>Michael Knight</summary>
-            <div id="display-bb-moves-special-knight"></div>
-        </details>
-        <details>
-            <summary>Robert Langdon</summary>
-            <div id="display-bb-moves-special-langdon"></div>
-        </details>
-        <details>
-            <summary>Angus MacGyver</summary>
-            <div id="display-bb-moves-special-macgyver"></div>
-        </details>
-        <details>
-            <summary>Thomas Magnum</summary>
-            <div id="display-bb-moves-special-magnum"></div>
-        </details>
-        <details>
-            <summary>Philip Marlowe</summary>
-            <div id="display-bb-moves-special-marlowe"></div>
-        </details>
-        <details>
-            <summary>Jane Marple</summary>
-            <div id="display-bb-moves-special-marple"></div>
-        </details>
-        <details>
-            <summary>Fox Mulder</summary>
-            <div id="display-bb-moves-special-mulder"></div>
-        </details>
-        <details>
-            <summary>Hercule Poirot</summary>
-            <div id="display-bb-moves-special-poirot"></div>
-        </details>
-        <details>
-            <summary>Rick & A.J.</summary>
-            <div id="display-bb-moves-special-rick"></div>
-        </details>
-        <details>
-            <summary>R. Quincy</summary>
-            <div id="display-bb-moves-special-quincy"></div>
-        </details>
-        <details>
-            <summary>Precious Ramotswe</summary>
-            <div id="display-bb-moves-special-ramotswe"></div>
-        </details>
-        <details>
-            <summary>Jim Rockford</summary>
-            <div id="display-bb-moves-special-rockford"></div>
-        </details>
-        <details>
-            <summary>Scarecrow</summary>
-            <div id="display-bb-moves-special-scare"></div>
-        </details>
-        <details>
-            <summary>Colt Seavers</summary>
-            <div id="display-bb-moves-special-seavers"></div>
-        </details>
-        <details>
-            <summary>Gordon Shumway</summary>
-            <div id="display-bb-moves-special-shumway"></div>
-        </details>
-        <details>
-            <summary>Sam Spade</summary>
-            <div id="display-bb-moves-special-spade"></div>
-        </details>
-        <details>
-            <summary>Clarice Starling</summary>
-            <div id="display-bb-moves-special-starling"></div>
-        </details>
-        <details>
-            <summary>Remington Steele</summary>
-            <div id="display-bb-moves-special-steele"></div>
-        </details>
-        <details>
-            <summary>Tintin</summary>
-            <div id="display-bb-moves-special-tintin"></div>
-        </details>
-        <details>
-            <summary>V. I. Warshawski</summary>
-            <div id="display-bb-moves-special-war"></div>
-        </details>
-        <details>
-            <summary>Nero Wolfe</summary>
-            <div id="display-bb-moves-special-wolfe"></div>
-        </details>
-        <details>
-            <summary>Phoenix Wright</summary>
-            <div id="display-bb-moves-special-wright"></div>
-        </details>
+    
+    <!--Details will be created dynamically here-->    
     </details>
-
-    <!--I want to try to dynamically create details / summary here-->
-    <div id="frame-maven-moves">
-
-    </div>
-
+        <div id="frame-maven-moves"></div>
     <details>
         <summary>Putting on a Crown</summary>
         <p>When text from those sections is marked during play, the player of the Maven in question must do as the text instructs. This frequently means narrating a very specific type of scene. Players can narrate such scenes whenever they wish, but must do so before the End of Session</p>
@@ -667,51 +516,24 @@
         const displayBBMovesOccult = document.getElementById("display-bb-moves-occult");
         const displayBBPostRoll5 = document.getElementById("display-bb-post-roll5");
 
-        // TRYING TO CREATE DYNAMIC MAVEN MOVES LIST...
+        const FRAME_MAVEN_MOVES = document.getElementById("frame-maven-moves");
+        const TOP_MAVEN_MOVES = document.getElementById("maven-moves-top");
+        
+        // Dynamically populate the Maven Moves Tree
         Object.keys(MAVEN_MOVES).forEach(key => {
-            const value = MAVEN_MOVES[key];
-            console.log(`${key}: ${value}`);
+            const MAVEN_MOVES_DETAILS = document.createElement('details');
+            // Adding <p> creates paragraph style spacing easily:
+            MAVEN_MOVES_DETAILS.innerHTML = `<p>${MAVEN_MOVES[key].description}`;
+            // Adding a '.name' ensures only one opens at a time:
+            MAVEN_MOVES_DETAILS.name = "maven-notes";
+            const MAVEN_MOVES_SUMMARY = document.createElement("summary");
+            MAVEN_MOVES_SUMMARY.innerHTML = MAVEN_MOVES[key].name;
+            
+            MAVEN_MOVES_DETAILS.appendChild(MAVEN_MOVES_SUMMARY);
+            FRAME_MAVEN_MOVES.appendChild(MAVEN_MOVES_DETAILS);
+            TOP_MAVEN_MOVES.appendChild(FRAME_MAVEN_MOVES);
         });
 
-
-
-        const displayBBMovesSpecialBaracus = document.getElementById("display-bb-moves-special-baracus");
-        const displayBBMovesSpecialBrown = document.getElementById("display-bb-moves-special-brown");
-        const displayBBMovesSpecialBrowne = document.getElementById("display-bb-moves-special-browne");
-        const displayBBMovesSpecialCadfael = document.getElementById("display-bb-moves-special-cadfael");
-        const displayBBMovesSpecialColumbo = document.getElementById("display-bb-moves-special-columbo");
-        const displayBBMovesSpecialDalecooper = document.getElementById("display-bb-moves-special-dalecooper");
-        const displayBBMovesSpecialSonnycrockett = document.getElementById("display-bb-moves-special-sonnycrockett");
-        const displayBBMovesSpecialFrankdowling = document.getElementById("display-bb-moves-special-frankdowling");
-        const displayBBMovesSpecialDrew = document.getElementById("display-bb-moves-special-drew");
-        const displayBBMovesSpecialDupin = document.getElementById("display-bb-moves-special-dupin");
-        const displayBBMovesSpecialJoe = document.getElementById("display-bb-moves-special-joe");
-        const displayBBMovesSpecialTomHanson = document.getElementById("display-bb-moves-special-tomhanson");
-        const displayBBMovesSpecialHardcastle = document.getElementById("display-bb-moves-special-hardcastle");
-        const displayBBMovesSpecialHart = document.getElementById("display-bb-moves-special-hart");
-        const displayBBMovesSpecialHolmes = document.getElementById("display-bb-moves-special-holmes");
-        const displayBBMovesSpecialKnight = document.getElementById("display-bb-moves-special-knight");
-        const displayBBMovesSpecialLangdon = document.getElementById("display-bb-moves-special-langdon");
-        const displayBBMovesSpecialMacgyver = document.getElementById("display-bb-moves-special-macgyver");
-        const displayBBMovesSpecialMagnum = document.getElementById("display-bb-moves-special-magnum");
-        const displayBBMovesSpecialMarlowe = document.getElementById("display-bb-moves-special-marlowe");
-        const displayBBMovesSpecialMarple = document.getElementById("display-bb-moves-special-marple");
-        const displayBBMovesSpecialMulder = document.getElementById("display-bb-moves-special-mulder");
-        const displayBBMovesSpecialPoirot = document.getElementById("display-bb-moves-special-poirot");
-        const displayBBMovesSpecialRick = document.getElementById("display-bb-moves-special-rick");
-        const displayBBMovesSpecialQuincy = document.getElementById("display-bb-moves-special-quincy");
-        const displayBBMovesSpecialRamotswe = document.getElementById("display-bb-moves-special-ramotswe");
-        const displayBBMovesSpecialRockford = document.getElementById("display-bb-moves-special-rockford");
-        const displayBBMovesSpecialScare = document.getElementById("display-bb-moves-special-scare");
-        const displayBBMovesSpecialSeavers = document.getElementById("display-bb-moves-special-seavers");
-        const displayBBMovesSpecialShumway = document.getElementById("display-bb-moves-special-shumway");
-        const displayBBMovesSpecialSpade = document.getElementById("display-bb-moves-special-spade");
-        const displayBBMovesSpecialStarling = document.getElementById("display-bb-moves-special-starling");
-        const displayBBMovesSpecialSteele = document.getElementById("display-bb-moves-special-steele");
-        const displayBBMovesSpecialTintin = document.getElementById("display-bb-moves-special-tintin");
-        const displayBBMovesSpecialWar = document.getElementById("display-bb-moves-special-war");
-        const displayBBMovesSpecialWolfe = document.getElementById("display-bb-moves-special-wolfe");
-        const displayBBMovesSpecialWright = document.getElementById("display-bb-moves-special-wright");
         
         const advantageDisadvantageReminder = "<br><br><span style='color:purple'>Rolling with 'Advantage' or 'Disadvantage' may apply. (Cozy Items, A Helper, Other Situational Factor, etc.)</span>";
         
@@ -781,162 +603,6 @@
         <br><br>On a 6-, it's not something the Mavens can ever do. <b>You must also mark the Crown of the Void.</b>
         `;
 
-        /*
-        const bb_maven_moves_baracus = `
-        Once per mystery, if you and/or any number of your fellow Mavens would suffer physical harm, you can describe how that physical harm is just narrowly avoided.
-        `;
-        */
-
-        const bb_maven_moves_brown = `
-        Once per mystery, you can narrate a flashback from the perspective of the unknown killer. Nothing in the flashback is necessarily true, but when you're done, ask the other Mavens to define a Clue based on what you narrated. The Clue cannot conclusively solve the mystery by itself.
-        `;
-
-        const bb_maven_moves_browne = `
-        Once per mystery, you can introduce a piece of real-world trivia about something in a scene. That trivia is a Clue.
-        `;
-
-        const bb_maven_moves_cadfael = `
-        You are a highly skilled herbalist and have an additional cozy activity: Herbalism. If there is an herbal tincture or decoction that would be helpful in a situation, you can take the time to make it. If you do, add it to your Cozy Little Place.
-        `;
-
-        const bb_maven_moves_columbo = `
-        Something about you causes the elite of society to not take you too seriously. What is it? Once per mystery, when you do the Meddling Move in a place occupied by the rich and famous, you find an additional Clue, even on a miss.
-        `;
-
-        const bb_maven_moves_dalecooper = `
-        Add 1 to your Sensitivity (max 3). At the beginning of each session, the Keeper will give you a Void Clue in the form of a strange, unsettling dream you experience. <b>No two Mavens can have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_sonnycrockett = `
-        You have a very stylish wardrobe—people say “Wow!” whenever they see you around town. Describe your Style in a little more detail and then add Stylish Wardrobe to your Cozy Little Place. When you use it to get an advantage on a die roll, leave it unmarked.
-        `;
-
-        const bb_maven_moves_frankdowling = `
-        You have a strong religious background. Describe it. When you use this move, describe how your faith is helping you resist the Void. Then, unmark every box on The Crown of the Void. You are still Obsessed with the Void if you unmark the Pomegranate Kernel. <b>You may only use this move once.</b>
-        `;
-
-        const bb_maven_moves_drew = `
-        You know that Robin Masterson hasn't written an Amanda Delacourt book in years and that her name is used as a pseudonym by dozens of secret ghost writers because you are one of those secret ghost writers. So long as you keep the secret, the Mavens always get both benefits of the Gold Crown Mysteries Move instead of having to choose. If you ever reveal the secret to anyone, you get a second use of the Gold Crown Mysteries Move during the mystery in which you reveal it, but take the Condition: Marked by the Robin Masterson Network, and you no longer have access to this move. <b>No two Mavens can have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_dupin = `
-        The first time you enter a Location, you can ask the Keeper, “What is about to happen?” They will answer truthfully, though not necessarily completely. If your Reason is 2 or higher, you can also ask, “Why is it about to happen?” The Keeper will answer truthfully, though not necessarily completely.
-        `;
-
-        const bb_maven_moves_joe = `
-        Once per mystery, when you would suffer grave physical harm, describe how you are knocked unconscious instead. Take the Condition: A Little Rattled. You always wake up in the perfect place to continue the investigation.
-        `;
-
-        const bb_maven_moves_tomhanson = `
-        You can easily pass for someone much younger. If you're in a situation or environment where being younger is a benefit, your rolls are made with advantage.
-        `;
-
-        const bb_maven_moves_hardcastle = `
-        You have an additional End of Session question that is always marked: “Did you inflict extrajudicial punishment on a wrongdoer?”
-        `;
-
-        const bb_maven_moves_hart = `
-        You used to live a globetrotting, jet set life, and you still have a touch of glamor about you that will never fade. Add 1 to your Presence (max 3).
-        `;
-
-        const bb_maven_moves_holmes = `
-        The first time you encounter a Suspect, you can declare something about them based solely on their appearance. This information is absolutely true, but it is not a Clue, nor can it conclusively solve the mystery.
-        `;
-
-        const bb_maven_moves_knight = `
-        You have a trusty mode of transportation — an oversized sedan, a motorbike, or an old truck—that has gotten you out of more than one sticky situation. Give it a name and add it to your Cozy Little Place. When you use it to get an advantage on a die roll, leave it unmarked.
-        `;
-
-        const bb_maven_moves_langdon = `
-        Once per mystery, you can change a physical object that is a Clue into a Void Clue by describing secret markings, unusual patterns, or otherwise strange, occult details that are on it. If you have unlocked Layer Three of the Dark Conspiracy, tell the Keeper that the thresholds for each remaining layer are reduced by one Void Clue. No two Mavens can have this move at the same time. <b>This move and the Clarice Starling move cannot be in the same game.</b>
-        `;
-
-        const bb_maven_moves_macgyver = `
-        When you improvise in a situation using whatever is at hand, ask the other players and Keeper to name three objects you find in the environment. So long as you can give a plausible explanation for how these three objects together are helpful in the current situation, you get an automatic 12+ on a single associated die roll. <b>This move can be used once per mystery.</b>
-        `;
-
-        const bb_maven_moves_magnum = `
-        You are a secret personal friend of Robin Masterson, the mysterious author of The Gold Crown Mysteries. You have access to Robin's resources whenever you are outside Brindlewood Bay: her homes, her vehicles, and even her checking account. Additionally, the Mavens always get both benefits of the Gold Crown Mysteries Move instead of having to choose.
-        `;
-
-        const bb_maven_moves_marlowe = `
-        Once per mystery, so long as no other Maven is in the scene, you can do a first person narration of your arrival in a Location or your first encounter with a Suspect. Whatever you narrate is true, but it cannot conclusively solve the mystery. <b>No two Mavens can have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_marple = `
-        During the day, you can enter any place you wish, and move about freely once you're inside so long as you don't do anything actively hostile to any people who might be there.
-        `;
-
-        const bb_maven_moves_mulder = `
-        Someone connected to the Dark Conspiracy is helping you behind the scenes. Tell the Keeper that the thresholds for each layer of the Dark Conspiracy are reduced by 1. Once per mystery, after at least one Void Clue has been encountered, you can have a secret meeting with this informant, who is always shrouded in darkness or otherwise disguised. You need only describe what the scene looks like—the location, the physical environment, how the mysterious person arrives on the scene, etc. The actual conversation happens off-screen. Then, you can declare that a Void Clue encountered during the mystery is now a regular Clue. The informant will only fully reveal themselves during the Void Mystery, at which point you can have normal scenes with them. <b>No two Mavens can have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_poirot = `
-        Increase your Reason by 1 (max 3).
-        `;
-
-        const bb_maven_moves_rick = `
-        You have a sibling who is your polar opposite in terms of fashion sense and personality. Describe them to the Keeper and name them. You can always request a scene with your sibling. You can also call on them for help, in which case you take advantage on any die rolls associated with actions they assist you with. However, that help always comes at a cost.
-        `;
-
-        const bb_maven_moves_quincy = `
-        You have a medical background; describe it. Then add a Medical Bag to your Cozy Little Place. When you use it to get an advantage on a die roll, leave it unmarked.
-        `;
-
-        const bb_maven_moves_ramotswe = `
-        You have two additional cozy activities; pick them from the list on your character sheet or write your own. Additionally, once per mystery, so long as you are engaged in one of your cozy activities, you can trigger the Cozy Move with a resident of Brindlewood Bay who is not a Maven. Finally, during the Cozy Move with another Maven, whichever Maven is doing their cozy activity can stumble on a Clue as normal OR clear another appropriate Condition.
-        `;
-
-        const bb_maven_moves_rockford = `
-        At the beginning of each session, the Keeper will narrate an answering machine message you received. The message is always from the same unknown person, and they will ask you to do some particular task, seemingly unrelated to the mystery. If you complete the task in the same session it was assigned, mark XP. The messages and tasks will get increasingly strange and disturbing the more marks you have on The Crown of the Void. <b>No two Mavens can ever have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_scare = `
-        At the beginning of each session, a stranger presses something into your hand or leaves something in a place where you find it. The Keeper will tell you what it is. It functions as a Clue, but isn't attached to any particular mystery—you can use it in the present mystery or save it for the future.
-        `;
-
-        const bb_maven_moves_seavers = `
-        Once per mystery, you can take a 12+ on a single roll related to a wild or daring physical feat.
-        `;
-
-        const bb_maven_moves_shumway = `
-        You have a feline friend with whom you share a strong bond. This extraordinary kitty can do tricks and follow simple commands. Name your precocious puss and add them to your Cozy Little Place. When you use the cat to get an advantage on a roll, leave it unmarked.
-        `;
-
-        const bb_maven_moves_spade = `
-        Something about you makes you seem like you have a bit of an edge. What is it? During the night, you can enter any place you wish, and move about freely once you're inside so long as you don't do anything actively hostile to any people who might be there.
-        `;
-
-        const bb_maven_moves_starling = `
-        This move has no function until you solve a mystery and put a Suspect behind bars as a result. Thereafter, you can name an imprisoned Suspect your Consultant. Once per mystery, you can go to the prison the Consultant is being held in and ask them about that mystery. This triggers the Meddling Move as it would when questioning any other character, but the Consultant's answers and behavior are affected by your most recent mark on the Crown of the Void:
-        <br><br>• No marks: The Consultant is mocking or insulting.
-        <br><br>• A Shadow in the Garden: The Consultant claims to see malevolent spirits all around you.
-        <br><br>• The Chariot: The Consultant reveals a Void Clue, even on a miss (but no extra effect on a 12+).
-        <br><br>• The Pallid Mask: The Consultant also reveals the name of a character who will be killed if you don't do something to help them.
-        <br><br>• The Pomegranate Kernel: The Consultant will also profess their love for you. If you reciprocate their love, clear Obsessed with the Void and lose access to this move. If you reject their love, take the Condition: Marked by [Name of Consultant] and lose access to this move. The Consultant will eventually escape and come after you.
-        <br><br><b>No two Mavens can have this move at the same time. This move and the Robert Langdon move cannot be in the same game.</b>
-        `;
-
-        const bb_maven_moves_steele = `
-        You're very talented at passing yourself off as someone you are not. If there is a piece of identification or a disguise that would help you with your ruse, you have it. Say what it is and add it to your Cozy Little Place.
-        `;
-
-        const bb_maven_moves_tintin = `
-        You have a canine companion with whom you share a strong bond. This incredible pup can understand what you say with near-perfect comprehension. Name them and add them to your Cozy Little Place. They gain the power of speech once Layer 5 of the Dark Conspiracy is unlocked, but only you can understand them. No two Mavens can have this move at the same time.
-        `;
-
-        const bb_maven_moves_war = `
-        Increase your Vitality by 1 (max 3).
-        `;
-
-        const bb_maven_moves_wolfe = `
-        Your Cozy Little Place is anything but. Add the following to it: Gourmet Pantry, Orchidarium, Full Bar, Private Elevator, House Boy (name him).
-        <br><br><b>No two Mavens can have this move at the same time.</b>
-        `;
-
-        const bb_maven_moves_wright = `
-        Whenever you find a Clue that is an object, you can physically manipulate the object to uncover a further secret about it—a hidden detail, a secret compartment, a scrawled message, etc. This extra detail is added to the Clue; it cannot cause the Clue to conclusively solve the mystery by itself.
-        `;
 
         displayBBMovesDay.innerHTML = bb_basic_moves_day;
         displayBBPostRoll.innerHTML = bb_post_roll;
@@ -951,45 +617,6 @@
         displayBBMovesOccult.innerHTML = bb_basic_moves_occult;
         displayBBPostRoll5.innerHTML = bb_post_roll;
 
-        // displayBBMovesSpecialBaracus.innerHTML = bb_maven_moves_baracus;
-        displayBBMovesSpecialBaracus.innerHTML = `${MAVEN_MOVES.b_a_baracus.name}<br>${MAVEN_MOVES.b_a_baracus.description}`;
-        displayBBMovesSpecialBrown.innerHTML = bb_maven_moves_brown;
-        displayBBMovesSpecialBrowne.innerHTML = bb_maven_moves_browne;
-        displayBBMovesSpecialCadfael.innerHTML = bb_maven_moves_cadfael;
-        displayBBMovesSpecialColumbo.innerHTML = bb_maven_moves_columbo;
-        displayBBMovesSpecialDalecooper.innerHTML = bb_maven_moves_dalecooper;
-        displayBBMovesSpecialSonnycrockett.innerHTML = bb_maven_moves_sonnycrockett;
-        displayBBMovesSpecialFrankdowling.innerHTML = bb_maven_moves_frankdowling;
-        displayBBMovesSpecialDrew.innerHTML = bb_maven_moves_drew;
-        displayBBMovesSpecialDupin.innerHTML = bb_maven_moves_dupin;
-        displayBBMovesSpecialJoe.innerHTML = bb_maven_moves_joe;
-        displayBBMovesSpecialTomHanson.innerHTML = bb_maven_moves_tomhanson;
-        displayBBMovesSpecialHardcastle.innerHTML = bb_maven_moves_hardcastle;
-        displayBBMovesSpecialHart.innerHTML = bb_maven_moves_hart;
-        displayBBMovesSpecialHolmes.innerHTML = bb_maven_moves_holmes;
-        displayBBMovesSpecialKnight.innerHTML = bb_maven_moves_knight;
-        displayBBMovesSpecialLangdon.innerHTML = bb_maven_moves_langdon;
-        displayBBMovesSpecialMacgyver.innerHTML = bb_maven_moves_macgyver;
-        displayBBMovesSpecialMagnum.innerHTML = bb_maven_moves_magnum;
-        displayBBMovesSpecialMarlowe.innerHTML = bb_maven_moves_marlowe;
-        displayBBMovesSpecialMarple.innerHTML = bb_maven_moves_marple;
-        displayBBMovesSpecialMulder.innerHTML = bb_maven_moves_mulder;
-        displayBBMovesSpecialPoirot.innerHTML = bb_maven_moves_poirot;
-        displayBBMovesSpecialRick.innerHTML = bb_maven_moves_rick;
-        displayBBMovesSpecialQuincy.innerHTML = bb_maven_moves_quincy;
-        displayBBMovesSpecialRamotswe.innerHTML = bb_maven_moves_ramotswe;
-        displayBBMovesSpecialRockford.innerHTML = bb_maven_moves_rockford;
-        displayBBMovesSpecialScare.innerHTML = bb_maven_moves_scare;
-        displayBBMovesSpecialSeavers.innerHTML = bb_maven_moves_seavers;
-        displayBBMovesSpecialShumway.innerHTML = bb_maven_moves_shumway;
-        displayBBMovesSpecialSpade.innerHTML = bb_maven_moves_spade;
-        displayBBMovesSpecialStarling.innerHTML = bb_maven_moves_starling;
-        displayBBMovesSpecialSteele.innerHTML = bb_maven_moves_steele;
-        displayBBMovesSpecialTintin.innerHTML = bb_maven_moves_tintin;
-        displayBBMovesSpecialWar.innerHTML = bb_maven_moves_war;
-        displayBBMovesSpecialWolfe.innerHTML = bb_maven_moves_wolfe;
-        displayBBMovesSpecialWright.innerHTML = bb_maven_moves_wright;
-        
     </script>
 </body>
 </html>
