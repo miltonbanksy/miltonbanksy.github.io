@@ -1,9 +1,9 @@
 const lenormandExpanded = [
-    "abacus","altar","angel","apple","apron","arch","armor","axe",
+    "abacus", "air", "ale", "altar", "ambulance", "angel","apple","apron","arch","armor", "arrow", "axe",
     "ball","bandage","bars","bat","beads","bear","bee","bell","birds","blade","blanket","blindfold","blood","blossom","bone","book","boots","bow","bowl","bread","brick","bridge","broom","bruise","bull","butterfly",
     "cage","cake","candle","candy","cane","castle","cat","chain","chalice","chalk","chariot","cherries","chicken","church","cider","clam","clay","cliff","cloth","cloud","clover","club","coal","coffin","coin","compass","cot","crab","cream","cross","crow","crown","crutch","crypyt","cup","cyclops",
     "dance","deer","diamond","dice","dirt","dog","doll","dove","drum","dust",
-    "eclipse","egg","elephant","eye",
+    "eclipse","egg", "electricity", "elephant", "engine", "eye",
     "fairy","falcon","fan","fangs","feast","feather","fire","fish","flag","flame","flesh","flower","fog","fox",
     "gate","gateway","ghost","glass","glasses","globe","glove","glue","goat","gold","grapes","grass",
     "hair","hammer","hare","harp","heart","herbs","hill","home","horn","horse","horseshoe","hourglass",
