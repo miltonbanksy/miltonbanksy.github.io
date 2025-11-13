@@ -101,3 +101,12 @@ body {
 #table-conditions {
   width: 100%;
 }
+
+details[open] > *:not(summary) {
+    margin-left: 2em;
+    /*cursor: pointer;*/
+}
+
+summary {
+    cursor: pointer;
+}

@@ -1,11 +1,55 @@
+const advantageDisadvantageReminder = "<p><span style='color:purple'>Rolling with 'Advantage' or 'Disadvantage' may apply. (e.g. Using an 'Item', having assistance, or other situational modifier, etc.)</span>";
+const noAdvantage = "<p><span style='color:purple'>Theorize cannot be taken with advantage or disadvantage, nor is it subject to the effects of other moves.</span>";
+const bb_post_roll = "<p style='border: 1px solid black; color:red; padding:2px'>After a dice roll, and after an outcome has been narrated, you can choose to make the move: 'Putting on a Crown' and increase your die result by one tier (so, a miss becomes a 7-9, a 7-9 becomes a 10-11, and a 10-11 becomes a 12).";
+const bb_post_theorize = "<p>The success tier can be increased by making the move: 'Putting on a Crown', but only if every Maven does so.";
+
 const BASIC_MOVES = {
-    day: {name: "The Day Move", summary: "<i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve, then roll with an appropriate ability.</i>", notes: "<br><br>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.<br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.<br><br>On a 7-9, the Keeper will tell you how your actions would leave you vulnerable, and you can choose to back down or go through with it. If you go through with it, the Keeper describes what it looks like."},
-    night: {name: "The Night Move", summary: "<i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve. The Keeper will tell you how it is worse than you fear. You can choose to back down or go through with it. If you go through with it, roll with an appropriate ability.</i>", notes: "<br><br>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.<br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.<br><br>On a 7-9, you do what you intended or you hold steady, but there is a complication or cost; the Keeper describes what it looks like."},
-    cozy: {name: "The Cozy Move", summary: "<i>When you have an intimate moment with another Maven while one of you is engaged in your cozy activity, you may each clear an appropriate Condition.</i>", notes: "<br><br>If it's your cozy activity, you can also stumble on a Clue relevant to the active mystery. Tell the Keeper what it is. The Clue cannot conclusively solve the mystery by itself."},
-    meddling: {name: "The Meddling Move", summary: "<i>When you search for a clue, conduct research, or otherwise gather information, describe how you're doing so and roll with an appropriate ability.</i>", notes: "<br><br>On a 12+, you find a clue. The keeper will tell you what it is. You also find a Void Clue OR you learn something about the Dark Conspiracy in Brindlewood Bay (Keeper's choice).<br><br>On a 10-11, you find a clue. The keeper will tell you what it is.<br><br>On a 7-9, you find a clue but there's a complication, either with the clue itself, or a complication you encounter while searching. The Keeper will tell you what the clue and the complication is."},
-    theorize: {name: "The Theorize Move", summary: "<i>When the Mavens have an open, freewheeling discussion about the solution to a mystery once they have gathered a number of Clues equal to at least half the mystery's Complexity (rounded up) - and reach a consensus.</i>", notes: "<br><br>• It doesn't matter who rolls The Theorize Move.<br><br>• Theorize cannot be taken with advantage or disadvantage, nor is it subject to the effects of other moves.<br><br>• Roll plus the number of clues incorporated into the theory or otherwise explained away, minus the mystery's Complexity.<br><br>On a 12+, it's the correct solution. The Keeper will present an opportunity to take down the culprit or otherwise save the day. a person involved in the Dark Conspiracy of Brindlewood Bay also reveals themself to the Mavens.<br><br>On a 10-11, it's the correct solution. the Keeper will present an opportunity to take down the culprit or otherwise save the day.<br><br>On a 7-9, it's the correct solution, but the Keeper will either add an unwelcome complication to the solution itself, or present a complicated or dangerous opportunity to take down the culprit or save the day.<br><br>On a 6-, the solution is incorrect. The Keeper reacts."},
-    reminder: {name: "That Reminds me of... Move", summary: "", notes: ""},
-    occult: {name: "The Occult Move", summary: "", notes: ""}
+    day: {
+        name: "The Day Move", 
+        summary: "<i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve, then roll with an appropriate ability.</i>",
+        advNote: advantageDisadvantageReminder,
+        notes: "<p>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.<br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.<br><br>On a 7-9, the Keeper will tell you how your actions would leave you vulnerable, and you can choose to back down or go through with it. If you go through with it, the Keeper describes what it looks like.",
+        postRoll: bb_post_roll
+    },
+    night: {
+        name: "The Night Move", 
+        summary: "<i>When you do something risky or face something you fear, name what you're afraid will happen if you fail or lose your nerve. The Keeper will tell you how it is worse than you fear. You can choose to back down or go through with it. If you go through with it, roll with an appropriate ability.</i>",
+        advNote: advantageDisadvantageReminder, 
+        notes: "<p>On a 12+, you do what you intended or you hold steady, and the Keeper will tell you some extra benefit or advantage you receive. Describe what it looks like.<br><br>On a 10-11, you do what you intended or you hold steady; describe what it looks like.<br><br>On a 7-9, you do what you intended or you hold steady, but there is a complication or cost; the Keeper describes what it looks like.",
+        postRoll: bb_post_roll
+    },
+    cozy: {
+        name: "The Cozy Move", 
+        summary: "<i>When you have an intimate moment with another Maven while one of you is engaged in your cozy activity, you may each clear an appropriate Condition.</i>", 
+        advNote: "",
+        notes: "<p>If it's your cozy activity, you can also stumble on a Clue relevant to the active mystery. Tell the Keeper what it is. The Clue cannot conclusively solve the mystery by itself."
+    },
+    meddling: {
+        name: "The Meddling Move", 
+        summary: "<i>When you search for a clue, conduct research, or otherwise gather information, describe how you're doing so and roll with an appropriate ability.</i>", 
+        advNote: advantageDisadvantageReminder,
+        notes: "<p>On a 12+, you find a clue. The keeper will tell you what it is. You also find a Void Clue OR you learn something about the Dark Conspiracy in Brindlewood Bay (Keeper's choice).<br><br>On a 10-11, you find a clue. The keeper will tell you what it is.<br><br>On a 7-9, you find a clue but there's a complication, either with the clue itself, or a complication you encounter while searching. The Keeper will tell you what the clue and the complication is.",
+        postRoll: bb_post_roll
+    },
+    theorize: {
+        name: "The Theorize Move", 
+        summary: "<i>When the Mavens have an open, freewheeling discussion about the solution to a mystery once they have gathered a number of Clues equal to at least half the mystery's Complexity (rounded up) - and reach a consensus.</i>", 
+        advNote: noAdvantage,
+        notes: "<p>Roll plus the number of clues incorporated into the theory or otherwise explained away, minus the mystery's Complexity.<br><br>On a 12+, it's the correct solution. The Keeper will present an opportunity to take down the culprit or otherwise save the day. a person involved in the Dark Conspiracy of Brindlewood Bay also reveals themself to the Mavens.<br><br>On a 10-11, it's the correct solution. the Keeper will present an opportunity to take down the culprit or otherwise save the day.<br><br>On a 7-9, it's the correct solution, but the Keeper will either add an unwelcome complication to the solution itself, or present a complicated or dangerous opportunity to take down the culprit or save the day.<br><br>On a 6-, the solution is incorrect. The Keeper reacts.",
+        postRoll: bb_post_theorize
+    },
+    reminder: {
+        name: "That Reminds me of... Move", 
+        summary: "<i>Once per mystery, when any Maven says 'This reminds me of something that happened to Amanda Delacourt!'</i>", 
+        notes: "<br>Work with the other players to describe how something that is happening in the situation reminds the Mavens of an event from one of the Gold Crown Mysteries. At a minimum, you must provide the following information:<br><br>• The name of the Gold Crown Mystery in question (no repeats, please!).<br><br>• The problem or situation Amanda found herself in that is similar to what the Mavens are experiencing.<br><br>• How Amanda eventually overcame the problem or resolved the situation.<br><br>Then, take a 12+ to a single relevant roll OR state a fact about the current situation that the Keeper must incorporate."
+    },
+    occult: {
+        name: "The Occult Move", 
+        summary: "<i>When you engage in an activity related to the supernatural or the occult for the first time, imagine what your actions would look like as a move. Say what triggers the move and roll with Sensitivity.</i>", 
+        advNote: advantageDisadvantageReminder,
+        notes: "<p>The Keeper can require you to have a strong fictional justification for doing so before attempting to trigger this move.<br><br>On a 10+, it works. Work with the Keeper to write the move. It is now a move all Mavens can use for the rest of the game and your roll stands.<br><br>On a 7-9, it works. Work with the Keeper to write the move. It is now a move all Mavens can use for the rest of the game and your roll stands. <b>You must also mark the Crown of the Void.</b><br><br>On a 6-, it's not something the Mavens can ever do. <b>You must also mark the Crown of the Void.</b>",
+        postRoll: bb_post_roll
+    }
 };
 
 const MAVEN_MOVES = {

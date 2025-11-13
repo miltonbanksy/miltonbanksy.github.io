@@ -90,6 +90,8 @@
 <div id="moves" class="tabcontent">
   ...under construction ⚒
   <h3>Moves</h3>
+  <!--Details will be created dynamically here-->
+  <div id="frame-basic-moves"></div>
 </div>
 
 
@@ -196,7 +198,9 @@
   <h3>Void Clues</h3>
   <textarea class="text-area-mystery" id="text-area-mystery-voidclues"></textarea>
 </div>
-    <!-- <script src="index.js"></script> -->
+
+<script src="bb_maven_moves.js"></script>
+
 <script>
   const storedString = localStorage.getItem("savedCharacter");
   let objCharacter = JSON.parse(storedString) || {};
@@ -220,6 +224,25 @@
   const inCozy = document.getElementById("text-area-character-cozyplace-description");
   const inCozyItems = document.getElementById("text-area-character-cozyplace-items");
 
+  // MOVES TAB
+  const FRAME_BASIC_MOVES = document.getElementById("frame-basic-moves");
+
+  // Dynamically populate the Maven Moves Tree
+  Object.keys(BASIC_MOVES).forEach(key => {
+      const BASIC_MOVES_DETAILS = document.createElement('details');
+      // Adding <p> creates paragraph style spacing easily:
+      BASIC_MOVES_DETAILS.innerHTML = `<p>${BASIC_MOVES[key].summary} ${BASIC_MOVES[key].advNote} ${BASIC_MOVES[key].notes} ${BASIC_MOVES[key].postRoll}`;
+      // Adding a '.name' ensures only one opens at a time:
+      BASIC_MOVES_DETAILS.name = "maven-notes";
+      const BASIC_MOVES_SUMMARY = document.createElement("summary");
+      BASIC_MOVES_SUMMARY.innerHTML = BASIC_MOVES[key].name;
+      
+      BASIC_MOVES_DETAILS.appendChild(BASIC_MOVES_SUMMARY);
+      FRAME_BASIC_MOVES.appendChild(BASIC_MOVES_DETAILS);
+      //TOP_MAVEN_MOVES.appendChild(FRAME_MAVEN_MOVES);
+  });
+
+  // MYSTERY NOTES TAB
   const inSuspects = document.getElementById("text-area-mystery-suspects");
   const inLocations = document.getElementById("text-area-mystery-locations");
   const inClues = document.getElementById("text-area-mystery-clues");
