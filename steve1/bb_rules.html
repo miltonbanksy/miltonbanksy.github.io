@@ -18,7 +18,7 @@
     <br><br>
     <details>
         <summary>Keeper Principles</summary>
-        <br>
+        <p>
             <li>Play to find out.</li>
             <li>Make the world realistic.</li>
             <li>Be a fan of the Mavens.</li>
@@ -27,11 +27,11 @@
             <li>Make nighttime dangerous.</li>
             <li>Keep dangerous characters occluded. ('Stalker in the Shadows')</li>
             <li>Present the Void in a matter-of-fact way.</li>
-            <br>
+        </p>
     </details>
     <details>
         <summary>Keeper Reactions (Go hard!)</summary>
-        <br>
+        <p>
             <li>Inflict a condition (Encourage players to come up with appropriate conditions.)</li>
             <li>Separate them (or force them together)</li>
             <li>Threaten or endanger a PC or NPC.</li>
@@ -40,7 +40,7 @@
             <li>Have a Cozy Place item lost, stolen, broken, etc.</li>
             <li>Have an official show up</li>
             <li>"Cut to commercial!" (Once per session, change a failed roll into a success.)</li>
-            <br>
+        </p>
     </details>
     <details>
         <summary>Keeper Tips</summary>
@@ -487,7 +487,7 @@
             const BASIC_MOVES_DETAILS = document.createElement('details');
             // Adding <p> creates paragraph style spacing easily:
             BASIC_MOVES_DETAILS.innerHTML = `<p>${BASIC_MOVES[key].summary} ${BASIC_MOVES[key].advNote} ${BASIC_MOVES[key].notes} ${BASIC_MOVES[key].postRoll}`;
-            // Adding a '.name' ensures only one opens at a time:
+            // Adding the class '.name' ensures only one opens at a time:
             BASIC_MOVES_DETAILS.name = "maven-notes";
             const BASIC_MOVES_SUMMARY = document.createElement("summary");
             BASIC_MOVES_SUMMARY.innerHTML = BASIC_MOVES[key].name;
@@ -504,7 +504,7 @@
             const MAVEN_MOVES_DETAILS = document.createElement('details');
             // Adding <p> creates paragraph style spacing easily:
             MAVEN_MOVES_DETAILS.innerHTML = `<p>${MAVEN_MOVES[key].description}`;
-            // Adding a '.name' ensures only one opens at a time:
+            // Adding the class '.name' ensures only one opens at a time:
             MAVEN_MOVES_DETAILS.name = "maven-notes";
             const MAVEN_MOVES_SUMMARY = document.createElement("summary");
             MAVEN_MOVES_SUMMARY.innerHTML = MAVEN_MOVES[key].name;
