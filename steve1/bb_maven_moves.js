@@ -1,7 +1,7 @@
-const advantageDisadvantageReminder = "<p><span style='color:purple'>Rolling with 'Advantage' or 'Disadvantage' may apply. (e.g. Using an 'Item', having assistance, or other situational modifier, etc.)</span>";
-const noAdvantage = "<p><span style='color:purple'>Theorize cannot be taken with advantage or disadvantage, nor is it subject to the effects of other moves.</span>";
-const bb_post_roll = "<p style='border: 1px solid black; color:red; padding:2px'>After a dice roll, and after an outcome has been narrated, you can choose to make the move: 'Putting on a Crown' and increase your die result by one tier (so, a miss becomes a 7-9, a 7-9 becomes a 10-11, and a 10-11 becomes a 12).";
-const bb_post_theorize = "<p>The success tier can be increased by making the move: 'Putting on a Crown', but only if every Maven does so.";
+const advantageDisadvantageReminder = "<p class='text-purple'>Rolling with 'Advantage' or 'Disadvantage' may apply. (e.g. Using an 'Item', having assistance, or other situational modifier, etc.)";
+const noAdvantage = "<p class='text-purple'>Theorize cannot be taken with advantage or disadvantage, nor is it subject to the effects of other moves.</span>";
+const bb_post_roll = "<p class='boxed-text'>After a dice roll, and after an outcome has been narrated, you can choose to make the move: 'Putting on a Crown' and increase your die result by one tier (so, a miss becomes a 7-9, a 7-9 becomes a 10-11, and a 10-11 becomes a 12).";
+const bb_post_theorize = "<p class='boxed-text'>The success tier can be increased by making the move: 'Putting on a Crown', but only if every Maven does so.";
 
 const BASIC_MOVES = {
     day: {

@@ -74,19 +74,19 @@ body {
 }
 
 #bb-input-char-activity {
-  height: 40px;
+  height: 50px;
 }
 
 #bb-input-char-style {
-  height: 40px;
+  height: 50px;
 }
 
 #bb-input-char-special {
-  height:40px;
+  height:50px;
 }
 
 #text-area-character-cozyplace-description {
-  height: 40px;
+  height: 50px;
 }
 
 #text-area-character-cozyplace-items {
@@ -109,4 +109,12 @@ details[open] > *:not(summary) {
 
 summary {
     cursor: pointer;
+}
+
+.text-purple {
+  color: purple;
+}
+.boxed-text {
+  border: 1px solid black;
+  padding: 4px;
 }
