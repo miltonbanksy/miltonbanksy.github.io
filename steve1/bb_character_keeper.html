@@ -226,7 +226,7 @@
   // MOVES TAB
   const FRAME_BASIC_MOVES = document.getElementById("frame-basic-moves");
 
-  // Dynamically populate the Maven Moves Tree
+  // Dynamically populate the Basic Moves Tree
   Object.keys(BASIC_MOVES).forEach(key => {
       const BASIC_MOVES_DETAILS = document.createElement('details');
       // Adding <p> creates paragraph style spacing easily:
@@ -238,7 +238,6 @@
       
       BASIC_MOVES_DETAILS.appendChild(BASIC_MOVES_SUMMARY);
       FRAME_BASIC_MOVES.appendChild(BASIC_MOVES_DETAILS);
-      //TOP_MAVEN_MOVES.appendChild(FRAME_MAVEN_MOVES);
   });
 
   // MYSTERY NOTES TAB
