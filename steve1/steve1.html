@@ -150,7 +150,7 @@
 
   <div class="flexbox-container">
     <div class="card">
-      <button>Sci-Fi Sparks</button>
+      <button id="btn-sci-fi-sparks">Sci-Fi Sparks</button>
       <p id="display-sci-fi-sparks"></p>
     </div>
   </div>
@@ -661,6 +661,15 @@
       `;
 
       
+    });
+
+    // Sci Fi Card
+    const btnSciFiSparks = document.getElementById("btn-sci-fi-sparks");
+    const displaySciFiSparks = document.getElementById("display-sci-fi-sparks");
+    btnSciFiSparks.addEventListener("click", () => {
+      const sci_fi_descriptor_index = Math.floor(Math.random() * array_scifi_descriptors.length);
+      const sci_fi_descriptor = array_scifi_descriptors[sci_fi_descriptor_index];
+      displaySciFiSparks.innerText = sci_fi_descriptor;
     });
 
     // Tricube Card
