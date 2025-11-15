@@ -6,23 +6,55 @@
   <title>Steve's Page</title>
   <link rel="stylesheet" href="steve1_menu.css">
 </head>
+
 <body>
+  <h1>Steve's Intentionally Minimalistic Homepage</h1>
   <a href='../steve1/steve1.html'>Dice & Sparks</a>
-  <br><br>
+  <p>
+  
+
+  <!--Experimenting with dynamic menu-generation -->
   <details>
     <summary>RPG Games</summary>
-    <details>
-      <summary>Carved from Brindlewood</summary>
-        <a href="bb_rules.html">Brindlewood Bay</a>
-    </details>
+    <div id="section-menu"></div>
   </details>
+  
   
 
 <script>
-    const menu_btn_reading = document.getElementById("menu_btn_reading");
-    menu_btn_reading.addEventListener('click', function() {
-      window.open('../steve_reading.html', '_self');
+  
+  const objRpgFrameworks = {
+    "Carved from Brindlewood": {
+      "Brindlewood Bay": {
+        link: "<a href='bb_rules.html'>Brindlewood Bay</a>"
+      }
+    },
+    "Forged in the Dark": {
+      "Blades in the Dark": {
+        link: "<a href='bitd_rules.html'>Blades in the Dark</a>"
+      }
+    }
+  };
+
+  const sectionMenu = document.getElementById("section-menu");
+
+  Object.keys(objRpgFrameworks).forEach(framework => {
+    const details = document.createElement('details');
+    const summary = document.createElement("summary");
+    summary.innerText = framework;
+    details.appendChild(summary);
+
+    Object.keys(objRpgFrameworks[framework]).forEach(game => {
+      const item = document.createElement("div");
+      item.innerHTML = objRpgFrameworks[framework][game].link;
+      
+      details.appendChild(item);
     });
+
+    sectionMenu.appendChild(details);
+  });
+
+
   </script>
 </body>
 </html>
