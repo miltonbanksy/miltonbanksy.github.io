@@ -7,9 +7,18 @@
         <title>Mythic GM Emulator</title>
         <!-- <link rel="stylesheet" href="style.css"> -->
         <style>
+            html {
+                padding: 10px;
+                font-size: 14px;
+            }
             .fate-check-button {
                 width: 200px;
                 margin: 3px;
+                font-size: 12px;
+            }
+
+            .hide-element {
+                visibility: hidden;
             }
         </style>
     </head>
@@ -20,10 +29,16 @@
     <div id="frame-fate-check-buttons"></div>
     <p></p>
     <p id="display-fate-check-results"></p>
-    <!-- <script src="index.js"></script> -->
+    <p id="display-yes-no-outcome"></p>
+    <p id="display-random-event-details"></p>
+    
+    <script src="mythic_tables.js"></script>
+    
     <script>
         const frameFateCheckButtons = document.getElementById("frame-fate-check-buttons");
         const displayFatecheckResults = document.getElementById("display-fate-check-results");
+        const displayYesNoOutcome = document.getElementById("display-yes-no-outcome");
+        const displayRandomEventDetails = document.getElementById("display-random-event-details");
 
         const fateCheckModifiers = [
             { value: "Certain", modifier: 5 },
@@ -38,10 +53,10 @@
         ];
 
         const fateCheckOutcomes = [
-            { start: -3, end: 4, value: "Exceptional No"},
-            { start: 5, end: 10, value: "Standard No"},
-            { start: 11, end: 17, value: "Standard Yes"},
-            { start: 18, end: 25, value: "Exceptional Yes"}
+            { start: -3, end: 4, value: "Exceptional No", color: "brown"},
+            { start: 5, end: 10, value: "Standard No", color: "red"},
+            { start: 11, end: 17, value: "Standard Yes", color: "green"},
+            { start: 18, end: 25, value: "Exceptional Yes", color: "orange"}
         ]
 
         const eventFocus = [
@@ -76,13 +91,23 @@
             )?.value || "No Result";
         };
 
-        
-        
+        function getOutcomeColor(modifiedSum) {
+            return fateCheckOutcomes.find(color =>
+                modifiedSum >= color.start && modifiedSum <= color.end
+            )?.color || "No result";
+        };
+
         function getRandomEvent(eventDie) {
             return eventFocus.find(event => 
                 eventDie >= event.start && eventDie <= event.end
             )?.value || "No Result";
         };
+
+        function getRandomSparks(table) {
+            let index = Math.floor(Math.random() * table.length);
+            return table[index];
+        };
+
         
         
         /// INITIALIZE
@@ -109,8 +134,11 @@
 
                 const numberOfDice = 2;
                 const dicePool = [];
-                let match = "No Match";
                 let eventOutcome = 0;
+                let action1 = "";
+                let action2 = "";
+                let descriptor1 = "";
+                let descriptor2 = "";
                 
 
                 // Roll the dice...
@@ -122,6 +150,10 @@
                 let sum = getSum(dicePool);
                 let modifiedSum = sum + fatecheckModifierAsNumber;
 
+                // Get the Outcome Color...
+                let outcomeColor = getOutcomeColor(modifiedSum);
+                displayYesNoOutcome.style=`color:${outcomeColor}`;
+
                 // Get the Final Outcome...
                 let outcome = getFateOutcome(modifiedSum);
 
@@ -130,13 +162,17 @@
                 for ( let i=0; i< dicePool.length; i++ ) {
                     for ( let j = i +1; j < dicePool.length; j++ ) {
                         if ( dicePool[i] === dicePool[j]) {
-                            match = "Yes!";
+                            displayRandomEventDetails.classList.remove("hide-element");
                             let eventDie = rolldx(100);
                             eventOutcome = getRandomEvent(eventDie);
-                            console.log(eventDie);
-                            console.log(typeof(eventDie));
+                            
+                            action1 = getRandomSparks(mythicMeaningAction1);
+                            action2 = getRandomSparks(mythicMeaningAction2);
+                            descriptor1 = getRandomSparks(mythicMeaningDescriptor1);
+                            descriptor2 = getRandomSparks(mythicMeaningDescriptor2);
+                            
                         } else {
-                            match = "No.";
+                            displayRandomEventDetails.classList.add("hide-element");
                         }
                     }
                 }
@@ -148,9 +184,17 @@
                 <br>Roll Total: ${sum}
                 <br>Modifier: ${fatecheckModifierAsNumber}
                 <br>Final Result: ${modifiedSum}
-                <br>Outcome: <b>${outcome}</b>
-                <br>Random Event: ${match}
-                <br>Event: ${eventOutcome}
+                `;
+
+                displayYesNoOutcome.innerHTML = `<b>${outcome}</b>`;
+
+                displayRandomEventDetails.innerHTML = `
+                Random Event!
+                <br>${eventOutcome}
+                <br>Action 1: ${action1}
+                <br>Action 2: ${action2}
+                <br>Descriptor 1: ${descriptor1}
+                <br>Descriptor 2: ${descriptor2}
                 `;
             }
         });
