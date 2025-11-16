@@ -37,6 +37,13 @@
             { value: "Impossible", modifier: -5 }
         ];
 
+        const fateCheckOutcomes = [
+            { start: -3, end: 4, value: "Exceptional No"},
+            { start: 5, end: 10, value: "Standard No"},
+            { start: 11, end: 17, value: "Standard Yes"},
+            { start: 18, end: 25, value: "Exceptional Yes"}
+        ]
+
         const eventFocus = [
             { start: 1, end: 5, value: "Remote Event"},
             { start: 6, end: 10, value: "Ambiguous Event"},
@@ -61,6 +68,20 @@
 
         function getSum(numberList) {
             return numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        };
+
+        function getFateOutcome(modifiedSum) {
+            return fateCheckOutcomes.find(outcome => 
+                modifiedSum >= outcome.start && modifiedSum <= outcome.end
+            )?.value || "No Result";
+        };
+
+        
+        
+        function getRandomEvent(eventDie) {
+            return eventFocus.find(event => 
+                eventDie >= event.start && eventDie <= event.end
+            )?.value || "No Result";
         };
         
         
@@ -88,8 +109,12 @@
 
                 const numberOfDice = 2;
                 const dicePool = [];
+                let match = "No Match";
+                let eventOutcome = 0;
+                
 
-                for ( i=0; i<2; i++ ) {
+                // Roll the dice...
+                for ( i=0; i< numberOfDice; i++ ) {
                     let die = rolldx(10);
                     dicePool.push(die);
                 }
@@ -97,12 +122,35 @@
                 let sum = getSum(dicePool);
                 let modifiedSum = sum + fatecheckModifierAsNumber;
 
+                // Get the Final Outcome...
+                let outcome = getFateOutcome(modifiedSum);
+
+
+                // Check for a match on both dice...
+                for ( let i=0; i< dicePool.length; i++ ) {
+                    for ( let j = i +1; j < dicePool.length; j++ ) {
+                        if ( dicePool[i] === dicePool[j]) {
+                            match = "Yes!";
+                            let eventDie = rolldx(100);
+                            eventOutcome = getRandomEvent(eventDie);
+                            console.log(eventDie);
+                            console.log(typeof(eventDie));
+                        } else {
+                            match = "No.";
+                        }
+                    }
+                }
+                
+                // Display the results...
                 displayFatecheckResults.innerHTML = `
                 Likelihood: ${fateCheckLikelihood}
                 <br>Roll Results: ${dicePool}
                 <br>Roll Total: ${sum}
                 <br>Modifier: ${fatecheckModifierAsNumber}
                 <br>Final Result: ${modifiedSum}
+                <br>Outcome: <b>${outcome}</b>
+                <br>Random Event: ${match}
+                <br>Event: ${eventOutcome}
                 `;
             }
         });
