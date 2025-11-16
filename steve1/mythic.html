@@ -29,11 +29,37 @@
     <h1>Mythic GM Emulator</h1>
     <button id="btn-random-event">Random Event!</button>
     <h2>Fate Check (2d10)</h2>
-    <div id="frame-fate-check-buttons"></div>
-    <p></p>
-    <p id="display-fate-check-results"></p>
-    <p id="display-yes-no-outcome"></p>
-    <p id="display-random-event-details"></p>
+    
+    <table>
+        <tr>
+            <td>
+                <div id="frame-fate-check-buttons"></div>
+            </td>
+            <td>
+                <p id="display-fate-check-results"></p>
+                <p id="display-yes-no-outcome"></p>
+                <p id="display-random-event-details"></p>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Spark Tables</h2>
+    <table>
+        <tr>
+            <td>
+                <button class="spark-button" id="btn-spark-locations">Locations</button>
+                <br>
+                <button class="spark-button" id="btn-spark-characters">Characters</button>
+                <br>
+                <button class="spark-button" id="btn-spark-objects">Objects</button>
+            </td>
+            <td>
+                <p id="display-spark"></p>
+            </td>
+        </tr>
+    </table>
+    
+    
     
     <script src="mythic_tables.js"></script>
     
@@ -56,7 +82,7 @@
             { start: 5, end: 10, value: "Standard No", color: "red"},
             { start: 11, end: 17, value: "Standard Yes", color: "green"},
             { start: 18, end: 25, value: "Exceptional Yes", color: "orange"}
-        ]
+        ];
 
         const eventFocus = [
             { start: 1, end: 5, value: "Remote Event"},
@@ -72,6 +98,12 @@
             { start: 81, end: 85, value: "PC Positive"},
             { start: 86, end: 100, value: "Current Context"}
         ];
+
+        const sparkGroups = {
+            Locations: mythicSparksLocations,
+            Characters: mythicSparksCharacters,
+            Objects: mythicSparksObjects
+        };
         
 
 
@@ -126,6 +158,8 @@
         const displayFatecheckResults = document.getElementById("display-fate-check-results");
         const displayYesNoOutcome = document.getElementById("display-yes-no-outcome");
         const displayRandomEventDetails = document.getElementById("display-random-event-details");
+        const sparkButtons = document.querySelectorAll(".spark-button");
+        const displaySpark = document.getElementById("display-spark");
 
         let eventDie = 0;
         let eventOutcome = 0;
@@ -156,6 +190,15 @@
             descriptor1 = getRandomSparks(mythicMeaningDescriptor1);
             descriptor2 = getRandomSparks(mythicMeaningDescriptor2);
             displayRandomEvent();
+        });
+
+        sparkButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                let key = button.textContent.trim();
+                let sparkArray = sparkGroups[key];
+                let spark = getRandomSparks(sparkArray);
+                displaySpark.innerHTML = `${key}<br>${spark}`;
+            });
         });
 
         frameFateCheckButtons.addEventListener("click", (event) => {
@@ -220,8 +263,6 @@
                 displayYesNoOutcome.innerHTML = `<b>${outcome}</b>`;
 
                 displayRandomEvent();
-
-                
             }
         });
 
