@@ -11,10 +11,12 @@
                 padding: 10px;
                 font-size: 14px;
             }
-            .fate-check-button {
+            button {
+                padding: 3px;
                 width: 200px;
                 margin: 3px;
                 font-size: 12px;
+                border-radius: 4px;
             }
 
             .hide-element {
@@ -25,6 +27,7 @@
     
     <body>
     <h1>Mythic GM Emulator</h1>
+    <button id="btn-random-event">Random Event!</button>
     <h2>Fate Check (2d10)</h2>
     <div id="frame-fate-check-buttons"></div>
     <p></p>
@@ -35,11 +38,7 @@
     <script src="mythic_tables.js"></script>
     
     <script>
-        const frameFateCheckButtons = document.getElementById("frame-fate-check-buttons");
-        const displayFatecheckResults = document.getElementById("display-fate-check-results");
-        const displayYesNoOutcome = document.getElementById("display-yes-no-outcome");
-        const displayRandomEventDetails = document.getElementById("display-random-event-details");
-
+        
         const fateCheckModifiers = [
             { value: "Certain", modifier: 5 },
             { value: "Nearly Certain", modifier: 4 },
@@ -108,9 +107,33 @@
             return table[index];
         };
 
+        function displayRandomEvent() {
+            displayRandomEventDetails.innerHTML = `
+            Random Event!
+            <br>${eventOutcome}
+            <br>Verb: ${action1}
+            <br>Noun: ${action2}
+            <br>Adverb: ${descriptor1}
+            <br>Adjective: ${descriptor2}
+            `;
+        };
+
         
         
         /// INITIALIZE
+        const btnRandomEvent = document.getElementById("btn-random-event");
+        const frameFateCheckButtons = document.getElementById("frame-fate-check-buttons");
+        const displayFatecheckResults = document.getElementById("display-fate-check-results");
+        const displayYesNoOutcome = document.getElementById("display-yes-no-outcome");
+        const displayRandomEventDetails = document.getElementById("display-random-event-details");
+
+        let eventDie = 0;
+        let eventOutcome = 0;
+        let action1 = "";
+        let action2 = "";
+        let descriptor1 = "";
+        let descriptor2 = "";
+
         fateCheckModifiers.forEach(mod => {
             const newFateCheckButton = document.createElement("button");
             const lineBreak = document.createElement("br");
@@ -121,9 +144,20 @@
             frameFateCheckButtons.appendChild(lineBreak);
         });
 
-        
+
 
         /// LISTENERS
+        btnRandomEvent.addEventListener("click", () => {
+            displayRandomEventDetails.classList.remove("hide-element");
+            eventDie = rolldx(100);
+            eventOutcome = getRandomEvent(eventDie);
+            action1 = getRandomSparks(mythicMeaningAction1);
+            action2 = getRandomSparks(mythicMeaningAction2);
+            descriptor1 = getRandomSparks(mythicMeaningDescriptor1);
+            descriptor2 = getRandomSparks(mythicMeaningDescriptor2);
+            displayRandomEvent();
+        });
+
         frameFateCheckButtons.addEventListener("click", (event) => {
             // Check if the clicked element is actually a button within the group.
             if (event.target.classList.contains("fate-check-button")) {
@@ -134,11 +168,8 @@
 
                 const numberOfDice = 2;
                 const dicePool = [];
-                let eventOutcome = 0;
-                let action1 = "";
-                let action2 = "";
-                let descriptor1 = "";
-                let descriptor2 = "";
+                
+                
                 
 
                 // Roll the dice...
@@ -163,7 +194,7 @@
                     for ( let j = i +1; j < dicePool.length; j++ ) {
                         if ( dicePool[i] === dicePool[j]) {
                             displayRandomEventDetails.classList.remove("hide-element");
-                            let eventDie = rolldx(100);
+                            eventDie = rolldx(100);
                             eventOutcome = getRandomEvent(eventDie);
                             
                             action1 = getRandomSparks(mythicMeaningAction1);
@@ -188,14 +219,9 @@
 
                 displayYesNoOutcome.innerHTML = `<b>${outcome}</b>`;
 
-                displayRandomEventDetails.innerHTML = `
-                Random Event!
-                <br>${eventOutcome}
-                <br>Action 1: ${action1}
-                <br>Action 2: ${action2}
-                <br>Descriptor 1: ${descriptor1}
-                <br>Descriptor 2: ${descriptor2}
-                `;
+                displayRandomEvent();
+
+                
             }
         });
 
