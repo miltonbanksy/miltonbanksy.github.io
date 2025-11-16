@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mythic GM Emulator</title>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <style>
+            .fate-check-button {
+                width: 200px;
+                margin: 3px;
+            }
+        </style>
+    </head>
+    
+    <body>
+    <h1>Mythic GM Emulator</h1>
+    <h2>Fate Check (2d10)</h2>
+    <div id="frame-fate-check-buttons"></div>
+    <p></p>
+    <p id="display-fate-check-results"></p>
+    <!-- <script src="index.js"></script> -->
+    <script>
+        const frameFateCheckButtons = document.getElementById("frame-fate-check-buttons");
+        const displayFatecheckResults = document.getElementById("display-fate-check-results");
+
+        const fateCheckModifiers = [
+            { value: "Certain", modifier: 5 },
+            { value: "Nearly Certain", modifier: 4 },
+            { value: "Very Likely", modifier: 2 },
+            { value: "Likely", modifier: 1 },
+            { value: "50/50", modifier: 0 },
+            { value: "Unlikely", modifier: -1 },
+            { value: "Very Unlikely", modifier: -2 },
+            { value: "Nearly Impossible", modifier: -4 },
+            { value: "Impossible", modifier: -5 }
+        ];
+
+        const eventFocus = [
+            { start: 1, end: 5, value: "Remote Event"},
+            { start: 6, end: 10, value: "Ambiguous Event"},
+            { start: 11, end: 20, value: "New Character"},
+            { start: 21, end: 40, value: "Character Action"},
+            { start: 41, end: 45, value: "Character Negative"},
+            { start: 46, end: 50, value: "Character Positive"},
+            { start: 51, end: 55, value: "Move Toward a Thread"},
+            { start: 56, end: 65, value: "Move Away From a Thread"},
+            { start: 66, end: 70, value: "Close a Thread"},
+            { start: 71, end: 80, value: "PC Negative"},
+            { start: 81, end: 85, value: "PC Positive"},
+            { start: 86, end: 100, value: "Current Context"}
+        ];
+        
+
+
+        /// FUNCTIONS
+        function rolldx(sides) {
+            return Math.floor(Math.random() * sides ) +1;
+        };
+
+        function getSum(numberList) {
+            return numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        };
+        
+        
+        /// INITIALIZE
+        fateCheckModifiers.forEach(mod => {
+            const newFateCheckButton = document.createElement("button");
+            const lineBreak = document.createElement("br");
+            newFateCheckButton.classList.add("fate-check-button");
+            newFateCheckButton.textContent = mod.value;
+            newFateCheckButton.value = mod.modifier;
+            frameFateCheckButtons.appendChild(newFateCheckButton);
+            frameFateCheckButtons.appendChild(lineBreak);
+        });
+
+        
+
+        /// LISTENERS
+        frameFateCheckButtons.addEventListener("click", (event) => {
+            // Check if the clicked element is actually a button within the group.
+            if (event.target.classList.contains("fate-check-button")) {
+                                
+                const fateCheckLikelihood = event.target.textContent;
+                const fateCheckModifier = event.target.value;
+                const fatecheckModifierAsNumber = Number(fateCheckModifier);
+
+                const numberOfDice = 2;
+                const dicePool = [];
+
+                for ( i=0; i<2; i++ ) {
+                    let die = rolldx(10);
+                    dicePool.push(die);
+                }
+
+                let sum = getSum(dicePool);
+                let modifiedSum = sum + fatecheckModifierAsNumber;
+
+                displayFatecheckResults.innerHTML = `
+                Likelihood: ${fateCheckLikelihood}
+                <br>Roll Results: ${dicePool}
+                <br>Roll Total: ${sum}
+                <br>Modifier: ${fatecheckModifierAsNumber}
+                <br>Final Result: ${modifiedSum}
+                `;
+            }
+        });
+
+    </script>
+  </body>
+</html>
