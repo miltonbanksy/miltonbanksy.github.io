@@ -19,9 +19,23 @@
   <!--Experimenting with dynamic menu-generation -->
   <details>
     <summary>RPG Games</summary>
-    <div id="section-menu"></div>
+    <div id="framework-menu"></div>
   </details>
-  
+  <details>
+    <summary>RPG System Reference Documents</summary>
+    <ul>
+      <li><a href="https://bladesinthedark.com/basics" target="_blank">FitD - Blades in the Dark</a></li>
+      <li><a href="https://in-the-dark.notion.site/game-guide" target="_blank">FitD - In the Dark (Simple Forged in the Dark)</a></li>
+      <li><a href="https://cairnrpg.com/first-edition/cairn-srd/" target="_blank">ItO - Cairn</a></li>
+      <li><a href="https://liminalhorrorrpg.com/srd-one-page/" target="_blank">ItO - Liminal Horror</a></li>
+      <li><a href="https://www.orffenspace.com/cepheus-srd/" target="_blank">Traveller - Cepheus Engine</a></li>
+    </ul>
+  </details>
+
+  <h2>🚲 Lifestyle 🚲</h2>
+    <ul>
+      <li><a href="https://fishy-laser-2db.notion.site/Smoke-Free-2af1ad0e01668094b8d5ea8e050fbfd1">Smoke Free 💚 (Notion Site)</a></li>
+    </ul>
 
 <script>
   
@@ -38,8 +52,14 @@
     }
   };
 
-  const sectionMenu = document.getElementById("section-menu");
+  const objRpgSRDs = {
+    "In the Dark (Simple Forged in the Dark)": { 
+      link: "<a href='https://www.google.com/'>In the Dark (Simple Forged in the Dark)</a>"
+    }
+  }
 
+  const frameworkMenu = document.getElementById("framework-menu");
+  
   Object.keys(objRpgFrameworks).forEach(framework => {
     const details = document.createElement('details');
     const summary = document.createElement("summary");
@@ -52,10 +72,8 @@
       
       details.appendChild(item);
     });
-
-    sectionMenu.appendChild(details);
+    frameworkMenu.appendChild(details);
   });
-
 
   </script>
 </body>
