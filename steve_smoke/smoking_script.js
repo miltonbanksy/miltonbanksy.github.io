@@ -94,8 +94,9 @@ const clickCigPrompts = [
   "\nI recognize the symptoms: I understand that these feelings are normal and temporary. They are a sign that my body is healing and recovering.",
   "\nI am sacrificing nothing. I am freeing myself from addiction.",
   "\nI don't want to smoke a cigarette.",
-  "I don't need to smoke a cigarette.",
-  "I am free to choose not to smoke.",
+  "\nI don't need to smoke a cigarette.",
+  "\nI am free to choose not to smoke.",
+  "\nI am a proud non-smoker."
 ];
 
 function clickCig(){

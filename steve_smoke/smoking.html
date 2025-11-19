@@ -15,21 +15,8 @@
   <header>
     <h1>Smoke Free 💚</h1>
   </header>
-  <img id="img-cig1" src="cig1.png" onclick="clickCig()">
-  <div class="row"><span class="label">Last Recorded Smoke:</span><span id="label_last_log"></span></div>
-<div class="row"><span class="label">Time Since Last Smoke:</span><span id="time_since"></span></div>
-
+  <img class="box-shadow" id="img-cig1" src="motivate.png" onclick="clickCig()">
   <br><br>
-  <button onclick="prompts_start()">I Need Motivation</button>
-  <br><br>
-  <div class="row", id="display_prompts"></div>
-  
-
-  <p></p>
-  <h2>Set Smoke Free</h2>
-  <h3>Set to Now</h3>
-  <button onclick="stamp_time_now()">Set Smoke Free to Now</button>
-  <h3>Set Manually</h3>
   
   <!-- NEW DATE STAMP-->
   <div class="container">
@@ -37,8 +24,9 @@
     <label for="start-datetime">Set Start Date and Time:</label>
     <input type="datetime-local" id="start-datetime">
     <button onclick="setStartTime()">Start Counter & Save</button>
-    <p>Time elapsed since start: <span id="time-elapsed">Loading...</span></p>
+    <p>Smoke Free: <span id="time-elapsed">Loading...</span></p>
 </div>
+<p id="display-smoke-free-day"></p>
   
   <script src="smoking_script.js"></script>
   

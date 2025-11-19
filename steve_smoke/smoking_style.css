@@ -3,8 +3,19 @@
 }
 
 #img-cig1 {
-  width:180px; height:100px;
+  width:160px; height:30px;
+  background-color:aliceblue;
+  border: 1px solid black;
+  border-radius: 10px;}
+
+.box-shadow {
+    box-shadow: 2px 2px 2px black;
 }
+
+#img-cig1:hover {
+  box-shadow: none;
+}
+
 .row {
   display: flex;
   margin-bottom: 0.5em;
