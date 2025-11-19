@@ -5,7 +5,7 @@
 #img-cig1 {
   width:160px; height:30px;
   background-color:aliceblue;
-  border: 1px solid black;
+  border: 1px, solid white;
   border-radius: 10px;}
 
 .box-shadow {
@@ -14,6 +14,8 @@
 
 #img-cig1:hover {
   box-shadow: none;
+  border: 1px solid black;
+  box-shadow: -1px -1px 1px black;
 }
 
 .row {

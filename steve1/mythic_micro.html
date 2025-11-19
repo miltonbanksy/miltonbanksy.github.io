@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mythic GM Emulator (Micro Hack)</title>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <style>
+            html {
+                padding: 10px;
+                font-size: 14px;
+            }
+            button {
+                padding: 3px;
+                width: 140px;
+                margin: 3px;
+                font-size: 12px;
+                border-radius: 4px;
+            }
+
+            .hide-element {
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+    <h1>Mythic GM Emulator (Micro Hack)</h1>
+    <button id="btn-random-event">Random Event!</button>
+    <h2>Fate Check (2d10)</h2>
+    
+    <table>
+        <tr>
+            <td>
+                <div id="frame-fate-check-buttons"></div>
+            </td>
+            <td>
+                <p id="display-fate-check-results"></p>
+                <p id="display-yes-no-outcome"></p>
+                <p id="display-random-event-details"></p>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Spark Tables</h2>
+    <table>
+        <tr>
+            <td>
+                <button class="spark-button" id="btn-spark-locations">Locations</button>
+                <br>
+                <button class="spark-button" id="btn-spark-characters">Characters</button>
+                <br>
+                <button class="spark-button" id="btn-spark-objects">Objects</button>
+            </td>
+            <td>
+                <p id="display-spark"></p>
+            </td>
+        </tr>
+    </table>
+    
+    
+    
+    <script src="mythic_tables.js"></script>
+    
+    <script>
+
+        const fateCheckModifiers = [
+            { value: "Very Likely", target: 2},
+            { value: "Likely", target: 3},
+            { value: "50/50", target: 4},
+            { value: "Unlikely", target: 5},
+            { value: "Very Unlikely", target: 6}
+        ];
+
+        
+        
+
+        const eventFocus = [
+            { start: 1, end: 5, value: "Remote Event"},
+            { start: 6, end: 10, value: "Ambiguous Event"},
+            { start: 11, end: 20, value: "New Character"},
+            { start: 21, end: 40, value: "Character Action"},
+            { start: 41, end: 45, value: "Character Negative"},
+            { start: 46, end: 50, value: "Character Positive"},
+            { start: 51, end: 55, value: "Move Toward a Thread"},
+            { start: 56, end: 65, value: "Move Away From a Thread"},
+            { start: 66, end: 70, value: "Close a Thread"},
+            { start: 71, end: 80, value: "PC Negative"},
+            { start: 81, end: 85, value: "PC Positive"},
+            { start: 86, end: 100, value: "Current Context"}
+        ];
+
+        const sparkGroups = {
+            Locations: mythicSparksLocations,
+            Characters: mythicSparksCharacters,
+            Objects: mythicSparksObjects
+        };
+        
+
+
+        /// FUNCTIONS
+        function rolldx(sides) {
+            return Math.floor(Math.random() * sides ) +1;
+        };
+
+        function getSum(numberList) {
+            return numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        };
+
+        function getFateOutcome(modifiedSum) {
+            return fateCheckOutcomes.find(outcome => 
+                modifiedSum >= outcome.start && modifiedSum <= outcome.end
+            )?.value || "No Result";
+        };
+
+        function getOutcomeColor(modifiedSum) {
+            return fateCheckOutcomes.find(color =>
+                modifiedSum >= color.start && modifiedSum <= color.end
+            )?.color || "No result";
+        };
+
+        function getRandomEvent(eventDie) {
+            return eventFocus.find(event => 
+                eventDie >= event.start && eventDie <= event.end
+            )?.value || "No Result";
+        };
+
+        function getRandomSparks(table) {
+            let index = Math.floor(Math.random() * table.length);
+            return table[index];
+        };
+
+        function displayRandomEvent() {
+            displayRandomEventDetails.innerHTML = `
+            Random Event!
+            <br>${eventOutcome}
+            <br>Verb: ${action1}
+            <br>Noun: ${action2}
+            <br>Adverb: ${descriptor1}
+            <br>Adjective: ${descriptor2}
+            `;
+        };
+
+        
+        
+        /// INITIALIZE
+        const btnRandomEvent = document.getElementById("btn-random-event");
+        const frameFateCheckButtons = document.getElementById("frame-fate-check-buttons");
+        const displayFatecheckResults = document.getElementById("display-fate-check-results");
+        const displayYesNoOutcome = document.getElementById("display-yes-no-outcome");
+        const displayRandomEventDetails = document.getElementById("display-random-event-details");
+        const sparkButtons = document.querySelectorAll(".spark-button");
+        const displaySpark = document.getElementById("display-spark");
+
+        let eventDie = 0;
+        let eventOutcome = 0;
+        let action1 = "";
+        let action2 = "";
+        let descriptor1 = "";
+        let descriptor2 = "";
+
+        fateCheckModifiers.forEach(mod => {
+            const newFateCheckButton = document.createElement("button");
+            const lineBreak = document.createElement("br");
+            newFateCheckButton.classList.add("fate-check-button");
+            newFateCheckButton.textContent = mod.value;
+            newFateCheckButton.value = mod.modifier;
+            frameFateCheckButtons.appendChild(newFateCheckButton);
+            frameFateCheckButtons.appendChild(lineBreak);
+        });
+
+
+
+        /// LISTENERS
+        btnRandomEvent.addEventListener("click", () => {
+            displayRandomEventDetails.classList.remove("hide-element");
+            eventDie = rolldx(100);
+            eventOutcome = getRandomEvent(eventDie);
+            action1 = getRandomSparks(mythicMeaningAction1);
+            action2 = getRandomSparks(mythicMeaningAction2);
+            descriptor1 = getRandomSparks(mythicMeaningDescriptor1);
+            descriptor2 = getRandomSparks(mythicMeaningDescriptor2);
+            displayRandomEvent();
+        });
+
+        sparkButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                let key = button.textContent.trim();
+                let sparkArray = sparkGroups[key];
+                let spark = getRandomSparks(sparkArray);
+                displaySpark.innerHTML = `${key}<br>${spark}`;
+            });
+        });
+
+        frameFateCheckButtons.addEventListener("click", (event) => {
+            // Check if the clicked element is actually a button within the group.
+            if (event.target.classList.contains("fate-check-button")) {
+                                
+                const fateCheckLikelihood = event.target.textContent;
+                const fateCheckModifier = event.target.value;
+                const fatecheckModifierAsNumber = Number(fateCheckModifier);
+
+                const numberOfDice = 2;
+                const dicePool = [];
+                
+                
+                
+
+                // Roll the dice...
+                for ( i=0; i< numberOfDice; i++ ) {
+                    let die = rolldx(6);
+                    dicePool.push(die);
+                }
+
+                let sum = getSum(dicePool);
+                let modifiedSum = sum + fatecheckModifierAsNumber;
+
+                // Get the Outcome Color...
+                let outcomeColor = getOutcomeColor(modifiedSum);
+                displayYesNoOutcome.style=`color:${outcomeColor}`;
+
+                // Get the Final Outcome...
+                let outcome = getFateOutcome(modifiedSum);
+
+
+                // Check for a match on both dice...
+                for ( let i=0; i< dicePool.length; i++ ) {
+                    for ( let j = i +1; j < dicePool.length; j++ ) {
+                        if ( dicePool[i] === dicePool[j]) {
+                            displayRandomEventDetails.classList.remove("hide-element");
+                            eventDie = rolldx(100);
+                            eventOutcome = getRandomEvent(eventDie);
+                            
+                            action1 = getRandomSparks(mythicMeaningAction1);
+                            action2 = getRandomSparks(mythicMeaningAction2);
+                            descriptor1 = getRandomSparks(mythicMeaningDescriptor1);
+                            descriptor2 = getRandomSparks(mythicMeaningDescriptor2);
+                            
+                        } else {
+                            displayRandomEventDetails.classList.add("hide-element");
+                        }
+                    }
+                }
+                
+                // Display the results...
+                displayFatecheckResults.innerHTML = `
+                Likelihood: ${fateCheckLikelihood}
+                <br>Roll Results: ${dicePool}
+                <br>Roll Total: ${sum}
+                <br>Modifier: ${fatecheckModifierAsNumber}
+                <br>Final Result: ${modifiedSum}
+                `;
+
+                displayYesNoOutcome.innerHTML = `<b>${outcome}</b>`;
+
+                displayRandomEvent();
+            }
+        });
+
+    </script>
+  </body>
+</html>
