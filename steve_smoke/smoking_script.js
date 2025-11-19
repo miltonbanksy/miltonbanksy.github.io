@@ -1,5 +1,4 @@
-const STORAGE_KEY = "lastSmokeTime";
-let timerInterval = null;
+
 
 const prompts = [
   "Smokers have no problem in seeing that heroin will do absolutely nothing for them and that they neither need nor want it.\n\nYou don’t have to keep convincing yourself that heroin will do absolutely nothing for you.\n\nSo why do you think heroin addicts have this great desire to inject themselves with the drug?\n\nDo you envy them?\n\nOr do you thank your lucky stars that you’re not going through the same hell as them?\n\nIf you could help them, wouldn’t you tell them to stop?\n\nWhy do you think they can’t see their predicament in the same way as you?\n\nCould it be because their perspective has been distorted by the drug?\n\nNow consider this: non smokers regard you and your predicament in exactly the same way.\n\nIt’s clear to them that there is no pleasure and that smoking leaves you feeling more insecure, unrelaxed and distracted.\n\nTheir perception is not distorted by any drug.",
@@ -90,28 +89,76 @@ function prompts_start() {
 }
 
 const clickCigPrompts = [
-  "I understand that nicotine is an addictive drug.",
-  "Nicotine withdrawal causes the stress and anxiety.",
-  "I don't want to smoke a cigarette.",
+  "I don't want a cigarette. I don't need a cigarete. I just need to change my task or environment for a few minutes.",
+  "\nJust one cigarette will effectively put me back to square 'ONE' on my healing journey. The moment I light a cigarette, I will feel a rush of the drug, which will take away these uncomfortable feelings (for a few minutes). But, then, I either stay a smoker, risking a health explosion, or start the long, hard healing process again from step one. It's my choice.",
+  "\nI recognize the symptoms: I understand that these feelings are normal and temporary. They are a sign that my body is healing and recovering.",
+  "\nI am sacrificing nothing. I am freeing myself from addiction.",
+  "\nI don't want to smoke a cigarette.",
   "I don't need to smoke a cigarette.",
   "I am free to choose not to smoke.",
-  "I don't like the smell of smoke.",
-  "The taste is vile.",
-  "I can't stand coughing.",
-  "I don't smoke.",
-  "I am certain that smoking does nothing for me.",
-  "Smoking doesn't provide me with any pleasure or support.",
-  "I understand that I am not giving up anything.",
-  "I understand that no smoker has every enjoyed smoking.",
-  "I understand that willpower won't help me to quit - if anything it will make it harder.",
-  "I understand that my addiction to nicotine is all to do with the drug and nothing to do with my personality.",
-  "I understand that there is no need to avoid the triggers when I have no desire to smoke."
 ];
 
 function clickCig(){
   alert(clickCigPrompts.join("\n"))
 }
 
+let startTimeStamp;
+    let timerInterval;
+    const STORAGE_KEY = 'startTimeStamp';
 
-// When page loads...
-window.addEventListener("load", load_last_log); // 'load' waits for everything to load first.
+    // Function called when the page first loads
+    window.onload = function() {
+        const storedStartTime = localStorage.getItem(STORAGE_KEY);
+        if (storedStartTime) {
+            // If a timestamp exists in localStorage, use it immediately
+            startTimeStamp = parseInt(storedStartTime, 10);
+            // Start the counter as soon as the page loads
+            timerInterval = setInterval(updateElapsedTime, 1000); 
+        } else {
+            document.getElementById('time-elapsed').textContent = "No start time set yet.";
+        }
+    };
+
+    function setStartTime() {
+        const startDatetimeInput = document.getElementById('start-datetime').value;
+        const startDate = new Date(startDatetimeInput); 
+
+        if (isNaN(startDate.getTime())) {
+            alert("Invalid date/time entered. Please use a valid format.");
+            return;
+        }
+
+        startTimeStamp = startDate.getTime(); 
+        // Save the new timestamp to localStorage
+        localStorage.setItem(STORAGE_KEY, startTimeStamp.toString());
+
+        // Stop any existing interval before starting a new one
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
+        // Start the new counter
+        timerInterval = setInterval(updateElapsedTime, 1000); 
+    }
+
+    function updateElapsedTime() {
+        // Check if startTimeStamp is set before trying to calculate
+        if (!startTimeStamp) return;
+
+        const currentTimeStamp = Date.now();
+        let diff = currentTimeStamp - startTimeStamp;
+
+        if (diff < 0) {
+            document.getElementById('time-elapsed').textContent = "Future time selected. Waiting for time to pass...";
+            return;
+        }
+
+        // Convert the difference to days, hours, minutes, and seconds.
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / (1000 * 60)) % 60;
+        const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        // Display the formatted elapsed time.
+        document.getElementById('time-elapsed').textContent = 
+            `${days} day(s), ${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)`;
+    }
