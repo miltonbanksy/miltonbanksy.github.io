@@ -22,13 +22,17 @@
             .hide-element {
                 visibility: hidden;
             }
+
+            table tr td {
+                vertical-align: text-top;
+            }
         </style>
     </head>
     
     <body>
     <h1>Mythic GM Emulator (Micro Hack)</h1>
     <button id="btn-random-event">Random Event!</button>
-    <h2>Fate Check (2d10)</h2>
+    <h2>Fate Check</h2>
     
     <table>
         <tr>
@@ -65,6 +69,7 @@
     
     <script>
 
+        /*
         const fateCheckModifiers = [
             { value: "Very Likely", target: 2},
             { value: "Likely", target: 3},
@@ -72,9 +77,36 @@
             { value: "Unlikely", target: 5},
             { value: "Very Unlikely", target: 6}
         ];
+        */
+        const fateCheckModifiers = [
+                { value: "Very Likely", modifier: 2},
+                { value: "Likely", modifier: 1},
+                { value: "50/50", modifier: 0},
+                { value: "Unlikely", modifier: -1},
+                { value: "Very Unlikely", modifier: -2}
+            ];
+
+        /*
+        const fateCheckModifiers = [
+            { value: "Certain", modifier: 5 },
+            { value: "Nearly Certain", modifier: 4 },
+            { value: "Very Likely", modifier: 2 },
+            { value: "Likely", modifier: 1 },
+            { value: "50/50", modifier: 0 },
+            { value: "Unlikely", modifier: -1 },
+            { value: "Very Unlikely", modifier: -2 },
+            { value: "Nearly Impossible", modifier: -4 },
+            { value: "Impossible", modifier: -5 }
+        ];
+        */
 
         
-        
+        const fateCheckOutcomes = [
+            { start: -2, end: 1, value: "Exceptional No", color: "brown"},
+            { start: 2, end: 3, value: "Standard No", color: "red"},
+            { start: 4, end: 5, value: "Standard Yes", color: "green"},
+            { start: 6, end: 8, value: "Exceptional Yes", color: "orange"}
+        ];
 
         const eventFocus = [
             { start: 1, end: 5, value: "Remote Event"},
@@ -104,6 +136,7 @@
             return Math.floor(Math.random() * sides ) +1;
         };
 
+        // Not using this with the Micro Hack.
         function getSum(numberList) {
             return numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
         };
@@ -213,7 +246,7 @@
                     dicePool.push(die);
                 }
 
-                let sum = getSum(dicePool);
+                let sum = dicePool[0];
                 let modifiedSum = sum + fatecheckModifierAsNumber;
 
                 // Get the Outcome Color...
