@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Editor</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+    <h1>Create & Edit Lists</h1>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                Input...<br>
+                <textarea style="width: 90%;" id="input-text-to-edit" placeholder="Enter text here..."></textarea>
+            </td>
+            <td>
+                Output...<br>
+                <textarea style="width: 90%;" id="output-text" placeholder=""></textarea>
+            </td>
+        </tr>
+    </table>
+    
+    <br>
+    <button id="btn-remove-numbers">Remove Numbers</button>
+    <button id="btn-remove-punctuation">Remove Punctuation</button>
+    <br><br>
+    <div>Remove Numbers, Colons, & Extra White Space</div>
+    <button id="btn-remove-numbers-colons-spaces">Clean up!</button>
+    <br><br>
+    <div>Convert list to array (Make sure each item is on a new line!)</div><button id="btn-convert-to-array-new-line-items">Convert!</button>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        const inputTextToEdit = document.getElementById("input-text-to-edit");
+        const outputText = document.getElementById("output-text");
+        const btnRemoveNumbers = document.getElementById("btn-remove-numbers");
+        const btnRemovePunctuation = document.getElementById("btn-remove-punctuation");
+        const btnRemoveNumbersColonsSpaces = document.getElementById("btn-remove-numbers-colons-spaces");
+        const btnConvertToArrayNewLineItems = document.getElementById("btn-convert-to-array-new-line-items");
+        
+        // LISTENERS
+        btnRemoveNumbers.addEventListener("click", () => {
+            const originalString = inputTextToEdit.value; 
+            const originalString2 = removeNumbersFromString(originalString);
+            outputText.value = originalString2;
+        });
+
+        btnRemovePunctuation.addEventListener("click", () => {
+            const originalString = inputTextToEdit.value; 
+            const originalString2 = removePunctuationFromString(originalString);
+            outputText.value = originalString2;
+        });
+
+        btnRemoveNumbersColonsSpaces.addEventListener('click', () => {
+            const originalString = inputTextToEdit.value; 
+            const originalString2 = removeNumbersColonsSpaces(originalString);
+            outputText.value = originalString2;
+        });
+
+        btnConvertToArrayNewLineItems.addEventListener('click', () => {
+            const originalString = inputTextToEdit.value; 
+            const array = originalString
+                .split(/\r?\n/)
+                .map(item => item.trim())
+                .filter(item => item.length > 0 );
+
+            const result = JSON.stringify(array, null, 2);
+            outputText.value = result;
+        });
+
+        // HELPER FUNCTIONS
+        function removeNumbersFromString(str) {
+            return str.replace(/\d/g, '');
+        };
+
+        function removePunctuationFromString(str) {
+            return str.replace(/[^\w\s+]/g, '').trim();
+        }
+
+        function removeNumbersColonsSpaces(str) {
+            let cleanedString = str.replace(/[0-9:]/g, '');
+            
+            // Replace multiple spaces with a single space and trim leading/trailing spaces
+            cleanedString = cleanedString.replace(/\s+/g, ' ').trim(); 
+
+            return cleanedString;
+        };
+
+        function convertToArrayNewLineItems(str) {
+            const createdArray = str.split(',').map(item => item.trim());
+            return createdArray;
+        }
+    </script>
+</body>
+</html>
