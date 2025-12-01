@@ -69,38 +69,14 @@
     
     <script>
 
-        /*
         const fateCheckModifiers = [
-            { value: "Very Likely", target: 2},
-            { value: "Likely", target: 3},
-            { value: "50/50", target: 4},
-            { value: "Unlikely", target: 5},
-            { value: "Very Unlikely", target: 6}
+            { value: "Very Likely", modifier: 2},
+            { value: "Likely", modifier: 1},
+            { value: "50/50", modifier: 0},
+            { value: "Unlikely", modifier: -1},
+            { value: "Very Unlikely", modifier: -2}
         ];
-        */
-        const fateCheckModifiers = [
-                { value: "Very Likely", modifier: 2},
-                { value: "Likely", modifier: 1},
-                { value: "50/50", modifier: 0},
-                { value: "Unlikely", modifier: -1},
-                { value: "Very Unlikely", modifier: -2}
-            ];
 
-        /*
-        const fateCheckModifiers = [
-            { value: "Certain", modifier: 5 },
-            { value: "Nearly Certain", modifier: 4 },
-            { value: "Very Likely", modifier: 2 },
-            { value: "Likely", modifier: 1 },
-            { value: "50/50", modifier: 0 },
-            { value: "Unlikely", modifier: -1 },
-            { value: "Very Unlikely", modifier: -2 },
-            { value: "Nearly Impossible", modifier: -4 },
-            { value: "Impossible", modifier: -5 }
-        ];
-        */
-
-        
         const fateCheckOutcomes = [
             { start: -2, end: 1, value: "Exceptional No", color: "brown"},
             { start: 2, end: 3, value: "Standard No", color: "red"},
