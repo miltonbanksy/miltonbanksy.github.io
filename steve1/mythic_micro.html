@@ -11,6 +11,26 @@
                 padding: 10px;
                 font-size: 14px;
             }
+            .container {
+                display: flex;
+                width: 100%;
+                height: 180px; /* default: height: 100vh;*/
+            }
+
+            .column {
+                flex: 1; /* Each column takes equal space */
+                padding: 20px;
+                box-sizing: border-box; /* Include padding in width */
+            }
+            .column_left {
+                background-color: yellow;
+            }
+
+            .column_right {
+                background-color:lightgray;
+            }
+            
+
             button {
                 padding: 3px;
                 width: 140px;
@@ -31,15 +51,17 @@
     
     <body>
     <h1>Mythic GM Emulator (Micro Hack)</h1>
+    <!--
     <table>
         <tr>
             <td><button id="btn-random-event">Random Event!</button></td>
             <td><p id="display-random-event-details"></p></td>
         </tr>
     </table>
+-->
     
     <h2>Fate Check</h2>
-    
+    <!--
     <table>
         <tr>
             <td>
@@ -52,6 +74,7 @@
             </td>
         </tr>
     </table>
+-->
 
     <h2>Spark Tables</h2>
     <table>
@@ -69,7 +92,24 @@
         </tr>
     </table>
     
-    
+    <!-- Experimenting with Flexbox -->
+    <div class="container">
+        <div class="column column_left">
+            <button id="btn-random-event">Random Event!</button>
+        </div>
+        <div class="column column_right">
+            <p id="display-random-event-details"></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="column column_left">
+            <div id="frame-fate-check-buttons"></div>
+        </div>
+        <div class="column column_right">
+            <p id="display-fate-check-results"></p>
+            <p id="display-yes-no-outcome"></p>
+        </div>
+    </div>
     
     <script src="mythic_tables.js"></script>
     
@@ -148,7 +188,6 @@
 
         function displayRandomEvent() {
             displayRandomEventDetails.innerHTML = `
-            Random Event!
             <br>${eventOutcome}
             <br>Verb: ${action1}
             <br>Noun: ${action2}
@@ -261,7 +300,7 @@
                 // Display the results...
                 displayFatecheckResults.innerHTML = `
                 Likelihood: ${fateCheckLikelihood}
-                <br>Roll Results: ${dicePool}
+                <br>Roll Results: ${dicePool} = ${sum}
                 <br>Roll Total: ${sum}
                 <br>Modifier: ${fatecheckModifierAsNumber}
                 <br>Final Result: ${modifiedSum}
