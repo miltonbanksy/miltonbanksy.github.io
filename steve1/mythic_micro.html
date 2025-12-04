@@ -14,20 +14,24 @@
             .container {
                 display: flex;
                 width: 100%;
-                height: 180px; /* default: height: 100vh;*/
+                /*height: 180px; /* default: height: 100vh;*/
             }
 
             .column {
                 flex: 1; /* Each column takes equal space */
-                padding: 20px;
-                box-sizing: border-box; /* Include padding in width */
+                padding: 10px;
+                margin: 10px;
+                /*box-sizing: border-box; /* Include padding in width */
+                border-radius: 10px;
+                border: 1px, solid, black;
+                box-shadow: 1px 1px 1px;
             }
             .column_left {
-                background-color: yellow;
+                background-color: plum;
             }
 
             .column_right {
-                background-color:lightgray;
+                background-color:rgb(221, 220, 160);
             }
             
 
@@ -51,30 +55,27 @@
     
     <body>
     <h1>Mythic GM Emulator (Micro Hack)</h1>
-    <!--
-    <table>
-        <tr>
-            <td><button id="btn-random-event">Random Event!</button></td>
-            <td><p id="display-random-event-details"></p></td>
-        </tr>
-    </table>
--->
     
+    <!-- Experimenting with Flexbox -->
     <h2>Fate Check</h2>
-    <!--
-    <table>
-        <tr>
-            <td>
-                <div id="frame-fate-check-buttons"></div>
-            </td>
-            <td>
-                <p id="display-fate-check-results"></p>
-                <p id="display-yes-no-outcome"></p>
-                
-            </td>
-        </tr>
-    </table>
--->
+    <div class="container">
+        <div class="column column_left">
+            <div id="frame-fate-check-buttons"></div>
+        </div>
+        <div class="column column_right">
+            <p id="display-fate-check-results"></p>
+            <p id="display-yes-no-outcome"></p>
+        </div>
+    </div>
+    <h2>Random Event</h2>
+    <div class="container">
+        <div class="column column_left">
+            <button id="btn-random-event">Random Event!</button>
+        </div>
+        <div class="column column_right">
+            <p id="display-random-event-details"></p>
+        </div>
+    </div>
 
     <h2>Spark Tables</h2>
     <table>
@@ -92,24 +93,7 @@
         </tr>
     </table>
     
-    <!-- Experimenting with Flexbox -->
-    <div class="container">
-        <div class="column column_left">
-            <button id="btn-random-event">Random Event!</button>
-        </div>
-        <div class="column column_right">
-            <p id="display-random-event-details"></p>
-        </div>
-    </div>
-    <div class="container">
-        <div class="column column_left">
-            <div id="frame-fate-check-buttons"></div>
-        </div>
-        <div class="column column_right">
-            <p id="display-fate-check-results"></p>
-            <p id="display-yes-no-outcome"></p>
-        </div>
-    </div>
+    
     
     <script src="mythic_tables.js"></script>
     
