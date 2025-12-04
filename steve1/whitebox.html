@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Box</title>
+</head>
+<body>
+    <h1>White Box</h1>
+    <h2>Treasure</h2>
+    <p>A monster guards an amount of treasure equal to 1-4 times its XP value in gold pieces. Wandering monsters never carry treasure with them.</p>
+    <p>Enter the monster's XP:</p>
+    <label for="input-monster-xp"></label>
+    <input id="input-monster-xp" type="text">
+    <button id="btn-calculate-treasure">Calculate Treasure</button>
+    <p id="display-treasure"></p>
+    <h3>Treasure Trade Outs</h3>
+    <p>In addition to coins, treasures contain gems, jewelry, and magical items. Treasures should be interesting—an endless series of “another treasure worth 100 gp in total” is a sure-fire recipe for boring your players.</p>
+    <p>For every 5,000 gp in value, there is a 10% chance of trading out 5,000 gp for an item on either the Major Gem/Jewelry or Major Magic Item table.</p>
+    <button id="btn-trade-out-5000">Attempt to Trade out 5000 gp (1 try)</button>
+    <p id="display-trade-out"></p>
+
+
+    <script>
+        const inputMonsterXp = document.getElementById("input-monster-xp");
+        const btnCalculateTreasure = document.getElementById("btn-calculate-treasure");
+        const displayTreasure = document.getElementById('display-treasure');
+        const btnTradeOut5000 = document.getElementById('btn-trade-out-5000');
+        const displayTradeOut = document.getElementById('display-trade-out');
+        
+        /// LISTENERS
+        btnCalculateTreasure.addEventListener('click', () => {
+            let treasure_value = 0;
+            let percentage_copper = 0;
+            let percentage_silver = 0;
+            let percentage_gold = 0;
+            let copper_pieces = 0;
+            let silver_pieces = 0;
+            let gold_pieces = 0;
+            let inputXp = inputMonsterXp.value;
+            let inputXpAsInteger = Number(inputXp);
+            let die_roll = roll1dx(6);
+            
+            if ( die_roll == 1 ) {
+                treasure_value = inputXpAsInteger * 1;
+                percentage_copper = 50;
+                percentage_silver = 30;
+                percentage_gold = 20;
+            } else if ( die_roll == 2 || die_roll == 3 ) {
+                treasure_value = inputXpAsInteger * 2;
+                percentage_copper = 20;
+                percentage_silver = 50;
+                percentage_gold = 30;
+            } else if ( die_roll == 4 || die_roll == 5 ) {
+                treasure_value = inputXpAsInteger * 3;
+                percentage_copper = 10;
+                percentage_silver = 40;
+                percentage_gold = 50;
+            } else {
+                treasure_value = inputXpAsInteger * 4;
+                percentage_copper = 0;
+                percentage_silver = 25;
+                percentage_gold = 75;
+            } 
+            copper_pieces = get_percentage(treasure_value, percentage_copper);
+            silver_pieces = get_percentage(treasure_value, percentage_silver);
+            gold_pieces = get_percentage(treasure_value, percentage_gold);
+
+            displayTreasure.innerText =
+                `Teasure Value: ${treasure_value}gp. (Copper Pieces: ${copper_pieces}, Silver Pieces: ${silver_pieces}, Gold Pieces: ${gold_pieces})`;
+        });
+
+        btnTradeOut5000.addEventListener('click', () => {
+            let die_roll = roll1dx(100);
+            if ( die_roll <= 10 ) {
+                displayTradeOut.innerText = "Trade out was successful..."
+                console.log(`Die Roll: ${die_roll}. Trade out was successful`);
+                die_roll = roll1dx(20);
+                if ( die_roll == 20 ) {
+                    
+                }
+            } else {
+                displayTradeOut.innerText ="Trade out failed."
+                console.log(`Die Roll: ${die_roll}. Trade out failed`);
+            }
+        });
+
+        /// HELPER FUNCTIONS
+
+        function roll1dx(number_of_sides) {
+            return die_roll = Math.floor(Math.random() * number_of_sides +1);
+        }
+
+        function get_percentage(num, per) {
+            return (num / 100) * per;
+        }
+    </script>
+</body>
+</html>
