@@ -19,7 +19,10 @@
     <p>For every 5,000 gp in value, there is a 10% chance of trading out 5,000 gp for an item on either the Major Gem/Jewelry or Major Magic Item table.</p>
     <button id="btn-trade-out-5000">Attempt to Trade out 5000 gp (1 try)</button>
     <p id="display-trade-out"></p>
+    <p id="display-trade-out2"></p>
 
+    <script src="whitebox_treasure.js"></script>
+    <script src="whitebox_spells.js"></script>
 
     <script>
         const inputMonsterXp = document.getElementById("input-monster-xp");
@@ -27,6 +30,7 @@
         const displayTreasure = document.getElementById('display-treasure');
         const btnTradeOut5000 = document.getElementById('btn-trade-out-5000');
         const displayTradeOut = document.getElementById('display-trade-out');
+        const displayTradeOut2 = document.getElementById('display-trade-out2');
         
         /// LISTENERS
         btnCalculateTreasure.addEventListener('click', () => {
@@ -72,12 +76,55 @@
 
         btnTradeOut5000.addEventListener('click', () => {
             let die_roll = roll1dx(100);
-            if ( die_roll <= 10 ) {
+            if ( die_roll <= 100 ) { // Change this to <= 10 for live!
                 displayTradeOut.innerText = "Trade out was successful..."
                 console.log(`Die Roll: ${die_roll}. Trade out was successful`);
                 die_roll = roll1dx(20);
-                if ( die_roll == 20 ) {
-                    
+                if ( die_roll != 20 ) { // Change this to == for live!
+                    // Major Magic Item!
+                    console.log("Major Magic Item (table...)")
+                    // Determine the type of Major Magic Item...
+                    die_roll = roll1dx(6); // Change this to 6 for live!
+                    console.log(die_roll);
+                    if ( die_roll == 1 ) {
+                        let listPotions = [];
+                        console.log("Roll 6 times on the Potions table...")
+                        for ( rolls = 1; rolls <= 6; rolls++ ) {
+                            die_roll = roll1dx(100);
+                            let potion = getPotion(die_roll);
+                            listPotions.push(potion);
+                        }
+
+                        listPotions.forEach(potion => {
+                            console.log(`Potion of ${potion}`);
+                        })
+                        
+                        console.log(listPotions);
+                        
+                    } else if ( die_roll == 2 || die_roll == 3 ) {
+                        console.log("Should be a scroll...")
+                        getScroll();
+                    } else if ( die_roll == 4 || die_roll == 5 ) {
+                        console.log("Roll 1d6 +12 on the Weapons and Armor table")
+                    } else {
+                        console.log("Roll 1d20 +40 on the Miscellaneous table...")
+                    }
+                } else {
+                    // Major Gem or Jewelry!
+                    console.log("Major Gem/Jewelry (table...)")
+                    // Determine the value of the major gem or jewelry...
+                    die_roll = roll1dx(6);
+                    if ( die_roll == 1 ) {
+                        die_roll = roll1dx(1000);
+                        
+                    } else if ( die_roll == 2 || die_roll == 3 ) {
+                        die_roll = roll1dx(1000) * 8;
+                    } else if ( die_roll == 4 || die_roll == 5 ) {
+                        die_roll = roll1dx(1000) * 12;
+                    } else {
+                        die_roll = roll1dx(1000) * 20;
+                    }
+                    console.log(`Major Gem or Jewelry worth ${die_roll}gp.`);
                 }
             } else {
                 displayTradeOut.innerText ="Trade out failed."
@@ -88,12 +135,84 @@
         /// HELPER FUNCTIONS
 
         function roll1dx(number_of_sides) {
-            return die_roll = Math.floor(Math.random() * number_of_sides +1);
-        }
+            return Math.floor(Math.random() * number_of_sides) +1;
+        };
 
         function get_percentage(num, per) {
             return (num / 100) * per;
+        };
+
+        function getListLength(listName) {
+            return listName.length;
+        };
+
+        function getPotion(result) {
+            return oddTreasurePotions.find(item =>
+                result >= item.start && result <= item.end
+            )?.value || "No Match. Check your code!";
+        };
+
+        function getScroll() {
+            let scrollUser = "";
+            let scroll = "";
+            let spellLevel = 0;
+            let listRandomSpell = [];
+
+            // Determine Spell User...
+            die_roll = roll1dx(2);
+            if ( die_roll == 1) {
+                scrollUser = "Magic User";
+            } else {
+                scrollUser = "Cleric";
+            }
+            console.log(scrollUser);
+            
+            
+            die_roll = roll1dx(3); // change this to 20 live!
+            console.log(die_roll);
+            if ( die_roll == 1 ) {
+                console.log("This should say: One Level-1 spell");
+                let randomScroll = getRandomClericSpellByLevel(1);
+                scroll = `Level-1 ${randomScroll.name}`;
+            } else if ( die_roll == 2 ) {
+                console.log("This should say: One Level-X spell");
+                die_roll = roll1dx(3);
+                let randomScroll = getRandomClericSpellByLevel(1);
+                scroll = `Level-${die_roll} ${randomScroll.name}`;
+                //scroll = `x1 Level-${die_roll} spell`;
+            } else if ( die_roll == 3 ) {
+                console.log("This should say: a list of one or two scrolls");
+                die_roll = roll1dx(2);
+                for (i = 1; i <= die_roll; i++) {
+                    const randomSpell = getRandomClericSpellByLevel(i);
+                    listRandomSpell.push(randomSpell);
+                }
+                console.log(listRandomSpell);
+                
+                listRandomSpell.forEach(spell => {
+                    console.log(`Scroll of Level-${spell.level} ${spell.name}`);
+                })
+                return
+            } else {
+                scroll = "No match" // TO BE CONTINUED...
+            }
+            console.log(`Scroll of ${scroll}`);
         }
+
+        function getRandomClericSpellByLevel(level) {
+            // Filter spells by given level...
+            const filtered = spellsCleric.filter(spell => spell.level === level)
+
+            // If none found...
+            if (filtered.length === 0) {
+                return null;
+            }
+
+            // Pick random spell...
+            const randomIndex = Math.floor(Math.random() * filtered.length);
+            return filtered[randomIndex];
+        }
+
     </script>
 </body>
 </html>
