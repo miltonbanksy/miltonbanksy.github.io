@@ -23,28 +23,13 @@ const oddTreasurePotions = [
     { start: 76, end: 100, value: "Healing"}
 ];
 
-// Not used. Using if, else if instead
-/*
-const oddTreasureScrolls = [
-    {value: 1, descr: "x1 1st level spell"},
-    {value: 2, descr: "x1 1st level spell"},
-    {value: 3, descr: "x1 1st level spell"},
-    {value: 4, descr: "x1 1st level spell"},
-    {value: 5, descr: "x1 1st level spell"},
-    {value: 6, descr: "x1 1st level spell"},
-    {value: 7, descr: "x1 1st level spell"},
-    {value: 8, descr: "x1 1st level spell"},
-    {value: 9, descr: "x1 1st level spell"},
-    {value: 10, descr: "x1 1st level spell"},
-    {value: 11, descr: "x1 1st level spell"},
-    {value: 12, descr: "x1 1st level spell"},
-    {value: 13, descr: "x1 1st level spell"},
-    {value: 14, descr: "x1 1st level spell"},
-    {value: 15, descr: "x1 1st level spell"},
-    {value: 16, descr: "x1 1st level spell"},
-    {value: 17, descr: "x1 1st level spell"},
-    {value: 18, descr: "x1 1st level spell"},
-    {value: 19, descr: "x1 1st level spell"},
-    {value: 20, descr: "x1 1st level spell"}
+const protectionFrom = [
+  "Demons",
+  "Drowning",
+  "Elementals",
+  "Lycanthropes",
+  "Magic",
+  "Metal",
+  "Poison",
+  "Undead"
 ];
-*/

@@ -168,36 +168,68 @@
             console.log(scrollUser);
             
             
-            die_roll = roll1dx(3); // change this to 20 live!
+            die_roll = roll1dx(8); // change this to 20 live!
             console.log(die_roll);
+
             if ( die_roll == 1 ) {
-                console.log("This should say: One Level-1 spell");
-                let randomScroll = getRandomClericSpellByLevel(1);
-                scroll = `Level-1 ${randomScroll.name}`;
+                // One 1st level scroll...
+                console.log("This should say: One Level-1 scroll");
+                generateRandomScrolls(1, 1, 1);
+
             } else if ( die_roll == 2 ) {
-                console.log("This should say: One Level-X spell");
-                die_roll = roll1dx(3);
-                let randomScroll = getRandomClericSpellByLevel(1);
-                scroll = `Level-${die_roll} ${randomScroll.name}`;
-                //scroll = `x1 Level-${die_roll} spell`;
+                // One scroll of level 1d3...
+                console.log("This should say: ONE Level 1-3 scroll");
+                generateRandomScrolls(1, 1, 3);
+
             } else if ( die_roll == 3 ) {
-                console.log("This should say: a list of one or two scrolls");
-                die_roll = roll1dx(2);
-                for (i = 1; i <= die_roll; i++) {
-                    const randomSpell = getRandomClericSpellByLevel(i);
-                    listRandomSpell.push(randomSpell);
-                }
-                console.log(listRandomSpell);
+                // Two scrolls of levels 1d2...
+                console.log("This should say: TWO scrolls, each at either level 1 or level 2...");
+                generateRandomScrolls(2, 1, 2);
                 
-                listRandomSpell.forEach(spell => {
-                    console.log(`Scroll of Level-${spell.level} ${spell.name}`);
-                })
+            } else if ( die_roll == 4 ) {
+                // Three spells at level 1
+                console.log("This should say: Three 1st lv spells");
+                generateRandomScrolls(3, 1, 1);
+
+            } else if ( die_roll == 5 ) {
+                // Cursed Scroll...
+                console.log("Cursed Scroll 💀");
                 return
+
+            } else if ( die_roll == 6 || die_roll == 7 ) {
+                // Protect Scroll...
+                letRandomScroll = getRandomProtectionScroll();
+                console.log(`Protection from ${letRandomScroll}`);
+
+            } else if ( die_roll = 8 ) {
+                // Two spells of levels 1d4...
+                console.log("This should say: TWO scrolls (at level 1 to 4)");
+                generateRandomScrolls(2, 1, 4);
+
             } else {
                 scroll = "No match" // TO BE CONTINUED...
             }
-            console.log(`Scroll of ${scroll}`);
         }
+
+
+        function generateRandomScrolls(numberOfScrolls, minLevel, maxLevel) {
+            const scrolls = [];
+
+            for (let i = 0; i < numberOfScrolls; i++) {
+                const level = Math.floor(Math.random() * (maxLevel - minLevel +1)) + minLevel;
+
+                // Get a random spell of that level
+                const spell = getRandomClericSpellByLevel(level);
+
+                scrolls.push(spell);
+            }
+
+            //return scrolls;
+            scrolls.forEach(scroll => {
+                console.log(scroll.level, scroll.name);
+            })
+        }
+
 
         function getRandomClericSpellByLevel(level) {
             // Filter spells by given level...
@@ -211,6 +243,11 @@
             // Pick random spell...
             const randomIndex = Math.floor(Math.random() * filtered.length);
             return filtered[randomIndex];
+        }
+
+        function getRandomProtectionScroll() {
+            const randomProtectionScrollIndex = Math.floor(Math.random() * protectionFrom.length);
+            return protectionFrom[randomProtectionScrollIndex];
         }
 
     </script>
