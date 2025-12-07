@@ -154,6 +154,11 @@
             )?.value || "No Match. Check your code!";
         };
 
+        function getRandomProtectionScroll() {
+            const randomProtectionScrollIndex = Math.floor(Math.random() * protectionFrom.length);
+            return protectionFrom[randomProtectionScrollIndex];
+        }
+
         function getScroll() {
             scrollUser = "";
             let scroll = "";
@@ -215,59 +220,53 @@
         function generateRandomScrolls(numberOfScrolls, minLevel, maxLevel) {
             const scrolls = [];
 
-            
-
             for (let i = 0; i < numberOfScrolls; i++) {
-                const level = Math.floor(Math.random() * (maxLevel - minLevel +1)) + minLevel;
+                // Roll spell level
+                let level = Math.floor(Math.random() * (maxLevel - minLevel + 1)) + minLevel;
 
-                // Determine Spell User...
-                die_roll = roll1dx(2);
-                if ( die_roll == 1) {
-                    scrollUser = "Magic User";
-                } else {
-                    scrollUser = "Cleric";
+                // Decide scroll user (MU or Cleric)
+                const user = roll1dx(2) === 1 ? "Magic User" : "Cleric";
+
+                // Auto-correct level 6 → 5 for Clerics
+                if (user === "Cleric" && level === 6) {
+                    level = 5;
                 }
-                console.log(scrollUser);
-                // Get a random spell of that level
-                const spell = getRandomSpellByLevel(level);
 
-                scrolls.push(spell);
+                // Fetch spell
+                const spell = getRandomSpellByLevel(user, level);
+
+                scrolls.push({
+                    user,
+                    level,
+                    spell
+                });
             }
 
-            //return scrolls;
-            scrolls.forEach(scroll => {
-                console.log(`(${scrollUser}) Level-${scroll.level} ${scroll.name}`);
-            })
+            // Display results
+            scrolls.forEach(s => {
+                console.log(`(${s.user}) Level-${s.level} ${s.spell.name}`);
+            });
         }
 
 
-        function getRandomSpellByLevel(level) {
-            // Filter spells by given level...
-            let filtered = "";
-            if ( scrollUser == "Cleric") {
-                if ( die_roll == 6 ) {
-                    die_roll = 5;
-                }
-                filtered = spellsCleric.filter(spell => spell.level === level);
-            } else if ( scrollUser = "Magic User" ) {
-                filtered = spellsMage.filter(spell => spell.level === level);
-            }
-            
 
-            // If none found...
-            if (filtered.length === 0) {
-                return null;
+        function getRandomSpellByLevel(user, level) {
+            let list = [];
+
+            if (user === "Cleric") {
+                list = spellsCleric.filter(spell => spell.level === level);
+            } else {
+                list = spellsMage.filter(spell => spell.level === level);
             }
 
-            // Pick random spell...
-            const randomIndex = Math.floor(Math.random() * filtered.length);
-            return filtered[randomIndex];
+            if (list.length === 0) {
+                return { name: "No spell found", level };
+            }
+
+            const randomIndex = Math.floor(Math.random() * list.length);
+            return list[randomIndex];
         }
 
-        function getRandomProtectionScroll() {
-            const randomProtectionScrollIndex = Math.floor(Math.random() * protectionFrom.length);
-            return protectionFrom[randomProtectionScrollIndex];
-        }
 
     </script>
 </body>
