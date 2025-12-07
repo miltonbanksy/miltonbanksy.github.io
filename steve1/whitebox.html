@@ -17,7 +17,13 @@
     <h3>Treasure Trade Outs</h3>
     <p>In addition to coins, treasures contain gems, jewelry, and magical items. Treasures should be interesting—an endless series of “another treasure worth 100 gp in total” is a sure-fire recipe for boring your players.</p>
     <p>For every 5,000 gp in value, there is a 10% chance of trading out 5,000 gp for an item on either the Major Gem/Jewelry or Major Magic Item table.</p>
-    <button id="btn-trade-out-5000">Attempt to Trade out 5000 gp (1 try)</button>
+    
+    <button id="btn-trade-out-major">Attempt to Trade out 5000 gp (1 try, 10% chance)</button>
+    <br>
+    <button id="btn-trade-out-medium">Attempt to Trade out 1000 gp (1 try, 10% chance)</button>
+    <br>
+    <button id="btn-trade-out-minor">Attempt to Trade out 100 gp (1 try, 10% chance)</button>
+    
     <p id="display-trade-out"></p>
     <p id="display-trade-out2"></p>
 
@@ -28,14 +34,40 @@
         const inputMonsterXp = document.getElementById("input-monster-xp");
         const btnCalculateTreasure = document.getElementById("btn-calculate-treasure");
         const displayTreasure = document.getElementById('display-treasure');
-        const btnTradeOut5000 = document.getElementById('btn-trade-out-5000');
+        
+        const btnTradeOutMajor = document.getElementById('btn-trade-out-major');
+        const btnTradeOutMedium = document.getElementById('btn-trade-out-medium');
+        const btnTradeOutMinor = document.getElementById('btn-trade-out-minor');
+
         const displayTradeOut = document.getElementById('display-trade-out');
         const displayTradeOut2 = document.getElementById('display-trade-out2');
 
         let scrollUser = "";
+        let treasureQuality = "";
         
         /// LISTENERS
-        btnCalculateTreasure.addEventListener('click', () => {
+        btnTradeOutMajor.addEventListener('click', () => {
+            treasureQuality = "Major";
+            treasureQualityTableBonus = 12;
+            tradeOutTreasure();
+        });
+
+        btnTradeOutMedium.addEventListener('click', () => {
+            treasureQuality = "Medium";
+            treasureQualityTableBonus = 6;
+            tradeOutTreasure();
+        });
+
+        btnTradeOutMinor.addEventListener('click', () => {
+            treasureQuality = "Minor";
+            treasureQualityTableBonus = 0;
+            tradeOutTreasure();
+        });
+
+
+        /// HELPER FUNCTIONS
+
+        function CalculateTreasure() {
             let treasure_value = 0;
             let percentage_copper = 0;
             let percentage_silver = 0;
@@ -74,9 +106,9 @@
 
             displayTreasure.innerText =
                 `Teasure Value: ${treasure_value}gp. (Copper Pieces: ${copper_pieces}, Silver Pieces: ${silver_pieces}, Gold Pieces: ${gold_pieces})`;
-        });
+        };
 
-        btnTradeOut5000.addEventListener('click', () => {
+        function tradeOutTreasure() {
             let die_roll = roll1dx(100);
             if ( die_roll <= 100 ) { // Change this to <= 10 for live!
                 displayTradeOut.innerText = "Trade out was successful..."
@@ -84,13 +116,13 @@
                 die_roll = roll1dx(20);
                 if ( die_roll != 20 ) { // Change this to == for live!
                     // Major Magic Item!
-                    console.log("Major Magic Item (table...)")
+                    console.log("Roll on the 'Major Magic Item' table...")
                     // Determine the type of Major Magic Item...
                     die_roll = roll1dx(6); // Change this to 6 for live!
                     console.log(die_roll);
                     if ( die_roll == 1 ) {
                         let listPotions = [];
-                        console.log("Roll 6 times on the Potions table...")
+                        console.log("🍾 Roll 6 times on the Potions table...")
                         for ( rolls = 1; rolls <= 6; rolls++ ) {
                             die_roll = roll1dx(100);
                             let potion = getPotion(die_roll);
@@ -104,7 +136,6 @@
                         console.log(listPotions);
                         
                     } else if ( die_roll == 2 || die_roll == 3 ) {
-                        console.log("Should be a scroll...")
                         getScroll();
                     } else if ( die_roll == 4 || die_roll == 5 ) {
                         console.log("Roll 1d6 +12 on the Weapons and Armor table")
@@ -113,12 +144,11 @@
                     }
                 } else {
                     // Major Gem or Jewelry!
-                    console.log("Major Gem/Jewelry (table...)")
+                    console.log("Roll on the 'Major Gem/Jewelry' table...")
                     // Determine the value of the major gem or jewelry...
                     die_roll = roll1dx(6);
                     if ( die_roll == 1 ) {
                         die_roll = roll1dx(1000);
-                        
                     } else if ( die_roll == 2 || die_roll == 3 ) {
                         die_roll = roll1dx(1000) * 8;
                     } else if ( die_roll == 4 || die_roll == 5 ) {
@@ -132,9 +162,7 @@
                 displayTradeOut.innerText ="Trade out failed."
                 console.log(`Die Roll: ${die_roll}. Trade out failed`);
             }
-        });
-
-        /// HELPER FUNCTIONS
+        }
 
         function roll1dx(number_of_sides) {
             return Math.floor(Math.random() * number_of_sides) +1;
@@ -165,56 +193,71 @@
             let spellLevel = 0;
             let listRandomSpell = [];
 
-            
-            
-            
-            die_roll = roll1dx(9); // change this to 20 live!
-            console.log(die_roll);
-
+            die_roll = roll1dx(6) + treasureQualityTableBonus;
+            console.log("📜")
+            console.log("Scroll die roll", die_roll);
             if ( die_roll == 1 ) {
                 // One 1st level scroll...
-                console.log("This should say: One Level-1 scroll");
+                console.log("Roll 1 level-1 spell...");
                 generateRandomScrolls(1, 1, 1);
-
             } else if ( die_roll == 2 ) {
                 // One scroll of level 1d3...
-                console.log("This should say: ONE Level 1-3 scroll");
+                console.log("Roll 1 spell at level 1d3...");
                 generateRandomScrolls(1, 1, 3);
-
             } else if ( die_roll == 3 ) {
                 // Two scrolls of levels 1d2...
-                console.log("This should say: TWO scrolls, each at either level 1 or level 2...");
+                console.log("Roll 2 spells of levels 1-2...");
                 generateRandomScrolls(2, 1, 2);
-                
             } else if ( die_roll == 4 ) {
                 // Three spells at level 1
-                console.log("This should say: Three 1st lv spells");
+                console.log("Roll 3 spells of level 1...");
                 generateRandomScrolls(3, 1, 1);
-
-            } else if ( die_roll == 5 ) {
-                // Cursed Scroll...
-                console.log("Cursed Scroll 💀");
+            } else if ( die_roll == 5 || die_roll == 12 || die_roll == 19) {
+                console.log("💀 Find a Cursed Scroll 💀");
                 return
-
             } else if ( die_roll == 6 || die_roll == 7 ) {
-                // Protect Scroll...
+                console.log("Roll a random Protection Scroll (standard duration)...");
                 letRandomScroll = getRandomProtectionScroll();
                 console.log(`Protection from ${letRandomScroll}`);
-
             } else if ( die_roll == 8 ) {
                 // Two spells of levels 1d4...
-                console.log("This should say: TWO scrolls (at level 1 to 4)");
+                console.log("Roll 2 spells of levels 1-4...");
                 generateRandomScrolls(2, 1, 4);
-
             } else if (die_roll == 9) {
                 // Two spells of levels 1d6
-                console.log("This should say: TWO scrolls (at level 1 to 6 if MU and level 1-5 if Cleric)");
-                    generateRandomScrolls(2, 1, 6);
-
+                console.log("Roll 2 spells of levels 1 to 6 (Level 1-5 if Cleric)...");
+                generateRandomScrolls(2, 1, 6);
+            } else if (die_roll == 10) {
+                // One spell of level 1d4+2
+                console.log("Roll 1 spell of level 1d4 +2...");
+                generateRandomScrolls(1, 3, 6);
+            } else if (die_roll == 11) {
+                console.log("Roll 5 spells of levels 1d3...");
+                generateRandomScrolls(5, 1, 3);
+            } else if (die_roll == 13 || die_roll == 14) {
+                console.log("Roll a random Protection Scroll (double duration)...");
+                letRandomScroll = getRandomProtectionScroll();
+                console.log(`Protection from ${letRandomScroll}`);
+            } else if (die_roll == 15) {
+                console.log("Roll 5 spells of levels 1-6...");
+                generateRandomScrolls(5, 1, 6);
+            } else if (die_roll == 16) {
+                console.log("Roll 6 spells of levels 1-6...");
+                generateRandomScrolls(6, 1, 6);
+            } else if (die_roll == 17) {
+                console.log("Roll 7 spells of levels 1-6...");
+                generateRandomScrolls(7, 1, 6);
+            } else if (die_roll == 18) {
+                console.log("Roll 8 spells of levels 1-6...");
+                generateRandomScrolls(8, 1, 6);
+            } else if (die_roll == 20) {
+                console.log("Roll a random Protection Scroll (triple duration & double effects)...");
+                letRandomScroll = getRandomProtectionScroll();
+                console.log(`Protection from ${letRandomScroll}`);
             } else {
-                scroll = "No match" // TO BE CONTINUED...
+                scroll = "No match";
             }
-        }
+        };
 
 
         function generateRandomScrolls(numberOfScrolls, minLevel, maxLevel) {
