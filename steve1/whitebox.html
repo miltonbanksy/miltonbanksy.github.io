@@ -31,6 +31,8 @@
         const btnTradeOut5000 = document.getElementById('btn-trade-out-5000');
         const displayTradeOut = document.getElementById('display-trade-out');
         const displayTradeOut2 = document.getElementById('display-trade-out2');
+
+        let scrollUser = "";
         
         /// LISTENERS
         btnCalculateTreasure.addEventListener('click', () => {
@@ -153,22 +155,15 @@
         };
 
         function getScroll() {
-            let scrollUser = "";
+            scrollUser = "";
             let scroll = "";
             let spellLevel = 0;
             let listRandomSpell = [];
 
-            // Determine Spell User...
-            die_roll = roll1dx(2);
-            if ( die_roll == 1) {
-                scrollUser = "Magic User";
-            } else {
-                scrollUser = "Cleric";
-            }
-            console.log(scrollUser);
             
             
-            die_roll = roll1dx(8); // change this to 20 live!
+            
+            die_roll = roll1dx(9); // change this to 20 live!
             console.log(die_roll);
 
             if ( die_roll == 1 ) {
@@ -201,10 +196,15 @@
                 letRandomScroll = getRandomProtectionScroll();
                 console.log(`Protection from ${letRandomScroll}`);
 
-            } else if ( die_roll = 8 ) {
+            } else if ( die_roll == 8 ) {
                 // Two spells of levels 1d4...
                 console.log("This should say: TWO scrolls (at level 1 to 4)");
                 generateRandomScrolls(2, 1, 4);
+
+            } else if (die_roll == 9) {
+                // Two spells of levels 1d6
+                console.log("This should say: TWO scrolls (at level 1 to 6 if MU and level 1-5 if Cleric)");
+                    generateRandomScrolls(2, 1, 6);
 
             } else {
                 scroll = "No match" // TO BE CONTINUED...
@@ -215,25 +215,44 @@
         function generateRandomScrolls(numberOfScrolls, minLevel, maxLevel) {
             const scrolls = [];
 
+            
+
             for (let i = 0; i < numberOfScrolls; i++) {
                 const level = Math.floor(Math.random() * (maxLevel - minLevel +1)) + minLevel;
 
+                // Determine Spell User...
+                die_roll = roll1dx(2);
+                if ( die_roll == 1) {
+                    scrollUser = "Magic User";
+                } else {
+                    scrollUser = "Cleric";
+                }
+                console.log(scrollUser);
                 // Get a random spell of that level
-                const spell = getRandomClericSpellByLevel(level);
+                const spell = getRandomSpellByLevel(level);
 
                 scrolls.push(spell);
             }
 
             //return scrolls;
             scrolls.forEach(scroll => {
-                console.log(scroll.level, scroll.name);
+                console.log(`(${scrollUser}) Level-${scroll.level} ${scroll.name}`);
             })
         }
 
 
-        function getRandomClericSpellByLevel(level) {
+        function getRandomSpellByLevel(level) {
             // Filter spells by given level...
-            const filtered = spellsCleric.filter(spell => spell.level === level)
+            let filtered = "";
+            if ( scrollUser == "Cleric") {
+                if ( die_roll == 6 ) {
+                    die_roll = 5;
+                }
+                filtered = spellsCleric.filter(spell => spell.level === level);
+            } else if ( scrollUser = "Magic User" ) {
+                filtered = spellsMage.filter(spell => spell.level === level);
+            }
+            
 
             // If none found...
             if (filtered.length === 0) {
