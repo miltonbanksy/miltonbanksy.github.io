@@ -30,7 +30,7 @@ const spellsCleric = [
 const spellsMage = [
     {name: "Charm Person", level: 1, range: "120ft", duration: "Until dispelled", description: "This spell affects living bipeds of human size or smaller, such as goblins or dryads. If the spell succeeds (saving throw allowed), the unfortunate creature falls under the caster’s influence."},
     {name: "Detect Magic", level: 1, range: "60ft", duration: "20 mins", description: "The caster perceives in places, people, or things, the presence of magical spells or enchantments. magical items or secretly placed charms may be discovered with this spell."},
-    {name: "Hold Portal", level: 1, range: "Ref's discretion", duration: roll2d6(), description: "This spell magically holds a door or gate in position for the spell's duration (or until dispelled). Creatures with magic resistance can shatter the spell without much effort."},
+    {name: "Hold Portal", level: 1, range: "Ref's discretion", duration: () => roll2d6(), description: "This spell magically holds a door or gate in position for the spell's duration (or until dispelled). Creatures with magic resistance can shatter the spell without much effort."},
     {name: "Light", level: 1, range: "120ft", duration: "1 hour + 10 mins per level", description: "Light: As a Light spell, the caster targets a person or object which then produces a light about as bright as a torch with a radius of 20 feet. // Dark: As a Dark spell, the caster instead causes night-time darkness to fall upon the area with a radius of 20 feet."},
     {name: "Protection from Chaos or Law", level: 1, range: "10ft radius around caster", duration: "2 hours", description: "Protection from Chaos: As a Protection from Chaos, 10ft. radius spell, it has the same effect as Protection from Chaos — exceptthat its effect covers an area rather than an individual. / Protection from Law: As a Protection from Law, 10 ft. radius spell, it has the same effect as Protection from Law — except that its effect covers an area rather than an individual."},
     {name: "Read Languages", level: 1, range: "Reading distance", duration: "1 or 2 readings", description: "This spell allows the caster to read directions, instructions, and similar notations that are written in unfamiliar or even unknown languages. It is especially useful for treasure maps."},
@@ -101,7 +101,7 @@ function roll2d6() {
         let die = Math.floor(Math.random() * 6) +1;
         array2d6.push(die);
     }
-    return sumArray(array2d6);
+    return `${sumArray(array2d6)} turns`;
 };
 
 function sumArray(array) {

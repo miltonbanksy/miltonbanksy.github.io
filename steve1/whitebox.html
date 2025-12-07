@@ -29,6 +29,7 @@
 
     <script src="whitebox_treasure.js"></script>
     <script src="whitebox_spells.js"></script>
+    <script src="whitebox_weapons_armor.js"></script>
 
     <script>
         const inputMonsterXp = document.getElementById("input-monster-xp");
@@ -138,7 +139,7 @@
                     } else if ( die_roll == 2 || die_roll == 3 ) {
                         getScroll();
                     } else if ( die_roll == 4 || die_roll == 5 ) {
-                        console.log("Roll 1d6 +12 on the Weapons and Armor table")
+                        console.log("⚔ Roll 1d6 +12 on the Weapons and Armor table")
                     } else {
                         console.log("Roll 1d20 +40 on the Miscellaneous table...")
                     }
@@ -193,7 +194,7 @@
             let spellLevel = 0;
             let listRandomSpell = [];
 
-            die_roll = roll1dx(6) + treasureQualityTableBonus;
+            die_roll = roll1dx(8) + treasureQualityTableBonus; // Roll 1d8 + Quality mod
             console.log("📜")
             console.log("Scroll die roll", die_roll);
             if ( die_roll == 1 ) {
@@ -285,9 +286,29 @@
                 });
             }
 
+            
+
             // Display results
             scrolls.forEach(s => {
-                console.log(`(${s.user}) Level-${s.level} ${s.spell.name}`);
+                // This bit is magic! It allows me to refresh a function embedded in list.
+                // typeof... asks: Is the 'duration' property a function?
+                const durationValue = typeof s.spell.duration === "function"
+                // if yes...
+                    ? s.spell.duration()
+                // if no...
+                    : s.spell.duration;
+
+                // Same logic, longer if/else version...
+                /*
+                let durationValue;
+
+                    if (typeof s.spell.duration === "function") {
+                        durationValue = s.spell.duration();  // call the function
+                    } else {
+                        durationValue = s.spell.duration;    // use the string or number
+                    }
+                */
+                console.log(`(${s.user}) Level-${s.level}, Duration: ${durationValue}, ${s.spell.name}`);
             });
         }
 
