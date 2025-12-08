@@ -56,6 +56,9 @@
         let treasureQualityTableBonus = 0;
         
         /// LISTENERS
+        btnCalculateTreasure.addEventListener('click', () => {
+            calculateTreasure();
+        });
         btnTradeOutMajor.addEventListener('click', () => {
             treasureType = treasureQualities.major;
             tradeOutTreasure();
@@ -74,7 +77,7 @@
 
         /// HELPER FUNCTIONS
 
-        function CalculateTreasure() {
+        function calculateTreasure() {
             let treasure_value = 0;
             let percentage_copper = 0;
             let percentage_silver = 0;
@@ -119,41 +122,64 @@
             // Trade out has 10% chance of success for all quality levels.
             // Check if a trade out is successful...
             let die_roll = roll1dx(100);
-            // If the trade out was successful...
+            
+            // Trade out was successful...
             if ( die_roll <= 100 ) { // Change this to <= 10 for live!
                 console.log("\nTRADE OUT SUCCESSFUL!");
-                die_roll = roll1dx(20);
+                
                 // Check if the trade out is for Magic Items or Gem/Jewelry...
-                if ( die_roll != 20 ) { // Change this to == for live!
-                    // If trade out is for a Magic Item...
+                die_roll = roll1dx(20);
+                
+                if ( die_roll > 10 ) { // Change this to == for live!
+                    // Trade out is for a Magic Item...
                     getMagicItem();
                     
                 } else {
-                    // If trade out is for a Gem or Jewelry!
-                    console.log("Roll on the 'Major Gem/Jewelry' table...")
+                    // Trade out is for a Gem or Jewelry...
+                    console.log(`Roll on the '${treasureType.quality} Gem/Jewelry' table...`)
                     // Determine the QUALITY of the gem or jewelry...
                     die_roll = roll1dx(6);
                     
                     if (treasureType.quality == "Major") {
-                        if ( die_roll == 1 ) {
-                        die_roll = roll1dx(1000);
-                    } else if ( die_roll == 2 || die_roll == 3 ) {
-                        die_roll = roll1dx(1000) * 8;
-                    } else if ( die_roll == 4 || die_roll == 5 ) {
-                        die_roll = roll1dx(1000) * 12;
-                    } else {
-                        die_roll = roll1dx(1000) * 20;
-                    }
-                    console.log(`Major Gem or Jewelry worth ${die_roll}gp.`);
-                    } else if (treasureType.quality == "Medium") {
-                        console.log("This will show MEDIUM gems/jewelry... TBC...");
-                    } else {
-                        console.log("This will show MINOR gems/jewelry... TBC...");
-                    }
+                        // I'm using compact code here because it only has multiplier formulas.
+                        const base = roll1dx(100) * 10;
+                        
+                        const multiplier = 
+                            die_roll === 1 ? 1 :
+                            die_roll <= 3 ? 8 :
+                            die_roll <= 5 ? 12 :
+                            20;
+
+                        die_roll = base * multiplier;
                     
+                    } else if (treasureType.quality == "Medium") {
+                        // I'm using readable code here because it has different formulas.
+                        if ( die_roll == 1 ) {
+                            die_roll = roll1dx(100);
+                        } else if ( die_roll == 2 || die_roll == 3 ) {
+                            die_roll = (roll1dx(100) * 10) + 250;
+                        } else if ( die_roll == 4 || die_roll == 5 ) {
+                            die_roll = (roll1dx(100) * 10) + 750;
+                        } else {
+                            die_roll = roll1dx(100) * 100;
+                        }
+                        
+                    } else {
+                        // I'm using readable code here because it has different formulas.
+                        if ( die_roll == 1 ) {
+                            die_roll = roll1dx(6);
+                        } else if ( die_roll == 2 || die_roll == 3 ) {
+                            die_roll = roll1dx(100) + 25;
+                        } else if ( die_roll == 4 || die_roll == 5 ) {
+                            die_roll = roll1dx(100) + 75;
+                        } else {
+                            die_roll = roll1dx(100) * 10;
+                        }
+                    }
+                    console.log(`${treasureType.quality} Gem or Jewelry worth ${die_roll}gp.`);
                 }
             } else {
-                // If the trade out was unsuccessful...
+                // Trade out was unsuccessful...
                 displayTradeOut.innerText ="Trade out failed."
                 console.log("TRADE OUT FAILED");
             }
