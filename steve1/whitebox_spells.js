@@ -108,12 +108,3 @@ function sumArray(array) {
     return array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 };
 
-//Magic User Spell List L1
-// Charm Person
-// Detect Magic
-// Hold Portal
-// Light
-// Protection from Chaos
-// Read Languages
-// Read Magic
-// Sleep

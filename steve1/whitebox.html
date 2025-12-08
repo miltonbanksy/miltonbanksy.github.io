@@ -32,6 +32,21 @@
     <script src="whitebox_weapons_armor.js"></script>
 
     <script>
+        /*
+        const treasureQualities = [
+            {value: "Major", modifier: 12, potion_rolls: 6},
+            {value: "Medium", modifier: 6, potion_rolls: 3},
+            {value: "Minor", modifier: 0, potion_rolls: 1},
+        ];
+        */
+
+        const treasureQualities = {
+            major: {quality: "Major", modifier: 12, potion_rolls: 6},
+            medium: {quality: "Medium", modifier: 6, potion_rolls: 3},
+            minor: {quality: "Minor", modifier: 0, potion_rolls: 1}
+        };
+
+        
         const inputMonsterXp = document.getElementById("input-monster-xp");
         const btnCalculateTreasure = document.getElementById("btn-calculate-treasure");
         const displayTreasure = document.getElementById('display-treasure');
@@ -44,24 +59,25 @@
         const displayTradeOut2 = document.getElementById('display-trade-out2');
 
         let scrollUser = "";
+        let treasureType;
         let treasureQuality = "";
+        let treasureQualityTableBonus = 0;
         
         /// LISTENERS
         btnTradeOutMajor.addEventListener('click', () => {
-            treasureQuality = "Major";
-            treasureQualityTableBonus = 12;
+            // I may not need these, now I have added a list...
+            treasureType = treasureQualities.major;
+            console.log("treasure type:", treasureType)
             tradeOutTreasure();
         });
 
         btnTradeOutMedium.addEventListener('click', () => {
-            treasureQuality = "Medium";
-            treasureQualityTableBonus = 6;
+            treasureType = treasureQualities.medium;
             tradeOutTreasure();
         });
 
         btnTradeOutMinor.addEventListener('click', () => {
-            treasureQuality = "Minor";
-            treasureQualityTableBonus = 0;
+            treasureType = treasureQualities.minor;
             tradeOutTreasure();
         });
 
@@ -110,45 +126,26 @@
         };
 
         function tradeOutTreasure() {
+            // Trade out has 10% chance of success for all quality levels.
+            // Check if a trade out is successful...
             let die_roll = roll1dx(100);
+            // If the trade out was successful...
             if ( die_roll <= 100 ) { // Change this to <= 10 for live!
-                displayTradeOut.innerText = "Trade out was successful..."
                 console.log(`Die Roll: ${die_roll}. Trade out was successful`);
                 die_roll = roll1dx(20);
+                // Check if the trade out is for Magic Items or Gem/Jewelry...
                 if ( die_roll != 20 ) { // Change this to == for live!
-                    // Major Magic Item!
-                    console.log("Roll on the 'Major Magic Item' table...")
-                    // Determine the type of Major Magic Item...
-                    die_roll = roll1dx(6); // Change this to 6 for live!
-                    console.log(die_roll);
-                    if ( die_roll == 1 ) {
-                        let listPotions = [];
-                        console.log("🍾 Roll 6 times on the Potions table...")
-                        for ( rolls = 1; rolls <= 6; rolls++ ) {
-                            die_roll = roll1dx(100);
-                            let potion = getPotion(die_roll);
-                            listPotions.push(potion);
-                        }
-
-                        listPotions.forEach(potion => {
-                            console.log(`Potion of ${potion}`);
-                        })
-                        
-                        console.log(listPotions);
-                        
-                    } else if ( die_roll == 2 || die_roll == 3 ) {
-                        getScroll();
-                    } else if ( die_roll == 4 || die_roll == 5 ) {
-                        console.log("⚔ Roll 1d6 +12 on the Weapons and Armor table")
-                    } else {
-                        console.log("Roll 1d20 +40 on the Miscellaneous table...")
-                    }
+                    // If trade out is for a Magic Item...
+                    getMagicItem();
+                    
                 } else {
-                    // Major Gem or Jewelry!
+                    // If trade out is for a Gem or Jewelry!
                     console.log("Roll on the 'Major Gem/Jewelry' table...")
-                    // Determine the value of the major gem or jewelry...
+                    // Determine the QUALITY of the gem or jewelry...
                     die_roll = roll1dx(6);
-                    if ( die_roll == 1 ) {
+                    
+                    if (treasureQuality == "Major") {
+                        if ( die_roll == 1 ) {
                         die_roll = roll1dx(1000);
                     } else if ( die_roll == 2 || die_roll == 3 ) {
                         die_roll = roll1dx(1000) * 8;
@@ -158,8 +155,15 @@
                         die_roll = roll1dx(1000) * 20;
                     }
                     console.log(`Major Gem or Jewelry worth ${die_roll}gp.`);
+                    } else if (treasureQuality = "Medium") {
+                        console.log("This will show MEDIUM gems/jewelry... TBC...");
+                    } else {
+                        console.log("This will show MINOR gems/jewelry... TBC...");
+                    }
+                    
                 }
             } else {
+                // If the trade out was unsuccessful...
                 displayTradeOut.innerText ="Trade out failed."
                 console.log(`Die Roll: ${die_roll}. Trade out failed`);
             }
@@ -177,17 +181,53 @@
             return listName.length;
         };
 
-        function getPotion(result) {
-            return oddTreasurePotions.find(item =>
-                result >= item.start && result <= item.end
-            )?.value || "No Match. Check your code!";
-        };
-
         function getRandomProtectionScroll() {
             const randomProtectionScrollIndex = Math.floor(Math.random() * protectionFrom.length);
             return protectionFrom[randomProtectionScrollIndex];
         }
 
+        
+        
+
+        // # GET MAGIC ITEM (ALL QUALITY LEVELS)
+        function getMagicItem() {
+            console.log("Roll on the 'Magic Item' table...")
+            // Determine the type of Major Magic Item...
+            die_roll = roll1dx(6); // Change this to 6 for live!
+            if ( die_roll == 1 ) {
+                getPotion();
+
+            } else if ( die_roll == 2 || die_roll == 3 ) {
+                getScroll();
+
+            } else if ( die_roll == 4 || die_roll == 5 ) {
+                console.log("⚔ Roll 1d6 +12 on the Weapons and Armor table")
+
+            } else {
+                console.log("Roll 1d20 +40 on the Miscellaneous table...")
+            }
+        };
+
+        function getPotion() {
+            let listPotions = [];
+            console.log(`Treasure Quality: ${treasureType.quality}, Treasure Type: Potions`);
+            // Get the number of potion table rolls, based on the pre-defined Quality...
+            let numberOfPotionRolls = treasureType.potion_rolls;
+
+            for ( rolls = 1; rolls <= numberOfPotionRolls; rolls++ ) {
+                die_roll = roll1dx(100);
+                let potion = oddTreasurePotions.find(
+                item => die_roll >= item.start && die_roll <= item.end
+                )?.value || "No Match. Check your code!";
+                listPotions.push(potion);
+            }
+
+            listPotions.forEach(potion => {
+                console.log(`Potion of ${potion}`);
+            });
+        }
+
+        // # GET SCROLL
         function getScroll() {
             scrollUser = "";
             let scroll = "";
@@ -311,8 +351,6 @@
                 console.log(`(${s.user}) Level-${s.level}, Duration: ${durationValue}, ${s.spell.name}`);
             });
         }
-
-
 
         function getRandomSpellByLevel(user, level) {
             let list = [];
