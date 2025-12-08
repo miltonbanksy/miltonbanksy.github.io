@@ -32,20 +32,12 @@
     <script src="whitebox_weapons_armor.js"></script>
 
     <script>
-        /*
-        const treasureQualities = [
-            {value: "Major", modifier: 12, potion_rolls: 6},
-            {value: "Medium", modifier: 6, potion_rolls: 3},
-            {value: "Minor", modifier: 0, potion_rolls: 1},
-        ];
-        */
 
         const treasureQualities = {
             major: {quality: "Major", modifier: 12, potion_rolls: 6},
             medium: {quality: "Medium", modifier: 6, potion_rolls: 3},
             minor: {quality: "Minor", modifier: 0, potion_rolls: 1}
         };
-
         
         const inputMonsterXp = document.getElementById("input-monster-xp");
         const btnCalculateTreasure = document.getElementById("btn-calculate-treasure");
@@ -65,9 +57,7 @@
         
         /// LISTENERS
         btnTradeOutMajor.addEventListener('click', () => {
-            // I may not need these, now I have added a list...
             treasureType = treasureQualities.major;
-            console.log("treasure type:", treasureType)
             tradeOutTreasure();
         });
 
@@ -131,7 +121,7 @@
             let die_roll = roll1dx(100);
             // If the trade out was successful...
             if ( die_roll <= 100 ) { // Change this to <= 10 for live!
-                console.log(`Die Roll: ${die_roll}. Trade out was successful`);
+                console.log("\nTRADE OUT SUCCESSFUL!");
                 die_roll = roll1dx(20);
                 // Check if the trade out is for Magic Items or Gem/Jewelry...
                 if ( die_roll != 20 ) { // Change this to == for live!
@@ -144,7 +134,7 @@
                     // Determine the QUALITY of the gem or jewelry...
                     die_roll = roll1dx(6);
                     
-                    if (treasureQuality == "Major") {
+                    if (treasureType.quality == "Major") {
                         if ( die_roll == 1 ) {
                         die_roll = roll1dx(1000);
                     } else if ( die_roll == 2 || die_roll == 3 ) {
@@ -155,7 +145,7 @@
                         die_roll = roll1dx(1000) * 20;
                     }
                     console.log(`Major Gem or Jewelry worth ${die_roll}gp.`);
-                    } else if (treasureQuality = "Medium") {
+                    } else if (treasureType.quality == "Medium") {
                         console.log("This will show MEDIUM gems/jewelry... TBC...");
                     } else {
                         console.log("This will show MINOR gems/jewelry... TBC...");
@@ -165,7 +155,7 @@
             } else {
                 // If the trade out was unsuccessful...
                 displayTradeOut.innerText ="Trade out failed."
-                console.log(`Die Roll: ${die_roll}. Trade out failed`);
+                console.log("TRADE OUT FAILED");
             }
         }
 
@@ -210,7 +200,7 @@
 
         function getPotion() {
             let listPotions = [];
-            console.log(`Treasure Quality: ${treasureType.quality}, Treasure Type: Potions`);
+            console.log(`🍷 Treasure Quality: ${treasureType.quality}, Treasure Type: Potion`);
             // Get the number of potion table rolls, based on the pre-defined Quality...
             let numberOfPotionRolls = treasureType.potion_rolls;
 
@@ -229,14 +219,14 @@
 
         // # GET SCROLL
         function getScroll() {
+            console.log(`📜 Treasure Quality: ${treasureType.quality}, Treasure Type: Scroll`);
             scrollUser = "";
             let scroll = "";
             let spellLevel = 0;
             let listRandomSpell = [];
 
             die_roll = roll1dx(8) + treasureQualityTableBonus; // Roll 1d8 + Quality mod
-            console.log("📜")
-            console.log("Scroll die roll", die_roll);
+            
             if ( die_roll == 1 ) {
                 // One 1st level scroll...
                 console.log("Roll 1 level-1 spell...");
@@ -325,8 +315,6 @@
                     spell
                 });
             }
-
-            
 
             // Display results
             scrolls.forEach(s => {
