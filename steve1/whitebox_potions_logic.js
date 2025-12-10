@@ -33,3 +33,22 @@ const protectionFrom = [
   "Poison",
   "Undead"
 ];
+
+function getPotion() {
+            let listPotions = [];
+            console.log(`🍷 Treasure Quality: ${treasureType.quality}, Treasure Type: Potion`);
+            // Get the number of potion table rolls, based on the pre-defined Quality...
+            let numberOfPotionRolls = treasureType.potion_rolls;
+
+            for ( rolls = 1; rolls <= numberOfPotionRolls; rolls++ ) {
+                die_roll = roll1dx(100);
+                let potion = oddTreasurePotions.find(
+                    item => die_roll >= item.start && die_roll <= item.end
+                )?.value || "No Match. Check your code!";
+                listPotions.push(potion);
+            }
+
+            listPotions.forEach(potion => {
+                console.log(`Potion of ${potion}`);
+            });
+        };

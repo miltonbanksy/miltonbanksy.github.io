@@ -97,9 +97,3 @@ const magicUnusualArmor = [
     {roll: 4, type: "Fiery Armor", description: "+1 armor that is surrounded by flames. These flames deal 1d6 damage to melee attackers."},
 ];
 
-const miscItems = [
-    {start: 1, end: 1, type: "Lesser Wand"},
-    {start: 2, end: 2, type: "Lesser Ring"},
-    {start: 3, end: 20, type: "Misc. Lesser Magical Item"},
-    // to be continued...
-]
