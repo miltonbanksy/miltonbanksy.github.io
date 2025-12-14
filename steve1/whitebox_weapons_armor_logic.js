@@ -4,58 +4,84 @@ function getWeaponArmor() {
             let weaponDescription = "";
             let weaponAbilityIndex = "";
             let weaponAbility = "";
-            //let weaponSubType = "";
             let mod = 0;
+            let weaponSpellCasting = "";
+            let weaponCommunication = "";
             
-            console.log(`🏹 Treasure Quality: ${treasureType.quality}, Treasure Type: Magical Weapon or Armor`);
             die_roll = roll1dx(8) + treasureType.modifier; // Roll 1d8 + Quality mod
-            //console.log(`1d8 + mod = ${die_roll}`);
-
-            //die_roll = 20; // FOR TESTING ONLY !!!!!!!!!!!
+            //die_roll = 19; // FOR TESTING ONLY !!!!!!!!!!!
 
             if ( die_roll == 1 ) {
+                let curseMod = "";
                 die_roll = roll1dx(2);
                 // Using ternary operator for either/or...
                 const message = (die_roll == 1) ? "Armor" : "Shield";
+                die_roll = roll1dx(6);
+                if (die_roll == 1 || die_roll == 2 || die_roll == 3) {
+                    curseMod = "-1 (Choose weapon or armor)";
+                } else if (die_roll == 4) {
+                    curseMod = "-2 (Choose weapon or armor)";
+                } else if (die_roll == 5) {
+                    curseMod = "-3 (Choose weapon or armor)";
+                } else {
+                    curseMod = "Attracts Missiles and grants those missiles a +1 'to-hit' bonus.";
+                }
                 console.log(`Cursed ${message}`);
+                displayTreasureDescription.innerHTML = `<b>💀 Cursed ${message} ${curseMod}💀</b>`;
             } else if ( die_roll == 2 ) {
                 // Magic Missile Weapon(s)
                 weaponTypeIndex = Math.floor(Math.random() * magicMissileWeapons.length);
                 weaponType = magicMissileWeapons[weaponTypeIndex].type;
                 mod = "+1"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}</b>`;
             } else if ( die_roll == 3 ) {
                 // Magic Shield +1
-                console.log("Shield +1");
+                displayTreasureDescription.innerHTML = "<b>Shield +1</b>";
             } else if ( die_roll == 4 || die_roll == 5 || die_roll == 6 ) {
-                // Magic Melee Weapon
+                // Magic Melee Weapon +1
                 weaponTypeIndex = Math.floor(Math.random() * magicMissileWeapons.length);
                 weaponType = magicMissileWeapons[weaponTypeIndex].type;
                 mod = "+1"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}</b>`;
             } else if ( die_roll == 7 || die_roll == 8 ) {
                 // Magic Armor +1
-                console.log("Armor +1");
+                displayTreasureDescription.innerHTML = "<b>Armor +1</b>";
             } else if ( die_roll == 9 ) {
+                // Cursed Weapon
+                die_roll = roll1dx(6);
+                if (die_roll == 1 || die_roll == 2 || die_roll == 3) {
+                    curseMod = "-1 (Choose weapon or armor)";
+                } else if (die_roll == 4) {
+                    curseMod = "-2 (Choose weapon or armor)";
+                } else if (die_roll == 5) {
+                    curseMod = "-3 (Choose weapon or armor)";
+                } else {
+                    curseMod = "Attracts Missiles and grants those missiles a +1 'to-hit' bonus.";
+                }
                 console.log(`Cursed Weapon`);
+                displayTreasureDescription.innerHTML = `<b>💀 Cursed Weapon ${curseMod}💀</b>`;
             }  else if ( die_roll == 10 ) {
-                // Magic Missile Weapon(s)
+                // Magic Missile Weapon(s) +2
                 weaponTypeIndex = Math.floor(Math.random() * magicMissileWeapons.length);
                 weaponType = magicMissileWeapons[weaponTypeIndex].type;
                 mod = "+2"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}</b>`;
             } else if ( die_roll == 11 ) {
                 // Magic Shield +2
-                console.log("Shield +2");
+                displayTreasureDescription.innerHTML = "<b>Shield +2</b>";
             } else if ( die_roll == 12 ) {
                 // Magic Melee Weapon +2
                 weaponTypeIndex = Math.floor(Math.random() * magicMeleeWeapons.length);
                 weaponType = magicMeleeWeapons[weaponTypeIndex].type;
                 mod = "+2"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}`;
             } else if ( die_roll == 13 ) {
                 // Magic Armor +2
-                console.log("Armor +2");
+                displayTreasureDescription.innerHTML = "<b>Armor +2</b>";
             } else if ( die_roll == 14 ) {
                 // Magic Melee Weapon +1 (plus Minor Ability)
                 weaponTypeIndex = Math.floor(Math.random() * magicMeleeWeapons.length);
@@ -64,41 +90,59 @@ function getWeaponArmor() {
                 weaponAbilityIndex = Math.floor(Math.random() * minorAbilitiesForMeleeWeapons.length);
                 weaponAbility = minorAbilitiesForMeleeWeapons[weaponAbilityIndex];
                 console.log(`${weaponType} ${mod}, ${weaponAbility.type}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}</b><br>${weaponAbility.type}`;
             }  else if ( die_roll == 15 ) {
                 // Magic Missile Weapon(s) +3
                 weaponTypeIndex = Math.floor(Math.random() * magicMissileWeapons.length);
                 weaponType = magicMissileWeapons[weaponTypeIndex].type;
                 mod = "+3"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType} ${mod}</b>`;
             } else if ( die_roll == 16 ) {
                 // Magic Melee Weapon +3
                 weaponTypeIndex = Math.floor(Math.random() * magicMeleeWeapons.length);
                 weaponType = magicMeleeWeapons[weaponTypeIndex].type;
                 mod = "+3"
                 console.log(`${weaponType} ${mod}`);
+                displayTreasureDescription.innerHTML = `<b>${weaponType}, ${mod}`;
             } else if ( die_roll == 17 ) {
                 // Magic Shield +3
-                console.log("Shield +3");
+                displayTreasureDescription.innerHTML = "<b>Shield +3</b>";
             } else if ( die_roll == 18 ) {
                 // Magic Armor +3
-                console.log("Armor +3");
+                displayTreasureDescription.innerHTML = "<b>Armor +3</b>";
             } else if ( die_roll == 19 ) {
                 // Unusual Weapon or roll again
                 weaponTypeIndex = Math.floor(Math.random() * magicUnusualWeapons.length);
                 weaponType = magicUnusualWeapons[weaponTypeIndex].type;
                 weaponDescription = magicUnusualWeapons[weaponTypeIndex].description;
-                console.log(`Unusual Weapon: ${weaponType}, Description: ${weaponDescription}`);
+
+                //weaponType = "Intelligent Weapon" // !!!! TESTING ONLY DELETE THIS !!!
+                
+                if (weaponType == "Intelligent Weapon") {
+                    mod = Math.floor(Math.random() * 3) +1;
+                    die_roll = roll1dx(100);
+                    if (die_roll <= 10) {
+                        weaponSpellCasting = "This weapon can cast a spell once per day.";
+                    } else {
+                        weaponSpellCasting = "This weapon has no spellcasting ability.";
+                    }
+
+                    die_roll = roll1dx(100);
+                    if (die_roll <= 25) {
+                        weaponCommunication = "It is able to communicate audibly with its bearer.";
+                    } else {
+                        weaponCommunication = "It is able to communicate with its bearer, but not audibly.";
+                    }
+                    displayTreasureDescription.innerHTML = `<b>${weaponType}</b> +${mod} to hit<br>${weaponSpellCasting}<br>${weaponCommunication}`;
+                } else {
+                    displayTreasureDescription.innerHTML = `<b>${weaponType}</b><br>${weaponDescription}`;
+                }
             } else if ( die_roll == 20 ) {
                 // Unusual Armor or roll again
                 weaponTypeIndex = Math.floor(Math.random() * magicUnusualArmor.length);
                 weaponType = magicUnusualArmor[weaponTypeIndex].type;
-                weaponDescription = magicUnusualArmor[weaponTypeIndex].description;
-                console.log(`Unusual Armor: ${weaponType}, Description: ${weaponDescription}`);
-            }
-
-            /*
-            let weaponOrArmor = magicalWeaponsAndArmor.find(
-                item => die_roll == item.roll)?.type || "No match...";
-            console.log(weaponOrArmor);
-            */
+                weaponDescription = magicUnusualArmor[weaponTypeIndex].description; 
+                displayTreasureDescription.innerHTML = `<b>${weaponType}</b><br>${weaponDescription}</b>`;
+            };            
         };

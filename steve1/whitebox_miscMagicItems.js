@@ -48,10 +48,10 @@ const miscItemsLesser = [
     {item: "Boots of Elvenkind", description: "The wearer moves with complete silence. Usable by: All Classes.", action: ""},
     {item: "Boots of Speed or Leaping (50%)", description: "Boots of Speed double the wearer's movement rate, but require complete rest for a period of time equivalent to the amount of time they were used. Boots of Leaping allow the wearer to make prodigious leaps 10 feet high and up to 30 feet horizontally. These boots also double movement rates, but outdoors only. They do not require the wearer to rest after using them. Usable by: All Classes.", action: ""},
     {item: "Bracers of Defense, AC 6 [13]", description: "These bracers improve the wearer's armor class (whatever part of it is due to actual armor) to the stated level—there is no effect if the wearer is already armored to the same or higher degree. The AC granted by the bracers can be increased by magical rings or other protective magics. Usable by: All Classes.", action: ""},
-    {item: "Chime of Opening", description: "", action: "Sounding this small chime opens any door, even if the door is barred or Wizard Locked. Usable by: All Classes."},
+    {item: "Chime of Opening", description: "Sounding this small chime opens any door, even if the door is barred or Wizard Locked. Usable by: All Classes.", action: "Sounding this small chime opens any door, even if the door is barred or Wizard Locked. Usable by: All Classes."},
     {item: "Cloak of Elvenkind", description: "The wearer is almost, but not quite, invisible. Usable by: All Classes.", action: ""},
     {item: "Cloak of Protection, +1", description: "This cloak improves the wearer's AC by 1, and grants a bonus of +1 on saving throws. Usable by: All but Fighters.", action: ""},
-    {item: "Cursed Item", description: "", action: getCursedItem},
+    {item: "Cursed Item", description: "NOT FIXED!"},
     {item: "Decanter of Endless Water", description: "This jug pours out one gallon of water per minute when unstoppered. Usable by: All Classes.", action: ""},
     {item: "Dust of Appearance or Disappearance (50%)", description: "Dust of Appearance is tossed in a radius of 10 feet around the user, and makes any invisible, astral, displaced, out-of-phase, or dimensional thing completely visible. The dust generally comes in a pouch, with enough for 20-30 uses. Dust of Disappearance works in the opposite way: when it is sprinkled in a 10 foot radius, everything therein becomes invisible for 5d6 turns. Normal means of detecting invisibility (such as a Detect Invisibility spell) are not strong enough to work against the dust's powerful enchantment. Usable by: All Classes.", action: ""},
     {item: "Dust of Sneezing and Choking", description: "Pouches containing this dust ordinarily contain only enough for one “dose.” When scattered in a radius of 10 feet, the dust causes all in the area to make a saving throw or die. If the nature of the dust is identified before it is experimented with, it can be used as a devastating thrown weapon. Usable by: All Classes.", action: ""},
@@ -156,10 +156,10 @@ const miscItems = [
 
 function getMiscItem() {   
     
-    console.log(`🎁 Treasure Quality: ${treasureType.quality}, Treasure Type: Misc.`);
+    //console.log(`🎁 Treasure Quality: ${treasureType.quality}, Treasure Type: Misc.`);
+    
     die_roll = roll1dx(20) + treasureType.miscModifier;
-
-    // die_roll = 15; // FOR TESTING ONLY !!!!! DELETE THIS.
+    die_roll = 10; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
 
     const item = miscItems.find( i => die_roll >= i.start && die_roll <= i.end );
 
@@ -169,9 +169,12 @@ function getMiscItem() {
 
     const actionValue = typeof item.action === "function" ? item.action() : item.action;
     
-    console.log(`Item: ${item.type}`);
+    /*
+    console.log(`NEW Quality: ${treasureType.quality}`);
+    console.log(`NEW Item: ${item.type}`);
     console.log(`Description: ${item.description}`);
     console.log(`Action: ${actionValue}`);
+    */
 };
 
 function getWandLesser() {
@@ -226,38 +229,40 @@ function getRingGreater() {
 function getMiscItemLesser() {
     
     const miscItemLesserIndex = Math.floor(Math.random() * miscItemsLesser.length);
-    //const miscItemLesserIndex = 8; // !!!!! TEST ONLY ! DELETE THIS !!!
+    //const miscItemLesserIndex = 5; // !!!! TESTING ONLY !!!!
     const miscItemLesser = miscItemsLesser[miscItemLesserIndex];
 
-    const actionValue = typeof miscItemLesser.action === "function" ? miscItemLesser.action() : miscItemLesser.action;
+    //const actionValue = typeof miscItemLesser.action === "function" ? miscItemLesser.action() : miscItemLesser.action;
     
-    console.log(`Item: ${miscItemLesser.item}`);
-    console.log(`Item: ${miscItemLesser.description}`);
-    console.log(`Action: ${miscItemLesser.actionValue}`);
+    if (miscItemLesser.item == "Cursed Item") {
+        getCursedItem();
+    } else {
+        displayTreasureName.innerHTML = `<h4>🎁 ${miscItemLesser.item}</h4>`;
+        displayTreasureDescription.innerHTML = `${miscItemLesser.description}`;
+    }
 };
 
 function getMiscItemMedium() {
     const miscItemMediumIndex = Math.floor(Math.random() * miscItemsMedium.length);
     const miscItemMedium = miscItemsMedium[miscItemMediumIndex];
     console.log(`Item: ${miscItemMedium.item}`);
-    console.log(`Item: ${miscItemMedium.description}`);
+    console.log(`Description: ${miscItemMedium.description}`);
 };
 
 function getStaff() {
     const staffIndex = Math.floor(Math.random() * staves.length);
     const staff = staves[staffIndex];
     console.log(`Item: ${staff.item}`);
-    console.log(`Item: ${staff.description}`);
+    console.log(`Description: ${staff.description}`);
     console.log(`Most staves carry 200 charges.`);
 };
 
 function getCursedItem() {
     const cursedItemIndex = Math.floor(Math.random() * cursedItems.length);
     const cursedItem = cursedItems[cursedItemIndex];
-    //const actionValue = typeof item.action === "function" ? item.action() : item.action;
-    console.log(`Item: ${cursedItem.item}`);
-    console.log(`Description: ${cursedItem.description}`);
-    //console.log(`Action: ${actionValue}`);
+    
+    displayTreasureName.innerHTML = `Cursed Item! ${cursedItem.item}`;
+    displayTreasureDescription.innerHTML = `${cursedItem.description}`;
 };
 
 

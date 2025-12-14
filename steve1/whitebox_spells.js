@@ -2,7 +2,7 @@ const spellsCleric = [
     {name: "Cure Light Wounds or Cause Light Wounds", level: 1, range: "Touch", duration: "Instant", description: "Cures 1d6+1 HP / Causes 1d6+1 HP."},
     {name: "Detect Chaos or Detect Law", level: 1, range: "120ft", duration: "1 hour", description: "Detect Chaotic creatures and evil enchantments, intentions, thoughs, auras. / Detect Lawful..."},
     {name: "Detect Magic", level: 1, range: "60ft", duration: "20 mins", description: "The caster perceives in places, people, or things, the presence of magical spells or enchantments. magical items or secretly placed charms may be discovered with this spell."},
-    {name: "Light or Dark", level: 1, range: "120ft", duration: "2 hours", description: "Produces a light as bright as a torch with a radius of 20ft around a person or object."},
+    {name: "Light or Dark", level: 1, range: "120ft", duration: "2 hours", description: "🔆 Produces a light as bright as a torch with a radius of 20ft around a person or object."},
     {name: "Protection from Chaos or Protection from Law", level: 1, range: "Caster only", duration: "2 hours", description: "Creates a ward around the caster that blocks attacks from magical monsters (like invisible stalkers, elementals, and demons. Other attackers suffer a -1 penalty to hit, and the caster gains +1 on saving throws."},
     {name: "Purify or Putrefy Food & Drink", level: 1, range: "Close / Touch", duration: "Instant", description: "Removes spoilage and poisons from enough food and water for up to a dozen people."},
     {name: "Bless or Curse", level: 2, range: "Target Character", duration: "1 hour", description: "The recipient of this spell cannot be in combat when it is cast. Bless: the recipient gets a +1 bonus to all attack rolls and, if the target is not a Player Character, improved overall morale. / Curse: the recipient suffers a -1 penalty to all attack rolls and, if the target is not a Player Character, decreased morale."},
@@ -10,7 +10,7 @@ const spellsCleric = [
     {name: "Hold Person", level: 2, range: "180ft", duration: "90 mins", description: "The caster targets either 1d4 persons (with the same parameters as Charm Person; saving throw applies) or a single creature who must make their save at a -2 penalty."},
     {name: "Speak with Animals", level: 2, range: "30ft", duration: "1 hour", description: "The caster can speak with animals within range. The animals might assist him, and they will not attack him or his party (unless he says something particularly offensive)."},
     {name: "Cure or Cause Disease", level: 3, range: "", duration: "", description: ""},
-    {name: "Light or Dark, Continual", level: 3, range: "120ft", duration: "Permanent (until dispelled)", description: "Light, Continual: produces a light as bright as a torch with a radius of 20 feet around a person or object. / Dark, Continual: causes night-time darkness in an area with a 20 foot radius."},
+    {name: "Light or Dark, Continual", level: 3, range: "120ft", duration: "Permanent (until dispelled)", description: "🔆 Light, Continual: produces a light as bright as a torch with a radius of 20 feet around a person or object. / 🌒 Dark, Continual: causes night-time darkness in an area with a 20 foot radius."},
     {name: "Locate Object", level: 3, range: "90ft", duration: "1 min/level", description: "Directs the caster (as the crow flies) toward an object the caster describes. The caster must have seen the object or an object of its general type: staris, gold, etc."},
     {name: "Remove Curse", level: 3, range: "Close / Touch", duration: "Instant", description: "Removes one curse from a person or object."},
     {name: "Cure or Cause Serious Wounds", level: 4, range: "Touch", duration: "Instant", description: "Cure: The caster cures 3d6+3 HP. / Cause: The caster causes 3d6+3 damage."},
@@ -21,30 +21,30 @@ const spellsCleric = [
     {name: "Commune", level: 5, range: "Caster", duration: "3 questions", description: "Higher powers grant answers to three questions the caster poses. Higher powers don’t like being constantly interrogated by mere mortals, so the spell should be limited to one casting per week. The Referee may rule that a caster may cast a double strength Commune spell composed of six questions once per year."},
     {name: "Create Food & Drink", level: 5, range: "Close", duration: "Instant", description: "This spell creates a one-day supply of simple food and drinking water for 24 humans (or horses, which drink the same amount as a man for game purposes)."},
     {name: "Dispel Chaos or Dispel Law", level: 5, range: "30ft", duration: "10 minutes", description: "Dispel Chaos: The spell is similar to the arcane spell Dispel Magic, but works against items, spells, or agents of Chaos. However, unlike Dispel Magic, this spell also functions against chaotic sendings, possibly including dreams or supernatural hunting-beasts. // Dispel Law: As a Dispel Law spell, the spell works exactly like Dispel Chaos, except that it will dispel Law."},
-    {name: "Insect Plague", level: 5, range: "480ft", duration: "1 day", description: "This spell only works outdoors. A storm of insects gathers, and goes wherever the caster directs. The cloud is approximately 400 square feet (20 × 20 feet, with roughly corresponding height). Any creature with fewer than 2 HD exposed to the cloud of insects will flee in terror (no saving throw)."},
-    {name: "Quest", level: 5, range: "30ft", duration: "Until completed", description: "If the victim fails his saving throw, the caster may set a task for him. If a Magic-user casts this spell the victim will die if he ignores the Quest altogether. If a Cleric casts this spell the victim’s failure to obey will result in a curse to be determined by the Referee."},
+    {name: "Insect Plague", level: 5, range: "480ft", duration: "1 day", description: "This spell only works outdoors. A storm of insects gathers, and goes wherever the caster directs. The cloud is approximately 400 square feet (20 x 20 feet, with roughly corresponding height). Any creature with fewer than 2 HD exposed to the cloud of insects will flee in terror (no saving throw)."},
+    {name: "Quest", level: 5, range: "30ft", duration: "Until completed", description: "If the victim fails his saving throw, the caster may set a task for him. If a Magic-user casts this spell the victim will die if he ignores the Quest altogether. If a Cleric casts this spell the victim's failure to obey will result in a curse to be determined by the Referee."},
     {name: "Raise Dead", level: 5, range: "Line of Sight", duration: "See description", description: "Raise Dead allows the Cleric to raise a corpse from the dead, provided it has not been dead too long. The normal time limit is 4 days, but for every caster level higher than 8th, the time limit extends another 4 days. Characters with low constitution might not survive the ordeal; and even for those with a strong constitution, a period of two weeks is required before they can function normally. This spell only functions on races that can be used for Player Characters (i.e., “human-like”)."}
     //{name: "", level: 1, range: "", duration: "", description: ""}
 ];
 
 const spellsMage = [
-    {name: "Charm Person", level: 1, range: "120ft", duration: "Until dispelled", description: "This spell affects living bipeds of human size or smaller, such as goblins or dryads. If the spell succeeds (saving throw allowed), the unfortunate creature falls under the caster’s influence."},
+    {name: "Charm Person", level: 1, range: "120ft", duration: "Until dispelled", description: "This spell affects living bipeds of human size or smaller, such as goblins or dryads. If the spell succeeds (saving throw allowed), the unfortunate creature falls under the caster's influence."},
     {name: "Detect Magic", level: 1, range: "60ft", duration: "20 mins", description: "The caster perceives in places, people, or things, the presence of magical spells or enchantments. magical items or secretly placed charms may be discovered with this spell."},
     {name: "Hold Portal", level: 1, range: "Ref's discretion", duration: () => roll2d6(), description: "This spell magically holds a door or gate in position for the spell's duration (or until dispelled). Creatures with magic resistance can shatter the spell without much effort."},
-    {name: "Light", level: 1, range: "120ft", duration: "1 hour + 10 mins per level", description: "Light: As a Light spell, the caster targets a person or object which then produces a light about as bright as a torch with a radius of 20 feet. // Dark: As a Dark spell, the caster instead causes night-time darkness to fall upon the area with a radius of 20 feet."},
-    {name: "Protection from Chaos or Law", level: 1, range: "10ft radius around caster", duration: "2 hours", description: "Protection from Chaos: As a Protection from Chaos, 10ft. radius spell, it has the same effect as Protection from Chaos — exceptthat its effect covers an area rather than an individual. / Protection from Law: As a Protection from Law, 10 ft. radius spell, it has the same effect as Protection from Law — except that its effect covers an area rather than an individual."},
+    {name: "Light or Dark", level: 1, range: "120ft", duration: "1 hour + 10 mins per level", description: "🔆 Light: As a Light spell, the caster targets a person or object which then produces a light about as bright as a torch with a radius of 20 feet. 🌒 Dark: As a Dark spell, the caster instead causes night-time darkness to fall upon the area with a radius of 20 feet."},
+    {name: "Protection from Chaos or Law", level: 1, range: "10ft radius around caster", duration: "2 hours", description: "Protection from Chaos: As a Protection from Chaos, 10ft. radius spell, it has the same effect as Protection from Chaos — except that its effect covers an area rather than an individual. / Protection from Law: As a Protection from Law, 10 ft. radius spell, it has the same effect as Protection from Law — except that its effect covers an area rather than an individual."},
     {name: "Read Languages", level: 1, range: "Reading distance", duration: "1 or 2 readings", description: "This spell allows the caster to read directions, instructions, and similar notations that are written in unfamiliar or even unknown languages. It is especially useful for treasure maps."},
     {name: "Read Magic", level: 1, range: "Caster only", duration: "2 scrolls or other writings", description: "This spell allows the caster to read magical writings on items and scrolls. Magical writing cannot be read without the use of this spell."},
     {name: "Sleep", level: 1, range: "240ft", duration: "Ref's discretion", description: "This spell puts creatures into an enchanted slumber (no saving throw is permitted). It can affect a number of creatures based on their hit dice. Less than 1 to 1 HD: 2d6+3, 1+ to 2+ HD: 2d6, 3 to 4+ HD: 1d6."},
-    {name: "Detect Chaos", level: 2, range: "", duration: "", description: ""},
-    {name: "Detect Invisibility", level: 2, range: "", duration: "", description: ""},
-    {name: "Detect Thoughts (ESP)", level: 2, range: "", duration: "", description: ""},
-    {name: "Invisibility", level: 2, range: "", duration: "", description: ""},
-    {name: "Knock", level: 2, range: "", duration: "", description: ""},
-    {name: "Levitate", level: 2, range: "", duration: "", description: ""},
-    {name: "Light, Continual", level: 2, range: "", duration: "", description: ""},
-    {name: "Locate Object", level: 2, range: "", duration: "", description: ""},
-    {name: "Phantasmal Force", level: 2, range: "", duration: "", description: ""},
+    {name: "Detect Chaos or Detect Law", level: 2, range: "120ft", duration: "20 mins", description: "Detect Chaotic creatures and evil enchantments, intentions, thoughs, auras. / Detect Lawful..."},
+    {name: "Detect Invisibility", level: 2, range: "10ft/caster level", duration: "1 hour", description: "Caster can perceive invisible creatures and objects."},
+    {name: "Detect Thoughts (ESP)", level: 2, range: "60ft", duration: "2 hours", description: "The caster can detect the thoughts of other beings. The spell cannot penetrate more than two feet of stone and is blocked by even a thin sheet of lead."},
+    {name: "Invisibility", level: 2, range: "240ft", duration: "Until dispelled or an attack is made", description: "The object of this spell, whether a person or a thing, becomes invisible to both normal vision and to darkvision. If the Referee is using the invisibility rules unchanged, the result is that an invisible creature cannot be attacked unless its approximate location is known, and all attacks are made at -4 to-hit."},
+    {name: "Knock", level: 2, range: "60ft", duration: "Instant", description: "This spell unlocks and unbars all doors, gates, and portals within its range, including those held or locked by normal magic."},
+    {name: "Levitate", level: 2, range: "20ft per level", duration: "10 minutes per level", description: "This spell allows the Magic-user to levitate himself, moving vertically up or down, but the spell itself provides no assistance with lateral movement. A wall, cliff side, or ceiling could be used to move along hand-over-hand. Levitation allows up or downward movement at a rate of up to 6 feet per minute (60 feet per turn), and the caster cannot levitate more than 20 feet per level from the ground level where the spell was cast (such range being applied both to movement into the air and to downward movement into a pit or chasm)."},
+    {name: "Light or Dark, Continual", level: 2, range: "120ft", duration: "1 hour + 10 minutes per level", description: "🔆 As a Light spell, the caster targets a person or object which then produces a light about as bright as a torch with a radius of 20 feet. 🌒 As a Dark spell, the caster instead causes night-time darkness to fall upon the area with a radius of 20 feet."},
+    {name: "Locate Object", level: 2, range: "60ft + 10ft per level", duration: "1 min per level", description: "This spell gives the caster the correct direction (as the crow flies) toward an object the caster specifies with a description. The object cannot be something the caster has never seen, although the spell can detect an object in a general class of items known to the caster: stairs, gold, etc."},
+    {name: "Phantasmal Force", level: 2, range: "240ft", duration: "Until negated or dispelled", description: "This spell creates a realistic illusion in the sight of all who view it. The illusion disappears when it is touched, but if the viewer believes the illusion is real he can take damage from it."},
     {name: "Web", level: 2, range: "", duration: "", description: ""},
     {name: "Wizard Lock", level: 2, range: "", duration: "", description: ""},
     {name: "Alter Time", level: 3, range: "", duration: "", description: ""},
@@ -61,7 +61,7 @@ const spellsMage = [
     {name: "Water Breathing", level: 3, range: "", duration: "", description: ""},
     {name: "Charm Monster", level: 4, range: "", duration: "", description: ""},
     {name: "Confusion", level: 4, range: "", duration: "", description: ""},
-    {name: "Dimension Portal", level: 4, range: "", duration: "", description: ""},
+    {name: "Dimension Portal", level: 4, range: "10ft. casting, 360ft. teleport", duration: "Instant", description: "Dimensional Portal is a weak form of the Teleport spell that can be managed by lesser magicians. The caster can teleport himself, an object, or another person with perfect accuracy to the stated location, as long as it is within the spell's given range."},
     {name: "Hallucinatory Terrain", level: 4, range: "", duration: "", description: ""},
     {name: "Massmorph", level: 4, range: "", duration: "", description: ""},
     {name: "Plant Growth", level: 4, range: "", duration: "", description: ""},
@@ -93,6 +93,28 @@ const spellsMage = [
     {name: "Quest", level: 6, range: "", duration: "", description: ""},
     {name: "Reincarnation", level: 6, range: "", duration: "", description: ""},
     {name: "Stone to Flesh", level: 6, range: "", duration: "", description: ""}
+];
+
+const protectionFrom = [
+  "Demons",
+  "Drowning",
+  "Elementals",
+  "Lycanthropes",
+  "Magic",
+  "Metal",
+  "Poison",
+  "Undead"
+];
+
+const protectionFrom2 = [
+    {type: "Demons", description: "Everyone within a 10 foot radius around the reader are protected from the attacks of 1 demon per round for a period of 40 minutes."},
+    {type: "Drowning", description: "Everyone within a 10 foot radius of the reader gain the ability to breathe underwater for 1 full day."},
+    {type: "Elementals", description: "This scroll protects against a single elemental, and lasts for a duration of 40 minutes."},
+    {type: "Lycanthropes", description: "All within a 10 foot radius around the reader, for a duration of one hour, are protected from lycanthropes."},
+    {type: "Magic", description: "Anti-magic shell surrounds and moves with the reader for 1 hour, having a radius of 10 feet. Spells cannot pass in or out of the shell."},
+    {type: "Metal", description: "Metal cannot harm the reader for a duration of 1 hour."},
+    {type: "Poison", description: "Poison cannot harm the reader for a period of 6 hours, and any poison in his system is removed."},
+    {type: "Undead", description: "All within a 10 foot radius of the reader are protected against undead, but only to a limited degree. In any given round, 2d12 undead with HD fewer than 4, and 2d6 undead with hit dice 4-5, and 1d6 undead with hit dice of 6+ are foiled by the protection of the scroll. Thus, the scroll is effective against all but a true horde of undead."}
 ];
 
 function roll2d6() {

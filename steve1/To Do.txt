@@ -1,0 +1,36 @@
+To Do
+
+ESSENTIAL...
+
+... Finish populating spell lists with range, duration, description, etc.
+
+√ Display 'Cursed Scroll'.
+... Link to Cursed Scroll type. (Not yet defined. Not sure how to yet...)
+
+
+√ Fix & display 'Protection from...' Scroll
+√ I'm fixing the Protection From list. Conversion to object.
+√ Show this: Roll a random Protection Scroll (triple duration & double effects)...
+... Add 'duration' to scrolls display.
+
+√ Treasure Potions - Complete range, duration, description, etc.
+√...Display Potions correctly on page.
+
+...Weapons & Armor - Fix displays for unusual weapons
+...Fix all displays!
+√...Finish Cursed Weapons flow
+
+
+STRONGLY SUGGESTED...
+Magical effects, including curses, are hidden at first, (for better solo play).
+
+Monster Database
+
+
+SUGGESTED...
+Add to Curses list. Create pairs of good and bad items, so that cursed items are not immediately recognized,
+such as the rope curse.
+
+
+REMEMBER!
+Check for Test Hacks before going live...
