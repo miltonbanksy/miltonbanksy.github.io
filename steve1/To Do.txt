@@ -11,7 +11,7 @@ ESSENTIAL...
 √ Fix & display 'Protection from...' Scroll
 √ I'm fixing the Protection From list. Conversion to object.
 √ Show this: Roll a random Protection Scroll (triple duration & double effects)...
-... Add 'duration' to scrolls display.
+√... Add 'duration' to Potions display.
 
 √ Treasure Potions - Complete range, duration, description, etc.
 √...Display Potions correctly on page.
@@ -22,7 +22,7 @@ ESSENTIAL...
 
 
 STRONGLY SUGGESTED...
-... 2d6 arrows > auto roll for number of arrows.
+√... 2d6 arrows > auto roll for number of arrows.
 
 ...Magical effects, including curses, are hidden at first, (for better solo play).
 
@@ -37,6 +37,8 @@ SUGGESTED...
 ...Add Random Weapon/Armor(s) Generator. (amount)
 ...Add Random Scroll(s) Generator. (amount)
 ...Add Random Misc Items(s) Generator. (amount)
+
+...Add Magical Items from WB Omnibus
 
 
 ...Add to Curses list. Create pairs of good and bad items, so that cursed items are not immediately recognized,

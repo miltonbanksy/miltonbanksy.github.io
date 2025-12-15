@@ -45,7 +45,7 @@ function getPotion() {
     listPotions.forEach(potion => {
         const heading4Element = document.createElement('div');
         const linebreakElement = document.createElement('br');
-        heading4Element.innerHTML = `<b>Potion of ${potion.value}</b><br>${potion.description}`;
+        heading4Element.innerHTML = `<b>Potion of ${potion.value}</b><br>${potion.description}, Duration: 1d6+1 turns`;
         displayTreasureDescription.appendChild(heading4Element);
         displayTreasureDescription.appendChild(linebreakElement);
     });

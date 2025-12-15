@@ -270,11 +270,33 @@
                 // Trade out was unsuccessful...
                 displayTradeOut.innerText ="Trade out failed."
             }
-        }
+        };
+
+        // # GET MAGIC ITEM (ALL QUALITY LEVELS)
+        function getMagicItem() {
+            // console.log("Roll on the 'Magic Item' table...")
+            // Determine the type of Major Magic Item...
+            die_roll = roll1dx(6); // Change this to 6 for live!
+            //die_roll = 4 // !!!! TESTING ONLY !!!!
+            if ( die_roll == 1 ) {
+                getPotion();
+
+            } else if ( die_roll == 2 || die_roll == 3 ) {
+                getScroll();
+
+            } else if ( die_roll == 4 || die_roll == 5 ) {
+                getWeaponArmor();
+
+            } else {
+                getMiscItem();
+            }
+        };
 
         function roll1dx(number_of_sides) {
             return Math.floor(Math.random() * number_of_sides) +1;
         };
+
+        
 
         function get_percentage(num, per) {
             return (num / 100) * per;
@@ -292,25 +314,7 @@
         
         
 
-        // # GET MAGIC ITEM (ALL QUALITY LEVELS)
-        function getMagicItem() {
-            // console.log("Roll on the 'Magic Item' table...")
-            // Determine the type of Major Magic Item...
-            die_roll = roll1dx(6); // Change this to 6 for live!
-            // die_roll = 4 // !!!! TESTING ONLY !!!!
-            if ( die_roll == 1 ) {
-                getPotion();
-
-            } else if ( die_roll == 2 || die_roll == 3 ) {
-                getScroll();
-
-            } else if ( die_roll == 4 || die_roll == 5 ) {
-                getWeaponArmor();
-
-            } else {
-                getMiscItem();
-            }
-        };
+        
 
         
 

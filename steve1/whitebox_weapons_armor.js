@@ -54,27 +54,37 @@ const magicMeleeWeapons = [
     {roll: 12, type: "War Hammer"}
 ];
 
+function rollxdx(number_of_dice, number_of_sides) {
+            let dice_bag = [];
+            for (x = 1; x <= number_of_dice; x++) {
+                let die = Math.floor(Math.random() * number_of_sides) +1;
+                dice_bag.push(die);
+            }
+            console.log(dice_bag);
+            return dice_bag;
+        };
+
 const magicMissileWeapons = [
-    {roll: 1, type: "2d6 Arrows"},
-    {roll: 2, type: "2d6 Arrows"},
-    {roll: 3, type: "2d6 Arrows"},
-    {roll: 4, type: "2d6 Arrows"},
-    {roll: 5, type: "2d6 Arrows"},
-    {roll: 6, type: "2d6 Arrows"},
-    {roll: 7, type: "2d6 Arrows"},
-    {roll: 8, type: "2d6 Arrows"},
-    {roll: 9, type: "1d10 Stones"},
-    {roll: 10, type: "1d10 Stones"},
-    {roll: 11, type: "Spear"},
-    {roll: 12, type: "2d4 Darts"},
-    {roll: 13, type: "2d4 Darts"},
-    {roll: 14, type: "2d4 Darts"},
-    {roll: 15, type: "2d4 Darts"},
-    {roll: 16, type: "2d6 Bolts, crossbow"},
-    {roll: 17, type: "2d6 Bolts, crossbow"},
-    {roll: 18, type: "2d6 Bolts, crossbow"},
-    {roll: 19, type: "2d6 Bolts, crossbow"},
-    {roll: 20, type: "2d6 Bolts, crossbow"},
+    {roll: 1, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 2, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 3, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 4, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 5, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 6, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 7, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 8, type: "Arrows", action: () => rollxdx(2, 6)},
+    {roll: 9, type: "Stones", action: () => rollxdx(1, 10)},
+    {roll: 10, type: "Stones", action: () => rollxdx(1, 10)},
+    {roll: 11, type: "Spear", action: 1},
+    {roll: 12, type: "Darts", action: () => rollxdx(2, 4)},
+    {roll: 13, type: "Darts", action: () => rollxdx(2, 4)},
+    {roll: 14, type: "Darts", action: () => rollxdx(2, 4)},
+    {roll: 15, type: "Darts", action: () => rollxdx(2, 4)},
+    {roll: 16, type: "Bolts, crossbow", action: () => rollxdx(2, 6)},
+    {roll: 17, type: "Bolts, crossbow", action: () => rollxdx(2, 6)},
+    {roll: 18, type: "Bolts, crossbow", action: () => rollxdx(2, 6)},
+    {roll: 19, type: "Bolts, crossbow", action: () => rollxdx(2, 6)},
+    {roll: 20, type: "Bolts, crossbow", action: () => rollxdx(2, 6)}
 ];
 
 const magicUnusualWeapons = [
@@ -91,9 +101,16 @@ const magicUnusualWeapons = [
 ];
 
 const magicUnusualArmor = [
-    {roll: 1, type: "Armor of Arrow Deflection", description: "+2 against missile fire."},
-    {roll: 2, type: "Demonic Armor", description: "Possessed by a spirit or demon, with effects to be determined by the Referee."},
-    {roll: 3, type: "Ethereal Armor", description: "+3 plate mail that also allows the wearer to become insubstantial and incorporeal 50 times, after which it reverts to normal +3 platemail. In ethereal form, the wearer cannot be hit and cannot attack (unless the opponent is also ethereal)."},
-    {roll: 4, type: "Fiery Armor", description: "+1 armor that is surrounded by flames. These flames deal 1d6 damage to melee attackers."},
+    {type: "Armor of Arrow Deflection", description: "+2 against missile fire."},
+    {type: "Demonic Armor", description: "Possessed by a spirit or demon, with effects to be determined by the Referee."},
+    {type: "Ethereal Armor", description: "+3 plate mail that also allows the wearer to become insubstantial and incorporeal 50 times, after which it reverts to normal +3 platemail. In ethereal form, the wearer cannot be hit and cannot attack (unless the opponent is also ethereal)."},
+    {type: "Fiery Armor", description: "+1 armor that is surrounded by flames. These flames deal 1d6 damage to melee attackers."},
+    {type: "Bear-Skin", description: "This magical suit of leather armor allows the wearer to transform into a bear once per day for up to ten combat rounds. While in bear form their armor class is 2 [17] and they may attack three times per round with their massive claws and dangerous bite. These attacks inflict 1d6 points of damage."},
+    {type: "Bone Mail", description: "Bone Mail grants its borrower the ability to Banish Undead once per day, even if they are not a cleric. However, any undead which are successfully turned are brought to heel as if the wearer of the Bone Mail were of Evil/Chaotic alignment. Each time this ability is used, the player must roll 1d100. If the result is 5 or less, the wearer of the armor becomes Evil/Chaotic in alignment. If alignments are not used, the character will find themselves bound under a powerful Quest spell of the referee's design."},
+    {type: "Carapace Plate", description: "Crafted from the shell of a giant ant or similar monstrous insect, the wearer of this armor will never be attacked by insects unless he attacks them first. This includes giant fire beetles, giant centipedes, and even giant spiders."},
+    {type: "Dragon Scale Mail", description: "Crafted from dragon hide. It is extraordinarily rare and requires an expert armor to craft. It provides the protection of plate armor, but only weighs 15 lbs."},
+    {type: "Dwarf-Forged Plate", description: "Dwarf-forged steel is incredibly strong and very light. Dwarf-forged plate provides a modifier of -7 [+7] to the wearer's armor class and weighs only 30 lbs. It can only be worn by dwarves."},
+    {type: "Elven Chain Mail", description: "Elven smiths craft this armor from special silver which has been kissed by starlight. It functions like normal chain mail, but weighs only 5 lbs and elves are able to cast spells while wearing elven chain mail. Almost all elven chain is made to fit elves, though suits made to fit other races are crafted on rare occasions."}
+    //add more from WB Omnibus... (don't forget the comma on the prev line!)
 ];
 
