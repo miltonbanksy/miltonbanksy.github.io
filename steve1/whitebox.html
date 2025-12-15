@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Box</title>
+    <style>
+        html {
+            padding: 10px;
+        }
+
+        .btn-trade-out {
+            width: 200px;
+        }
+        .label-developer {
+            display: inline-block;
+            width: 130px;
+        }
+    </style>
 </head>
 <body>
     <h1>White Box</h1>
@@ -16,14 +29,15 @@
     <p id="display-treasure"></p>
     
     <h3>Treasure Trade Outs</h3>
-    <p>In addition to coins, treasures contain gems, jewelry, and magical items. Treasures should be interesting—an endless series of “another treasure worth 100 gp in total” is a sure-fire recipe for boring your players.</p>
-    <p>For every 5,000 gp in value, there is a 10% chance of trading out 5,000 gp for an item on either the Major Gem/Jewelry or Major Magic Item table.</p>
+    <p>In addition to coins, treasures contain gems, jewelry, and magical items.</p>
+    <p>There is a 10% chance of trading out coins for a 'Minor', 'Medium', or 'Major' item on either the Gem/Jewelry or Magic Item table.</p>
+    <p>If the trade-out is successfull, there is a 5% chance of obtaining a Magic item.</p>
     
-    <button id="btn-trade-out-major">Attempt to Trade out 5000 gp (1 try, 10% chance)</button>
+    <button class="btn-trade-out" id="btn-trade-out-major">Trade Out 5000 gp (Major Item)</button>
     <br>
-    <button id="btn-trade-out-medium">Attempt to Trade out 1000 gp (1 try, 10% chance)</button>
+    <button class="btn-trade-out" id="btn-trade-out-medium">Trade Out 1000 gp (Medium Item)</button>
     <br>
-    <button id="btn-trade-out-minor">Attempt to Trade out 100 gp (1 try, 10% chance)</button>
+    <button class="btn-trade-out" id="btn-trade-out-minor">Trade Out 100 gp (Minor Item)</button>
     
     <p id="display-trade-out"></p>
     <p class="treasure-displays" id="display-trade-out-magic-or-mundane"></p>
@@ -31,6 +45,23 @@
     <p class="treasure-displays" id="display-treasure-category"></p>
     <p class="treasure-displays" id="display-treasure-name"></p>
     <p class="treasure-displays" id="display-treasure-description"></p>
+
+    <br>
+    <hr>
+
+    <h3>Referee Tweaks / Developer Testing</h3>
+
+    <label class="label-developer" for="input-set-trade-out-chance">Chance of Trade Out (%)</label>
+    <input id="input-set-trade-out-chance" type="number" placeholder="Default is 10%">
+    <button id="btn-set-trade-out-chance">Set</button>
+    <label id="display-trade-out-chance">10%</label>
+    
+    <br><br>
+    
+    <label class="label-developer" for="input-set-magic-item-chance">Chance of Magic Item (%)</label>
+    <input id="input-set-magic-item-chance" type="number" placeholder="Default is 5% (1/20)">
+    <button id="btn-set-magic-item-chance">Set</button>
+    <label id="display-magic-item-chance">5%</label>
 
 
     <script src="whitebox_potions_logic.js"></script>
@@ -67,6 +98,19 @@
         // Group the displays:
         const treasureDisplays = document.getElementsByClassName('treasure-displays');
 
+        // GM Developer Tools
+        const inputSetTradeOutChance = document.getElementById('input-set-trade-out-chance');
+        const btnSetTradeOutChance = document.getElementById('btn-set-trade-out-chance');
+        const displayTradeOutChance = document.getElementById('display-trade-out-chance');
+        const inputSetMagicItemChance = document.getElementById('input-set-magic-item-chance');
+        const btnSetMagicItemChance = document.getElementById('btn-set-magic-item-chance');
+        const displayMagicItemChance = document.getElementById('display-magic-item-chance');
+
+        let chanceOfTradeOut = 10; // DEFAULT 10
+        let chanceOfTradeOutAsInt = 10; // DEFAULT 1/10 10%
+        let chanceOfMagicItem = 5; // DEFAULT 1/20, 5%
+        let chanceOfMagicItemAsInt = 5; // DEFAULT 1/20, 5%
+
         let scrollUser = "";
         let treasureType = "";
         let treasureCategory = "";
@@ -94,10 +138,24 @@
             tradeOutTreasure();
         });
 
+        // GM / DEVELOPER LISTENERS
+        btnSetTradeOutChance.addEventListener('click', () => {
+            chanceOfTradeOut = inputSetTradeOutChance.value;
+            chanceOfTradeOutAsInt = Number(chanceOfTradeOut);
+            displayTradeOutChance.innerHTML = chanceOfTradeOutAsInt + "%";
+        });
+
+        btnSetMagicItemChance.addEventListener('click', () => {
+            chanceOfMagicItem = inputSetMagicItemChance.value;
+            chanceOfMagicItemAsInt = Number(chanceOfMagicItem);
+            displayMagicItemChance.innerHTML = chanceOfMagicItemAsInt + "%";
+        });
+
 
         /// HELPER FUNCTIONS
 
         function calculateTreasure() {
+            
             let treasure_value = 0;
             let percentage_copper = 0;
             let percentage_silver = 0;
@@ -139,6 +197,7 @@
         };
 
         function tradeOutTreasure() {
+            
             // Clear the treasure detail displays:
             for (let i = 0; i < treasureDisplays.length; i++) {
                 treasureDisplays[i].innerHTML = "";
@@ -151,14 +210,13 @@
             let die_roll = roll1dx(100);
             
             // Trade out was successful...
-            if ( die_roll <= 100 ) { // !!!! CHANGE THIS TO <= 10 FOR LIVE! !!!!
+            if ( die_roll <= chanceOfTradeOutAsInt ) { // Defaults to 10. User can change this.
                 displayTradeOut.innerHTML ="\nTrade out successful";
                 
                 // Check if the trade out is for Magic Items or Gem/Jewelry...
-                die_roll = roll1dx(20); // Default die_roll = roll1dx(20);
-                // die_roll = 20; // !!!! TESTING ONLY !!!!
+                die_roll = roll1dx(100);
                 
-                if ( die_roll == 20 ) { // !!!! CHANGE TO:  == 20 FOR LIVE!
+                if ( die_roll <= chanceOfMagicItemAsInt ) { // Defaults to 1/20, 5%
                     magicalOrMundaneItem = "magical item";
                     displayTradeOutMagicOrMundane.innerHTML = "Magical Item(s)"
                     getMagicItem();
@@ -229,7 +287,7 @@
         function getRandomProtectionScroll() {
             const randomProtectionScrollIndex = Math.floor(Math.random() * protectionFrom2.length);
             return protectionFrom2[randomProtectionScrollIndex];
-        }
+        };
 
         
         

@@ -16,19 +16,30 @@ ESSENTIAL...
 √ Treasure Potions - Complete range, duration, description, etc.
 √...Display Potions correctly on page.
 
-...Weapons & Armor - Fix displays for unusual weapons
-...Fix all displays!
+√...Weapons & Armor - Fix displays for unusual weapons
+√...Fix all displays!
 √...Finish Cursed Weapons flow
 
 
 STRONGLY SUGGESTED...
-Magical effects, including curses, are hidden at first, (for better solo play).
+... 2d6 arrows > auto roll for number of arrows.
 
-Monster Database
+...Magical effects, including curses, are hidden at first, (for better solo play).
+
+...Monster Database
 
 
 SUGGESTED...
-Add to Curses list. Create pairs of good and bad items, so that cursed items are not immediately recognized,
+√ ...Add label to show Chance Of Trade Out %
+√ ...Add label to show Chance Of Magic Item %
+...Add Random ALL Magic Item Generator.
+...Add Random Potion(s) Generator. (amount)
+...Add Random Weapon/Armor(s) Generator. (amount)
+...Add Random Scroll(s) Generator. (amount)
+...Add Random Misc Items(s) Generator. (amount)
+
+
+...Add to Curses list. Create pairs of good and bad items, so that cursed items are not immediately recognized,
 such as the rope curse.
 
 
