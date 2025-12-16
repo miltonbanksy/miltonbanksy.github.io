@@ -1,17 +1,19 @@
-To Do
+REMEMBER!
+~~~~~~~~~
+Check for Test Hacks before going live...
+
+
+TO DO...
+~~~~~~~~
+
+Magic Bolts, crossbow +3
+- Not showing amount. Possibly not calling rollxdx...??
 
 Trade out successful
 Magical Items
 Scroll(s)
 - Missing spell details when generating scrolls.
-
-
-Trade out successful
-Magic Items
-- Missing 'Magic' before:
-* Mace, heavy +1
-* War Hammer +1
-* Lance +1
+... Finish populating spell lists with range, duration, description, etc.
 
 
 Trade out successful
@@ -19,23 +21,18 @@ Magic Items
 Boots of Speed or Leaping.
 - Create a function which randomly chooses Speed or Leaping. 50%.
 
+Trade out successful
+Magic Items
+miscItemsLesser
+Cursed Item
+- not sure what this is...
 
 
-
-
-... Finish populating spell lists with range, duration, description, etc.
-
-
-... Link to Cursed Scroll type. (Not yet defined. Not sure how to yet...)
-
-
-
-
-
-STRONGLY SUGGESTED...
+... Cursed Scrolls ?? Link to Cursed Scroll type. (Not yet defined. Not sure how to yet...)
 
 
 ...Magical effects, including curses, are hidden at first, (for better solo play).
+
 
 ...Monster Database
 
@@ -55,10 +52,8 @@ SUGGESTED...
 such as the rope curse.
 
 
-REMEMBER!
-Check for Test Hacks before going live...
 
-
+/////////////////////
 DONE
 Place all on same line:
 'Enter the monster's XP'
@@ -91,3 +86,11 @@ Trade out successful
 Magic Item(s)
 Protection from... undefined
 > Seems okay... Typo error.
+
+
+Trade out successful
+Magic Items
+- Missing 'Magic' before:
+* Mace, heavy +1
+* War Hammer +1
+* Lance +1

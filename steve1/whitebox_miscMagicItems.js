@@ -159,7 +159,7 @@ function getMiscItem() {
     //console.log(`🎁 Treasure Quality: ${treasureType.quality}, Treasure Type: Misc.`);
     
     die_roll = roll1dx(20) + treasureType.miscModifier;
-    die_roll = 10; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
+    //die_roll = 10; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
 
     const item = miscItems.find( i => die_roll >= i.start && die_roll <= i.end );
 
@@ -168,13 +168,6 @@ function getMiscItem() {
     }
 
     const actionValue = typeof item.action === "function" ? item.action() : item.action;
-    
-    /*
-    console.log(`NEW Quality: ${treasureType.quality}`);
-    console.log(`NEW Item: ${item.type}`);
-    console.log(`Description: ${item.description}`);
-    console.log(`Action: ${actionValue}`);
-    */
 };
 
 function getWandLesser() {
@@ -261,7 +254,7 @@ function getCursedItem() {
     const cursedItemIndex = Math.floor(Math.random() * cursedItems.length);
     const cursedItem = cursedItems[cursedItemIndex];
     
-    displayTreasureName.innerHTML = `Cursed Item! ${cursedItem.item}`;
+    displayTreasureName.innerHTML = `💀 <b>Cursed Item! ${cursedItem.item}</b>`;
     displayTreasureDescription.innerHTML = `${cursedItem.description}`;
 };
 

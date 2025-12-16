@@ -54,15 +54,7 @@ const magicMeleeWeapons = [
     {roll: 12, type: "War Hammer"}
 ];
 
-function rollxdx(number_of_dice, number_of_sides) {
-            let dice_bag = [];
-            for (x = 1; x <= number_of_dice; x++) {
-                let die = Math.floor(Math.random() * number_of_sides) +1;
-                dice_bag.push(die);
-            }
-            console.log(dice_bag);
-            return dice_bag;
-        };
+
 
 const magicMissileWeapons = [
     {roll: 1, type: "Arrows", action: () => rollxdx(2, 6)},
