@@ -6,6 +6,10 @@ Check for Test Hacks before going live...
 TO DO...
 ~~~~~~~~
 
+...NOW FIXING & CHECKING WEAPONS AND ARMOR...
+- using helper functions
+
+
 Magic Bolts, crossbow +3
 - Not showing amount. Possibly not calling rollxdx...??
 
