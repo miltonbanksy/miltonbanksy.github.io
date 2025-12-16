@@ -1,28 +1,39 @@
 To Do
 
-ESSENTIAL...
+Trade out successful
+Magical Items
+Scroll(s)
+- Missing spell details when generating scrolls.
+
+
+Trade out successful
+Magic Items
+- Missing 'Magic' before:
+* Mace, heavy +1
+* War Hammer +1
+* Lance +1
+
+
+Trade out successful
+Magic Items
+Boots of Speed or Leaping.
+- Create a function which randomly chooses Speed or Leaping. 50%.
+
+
+
+
 
 ... Finish populating spell lists with range, duration, description, etc.
 
-√ Display 'Cursed Scroll'.
+
 ... Link to Cursed Scroll type. (Not yet defined. Not sure how to yet...)
 
 
-√ Fix & display 'Protection from...' Scroll
-√ I'm fixing the Protection From list. Conversion to object.
-√ Show this: Roll a random Protection Scroll (triple duration & double effects)...
-√... Add 'duration' to Potions display.
 
-√ Treasure Potions - Complete range, duration, description, etc.
-√...Display Potions correctly on page.
-
-√...Weapons & Armor - Fix displays for unusual weapons
-√...Fix all displays!
-√...Finish Cursed Weapons flow
 
 
 STRONGLY SUGGESTED...
-√... 2d6 arrows > auto roll for number of arrows.
+
 
 ...Magical effects, including curses, are hidden at first, (for better solo play).
 
@@ -30,8 +41,7 @@ STRONGLY SUGGESTED...
 
 
 SUGGESTED...
-√ ...Add label to show Chance Of Trade Out %
-√ ...Add label to show Chance Of Magic Item %
+
 ...Add Random ALL Magic Item Generator.
 ...Add Random Potion(s) Generator. (amount)
 ...Add Random Weapon/Armor(s) Generator. (amount)
@@ -47,3 +57,37 @@ such as the rope curse.
 
 REMEMBER!
 Check for Test Hacks before going live...
+
+
+DONE
+Place all on same line:
+'Enter the monster's XP'
+Input box
+'Calculate Treasure' button
+
+Decide if you are using 'magic' or 'magical'. Keep consistent.
+- Change 'Magical Item(s)' to 'Magic Item(s)'
+
+√ ...Add label to show Chance Of Trade Out %
+√ ...Add label to show Chance Of Magic Item %
+
+√ Fix & display 'Protection from...' Scroll
+√ I'm fixing the Protection From list. Conversion to object.
+√ Show this: Roll a random Protection Scroll (triple duration & double effects)...
+√... Add 'duration' to Potions display.
+
+√ Treasure Potions - Complete range, duration, description, etc.
+√...Display Potions correctly on page.
+
+√...Weapons & Armor - Fix displays for unusual weapons
+√...Fix all displays!
+√...Finish Cursed Weapons flow
+
+√ Display 'Cursed Scroll'.
+
+√... 2d6 arrows > auto roll for number of arrows.
+
+Trade out successful
+Magic Item(s)
+Protection from... undefined
+> Seems okay... Typo error.

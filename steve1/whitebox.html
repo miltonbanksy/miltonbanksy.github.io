@@ -55,14 +55,14 @@
     <label class="label-developer" for="input-set-trade-out-chance">Chance of Trade Out (%)</label>
     <input id="input-set-trade-out-chance" type="number" placeholder="Default is 10%">
     <button id="btn-set-trade-out-chance">Set</button>
-    <label id="display-trade-out-chance">10%</label>
+    <label for="btn-set-trade-out-chance" id="display-trade-out-chance">10%</label>
     
     <br><br>
     
     <label class="label-developer" for="input-set-magic-item-chance">Chance of Magic Item (%)</label>
     <input id="input-set-magic-item-chance" type="number" placeholder="Default is 5% (1/20)">
     <button id="btn-set-magic-item-chance">Set</button>
-    <label id="display-magic-item-chance">5%</label>
+    <label for="btn-set-magic-item-chance" id="display-magic-item-chance">5%</label>
 
 
     <script src="whitebox_potions_logic.js"></script>
@@ -219,7 +219,7 @@
                 
                 if ( die_roll <= chanceOfMagicItemAsInt ) { // Defaults to 1/20, 5%
                     magicalOrMundaneItem = "magical item";
-                    displayTradeOutMagicOrMundane.innerHTML = "Magical Item(s)"
+                    displayTradeOutMagicOrMundane.innerHTML = "Magic Item(s)"
                     getMagicItem();
                     
                 } else {
@@ -278,7 +278,7 @@
             // console.log("Roll on the 'Magic Item' table...")
             // Determine the type of Major Magic Item...
             die_roll = roll1dx(6); // Change this to 6 for live!
-            //die_roll = 4 // !!!! TESTING ONLY !!!!
+            //die_roll = 2 // !!!! TESTING ONLY !!!!
             if ( die_roll == 1 ) {
                 getPotion();
 
@@ -335,7 +335,7 @@
             let listRandomSpell = [];
 
             die_roll = roll1dx(8) + treasureType.modifier; // Roll 1d8 + Quality mod
-            // die_roll = 6; // !!!! TEST ONLY REMOVE !!!!
+            //die_roll = 6; // !!!! TEST ONLY REMOVE !!!!
             
             // Info: generateRandomScrolls(number of scrolls, min level, max level)
             if ( die_roll == 1 ) {
@@ -375,7 +375,7 @@
             } else if (die_roll == 18) {
                 generateRandomScrolls(8, 1, 6);
             } else if (die_roll == 20) {
-                crandomProtectionScroll = getRandomProtectionScroll();
+                randomProtectionScroll = getRandomProtectionScroll();
                 displayTreasureName.innerHTML = `<b>Protection from ${randomProtectionScroll.type}</b> (Triple duration, Double effect)`;
                 displayTreasureDescription.innerHTML = randomProtectionScroll.description;
             } else {
