@@ -9,7 +9,7 @@ function getWeaponArmor() {
             let weaponCommunication = "";
             
             die_roll = roll1dx(8) + treasureType.modifier; // Roll 1d8 + Quality mod
-            //die_roll = 20; // FOR TESTING ONLY !!!!!!!!!!!
+            die_roll = 1; // FOR TESTING ONLY !!!!!!!!!!!
 
             if ( die_roll == 1 ) {
                 let curseMod = "";
@@ -18,16 +18,16 @@ function getWeaponArmor() {
                 const message = (die_roll == 1) ? "Armor" : "Shield";
                 die_roll = roll1dx(6);
                 if (die_roll == 1 || die_roll == 2 || die_roll == 3) {
-                    curseMod = "-1 (Choose weapon or armor)";
+                    curseMod = "-1 penalty to weapon or armor";
                 } else if (die_roll == 4) {
-                    curseMod = "-2 (Choose weapon or armor)";
+                    curseMod = "-2 penalty to weapon or armor";
                 } else if (die_roll == 5) {
-                    curseMod = "-3 (Choose weapon or armor)";
+                    curseMod = "-3 penalty to weapon or armor";
                 } else {
                     curseMod = "Attracts Missiles and grants those missiles a +1 'to-hit' bonus.";
                 }
                 console.log(`Cursed ${message}`);
-                displayTreasureDescription.innerHTML = `<b>💀 Cursed ${message} ${curseMod}💀</b>`;
+                displayTreasureDescription.innerHTML = `<b>💀 Cursed ${message}, ${curseMod}💀</b>`;
 
             } else if ( die_roll == 2 ) {
                 weaponTypeIndex = Math.floor(Math.random() * magicMissileWeapons.length);
