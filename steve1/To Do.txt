@@ -6,12 +6,17 @@ Check for Test Hacks before going live...
 TO DO...
 ~~~~~~~~
 
-...NOW FIXING & CHECKING WEAPONS AND ARMOR...
+...getMiscItem not displaying
+...NOW FIXING & CHECKING getMiscItem...
 - using helper functions
 
 
-Magic Bolts, crossbow +3
-- Not showing amount. Possibly not calling rollxdx...??
+...Misc Items > Wands
+Lesser / Greater Wands not complete and not displaying yet.
+
+...Then, re-organise Misc Items into helper functions.
+
+
 
 Trade out successful
 Magical Items
@@ -24,6 +29,7 @@ Trade out successful
 Magic Items
 Boots of Speed or Leaping.
 - Create a function which randomly chooses Speed or Leaping. 50%.
+
 
 Trade out successful
 Magic Items

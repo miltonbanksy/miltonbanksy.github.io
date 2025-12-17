@@ -150,7 +150,7 @@ const miscItems = [
     {start: 41, end: 42, type: "Greater Wand", action: getWandGreater},
     {start: 43, end: 44, type: "Greater Ring", action: getRingGreater},
     {start: 45, end: 45, type: "Staff", action: getStaff},
-    {start: 46, end: 60, type: "Misc. Greater Magical Item", action: "TBC..."}
+    {start: 46, end: 60, type: "Misc. Greater Magical Item", action: getMiscItemGreater}
 ];
 
 
@@ -192,11 +192,13 @@ function getWandGreater() {
 
     console.log(`Type (test): ${wandGreaterItem.type}`);
 
-    if (wandGreaterItem.roll <= 4) {
+    if (wandGreaterItem.roll <= 2) {
         generateRandomScrolls(1, wandGreaterItem.level, wandGreaterItem.level);
     } else {
         console.log(wandGreaterItem.type);
         console.log(wandGreaterItem.description);
+        displayTreasureDescription.innerHTML = `<b>🌠 Wand of ${wandGreaterItem.type} Magic ${wandGreaterItem.description}</b>`;
+        displayTreasureDescription.innerHTML = `${wandGreaterItem.description}`;
     }
 };
 
@@ -209,6 +211,8 @@ function getRingLesser() {
     //const actionValue = typeof ringLesserItem.action === "function" ? ringLesserItem.action() : ringLesserItem.action;
     console.log(`Type: ${ringLesserItem.type}`);
     console.log(`Description: ${ringLesserItem.desription}`);
+    displayTreasureName.innerHTML = `<h4>💍 Ring of ${ringLesserItem.item}</h4>`;
+    displayTreasureDescription.innerHTML = `${ringLesserItem.description}`;
 };
 
 function getRingGreater() {
@@ -217,6 +221,8 @@ function getRingGreater() {
     const ringGreaterItem = ringGreater[ringGreaterItemIndex];
     console.log(`Type: ${ringGreaterItem.type}`);
     console.log(`Description: ${ringGreaterItem.description}`);
+    displayTreasureName.innerHTML = `<h4>💍 Ring of ${ringGreaterItem.type}</h4>`;
+    displayTreasureDescription.innerHTML = `${ringGreaterItem.description}`;
 };
 
 function getMiscItemLesser() {
@@ -240,6 +246,15 @@ function getMiscItemMedium() {
     const miscItemMedium = miscItemsMedium[miscItemMediumIndex];
     console.log(`Item: ${miscItemMedium.item}`);
     console.log(`Description: ${miscItemMedium.description}`);
+    displayTreasureName.innerHTML = `<h4>🎁 ${miscItemMedium.item}</h4>`;
+    displayTreasureDescription.innerHTML = `${miscItemMedium.description}`;
+};
+
+function getMiscItemGreater() {
+    const miscItemGreaterIndex = Math.floor(Math.random() * miscItemsGreater.length);
+    const miscItemGreater = miscItemsGreater[miscItemGreaterIndex];
+    displayTreasureName.innerHTML = `<h4>🎁 ${miscItemGreater.item}</h4>`;
+    displayTreasureDescription.innerHTML = miscItemGreater.description;
 };
 
 function getStaff() {
@@ -248,6 +263,8 @@ function getStaff() {
     console.log(`Item: ${staff.item}`);
     console.log(`Description: ${staff.description}`);
     console.log(`Most staves carry 200 charges.`);
+    displayTreasureName.innerHTML = `<h4>${staff.item}</h4>`;
+    displayTreasureDescription.innerHTML = `${staff.description}`;
 };
 
 function getCursedItem() {

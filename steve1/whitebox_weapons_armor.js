@@ -31,10 +31,10 @@ const cursedArmorWeaponsShields = [
 ];
 
 const minorAbilitiesForMeleeWeapons = [
-    {roll: 1, type: "Additional damage (+1)"},
-    {roll: 2, type: "Additional damage (+1)"},
-    {roll: 3, type: "Additional damage (+1)"},
-    {roll: 4, type: "Additional damage (+1)"},
+    {roll: 1, type: "+1 damage"},
+    {roll: 2, type: "+1 damage"},
+    {roll: 3, type: "+1 damage"},
+    {roll: 4, type: "+1 damage"},
     {roll: 5, type: "Sheds light, 15 ft. radius"},
     {roll: 6, type: "Sheds light, 30 ft. radius"}
 ]
