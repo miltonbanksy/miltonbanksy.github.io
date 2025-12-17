@@ -13,8 +13,14 @@ TO DO...
 
 ...Misc Items > Wands
 Lesser / Greater Wands not complete and not displaying yet.
+Wands needs to say: Wand of...
 
 ...Then, re-organise Misc Items into helper functions.
+
+
+...Add next level of logic to: Ring of Spell Storing (Cleric)
+- stores 1d6 spells
+- roll 1d6 (disregard 6s) for spell levels
 
 
 

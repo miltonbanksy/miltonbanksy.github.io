@@ -21,12 +21,12 @@ const wandGreater = [
 ];
 
 const ringLesser = [
-    {roll: 1, type: "Fire Resistance", desription: "+5 to saving throws vs. magical fire and grants immunity to normal fire."},
-    {roll: 2, type: "Invisibility", desription: "Turns wearer invisible."},
-    {roll: 3, type: "Mammal control", desription: "The wearer controls 1d6 mammals at a range of up to 60 feet. Control does not extend to humans or giant animals."},
-    {roll: 4, type: "Poison Resistance", desription: "+5 to saving throws vs. poison."},
-    {roll: 5, type: "Protection, +1", desription: "Grants bonus to armor class and saving throws."},
-    {roll: 6, type: "Protection, +2", desription: "Grants bonus to armor class and saving throws."}
+    {roll: 1, type: "Fire Resistance", description: "+5 to saving throws vs. magical fire and grants immunity to normal fire."},
+    {roll: 2, type: "Invisibility", description: "Turns wearer invisible."},
+    {roll: 3, type: "Mammal control", description: "The wearer controls 1d6 mammals at a range of up to 60 feet. Control does not extend to humans or giant animals."},
+    {roll: 4, type: "Poison Resistance", description: "+5 to saving throws vs. poison."},
+    {roll: 5, type: "Protection, +1", description: "Grants bonus to armor class and saving throws."},
+    {roll: 6, type: "Protection, +2", description: "Grants bonus to armor class and saving throws."}
 ];
 
 const ringGreater = [
@@ -194,6 +194,10 @@ function getWandGreater() {
 
     if (wandGreaterItem.roll <= 2) {
         generateRandomScrolls(1, wandGreaterItem.level, wandGreaterItem.level);
+        
+        // STUCK HERE. CALLING SCROLLS. MESSES UP DISPLAY !!!!!!!!!!!
+        //displayTreasureDescription.innerHTML = `<b>🌠 Wand of ${wandGreaterItem.type} Magic ${wandGreaterItem.description}</b>`;
+        //displayTreasureDescription.innerHTML = `${wandGreaterItem.description}`;
     } else {
         console.log(wandGreaterItem.type);
         console.log(wandGreaterItem.description);
@@ -211,7 +215,7 @@ function getRingLesser() {
     //const actionValue = typeof ringLesserItem.action === "function" ? ringLesserItem.action() : ringLesserItem.action;
     console.log(`Type: ${ringLesserItem.type}`);
     console.log(`Description: ${ringLesserItem.desription}`);
-    displayTreasureName.innerHTML = `<h4>💍 Ring of ${ringLesserItem.item}</h4>`;
+    displayTreasureName.innerHTML = `<h4>💍 Ring of ${ringLesserItem.type}</h4>`;
     displayTreasureDescription.innerHTML = `${ringLesserItem.description}`;
 };
 
