@@ -53,7 +53,7 @@ const miscItemsLesser = [
     {item: "Cloak of Protection, +1", description: "This cloak improves the wearer's AC by 1, and grants a bonus of +1 on saving throws. Usable by: All but Fighters.", action: ""},
     {item: "Cursed Item", description: "NOT FIXED!"},
     {item: "Decanter of Endless Water", description: "This jug pours out one gallon of water per minute when unstoppered. Usable by: All Classes.", action: ""},
-    {item: "Dust of Appearance or Disappearance (50%)", description: "Dust of Appearance is tossed in a radius of 10 feet around the user, and makes any invisible, astral, displaced, out-of-phase, or dimensional thing completely visible. The dust generally comes in a pouch, with enough for 20-30 uses. Dust of Disappearance works in the opposite way: when it is sprinkled in a 10 foot radius, everything therein becomes invisible for 5d6 turns. Normal means of detecting invisibility (such as a Detect Invisibility spell) are not strong enough to work against the dust's powerful enchantment. Usable by: All Classes.", action: ""},
+    {item: "Dust of Appearance or Disappearance", description: "Dust of Appearance is tossed in a radius of 10 feet around the user, and makes any invisible, astral, displaced, out-of-phase, or dimensional thing completely visible. The dust generally comes in a pouch, with enough for 20-30 uses. Dust of Disappearance works in the opposite way: when it is sprinkled in a 10 foot radius, everything therein becomes invisible for 5d6 turns. Normal means of detecting invisibility (such as a Detect Invisibility spell) are not strong enough to work against the dust's powerful enchantment. Usable by: All Classes.", action: ""},
     {item: "Dust of Sneezing and Choking", description: "Pouches containing this dust ordinarily contain only enough for one “dose.” When scattered in a radius of 10 feet, the dust causes all in the area to make a saving throw or die. If the nature of the dust is identified before it is experimented with, it can be used as a devastating thrown weapon. Usable by: All Classes.", action: ""},
     {item: "Gauntlets of Swimming and Climbing", description: "These gloves permit the wearer to swim at a rate of 18, and climb sheer walls with a 95% chance of success per ten feet of climbing. Usable by: all but Magic-users.", action: ""},
     {item: "Horseshoes of Speed", description: "Double a horse's movement rate. Usable by: Horses.", action: ""},
@@ -252,6 +252,15 @@ function getMiscItemLesser() {
             displayTreasureDescription.innerHTML = "Boots of Leaping allow the wearer to make prodigious leaps 10 feet high and up to 30 feet horizontally. These boots also double movement rates, but outdoors only. They do not require the wearer to rest after using them. Usable by: All Classes.";
         }
 
+    } else if (miscItemLesser.item == "Dust of Appearance or Disappearance") {
+        die_roll = roll1dx(2);
+        if (die_roll == 1) {
+            displayTreasureName.innerHTML = "<h4>🌪 Dust of Appearance";
+            displayTreasureDescription.innerHTML = "Tossed in a radius of 10 feet around the user, and makes any invisible, astral, displaced, out-of-phase, or dimensional thing completely visible. The dust generally comes in a pouch, with enough for 20-30 uses. Usable by: All Classes.";
+        } else {
+            displayTreasureName.innerHTML = "<h4>🌪 Dust of Disappearance";
+            displayTreasureDescription.innerHTML = "When sprinkled in a 10 foot radius, everything therein becomes invisible for 5d6 turns. Normal means of detecting invisibility (such as a Detect Invisibility spell) are not strong enough to work against the dust's powerful enchantment. Usable by: All Classes.";
+        }
     } else {
         displayTreasureName.innerHTML = `<h4>🎁 ${miscItemLesser.item}</h4>`;
         displayTreasureDescription.innerHTML = `${miscItemLesser.description}`;
@@ -261,6 +270,7 @@ function getMiscItemLesser() {
 function getMiscItemMedium() {
     const miscItemMediumIndex = Math.floor(Math.random() * miscItemsMedium.length);
     const miscItemMedium = miscItemsMedium[miscItemMediumIndex];
+    
     console.log(`Item: ${miscItemMedium.item}`);
     console.log(`Description: ${miscItemMedium.description}`);
     displayTreasureName.innerHTML = `<h4>🎁 ${miscItemMedium.item}</h4>`;

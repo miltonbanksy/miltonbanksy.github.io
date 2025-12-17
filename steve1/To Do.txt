@@ -6,7 +6,8 @@ Check for Test Hacks before going live...
 TO DO...
 ~~~~~~~~
 
-...Dust of Appearance or Disappearance (50%)
+...miscItemsLesser > Dust of Appearance or Disappearance (50%)
+...miscItemsMedium > Bracers of Defense, AC 4 [15] or 2 [17] (50%)
 - same you did for boots of leaping / speed.
 
 
