@@ -46,7 +46,7 @@ const miscItemsLesser = [
     {item: "Arrow of Direction", description: "Points the direction of whatever the owner requests. Cannot be used more than 7 times in a single week. Usable by: All Classes.", action: ""},
     {item: "Bag of Holding", description: "The inside of this bag is larger than the outside. The inside dimensions are roughly 10 x 5 x 3 feet, but the bag can carry up to 1,000 pounds of weight. If it is not empty, the bag weighs 50 pounds, no matter how much weight it actually contains. Usable by: All Classes.", action: ""},
     {item: "Boots of Elvenkind", description: "The wearer moves with complete silence. Usable by: All Classes.", action: ""},
-    {item: "Boots of Speed or Leaping (50%)", description: "Boots of Speed double the wearer's movement rate, but require complete rest for a period of time equivalent to the amount of time they were used. Boots of Leaping allow the wearer to make prodigious leaps 10 feet high and up to 30 feet horizontally. These boots also double movement rates, but outdoors only. They do not require the wearer to rest after using them. Usable by: All Classes.", action: ""},
+    {item: "Boots of Speed or Leaping", description: "Boots of Speed double the wearer's movement rate, but require complete rest for a period of time equivalent to the amount of time they were used. Boots of Leaping allow the wearer to make prodigious leaps 10 feet high and up to 30 feet horizontally. These boots also double movement rates, but outdoors only. They do not require the wearer to rest after using them. Usable by: All Classes.", action: ""},
     {item: "Bracers of Defense, AC 6 [13]", description: "These bracers improve the wearer's armor class (whatever part of it is due to actual armor) to the stated level—there is no effect if the wearer is already armored to the same or higher degree. The AC granted by the bracers can be increased by magical rings or other protective magics. Usable by: All Classes.", action: ""},
     {item: "Chime of Opening", description: "Sounding this small chime opens any door, even if the door is barred or Wizard Locked. Usable by: All Classes.", action: "Sounding this small chime opens any door, even if the door is barred or Wizard Locked. Usable by: All Classes."},
     {item: "Cloak of Elvenkind", description: "The wearer is almost, but not quite, invisible. Usable by: All Classes.", action: ""},
@@ -239,6 +239,21 @@ function getMiscItemLesser() {
     
     if (miscItemLesser.item == "Cursed Item") {
         getCursedItem();
+
+    } else if (miscItemLesser.item == "Boots of Speed or Leaping") {
+        alert("stop!");
+        alert("stop i say!");
+        alert("stop right now!!!!!");
+        alert("Last chance!");
+        die_roll = roll1dx(2);
+        if (die_roll == 1) {
+            displayTreasureName.innerHTML = "<h4>🥾 Boots of Speed";
+            displayTreasureDescription.innerHTML = "Boots of Speed double the wearer's movement rate, but require complete rest for a period of time equivalent to the amount of time they were used. Usable by: All Classes.";
+        } else {
+            displayTreasureName.innerHTML = "<h4>🥾 Boots of Leaping";
+            displayTreasureDescription.innerHTML = "Boots of Leaping allow the wearer to make prodigious leaps 10 feet high and up to 30 feet horizontally. These boots also double movement rates, but outdoors only. They do not require the wearer to rest after using them. Usable by: All Classes.";
+        }
+
     } else {
         displayTreasureName.innerHTML = `<h4>🎁 ${miscItemLesser.item}</h4>`;
         displayTreasureDescription.innerHTML = `${miscItemLesser.description}`;
