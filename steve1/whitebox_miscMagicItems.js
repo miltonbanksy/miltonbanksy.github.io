@@ -1,10 +1,10 @@
 const wandLesser = [
-    {roll: 1, level: 1, type: "spell, holds 10 charges."},
-    {roll: 2, level: 1, type: "spell, holds 10 charges."},
-    {roll: 3, level: 2, type: "spell, holds 5 charges."},
-    {roll: 4, level: 2, type: "spell, holds 5 charges."},
-    {roll: 5, level: 3, type: "spell, holds 2 charges."},
-    {roll: 6, level: 3, type: "spell, holds 2 charges."}
+    {roll: 1, level: 1, type: "with 10 charges."},
+    {roll: 2, level: 1, type: "with 10 charges."},
+    {roll: 3, level: 2, type: "with 5 charges."},
+    {roll: 4, level: 2, type: "with 5 charges."},
+    {roll: 5, level: 3, type: "with 2 charges."},
+    {roll: 6, level: 3, type: "with 2 charges."}
 ];
 
 const wandGreater = [
@@ -68,7 +68,7 @@ const miscItemsLesser = [
 const miscItemsMedium = [
     {item: "Amulet Against Scrying", description: "Protects the wearer from all scrying, such as Detect Thoughts or being viewed through a crystal ball. Usable by: All Classes."},
     {item: "Boots of Levitation", description: "These boots allow the wearer to Levitate (as per the spell) with unlimited duration. Usable by: All Classes."},
-    {item: "Bracers of Defense, AC 4 [15] or 2 [17] (50%)", description: "These bracers improve the wearer's armor class (whatever part of it is due to actual armor) to the stated level—there is no effect if the wearer is already armored to the same or higher degree. The AC granted by the bracers can be increased by magical rings or other protective magics. Usable by: All Classes."},
+    {item: "Bracers of Defense, AC 4 [15] or 2 [17]", description: "These bracers improve the wearer's armor class (whatever part of it is due to actual armor) to the stated level—there is no effect if the wearer is already armored to the same or higher degree. The AC granted by the bracers can be increased by magical rings or other protective magics. Usable by: All Classes."},
     {item: "Carpet of Flying", description: "The carpet can carry as many as three people, and travels at a speed of 18 when it has more than one passenger. With only one rider, the carpet moves at a rate of 30. Usable by: All Classes."},
     {item: "Cloak of Displacement", description: "The wearer appears to be in a slightly different location than he really is. His AC improves by 2, and he gains a +2 saving throw against any targeted attack upon him. Usable by: All Classes."},
     {item: "Cloak of Protection, +2 or +3", description: "This cloak improves the wearer's armor class by 2 (or 3), and grants a bonus of +2 (or +3) on saving throws. Usable by: All but Fighters."},
@@ -159,7 +159,7 @@ function getMiscItem() {
     //console.log(`🎁 Treasure Quality: ${treasureType.quality}, Treasure Type: Misc.`);
     
     die_roll = roll1dx(20) + treasureType.miscModifier;
-    //die_roll = 10; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
+    die_roll = 21; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
 
     const item = miscItems.find( i => die_roll >= i.start && die_roll <= i.end );
 
@@ -181,9 +181,11 @@ function getWandLesser() {
     console.log(`Type: ${wandLesserItem.type}`);
     console.log(`Spell Level: ${wandLesserItemLevel}`);
     generateRandomScrolls(1, wandLesserItemLevel, wandLesserItemLevel);
+    displayTreasureQuality.innerHTML = `<h3>☄ Magic Wand ${wandLesserItem.type}</h3>`;
 };
 
 function getWandGreater() {
+    displayTreasureQuality.innerHTML = "<h3>☄ Magic Wand</h3>";
     die_roll = roll1dx(10);  // TESTING ONLY !!!!! DEFAULT die_roll = roll1dx(10)
     const wandGreaterItem = wandGreater.find( i => die_roll == i.roll );
     if (!wandGreaterItem) {
@@ -270,11 +272,21 @@ function getMiscItemLesser() {
 function getMiscItemMedium() {
     const miscItemMediumIndex = Math.floor(Math.random() * miscItemsMedium.length);
     const miscItemMedium = miscItemsMedium[miscItemMediumIndex];
-    
-    console.log(`Item: ${miscItemMedium.item}`);
-    console.log(`Description: ${miscItemMedium.description}`);
-    displayTreasureName.innerHTML = `<h4>🎁 ${miscItemMedium.item}</h4>`;
-    displayTreasureDescription.innerHTML = `${miscItemMedium.description}`;
+
+    if (miscItemMedium.item == "Bracers of Defense, AC 4 [15] or 2 [17]") {
+        die_roll = roll1dx(2);
+        if (die_roll == 1) {
+            displayTreasureName.innerHTML = "<h4>🎁 Bracers of Defense, AC 4 [15]";
+        } else {
+            displayTreasureName.innerHTML = "<h4>🎁 Bracers of Defense, AC 2 [17]";
+        }
+        displayTreasureDescription.innerHTML = "These bracers improve the wearer's armor class (whatever part of it is due to actual armor) to the stated level—there is no effect if the wearer is already armored to the same or higher degree. The AC granted by the bracers can be increased by magical rings or other protective magics. Usable by: All Classes.";
+    } else {
+        console.log(`Item: ${miscItemMedium.item}`);
+        console.log(`Description: ${miscItemMedium.description}`);
+        displayTreasureName.innerHTML = `<h4>🎁 ${miscItemMedium.item}</h4>`;
+        displayTreasureDescription.innerHTML = `${miscItemMedium.description}`;
+    }
 };
 
 function getMiscItemGreater() {
