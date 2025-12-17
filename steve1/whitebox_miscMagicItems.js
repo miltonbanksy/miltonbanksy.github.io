@@ -191,6 +191,8 @@ function getWandGreater() {
     }
 
     console.log(`Type (test): ${wandGreaterItem.type}`);
+    displayTreasureName.innerHTML = `<b>🌠 ${wandGreaterItem.type}</b>`;
+    displayTreasureDescription.innerHTML = `${wandGreaterItem.description}`;
 
     if (wandGreaterItem.roll <= 2) {
         generateRandomScrolls(1, wandGreaterItem.level, wandGreaterItem.level);
@@ -201,7 +203,7 @@ function getWandGreater() {
     } else {
         console.log(wandGreaterItem.type);
         console.log(wandGreaterItem.description);
-        displayTreasureDescription.innerHTML = `<b>🌠 Wand of ${wandGreaterItem.type} Magic ${wandGreaterItem.description}</b>`;
+        displayTreasureName.innerHTML = `<b>🌠 ${wandGreaterItem.type}</b>`;
         displayTreasureDescription.innerHTML = `${wandGreaterItem.description}`;
     }
 };
@@ -241,10 +243,6 @@ function getMiscItemLesser() {
         getCursedItem();
 
     } else if (miscItemLesser.item == "Boots of Speed or Leaping") {
-        alert("stop!");
-        alert("stop i say!");
-        alert("stop right now!!!!!");
-        alert("Last chance!");
         die_roll = roll1dx(2);
         if (die_roll == 1) {
             displayTreasureName.innerHTML = "<h4>🥾 Boots of Speed";
@@ -282,7 +280,7 @@ function getStaff() {
     console.log(`Item: ${staff.item}`);
     console.log(`Description: ${staff.description}`);
     console.log(`Most staves carry 200 charges.`);
-    displayTreasureName.innerHTML = `<h4>${staff.item}</h4>`;
+    displayTreasureName.innerHTML = `<h4>Staff of ${staff.item}</h4>`;
     displayTreasureDescription.innerHTML = `${staff.description}`;
 };
 

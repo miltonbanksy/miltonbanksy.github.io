@@ -6,9 +6,12 @@ Check for Test Hacks before going live...
 TO DO...
 ~~~~~~~~
 
+...Dust of Appearance or Disappearance (50%)
+- same you did for boots of leaping / speed.
+
+
 ...getMiscItem not displaying
 ...NOW FIXING & CHECKING getMiscItem...
-- using helper functions
 
 
 ...Misc Items > Wands
@@ -30,11 +33,6 @@ Scroll(s)
 - Missing spell details when generating scrolls.
 ... Finish populating spell lists with range, duration, description, etc.
 
-
-Trade out successful
-Magic Items
-Boots of Speed or Leaping.
-- Create a function which randomly chooses Speed or Leaping. 50%.
 
 
 Trade out successful
@@ -70,7 +68,7 @@ such as the rope curse.
 
 
 /////////////////////
-DONE
+DONE (in chronological order, newest at end...)
 Place all on same line:
 'Enter the monster's XP'
 Input box
@@ -110,3 +108,8 @@ Magic Items
 * Mace, heavy +1
 * War Hammer +1
 * Lance +1
+
+Trade out successful
+Magic Items
+Boots of Speed or Leaping.
+- Create a function which randomly chooses Speed or Leaping. 50%.
