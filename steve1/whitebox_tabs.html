@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Box Tabs</title>
+    <link rel="stylesheet" href="whitebox_tabs.css">
+</head>
+
+<body>
+    <h1>White Box</h1>
+    <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+    <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+    <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+    <div id="Home" class="tabcontent">
+        <h3>Home</h3>
+    </div>
+
+    <div id="News" class="tabcontent">
+        <h3>News</h3>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+        <h3>Contact</h3>
+    </div>
+
+    <div id="About" class="tabcontent">
+        <h3>About</h3>
+    </div>
+
+
+    <script src="whitebox_tabs.js" defer></script>
+</body>
+
+</html>

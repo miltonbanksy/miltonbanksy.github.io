@@ -159,7 +159,7 @@ function getMiscItem() {
     //console.log(`🎁 Treasure Quality: ${treasureType.quality}, Treasure Type: Misc.`);
     
     die_roll = roll1dx(20) + treasureType.miscModifier;
-    die_roll = 21; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
+    //die_roll = 21; // !!!! FOR TESTING ONLY !!!!! DELETE THIS.
 
     const item = miscItems.find( i => die_roll >= i.start && die_roll <= i.end );
 
