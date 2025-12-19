@@ -1,6 +1,6 @@
 body, html {
     height: 100%;
-    margin: 0;
+    margin: 10px;
     font-family: Arial;
 }
 
@@ -8,12 +8,13 @@ body, html {
     background-color: #555;
     color: white;
     float: left;
-    border: none;
+    border: solid 1px white;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     font-size: 17px;
     width: 25%;
+    box-shadow: 2px 2px 2px black;
 }
 
 .tablink:hover {
@@ -27,7 +28,9 @@ body, html {
     height: 100%;
 }
 
+/*
 #Home {background-color: red;}
 #News {background-color: green;}
 #Contact {background-color: blue;}
 #About {background-color: orange;}
+*/
