@@ -4,63 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Box</title>
-    <style>
-        html {
-            padding: 10px;
-        }
-
-        .btn-trade-out {
-            width: 220px;
-            margin: 2px;
-        }
-        .label-developer {
-            display: inline-block;
-            width: 130px;
-        }
-    </style>
+    <link rel="stylesheet" href="whitebox.css">
 </head>
 <body>
     <h1>White Box</h1>
-    <h2>Treasure</h2>
-    <p>A monster guards an amount of treasure equal to 1-4 times its XP value in gold pieces. Wandering monsters never carry treasure with them.</p>
-    <span>Enter the monster's XP:</span>
-    <label for="input-monster-xp"></label>
-    <input id="input-monster-xp" type="text">
-    <button id="btn-calculate-treasure">Calculate Treasure</button>
-    <p id="display-treasure"></p>
-    
-    <h3>Treasure Trade Outs</h3>
-    <p>Treasures may contain coins, gems, jewelry, and/or magical items. There is a 10% chance of trading out coins for a 'Minor', 'Medium', or 'Major' item on either the Gem/Jewelry or Magic Item table. If the trade-out is successfull, there is a 5% chance of obtaining a Magic item.</p>
-    
-    <button class="btn-trade-out" id="btn-trade-out-major">Trade Out 5000 gp (Major Item)</button>
-    <br>
-    <button class="btn-trade-out" id="btn-trade-out-medium">Trade Out 1000 gp (Medium Item)</button>
-    <br>
-    <button class="btn-trade-out" id="btn-trade-out-minor">Trade Out 100 gp (Minor Item)</button>
-    
-    <p id="display-trade-out"></p>
-    <p class="treasure-displays" id="display-trade-out-magic-or-mundane"></p>
-    <p class="treasure-displays" id="display-treasure-quality"></p>
-    <p class="treasure-displays" id="display-treasure-category"></p>
-    <p class="treasure-displays" id="display-treasure-name"></p>
-    <p class="treasure-displays" id="display-treasure-description"></p>
+    <details>
+        <summary class="pointer"><b>Character Generator</b></summary>
+        <!-- button or checkbox....hmmmm....? -->
+        <input type="radio" id="fighter1" name="charGenChooser1" value="figher1">
+        <label for="figher1">Fighter 1 ()</label>
+        
+        <!--Add a 'submit button at the end'-->
+    </details>
+    <details>
+        <summary class="pointer"><b>Treasure</b></summary>
+        <p>A monster guards an amount of treasure equal to 1-4 times its XP value in gold pieces. Wandering monsters never carry treasure with them.</p>
+        <span>Enter the monster's XP:</span>
+        <label for="input-monster-xp"></label>
+        <input id="input-monster-xp" type="text">
+        <button id="btn-calculate-treasure">Calculate Treasure</button>
+        <p id="display-treasure"></p>
+        
+        <h3>Treasure Trade Outs</h3>
+        <p>Treasures may contain coins, gems, jewelry, and/or magical items. There is a 10% chance of trading out coins for a 'Minor', 'Medium', or 'Major' item on either the Gem/Jewelry or Magic Item table. If the trade-out is successfull, there is a 5% chance of obtaining a Magic item.</p>
+        
+        <button class="btn-trade-out" id="btn-trade-out-major">Trade Out 5000 gp (Major Item)</button>
+        <br>
+        <button class="btn-trade-out" id="btn-trade-out-medium">Trade Out 1000 gp (Medium Item)</button>
+        <br>
+        <button class="btn-trade-out" id="btn-trade-out-minor">Trade Out 100 gp (Minor Item)</button>
+        
+        <p id="display-trade-out"></p>
+        <p class="treasure-displays" id="display-trade-out-magic-or-mundane"></p>
+        <p class="treasure-displays" id="display-treasure-quality"></p>
+        <p class="treasure-displays" id="display-treasure-category"></p>
+        <p class="treasure-displays" id="display-treasure-name"></p>
+        <p class="treasure-displays" id="display-treasure-description"></p>
 
-    <br>
-    <hr>
+        <br>
+        <hr>
 
-    <h3>Referee Tweaks / Developer Testing</h3>
+        <h3>Referee Tweaks / Developer Testing</h3>
 
-    <label class="label-developer" for="input-set-trade-out-chance">Chance of Trade Out (%)</label>
-    <input id="input-set-trade-out-chance" type="number" placeholder="Default is 10%">
-    <button id="btn-set-trade-out-chance">Set</button>
-    <label for="btn-set-trade-out-chance" id="display-trade-out-chance">10%</label>
+        <label class="label-developer" for="input-set-trade-out-chance">Chance of Trade Out (%)</label>
+        <input id="input-set-trade-out-chance" type="number" placeholder="Default is 10%">
+        <button id="btn-set-trade-out-chance">Set</button>
+        <label for="btn-set-trade-out-chance" id="display-trade-out-chance">10%</label>
+        
+        <br><br>
+        
+        <label class="label-developer" for="input-set-magic-item-chance">Chance of Magic Item (%)</label>
+        <input id="input-set-magic-item-chance" type="number" placeholder="Default is 5% (1/20)">
+        <button id="btn-set-magic-item-chance">Set</button>
+        <label for="btn-set-magic-item-chance" id="display-magic-item-chance">5%</label>
+    </details>
     
-    <br><br>
-    
-    <label class="label-developer" for="input-set-magic-item-chance">Chance of Magic Item (%)</label>
-    <input id="input-set-magic-item-chance" type="number" placeholder="Default is 5% (1/20)">
-    <button id="btn-set-magic-item-chance">Set</button>
-    <label for="btn-set-magic-item-chance" id="display-magic-item-chance">5%</label>
 
 
     <script src="whitebox.js"></script>
@@ -152,13 +150,6 @@
             chanceOfMagicItemAsInt = Number(chanceOfMagicItem);
             displayMagicItemChance.innerHTML = chanceOfMagicItemAsInt + "%";
         });
-
-
-        /// HELPER FUNCTIONS
-
-        
-
-
     </script>
 </body>
 </html>
