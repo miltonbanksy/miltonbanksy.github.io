@@ -5,12 +5,19 @@ const formCharCreationChooseClass = document.getElementById('form-char-creation-
 const formCharCreationChooseStatMethod = document.getElementById('form-char-creation-choose-stat-method');
 const displayCharClass = document.getElementById('display-char-class');
 const displayCharStats = document.getElementById('display-char-stats');
+const displayCharGear = document.getElementById('display-char-gear');
 const formCharCreationSummary = document.getElementById('form-char-creation-summary');
 
+const modifierTable = [
+    {min: 15, mod: 1},
+    {min: 7, mod: 0},
+    {min: 0, mod: -1}
+];
+
 const classes = [
-    {class: "Fighter", primary_stat: "STR"},
-    {class: "Magic User", primary_stat: "INT"},
-    {class: "Cleric", primary_stat: "WIS"},
+    {class: "Fighter", primary_stat: "STR", xp_next: 2000},
+    {class: "Magic User", primary_stat: "INT", xp_next: 2500},
+    {class: "Cleric", primary_stat: "WIS", xp_next: 1500},
 ];
 
 const character = {
@@ -19,8 +26,8 @@ const character = {
     xp_next: 0,
     hd: 0,
     hp: 0,
+    gold: 0,
     class: "Unknown", 
-    stats_status: "Unknown",
     primary_stat: "Unknown",
     stats: {
         STR: {label: "STR", name: "strength", value: 0, modifier: 0},
@@ -31,21 +38,6 @@ const character = {
         CHA: {label: "CHA", name: "charisma", value: 0, modifier: 0}
     }
 };
-//character.class = "Unknown";
-
-// (FORM) Choose Stats or Class screen:
-formCharCreation0.addEventListener('change', function(event) {
-    const selectedValue = event.target.value;
-
-    if (selectedValue == "stats-first") {
-        alert("Under construction...");
-    } else {
-        formCharCreation1b.classList.add('show-me');
-    }
-
-    this.classList.remove('show-me');
-    this.classList.add('hide-me');
-});
 
 // (FORM) Choose method of generating a Class:
 formCharCreation1b.addEventListener('change', function(event) {
@@ -57,10 +49,15 @@ formCharCreation1b.addEventListener('change', function(event) {
         let character_class_index = Math.floor(Math.random() * classes.length);
         character.class = classes[character_class_index].class;
         character.primary_stat = classes[character_class_index].primary_stat;
+        
+        // Find the xp_next value based on the class:
+        const class_xp_data = classes.find(c => c.class === character.class);
+        character.xp_next = class_xp_data.xp_next;
+
         alert(`You're a ${character.class}. Your primary stat is ${character.primary_stat}`);
         formCharCreationChooseStatMethod.classList.add('show-me');
         
-        displayCharClass.innerHTML = `Level ${character.level} ${character.class}<br>Primary Stat: ${character.primary_stat}`;
+        displayCharClass.innerHTML = `Level ${character.level} ${character.class}, XP: 0, Next: ${character.xp_next} <br>Primary Stat: ${character.primary_stat}`;
         formCharCreationSummary.classList.add('show-me');
     }
 
@@ -84,12 +81,16 @@ formCharCreationChooseClass.addEventListener('change', function(event) {
     character.class = classData.class;
     character.primary_stat = classData.primary_stat;
 
+    // Find the xp_next value based on the class:
+    const class_xp_data = classes.find(c => c.class === character.class);
+    character.xp_next = class_xp_data.xp_next;
+
     alert(`You chose ${character.class}. Your primary stat is ${character.primary_stat}`);
 
     this.classList.remove('show-me');
     this.classList.add('hide-me');
 
-    displayCharClass.innerHTML = `Level ${character.level} ${character.class}<br>Primary Stat: ${character.primary_stat}`;
+    displayCharClass.innerHTML = `Level ${character.level} ${character.class}, XP: 0, Next: ${character.xp_next} <br>Primary Stat: ${character.primary_stat}`;
     formCharCreationSummary.classList.add('show-me');
     formCharCreationChooseStatMethod.classList.add('show-me');
 });
@@ -218,12 +219,19 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
         });
     }
 
-    displayCharStats.innerHTML =
-        `STR: ${character.stats.STR.value}, 
-         DEX: ${character.stats.DEX.value}, 
-         CON: ${character.stats.CON.value}, 
-         INT: ${character.stats.INT.value}, 
-         WIS: ${character.stats.WIS.value}, 
-         CHA: ${character.stats.CHA.value}`;
+    // Generate Starting Gold:
+    let gold_roll = getSumOfArray(rollxdx(3, 6));
+    character.gold = gold_roll * 10;
+
+    // Generate Stat Modifiers for each stat.
+    Object.values(character.stats).forEach(stat => {
+        stat.modifier = modifierTable.find(r => stat.value >= r.min).mod;
+    });
+
+    displayCharStats.innerHTML = Object.values(character.stats)
+        .map(stat => `${stat.label} ${stat.value} (${stat.modifier >= 0 ? '+' : ''}${stat.modifier})`)
+        .join('<br>');
+
+    displayCharGear.innerHTML = `GEAR<br>Gold: ${character.gold}`;
 });
 

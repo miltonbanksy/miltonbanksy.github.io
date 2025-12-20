@@ -11,19 +11,7 @@
     <details>
         <summary class="pointer"><b>Character Generator</b></summary>
 
-        <div class="form-char-creation" id="form-char-creation-0">
-            Start with 'Stats' or 'Class'?
-            <br>
-            <input type="radio" id="stats-first" name="class-or-stats" value="stats-first">
-            <label for="stats-first">Stats</label>
-            <input type="radio" id="class-first" name="class-or-stats" value="class-first">
-            <label for="class-first">Class</label>
-            
-            <br><br>
-            <button id="btn-class-or-stats">Next</button>
-        </div>
-
-        <div class="form-char-creation hide-me" id="form-char-creation-1b-generate-class">
+        <div class="form-char-creation" id="form-char-creation-1b-generate-class">
             <input type="radio" id="class-choose" name="choose-or-roll-class" value="class-choose">
             <label for="class-choose">I will choose a Class</label>
             <br>
@@ -43,7 +31,6 @@
         </div>
 
         <div class="form-char-creation hide-me" id="form-char-creation-choose-stat-method">
-            <!-- FIX THESE NAMES AND IDs-->
             <b>Generate Stats</b>
              <br>
             <input type="radio" id="choose-stat-method_1" name="choose-stat-method" value="stat-method-1">
@@ -67,7 +54,10 @@
         <br>
         <div class="form-char-creation hide-me" id="form-char-creation-summary">
             <div id="display-char-class"></div>
+            <br>
             <div id="display-char-stats"></div>
+            <br>
+            <div id="display-char-gear"></div>
         </div>
         <br><br>
     </details>
