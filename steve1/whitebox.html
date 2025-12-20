@@ -10,11 +10,66 @@
     <h1>White Box</h1>
     <details>
         <summary class="pointer"><b>Character Generator</b></summary>
-        <!-- button or checkbox....hmmmm....? -->
-        <input type="radio" id="fighter1" name="charGenChooser1" value="figher1">
-        <label for="figher1">Fighter 1 ()</label>
-        
-        <!--Add a 'submit button at the end'-->
+
+        <div class="form-char-creation" id="form-char-creation-0">
+            Start with 'Stats' or 'Class'?
+            <br>
+            <input type="radio" id="stats-first" name="class-or-stats" value="stats-first">
+            <label for="stats-first">Stats</label>
+            <input type="radio" id="class-first" name="class-or-stats" value="class-first">
+            <label for="class-first">Class</label>
+            
+            <br><br>
+            <button id="btn-class-or-stats">Next</button>
+        </div>
+
+        <div class="form-char-creation hide-me" id="form-char-creation-1b-generate-class">
+            <input type="radio" id="class-choose" name="choose-or-roll-class" value="class-choose">
+            <label for="class-choose">I will choose a Class</label>
+            <br>
+            <input type="radio" id="class-random" name="choose-or-roll-class" value="class-random">
+            <label for="class-random">Give me a random Class</label>
+        </div>
+
+        <div class="form-char-creation hide-me" id="form-char-creation-choose-class">
+            <input type="radio" id="choose-class-fighter" name="choose-class" value="Fighter">
+            <label for="choose-class-fighter">Fighter</label>
+            <br>
+            <input type="radio" id="choose-class-magic-user" name="choose-class" value="Magic User">
+            <label for="choose-class-magic-user">Magic User</label>
+            <br>
+            <input type="radio" id="choose-class-cleric" name="choose-class" value="Cleric">
+            <label for="choose-class-cleric">Cleric</label>
+        </div>
+
+        <div class="form-char-creation hide-me" id="form-char-creation-choose-stat-method">
+            <!-- FIX THESE NAMES AND IDs-->
+            <b>Generate Stats</b>
+             <br>
+            <input type="radio" id="choose-stat-method_1" name="choose-stat-method" value="stat-method-1">
+            <label for="choose-stat-method_1"><b>Classic</b> 3d6, randomly distributed.</label>
+            <br>
+            <input type="radio" id="choose-stat-method_2" name="choose-stat-method" value="stat-method-2">
+            <label for="choose-stat-method_2"><b>Classic & Classy</b> 3d6, distributed in favor of chosen Class.</label>
+            <br>
+            <input type="radio" id="choose-stat-method_3" name="choose-stat-method" value="stat-method-3">
+            <label for="choose-stat-method_3"><b>Heroic</b> 4d6 (drop lowest), randomly distributed.</label>
+            <br>
+            <input type="radio" id="choose-stat-method_4" name="choose-stat-method" value="stat-method-4">
+            <label for="choose-stat-method_4"><b>Heroic & Classy</b> 4d6 (drop lowest), distributed in favor of chosen Class.</label>
+            <br>
+            <input type="radio" id="choose-stat-method_5" name="choose-stat-method" value="stat-method-5">
+            <label for="choose-stat-method_5"><b>Fair</b> Standard Array [15, 14, 13, 12, 10, 8], randomly distributed.</label>
+            <br>
+            <input type="radio" id="choose-stat-method_6" name="choose-stat-method" value="stat-method-6">
+            <label for="choose-stat-method_6"><b>Fair & Classy</b> Standard Array [15, 14, 13, 12, 10, 8], distributed in favor of chosen Class.</label>
+        </div>
+        <br>
+        <div class="form-char-creation hide-me" id="form-char-creation-summary">
+            <div id="display-char-class"></div>
+            <div id="display-char-stats"></div>
+        </div>
+        <br><br>
     </details>
     <details>
         <summary class="pointer"><b>Treasure</b></summary>
@@ -62,6 +117,7 @@
 
 
     <script src="whitebox.js"></script>
+    <script src="whitebox_character.js"></script>
     <script src="whitebox_convert_xp_to_coins.js"></script>
     <script src="whitebox_scrolls.js"></script>
     <script src="whitebox_potions_logic.js"></script>

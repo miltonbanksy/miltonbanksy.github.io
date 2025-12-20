@@ -95,18 +95,46 @@ function getMagicItem() {
     }
 };
 
+function getSumOfArray(array) {
+    const sumOfArray = array.reduce((a, b)=> a + b, 0);
+    return sumOfArray;
+};
+
 function roll1dx(number_of_sides) {
     return Math.floor(Math.random() * number_of_sides) +1;
 };
 
 function rollxdx(number_of_dice, number_of_sides) {
     let dice_bag = [];
-    for (x = 1; x <= number_of_dice; x++) {
+    for (let x = 1; x <= number_of_dice; x++) {
         let die = Math.floor(Math.random() * number_of_sides) +1;
         dice_bag.push(die);
     }
-    console.log(dice_bag);
     return dice_bag;
+};
+
+function roll4d6DropLowest() {
+    const rolls = [];
+
+    for (let i = 0; i < 4; i++) {
+        rolls.push(Math.floor(Math.random() * 6) +1);
+    }
+
+    rolls.sort((a, b) => a - b); // lowest -> highest
+    rolls.shift(); // remove lowest
+    
+    return getSumOfArray(rolls); // sum highest 3
+};
+
+function removeSmallest(arr) {
+    // Find the smallest value:
+    const minValue = Math.min(...arr);
+
+    // Find the index of the smallest value
+    const minIndex = arr.indexOf(minValue);
+
+    // Filter out the elements at that specific index:
+    return arr.filter((_, index) => index !== minIndex);
 };
 
 function get_percentage(num, per) {
