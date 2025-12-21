@@ -4,20 +4,36 @@ const formCharCreationChooseClass = document.getElementById('form-char-creation-
 
 const formCharCreationChooseStatMethod = document.getElementById('form-char-creation-choose-stat-method');
 const displayCharClass = document.getElementById('display-char-class');
+const displayCharExperience = document.getElementById('display-char-experience');
+const displayCharHP = document.getElementById('display-char-hp');
 const displayCharStats = document.getElementById('display-char-stats');
+const displayCharBonuses = document.getElementById('display-char-bonuses');
 const displayCharGear = document.getElementById('display-char-gear');
 const formCharCreationSummary = document.getElementById('form-char-creation-summary');
 
+const charismaModifierTable = [
+    {min: 18, hirelings_max: 7, hirelings_loyalty: 2},
+    {min: 16, hirelings_max: 6, hirelings_loyalty: 2},
+    {min: 13, hirelings_max: 5, hirelings_loyalty: 1},
+    {min: 9, hirelings_max: 4, hirelings_loyalty: 0},
+    {min: 7, hirelings_max: 3, hirelings_loyalty: -1},
+    {min: 5, hirelings_max: 2, hirelings_loyalty: -2},
+    {min: 3, hirelings_max: 1, hirelings_loyalty: -2}
+]
+
 const modifierTable = [
-    {min: 15, mod: 1},
-    {min: 7, mod: 0},
-    {min: 0, mod: -1}
+    {min: 15, mod: 1, xpBonus: "10%"},
+    {min: 13, mod: 0, xpBonus: "5%"},
+    {min: 9, mod: 0, xpBonus: "0%"},
+    {min: 8, mod: 0, xpBonus: "-5%"},
+    {min: 7, mod: 0, xpBonus: "-5%"},
+    {min: 0, mod: -1, xpBonus: "-5%"},
 ];
 
 const classes = [
-    {class: "Fighter", primary_stat: "STR", xp_next: 2000},
-    {class: "Magic User", primary_stat: "INT", xp_next: 2500},
-    {class: "Cleric", primary_stat: "WIS", xp_next: 1500},
+    {class: "Fighter", hd: "1d6+1", hpBase: () => roll1dx(6) +1, primary_stat: "STR", xp_next: 2000},
+    {class: "Magic User", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "INT", xp_next: 2500},
+    {class: "Cleric", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "WIS", xp_next: 1500}
 ];
 
 const character = {
@@ -26,6 +42,10 @@ const character = {
     xp_next: 0,
     hd: 0,
     hp: 0,
+    hpBase: 0,
+    //conMod: 0,
+    hpAfterConMod: 0,
+    toHit: "+0",
     gold: 0,
     class: "Unknown", 
     primary_stat: "Unknown",
@@ -36,7 +56,8 @@ const character = {
         INT: {label: "INT", name: "intelligence", value: 0, modifier: 0},
         WIS: {label: "WIS", name: "wisdom", value: 0, modifier: 0},
         CHA: {label: "CHA", name: "charisma", value: 0, modifier: 0}
-    }
+    },
+    gear: ""
 };
 
 // (FORM) Choose method of generating a Class:
@@ -54,10 +75,9 @@ formCharCreation1b.addEventListener('change', function(event) {
         const class_xp_data = classes.find(c => c.class === character.class);
         character.xp_next = class_xp_data.xp_next;
 
-        alert(`You're a ${character.class}. Your primary stat is ${character.primary_stat}`);
         formCharCreationChooseStatMethod.classList.add('show-me');
         
-        displayCharClass.innerHTML = `Level ${character.level} ${character.class}, XP: 0, Next: ${character.xp_next} <br>Primary Stat: ${character.primary_stat}`;
+        displayCharClass.innerHTML = `Level ${character.level} ${character.class}<br>Primary Stat: ${character.primary_stat}`;
         formCharCreationSummary.classList.add('show-me');
     }
 
@@ -85,12 +105,10 @@ formCharCreationChooseClass.addEventListener('change', function(event) {
     const class_xp_data = classes.find(c => c.class === character.class);
     character.xp_next = class_xp_data.xp_next;
 
-    alert(`You chose ${character.class}. Your primary stat is ${character.primary_stat}`);
-
     this.classList.remove('show-me');
     this.classList.add('hide-me');
 
-    displayCharClass.innerHTML = `Level ${character.level} ${character.class}, XP: 0, Next: ${character.xp_next} <br>Primary Stat: ${character.primary_stat}`;
+    displayCharClass.innerHTML = `Level ${character.level} ${character.class}<br>Primary Stat: ${character.primary_stat}`;
     formCharCreationSummary.classList.add('show-me');
     formCharCreationChooseStatMethod.classList.add('show-me');
 });
@@ -219,19 +237,126 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
         });
     }
 
+    Object.values(character.stats).forEach(stat => {
+        stat.modifier = getStatModifier(stat.value);
+    });
+    
+
+    // Assign Bonuses: (fighter, magic user, cleric, level to hit, languages)
+    character.xpBonus = getCharacterXpBonus(character);
+
+    if (character.class == "Fighter") {
+        if (character.stats.STR.value >=15) {
+            character.strengthBonusmeleeToHit = "+1";
+        } else {
+            character.strengthBonusmeleeToHit = "+0";
+        }
+    } else {
+        character.strengthBonusmeleeToHit = "N/A";
+    }
+
+    if (character.class == "Magic User") {
+        character.spellEffectiveness = character.stats.INT.modifier;
+    } else if (character.class == "Cleric") {
+        character.spellEffectiveness = character.stats.WIS.modifier;
+    } else {
+        character.spellEffectiveness = "N/A";
+    }
+
+    // Dexterity to Hit & AC Mod
+    
+
+    // Additional Languages
+    if (character.stats.INT.value >=11) {
+        character.numberOfAdditionalLanguages = character.stats.INT.value - 10;
+    } else {
+        character.numberOfAdditionalLanguages = 0;
+    }
+
+
+    displayCharExperience.innerHTML = `XP: 0, Next: ${character.xp_next}, Modifier: ${character.xpBonus.xpBonus}`;
+    
+    // Generate HP
+    const classData = classes.find(c => c.class === character.class);
+    if (classData) {
+        character.hd = classData.hd;
+        if (typeof classData.hpBase === "function") {
+            character.hpBase = classData.hpBase(); // Call the function
+        } else {
+            character.hpBase = classData.hpBase;
+            alert("Not working!");
+        }
+        
+        
+        // Add base HP +/- CON mod:
+        character.hpAfterConMod = character.hpBase + character.stats.CON.modifier;
+        
+        // Make sure HP is at least 1:
+        if (character.hpAfterConMod < 1 ) {
+            character.hpAfterConMod = 1;
+        }
+
+        displayCharHP.innerHTML = `HD: ${character.hd}, HP: ${character.hpAfterConMod} / ${character.hpAfterConMod}`;
+    }
+
+
+    // Generate Starting Gear
+    const packs = starterPacks[character.class];
+    const randomIndex = Math.floor(Math.random() * packs.length);
+    character.gear = packs[randomIndex];
+
+    // Commented out for now. I'm going with gear packs.
+    /*
     // Generate Starting Gold:
     let gold_roll = getSumOfArray(rollxdx(3, 6));
     character.gold = gold_roll * 10;
+    */
 
-    // Generate Stat Modifiers for each stat.
-    Object.values(character.stats).forEach(stat => {
-        stat.modifier = modifierTable.find(r => stat.value >= r.min).mod;
-    });
-
+    
     displayCharStats.innerHTML = Object.values(character.stats)
         .map(stat => `${stat.label} ${stat.value} (${stat.modifier >= 0 ? '+' : ''}${stat.modifier})`)
         .join('<br>');
 
-    displayCharGear.innerHTML = `GEAR<br>Gold: ${character.gold}`;
+    displayCharBonuses.innerHTML = `
+    Armor Class Modifier: ${character.stats.DEX.modifier}
+    <br>L1 Melee & Missile To Hit Modifier: +0
+    <br>Melee To Hit Modifier (STR): ${character.strengthBonusmeleeToHit}
+    <br>Missile To Hit Modifier (DEX): ${character.stats.DEX.modifier}
+    <br>Spell Effectiveness Modifier: ${character.spellEffectiveness}
+    <br>Additional Languages: ${character.numberOfAdditionalLanguages}`;
+
+    displayCharGear.innerHTML = `GEAR<br>${character.gear}`;
 });
+
+// HELPERS
+function getStatModifier(statValue) {
+    return modifierTable
+        .sort((a, b) => b.min - a.min)
+        .find(row => statValue >= row.min)
+        .mod;
+};
+
+function getClassData(className) {
+    return classes.find(c => c.class === className);
+};
+
+function getXPBonusFromStat(statValue) {
+    return modifierTable
+        .sort((a, b) => b.min - a.min)
+        .find(row => statValue >= row.min);
+};
+
+function getCharacterXpBonus(character) {
+
+    const classData = getClassData(character.class);
+    
+    if (!classData) return null;
+
+    const primaryStat = classData.primary_stat;
+    const statValue = character.stats[primaryStat].value;
+
+    if (statValue == null) return null;
+
+    return getXPBonusFromStat(statValue);
+};
 
