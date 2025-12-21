@@ -12,14 +12,14 @@ const displayCharGear = document.getElementById('display-char-gear');
 const formCharCreationSummary = document.getElementById('form-char-creation-summary');
 
 const charismaModifierTable = [
-    {min: 18, hirelings_max: 7, hirelings_loyalty: 2},
-    {min: 16, hirelings_max: 6, hirelings_loyalty: 2},
-    {min: 13, hirelings_max: 5, hirelings_loyalty: 1},
-    {min: 9, hirelings_max: 4, hirelings_loyalty: 0},
-    {min: 7, hirelings_max: 3, hirelings_loyalty: -1},
-    {min: 5, hirelings_max: 2, hirelings_loyalty: -2},
-    {min: 3, hirelings_max: 1, hirelings_loyalty: -2}
-]
+    {min: 18, hirelings_max: 7, hirelings_loyalty: "+2"},
+    {min: 16, hirelings_max: 6, hirelings_loyalty: "+2"},
+    {min: 13, hirelings_max: 5, hirelings_loyalty: "+1"},
+    {min: 9, hirelings_max: 4, hirelings_loyalty: "+0"},
+    {min: 7, hirelings_max: 3, hirelings_loyalty: "-1"},
+    {min: 5, hirelings_max: 2, hirelings_loyalty: "-2"},
+    {min: 3, hirelings_max: 1, hirelings_loyalty: "-2"}
+].sort((a, b) => b.min - a.min);
 
 const modifierTable = [
     {min: 15, mod: 1, xpBonus: "10%"},
@@ -31,9 +31,9 @@ const modifierTable = [
 ];
 
 const classes = [
-    {class: "Fighter", hd: "1d6+1", hpBase: () => roll1dx(6) +1, primary_stat: "STR", xp_next: 2000},
-    {class: "Magic User", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "INT", xp_next: 2500},
-    {class: "Cleric", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "WIS", xp_next: 1500}
+    {class: "Fighter", hd: "1d6+1", hpBase: () => roll1dx(6) +1, primary_stat: "STR", xp_next: 2000, saving_throw: 14, saving_throw_bonus: "+2 vs. death, poison"},
+    {class: "Magic User", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "INT", xp_next: 2500, saving_throw: 15, saving_throw_bonus: "+2 vs. spells (incl. wands, staves)"},
+    {class: "Cleric", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "WIS", xp_next: 1500, saving_throw: 15, saving_throw_bonus: "+2 vs. poison, paralysis"}
 ];
 
 const character = {
@@ -240,6 +240,19 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
     Object.values(character.stats).forEach(stat => {
         stat.modifier = getStatModifier(stat.value);
     });
+
+    // Get Saving Throws
+    character.saving_throw = getSavingThrowForClass(character.class);
+
+    // Get Saving Throws Bonus
+    character.saving_throw_bonus = getSavingThrowForClassBonus(character.class);
+
+    // Get Charisma values for hirelings / loyalty
+    const chaValue = character.stats.CHA.value;
+    const chaMods = getCharismaModifiers(chaValue);
+
+    character.hirelings_max = chaMods.hirelings_max;
+    character.hirelings_loyalty = chaMods.hirelings_loyalty;
     
 
     // Assign Bonuses: (fighter, magic user, cleric, level to hit, languages)
@@ -263,8 +276,6 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
         character.spellEffectiveness = "N/A";
     }
 
-    // Dexterity to Hit & AC Mod
-    
 
     // Additional Languages
     if (character.stats.INT.value >=11) {
@@ -319,10 +330,13 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
 
     displayCharBonuses.innerHTML = `
     Armor Class Modifier: ${character.stats.DEX.modifier}
+    <br>L1 Saving Throw: ${character.saving_throw}
+    <br> ${character.class} Saving Throw Bonus: ${character.saving_throw_bonus}
     <br>L1 Melee & Missile To Hit Modifier: +0
     <br>Melee To Hit Modifier (STR): ${character.strengthBonusmeleeToHit}
     <br>Missile To Hit Modifier (DEX): ${character.stats.DEX.modifier}
     <br>Spell Effectiveness Modifier: ${character.spellEffectiveness}
+    <br>Hirelings: Max ${character.hirelings_max}, Loyalty: ${character.hirelings_loyalty}
     <br>Additional Languages: ${character.numberOfAdditionalLanguages}`;
 
     displayCharGear.innerHTML = `GEAR<br>${character.gear}`;
@@ -336,6 +350,7 @@ function getStatModifier(statValue) {
         .mod;
 };
 
+// GET CLASS DATA
 function getClassData(className) {
     return classes.find(c => c.class === className);
 };
@@ -356,7 +371,21 @@ function getCharacterXpBonus(character) {
     const statValue = character.stats[primaryStat].value;
 
     if (statValue == null) return null;
-
     return getXPBonusFromStat(statValue);
 };
+
+function getCharismaModifiers(chaValue) {
+    return charismaModifierTable.find(row => chaValue >= row.min);
+};
+
+function getSavingThrowForClass(className) {
+    const classData = getClassData(className);
+    return classData.saving_throw;
+};
+
+function getSavingThrowForClassBonus(className) {
+    const classData = getClassData(className);
+    return classData.saving_throw_bonus;
+}
+
 

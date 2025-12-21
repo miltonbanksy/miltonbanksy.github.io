@@ -6,6 +6,15 @@ Check for Test Hacks before going live...
 TO DO...
 ~~~~~~~~
 
+CHARACTER CREATION
+√ Saving Throw bonuses for each class
+Display a list of L1 Spells for MU to choose, and button for random.
+Display a list of L1 Spells for Clerics to record all.
+Add a spellbook to MU inventory
+Add any other class Abilities, Restrictions, and/or Details.
+Cleric's turn undead table... omg!!
+
+
 ...Started new 'tabs' page.
 
 ...Re-organise Misc Items into helper functions.
