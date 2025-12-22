@@ -97,7 +97,7 @@ const clickCigPrompts = [
   "\nI am sacrificing nothing. I am freeing myself from addiction.",
   "\nLess shock, more wow.",
   "\nA new sense of freedom.",
-  "\nI want to be better every day"
+  "\nI want to be better every day."
 ];
 
 function clickCig(){
