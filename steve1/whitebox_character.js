@@ -31,7 +31,15 @@ const modifierTable = [
 ];
 
 const classes = [
-    {class: "Fighter", hd: "1d6+1", hpBase: () => roll1dx(6) +1, primary_stat: "STR", xp_next: 2000, saving_throw: 14, saving_throw_bonus: "+2 vs. death, poison"},
+    {
+        class: "Fighter", 
+        hd: "1d6+1", 
+        hpBase: () => roll1dx(6) +1, 
+        primary_stat: "STR", 
+        xp_next: 2000, 
+        saving_throw: 14, 
+        saving_throw_bonus: "+2 vs. death, poison"
+    },
     {class: "Magic User", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "INT", xp_next: 2500, saving_throw: 15, saving_throw_bonus: "+2 vs. spells (incl. wands, staves)"},
     {class: "Cleric", hd: "1d6", hpBase: () => roll1dx(6), primary_stat: "WIS", xp_next: 1500, saving_throw: 15, saving_throw_bonus: "+2 vs. poison, paralysis"}
 ];
@@ -323,6 +331,13 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
     character.gold = gold_roll * 10;
     */
 
+    // I need to do this for Cleric too.
+    // And build a hidden <div> to display it.
+    // Call function to get all Level1 spells:
+    character.spells_level_1 = getSpellsByLevel(spellsMage, 1);
+    console.log(character.spells_level_1);
+
+
     
     displayCharStats.innerHTML = Object.values(character.stats)
         .map(stat => `${stat.label} ${stat.value} (${stat.modifier >= 0 ? '+' : ''}${stat.modifier})`)
@@ -386,6 +401,13 @@ function getSavingThrowForClass(className) {
 function getSavingThrowForClassBonus(className) {
     const classData = getClassData(className);
     return classData.saving_throw_bonus;
-}
+};
 
+// I want to create 1 function that handles both MU and Cleric.
+// For now, I'll find MU spells.
+// Testing get all L1 Magic User Spells:
+function getSpellsByLevel(spellList, level) {
+    return spellList
+        .filter(spell => spell.level === level);
+}
 

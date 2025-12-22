@@ -30,40 +30,36 @@
 </div>
 <p id="display-smoke-free-day"></p>
 <hr>
-<label for="in-smoke-note">Add New Note</label>
-<input id="in-smoke-note" type="text">
-<button id="btn-smoke-note">Save Note</button>
-<br><br>
-<textarea id="display-smoke-notes"></textarea>
+
   
   <script src="smoking_script.js"></script>
   
   <script>
     const inSmokeNote = document.getElementById("in-smoke-note");
-const btnSmokeNote = document.getElementById("btn-smoke-note");
-const displaySmokeNotes = document.getElementById("display-smoke-notes");
+    const btnSmokeNote = document.getElementById("btn-smoke-note");
+    const displaySmokeNotes = document.getElementById("display-smoke-notes");
 
-// Load array safely
-const smokeNotes = JSON.parse(localStorage.getItem("smokeNotes") || "[]");
+    // Load array safely
+    const smokeNotes = JSON.parse(localStorage.getItem("smokeNotes") || "[]");
 
-// Display existing notes
-displaySmokeNotes.value = smokeNotes.join("\n");
+    // Display existing notes
+    displaySmokeNotes.value = smokeNotes.join("\n");
 
-btnSmokeNote.addEventListener("click", () => {
-  const newSmokeNote = inSmokeNote.value.trim();
-  if (newSmokeNote === "") return;
+    btnSmokeNote.addEventListener("click", () => {
+      const newSmokeNote = inSmokeNote.value.trim();
+      if (newSmokeNote === "") return;
 
-  smokeNotes.push(newSmokeNote);
+      smokeNotes.push(newSmokeNote);
 
-  // Save updated array
-  localStorage.setItem("smokeNotes", JSON.stringify(smokeNotes));
+      // Save updated array
+      localStorage.setItem("smokeNotes", JSON.stringify(smokeNotes));
 
-  // Update display
-  displaySmokeNotes.value = smokeNotes.join("\n");
+      // Update display
+      displaySmokeNotes.value = smokeNotes.join("\n");
 
-  // Clear input
-  inSmokeNote.value = "";
-});
+      // Clear input
+      inSmokeNote.value = "";
+    });
 
   </script>
 </body>

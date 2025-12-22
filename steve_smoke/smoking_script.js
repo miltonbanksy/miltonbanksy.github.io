@@ -89,14 +89,15 @@ function prompts_start() {
 }
 
 const clickCigPrompts = [
-  "I don't want a cigarette. I don't need a cigarete. I just need to change my task or environment for a few minutes.",
+  "I don't want a cigarette.",
+  "\nI don't need a cigarete.",
+  "\nI just need to change my task or environment for a few minutes.",
   "\nJust one cigarette will effectively put me back to square 'ONE' on my healing journey. The moment I light a cigarette, I will feel a rush of the drug, which will take away these uncomfortable feelings (for a few minutes). But, then, I either stay a smoker, risking a health explosion, or start the long, hard healing process again from step one. It's my choice.",
   "\nI recognize the symptoms: I understand that these feelings are normal and temporary. They are a sign that my body is healing and recovering.",
   "\nI am sacrificing nothing. I am freeing myself from addiction.",
-  "\nI don't want to smoke a cigarette.",
-  "\nI don't need to smoke a cigarette.",
-  "\nI am free to choose not to smoke.",
-  "\nI am a proud non-smoker."
+  "\nLess shock, more wow.",
+  "\nA new sense of freedom.",
+  "\nI want to be better every day"
 ];
 
 function clickCig(){
