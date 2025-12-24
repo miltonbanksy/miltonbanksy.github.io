@@ -10,6 +10,8 @@ const displayCharStats = document.getElementById('display-char-stats');
 const displayCharBonuses = document.getElementById('display-char-bonuses');
 const displayCharGear = document.getElementById('display-char-gear');
 const formCharCreationSummary = document.getElementById('form-char-creation-summary');
+const formCharCreationMage = document.getElementById('form-char-creation-mage');
+const spellInfo = document.getElementById('spell-info');
 const displayCharSpellChoice = document.getElementById('display-char-spell-choice');
 
 const charismaModifierTable = [
@@ -278,9 +280,23 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
     }
 
     if (character.class == "Magic User") {
+        
+        formCharCreationMage.classList.remove('hide-me');
         character.spellEffectiveness = character.stats.INT.modifier;
+
+        let spellInfoMage = "Choose or randomize one first-level spell";
+        spellInfo.innerHTML = spellInfoMage;
+        displayClassSpells(spellsMage);
+
     } else if (character.class == "Cleric") {
+        
+        formCharCreationMage.classList.remove('hide-me');
         character.spellEffectiveness = character.stats.WIS.modifier;
+        
+        let spellInfoCleric = "Clerics must earn their right to cast divine spells by reaching Level 2. Here are a list of first-level spells which may be used as narrative quest sparks for the cleric to pursue to gain the favor of their deity.";
+        spellInfo.innerHTML = spellInfoCleric;
+        displayClassSpells(spellsCleric);
+
     } else {
         character.spellEffectiveness = "N/A";
     }
@@ -332,11 +348,7 @@ formCharCreationChooseStatMethod.addEventListener('change', function(event) {
     character.gold = gold_roll * 10;
     */
 
-    // I need to do this for Cleric too.
-    // And build a hidden <div> to display it.
-    // Call function to get all Level1 spells:
-    character.spells_level_1 = getSpellsByLevel(spellsMage, 1);
-    console.log(character.spells_level_1);
+    
 
 
     
@@ -410,5 +422,15 @@ function getSavingThrowForClassBonus(className) {
 function getSpellsByLevel(spellList, level) {
     return spellList
         .filter(spell => spell.level === level);
-}
+};
+
+function displayClassSpells(classSpellList) {
+    let listHtml = '';
+    let spellList = getSpellsByLevel(classSpellList, 1);
+        spellList.forEach(spell =>  {
+            listHtml += `<div>${spell.name}</div>`;
+        })
+        
+        displayCharSpellChoice.innerHTML = listHtml;
+};
 
