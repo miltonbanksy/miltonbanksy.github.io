@@ -10,6 +10,7 @@ const displayCharStats = document.getElementById('display-char-stats');
 const displayCharBonuses = document.getElementById('display-char-bonuses');
 const displayCharGear = document.getElementById('display-char-gear');
 const formCharCreationSummary = document.getElementById('form-char-creation-summary');
+const displayCharSpellChoice = document.getElementById('display-char-spell-choice');
 
 const charismaModifierTable = [
     {min: 18, hirelings_max: 7, hirelings_loyalty: "+2"},
