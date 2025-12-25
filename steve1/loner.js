@@ -92,22 +92,22 @@ function rollOracleDice(chanceNumber, riskNumber) {
     let result = "";
     if (highestChanceDie == highestRiskDie) { // yes, but..., +1 Twist Counter!
         twistCounter ++;
-        result = "Yes, but... (+1 Twist Counter!)"
+        result = "Yes, but... (Add a complication. +1 Twist Counter!)";
     } else if (highestChanceDie > highestRiskDie) { // yes...
         if (highestChanceDie >= 4 && highestRiskDie >= 4) { // yes and...
-            result = "Yes, and...";
+            result = "Yes, and... (Drive the scene forward with a major development.)";
         } else if (highestChanceDie >= 4 && highestRiskDie < 4) { // yes.
-            result = "Yes.";
+            result = "Yes. (Move the story forward in a predictable direction.)";
         } else if (highestChanceDie < 4 && highestRiskDie < 4) { // yes, but...
-            result = "Yes, but...";
+            result = "Yes, but... (Add a complication.)";
         }
     } else if (highestRiskDie > highestChanceDie) { // no...
         if (highestRiskDie >= 4 && highestChanceDie >= 4) { // no, and...
-            result = "No, and...";
+            result = "No, and... (Escalate the stakes considerably.)";
         } else if (highestRiskDie >= 4 && highestChanceDie < 4) { // no.
-            result = "No.";
+            result = "No. (Find another way.)";
         } else if (highestRiskDie < 4 && highestChanceDie < 4) { // no, but...
-            result = "No, but...";
+            result = "No, but... (Shifts the focus to an alternative path.)";
         }
     };
 
