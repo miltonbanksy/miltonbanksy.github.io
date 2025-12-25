@@ -5,6 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Loner (Solo RPG)</title>
         <!-- <link rel="stylesheet" href="loner.css"> -->
+
+        <style>
+            html {
+                padding: 4px;
+                font-size: 14px;
+            }
+            button {
+                font-size: 12px;
+                width: 120px;
+                padding: 4px;
+                margin: 4px;
+            }
+            .hide-me {
+                display: none;
+                visibility: hidden;
+            }
+            .show-me {
+                display: block;
+            }
+
+            .red-text {
+                color: darkred;
+            }
+
+        </style>
+
     </head>
     <body>
         <h1>Loner - The Solo RPG</h1>
@@ -13,6 +39,13 @@
             <!--Buttons will be dynamically added here-->
         </div>
         <p id="display-oracle-result"></p>
+        
+        <div class="hide-me" id="group-twist">
+            <p class="red-text">Twist!</p>
+            <p class="red-text" id="display-twist"></p>
+        </div>
+        
+
 
         <script src="loner.js"></script>
     </body>

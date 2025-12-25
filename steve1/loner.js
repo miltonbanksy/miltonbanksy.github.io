@@ -1,14 +1,34 @@
 const oracleTable = {
-    advantage: {name: "Likely / Advantage", numberOfChanceDice: 2, numberOfRiskDice: 1},
-    equal: {name: "50-50 / Equal Chance", numberOfChanceDice: 1, numberOfRiskDice: 1},
-    disadvantage: {name: "Unlikely / Disadvantage", numberOfChanceDice: 1, numberOfRiskDice: 2}
+    advantage: {name: "Advantage", numberOfChanceDice: 2, numberOfRiskDice: 1},
+    equal: {name: "Equal Chance", numberOfChanceDice: 1, numberOfRiskDice: 1},
+    disadvantage: {name: "Disadvantage", numberOfChanceDice: 1, numberOfRiskDice: 2}
 };
+
+const subjects = [
+    "A third party",
+    "The hero",
+    "An encounter",
+    "A physical event",
+    "An emotional event",
+    "An object"
+];
+
+const actions = [
+    "appears.",
+    "alters the location",
+    "helps the hero.",
+    "hinderst the hero.",
+    "changes the goal.",
+    "ends the scene."
+]
 
 const btnOracleLikely = document.getElementById('btn-oracle-likely');
 const btnOracleEqual = document.getElementById('btn-oracle-equal');
 const btnOracleUnlikely = document.getElementById('btn-oracle-unlikely');
 const groupBtnsOracle = document.getElementById('group-btns-oracle');
 const displayOracleResult = document.getElementById('display-oracle-result');
+const groupTwist = document.getElementById('group-twist');
+const displayTwist = document.getElementById('display-twist');
 
 const twistCounterMax = 3;
 let twistCounter = 0;
@@ -58,6 +78,8 @@ function rollxd6(numberOfDice) {
 
 function rollOracleDice(chanceNumber, riskNumber) {
     
+    groupTwist.classList.add('hide-me');
+
     const poolChanceDice = rollxd6(chanceNumber);
     const poolRiskDice = rollxd6(riskNumber);
     
@@ -92,14 +114,20 @@ function rollOracleDice(chanceNumber, riskNumber) {
     if (twistCounter == twistCounterMax) {
         alert("Random Event or Twist!");
         twistCounter = 0;
+        let subjectIndex = Math.floor(Math.random() * subjects.length);
+        let subject = subjects[subjectIndex];
+        let actionIndex = Math.floor(Math.random() * actions.length);
+        let action = actions[actionIndex];
+        displayTwist.innerHTML = subject + " " + action;
+        groupTwist.classList.remove('hide-me');
+        groupTwist.classList.add('show-me');
     }
 
     displayOracleResult.innerHTML = `
     Chance Dice: (${poolChanceDice}), 
     Risk Dice: (${poolRiskDice})
-    <br>${result}
-    <br>
-    <br>(Twist Counter: ${twistCounter} of ${twistCounterMax});
+    <br>(Twist Counter: ${twistCounter} of ${twistCounterMax})
+    <br><br><b>${result}</b>
     `;
 };
 
