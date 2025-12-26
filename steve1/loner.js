@@ -1,7 +1,7 @@
 const oracleTable = {
-    advantage: {name: "Advantage", numberOfChanceDice: 2, numberOfRiskDice: 1},
-    equal: {name: "Equal Chance", numberOfChanceDice: 1, numberOfRiskDice: 1},
-    disadvantage: {name: "Disadvantage", numberOfChanceDice: 1, numberOfRiskDice: 2}
+    advantage: {name: "'Yes' is Likely", numberOfChanceDice: 2, numberOfRiskDice: 1},
+    equal: {name: "'Yes' is Uncertain", numberOfChanceDice: 1, numberOfRiskDice: 1},
+    disadvantage: {name: "'Yes' is Unlikely", numberOfChanceDice: 1, numberOfRiskDice: 2}
 };
 
 const subjects = [
@@ -105,7 +105,7 @@ function rollOracleDice(chanceNumber, riskNumber) {
         if (highestRiskDie >= 4 && highestChanceDie >= 4) { // no, and...
             result = "No, and... (Escalate the stakes considerably.)";
         } else if (highestRiskDie >= 4 && highestChanceDie < 4) { // no.
-            result = "No. (Find another way.)";
+            result = "No.";
         } else if (highestRiskDie < 4 && highestChanceDie < 4) { // no, but...
             result = "No, but... (Shifts the focus to an alternative path.)";
         }
