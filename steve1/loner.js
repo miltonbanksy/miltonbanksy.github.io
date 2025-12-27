@@ -4,23 +4,12 @@ const oracleTable = {
     disadvantage: {name: "'Yes' is Unlikely", numberOfChanceDice: 1, numberOfRiskDice: 2}
 };
 
-const subjects = [
-    "A third party",
-    "The hero",
-    "An encounter",
-    "A physical event",
-    "An emotional event",
-    "An object"
-];
-
-const actions = [
-    "appears.",
-    "alters the location",
-    "helps the hero.",
-    "hinderst the hero.",
-    "changes the goal.",
-    "ends the scene."
-]
+const subjects = ["A third party", "The hero", "An encounter", "A physical event", "An emotional event", "An object"];
+const actions = ["appears.", "alters the location", "helps the hero.", "hinders the hero.", "changes the goal.", "ends the scene."];
+const sceneFocuses = ["Dramatic", "Quiet", "Meanwhile..."];
+const lonerVerbs = ['inject','pass','own','continue','learn','ask','develop','behave','replace','share','hand','play','face','expand','found','trip','want','miss','divide','bury','borrow','multiply','receive','imagine','damage','collect','turn','explain','improve','cough','gather','prefer','belong','dry','employ','destroy'];
+const lonerNouns = ['cause','stage','change','front','event','home','prose','motion','trade','instrument','friend','talk','word','morning','edge','key','income','use','verse','thrill','spot','bag','measure','birth','memory','chance','drop','liquid','fact','price','room','system','camp','humor','statement','argument'];
+const lonerAdjectives = ['frequent','faulty','obscene','ethereal','sophisticated','rightful','descriptive','insidious','poor','silky','worthless','fixed','quiet','stormy','spooky','magnificent','arrogant','unhealthy','scarce','rigid','long-term','knowledge-','able','astonishing','ordinary','proud','reflective','amusing','loose','willing','cold','delirious','innate','late','enormous','truculent','charming'];
 
 const btnOracleLikely = document.getElementById('btn-oracle-likely');
 const btnOracleEqual = document.getElementById('btn-oracle-equal');
@@ -29,6 +18,10 @@ const groupBtnsOracle = document.getElementById('group-btns-oracle');
 const displayOracleResult = document.getElementById('display-oracle-result');
 const groupTwist = document.getElementById('group-twist');
 const displayTwist = document.getElementById('display-twist');
+const btnNextSceneFocus = document.getElementById('btn-next-scene-focus');
+const displayNextSceneFocus = document.getElementById('display-next-scene-focus');
+const btnComplexOracle = document.getElementById('btn-complex-oracle');
+const displayComplexOracle = document.getElementById('display-complex-oracle');
 
 const twistCounterMax = 3;
 let twistCounter = 0;
@@ -48,7 +41,7 @@ Object.values(oracleTable).forEach(key => {
 });
 
 
-// // LISTENERS:
+// * LISTENERS *
 groupBtnsOracle.addEventListener('click', function(event) {
 
     if (event.target && event.target.classList.contains('btn-oracle')) {
@@ -63,18 +56,24 @@ groupBtnsOracle.addEventListener('click', function(event) {
     }
 });
 
-// // HELPER FUNCTIONS:
-function rollxd6(numberOfDice) {
-    
-    let pool = [];
-    
-    for (let i = 0; i < numberOfDice; i++) {
-        const diceResult = Math.floor(Math.random() * 6) + 1;
-        pool.push(diceResult);
-    }
-    
-    return pool;
-};
+btnNextSceneFocus.addEventListener('click', () => {
+    const newSceneFocusIndex = Math.floor(Math.random() * sceneFocuses.length);
+    const newSceneFocus = sceneFocuses[newSceneFocusIndex];
+    displayNextSceneFocus.innerHTML = newSceneFocus;
+});
+
+btnComplexOracle.addEventListener('click', () => {
+    const lonerVerbIndex = Math.floor(Math.random() * lonerVerbs.length);
+    const lonerVerb = lonerVerbs[lonerVerbIndex];
+
+    const lonerAdjectiveIndex = Math.floor(Math.random() * lonerAdjectives.length);
+    const lonerAdjective = lonerAdjectives[lonerAdjectiveIndex];
+
+    const lonerNounIndex = Math.floor(Math.random() * lonerNouns.length);
+    const lonerNoun = lonerNouns[lonerNounIndex];
+
+    displayComplexOracle.innerHTML = `${lonerVerb}, ${lonerAdjective}, ${lonerNoun}`;
+});
 
 function rollOracleDice(chanceNumber, riskNumber) {
     
@@ -112,7 +111,7 @@ function rollOracleDice(chanceNumber, riskNumber) {
     };
 
     if (twistCounter == twistCounterMax) {
-        alert("Random Event or Twist!");
+
         twistCounter = 0;
         let subjectIndex = Math.floor(Math.random() * subjects.length);
         let subject = subjects[subjectIndex];
@@ -121,16 +120,30 @@ function rollOracleDice(chanceNumber, riskNumber) {
         displayTwist.innerHTML = subject + " " + action;
         groupTwist.classList.remove('hide-me');
         groupTwist.classList.add('show-me');
-    }
+    };
 
     displayOracleResult.innerHTML = `
-    Chance Dice: (${poolChanceDice}), 
-    Risk Dice: (${poolRiskDice})
-    <br>(Twist Counter: ${twistCounter} of ${twistCounterMax})
-    <br><br><b>${result}</b>
+        Chance Dice: (${poolChanceDice}), 
+        Risk Dice: (${poolRiskDice})
+        <br>Twist Counter: ${twistCounter} of ${twistCounterMax}
+        <br><br><b>${result}</b>
     `;
 };
 
+
+// * HELPERS *
+
+function rollxd6(numberOfDice) {
+    
+    let pool = [];
+    
+    for (let i = 0; i < numberOfDice; i++) {
+        const diceResult = Math.floor(Math.random() * 6) + 1;
+        pool.push(diceResult);
+    }
+    
+    return pool;
+};
 function sortArrayHighestToLowest(array) {
     return array.sort((a, b) => b - a);
 };

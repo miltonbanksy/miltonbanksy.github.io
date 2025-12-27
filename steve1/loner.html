@@ -8,8 +8,9 @@
 
         <style>
             html {
-                padding: 4px;
+                padding: 6px;
                 font-size: 14px;
+                max-width: 500px;
             }
             button {
                 font-size: 12px;
@@ -25,15 +26,16 @@
                 display: block;
             }
 
-            .red-text {
-                color: darkred;
-            }
-
             #group-twist {
-                width: 200px;
+                width: 300px;
                 padding: 14px;
                 border: 1px solid black;
                 border-radius: 10px;
+                box-shadow: 2px 2px 2px black;
+                /* background-color: rgb(234, 247, 199); */
+                background-image: linear-gradient(to top, rgb(255, 0, 0, 0), rgb(250, 167, 167));
+                font-size: 16px;
+                color:crimson;
             }
 
         </style>
@@ -41,18 +43,27 @@
     </head>
     <body>
         <h1>Loner - The Solo RPG</h1>
-        <h2>Ask the Oracle</h2>
+        <h2>Binary Oracle</h2>
         <div id="group-btns-oracle">
             <!--Buttons will be dynamically added here-->
         </div>
         <p id="display-oracle-result"></p>
         
-        <div class="hide-me border-simple" id="group-twist">
-            <p class="red-text"><b>Twist!</b></p>
-            <p class="red-text" id="display-twist"></p>
+        <div class="hide-me" id="group-twist">
+            <p><b>Twist!</b></p>
+            <p id="display-twist"></p>
         </div>
-        
-
+        <hr>
+        <h2>Complex Oracle</h2>
+        <button id="btn-complex-oracle">Consult the Oracle</button>
+        <span id="display-complex-oracle"></span>
+        <hr>
+        <h2>New Scene Focus</h2>
+        <p><b>Dramatic</b>: The action and tension continue. The situation worsens, new obstacles emerge, or an unexpected event forces the Protagonist to adapt.</p>
+        <p><b>Quiet</b>: The calm before the storm. The Protagonist can rest, regroup, and prepare for what comes next. Conversations, character development, and small discoveries take center stage.</p>
+        <p><b>Meanwhile...</b>: The focus shifts away from the Protagonist, cutting to villains, allies, or unseen forces at play. This adds depth to the world and introduces new threats or opportunities before the Protagonist learns about them.</p>        
+        <button id="btn-next-scene-focus">Random Scene Focus</button>
+        <span id="display-next-scene-focus"></span>
 
         <script src="loner.js"></script>
     </body>
