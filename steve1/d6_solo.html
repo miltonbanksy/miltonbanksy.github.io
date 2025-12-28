@@ -45,6 +45,8 @@
             <li>4-5 Quiet</li>
             <li>6 Meanwhile...</li>
         </ul>
+        <button id="btn-d6-new-scene-format">Random Scene Format</button>
+        <span id="display-d6-new-scene-format"></span>
     </details>
     <details>
         <summary>Set the Scene</summary>
@@ -130,5 +132,24 @@
     <br><br>
     <h1>Now, Play On!</h1>
     <!-- <script src="script.js"></script> -->
+    <script>
+        const btnD6NewSceneFormat = document.getElementById('btn-d6-new-scene-format');
+        const displayD6NewSceneFormat = document.getElementById('display-d6-new-scene-format');
+
+        // // LISTENERS
+        btnD6NewSceneFormat.addEventListener('click', () => {
+            let result = 0
+            const roll = Math.floor(Math.random() * 6) + 1;
+            if (roll >= 6) {
+                result = "Meanwhile...";
+            } else if (roll >= 4 ) {
+                result = "Quiet";
+            } else {
+                result = "Action";
+            }
+            displayD6NewSceneFormat.innerHTML = " " + result;
+        });
+
+    </script>
 </body>
 </html>
