@@ -26,11 +26,28 @@
         .orange {
             color: orangered;
         }
+        #img-d6 {
+            width:fit-content;
+            height: 20px;
+        }
+        .spin {
+            animation: spin 4s linear alternate infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-    <h1>D6 Free Kriegspiel Solo Roleplaying</h1>
+    
+    <h1><img class="spin" id="img-d6" src="d6.png"> D6 Free Kriegspiel Solo Roleplaying</h1>
     <details>
         <summary>Setup</summary>
         
@@ -119,8 +136,8 @@
             <br><br>
             <div class="indent outcomes" id="outcome-6">6: A amplified!</div>
             <div class="indent outcomes" id="outcome-5">5: A as expected.</div>
-            <div class="indent outcomes" id="outcome-4">4: A with a twist or counter action.</div>
-            <div class="indent outcomes" id="outcome-3">3: B with a twist or counter action.</div>
+            <div class="indent outcomes" id="outcome-4">4: A with a twist or counter event.</div>
+            <div class="indent outcomes" id="outcome-3">3: B with a twist or counter event.</div>
             <div class="indent outcomes" id="outcome-2">2: B as expected.</div>
             <div class="indent outcomes" id="outcome-1">1: B amplified!</div>
             <br>
@@ -134,7 +151,7 @@
             
             <br>Twist Focus (1d6)
             <div class="indent focus" id="focus-5">5-6: Actor: Character(s), Creature(s)</div>
-            <div class="indent focus" id="focus-3">3-4: Scenery: Environment, Atmosphere</div>
+            <div class="indent focus" id="focus-3">3-4: Scenery: Environment, Atmosphere, Structure(s)</div>
             <div class="indent focus" id="focus-1">1-2: Prop or Theme</div>
             
             <br>Twist Action (1d6)
@@ -190,6 +207,7 @@
             {roll: 1, element_id: "action-1"}
         ];
         
+        const imgD6 = document.getElementById('img-d6');
         const btnD6NewSceneFormat = document.getElementById('btn-d6-new-scene-format');
         const displayD6NewSceneFormat = document.getElementById('display-d6-new-scene-format');
         const btnD6a = document.getElementById('btn-d6-a');
@@ -197,6 +215,10 @@
         const btnD6b = document.getElementById('btn-d6-b');
 
         // // LISTENERS
+        imgD6.addEventListener('click', () => {
+            let roll = roll1d6();
+            alert("You rolled a " + roll);
+        });
         btnD6NewSceneFormat.addEventListener('click', () => {
             let result = 0
             const roll = Math.floor(Math.random() * 6) + 1;
