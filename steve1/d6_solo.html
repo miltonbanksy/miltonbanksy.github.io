@@ -145,16 +145,18 @@
             <button id="btn-d6-x">Unsure</button>
             <button id="btn-d6-b">Option B is Likely</button>
             <br><br>
-            <b>Twist Check</b>
-            <br>A twist occurs on a roll of 1 on a 1d6.
+            <b>Random Event</b>
+            <br>A random event occurs automatically on a roll of 1 on a 1d6.
+            <br>
+            <button id="btn-force-random-event">Invoke Random Event</button>
             <br>
             
-            <br>Twist Focus (1d6)
+            <br>Random Event - Focus (1d6)
             <div class="indent focus" id="focus-5">5-6: Actor: Character(s), Creature(s)</div>
             <div class="indent focus" id="focus-3">3-4: Scenery: Environment, Atmosphere, Structure(s)</div>
             <div class="indent focus" id="focus-1">1-2: Prop or Theme</div>
             
-            <br>Twist Action (1d6)
+            <br>Rndom Event - Action (1d6)
             <div class="indent action" id="action-4">4-6: ...creates an opportunity / provides an advantage</div>
             <div class="indent action" id="action-1">1-3: ...creates a complication / imposes a disadvantage</div>
             <br>
@@ -218,12 +220,14 @@
         const btnD6a = document.getElementById('btn-d6-a');
         const btnD6x = document.getElementById('btn-d6-x');
         const btnD6b = document.getElementById('btn-d6-b');
+        const btnForceRandomEvent = document.getElementById('btn-force-random-event');
 
         // // LISTENERS
         imgD6.addEventListener('click', () => {
             let roll = roll1d6();
             alert("You rolled a " + roll);
         });
+
         btnD6NewSceneFormat.addEventListener('click', () => {
             let result = 0
             const roll = Math.floor(Math.random() * 6) + 1;
@@ -236,6 +240,27 @@
             }
             displayD6NewSceneFormat.innerHTML = " " + result;
         });
+
+        function twistYes() {
+            revertTwistFocusElementsToBlack();
+            revertTwistActionElementsToBlack();
+            
+            alert("Twist!");
+            let twist_focus_die = roll1d6();
+            const twistFocusEntry = findTwistFocusRow(twist_focus_die);
+            changeTargetElementToOrange(twistFocusEntry.element_id);
+
+            let twist_action_die = roll1d6();
+            const twistActionEntry = findTwistActionRow(twist_action_die);
+            changeTargetElementToOrange(twistActionEntry.element_id);
+        };
+
+        btnForceRandomEvent.addEventListener('click', () => {
+            twistYes();
+        });
+
+        
+        // // HELPERS 
 
         // Change Outcome elements to black
         function revertElementsToBlack() {
@@ -270,16 +295,11 @@
         function twistCheck() {
             const twist_check = roll1d6();
             if ( twist_check == 1 ) {
-                alert("Twist!");
-                let twist_focus_die = roll1d6();
-                const twistFocusEntry = findTwistFocusRow(twist_focus_die);
-                changeTargetElementToOrange(twistFocusEntry.element_id);
-
-                let twist_action_die = roll1d6();
-                const twistActionEntry = findTwistActionRow(twist_action_die);
-                changeTargetElementToOrange(twistActionEntry.element_id);
+                twistYes();
             }
         };
+
+        
 
         // Find actionOutcome row by dice
         function findActionOutcomeRow(diceRoll) {
@@ -304,7 +324,7 @@
         // Option A is Likely
         btnD6a.addEventListener('click', () => {
             revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack()
+            revertTwistActionElementsToBlack();
             const rolla1 = roll1d6();
             const rolla2 = roll1d6();
             const result = (rolla1 >= rolla2) ? rolla1 : rolla2;
@@ -319,7 +339,7 @@
         // Option A and B have Equal Chance
         btnD6x.addEventListener('click', () => {
             revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack()
+            revertTwistActionElementsToBlack();
             const result = roll1d6();
             const outcome = findActionOutcomeRow(result);
 
@@ -331,7 +351,7 @@
         // Option B is Likely
         btnD6b.addEventListener('click', () => {
             revertTwistFocusElementsToBlack();
-            revertTwistActionElementsToBlack()
+            revertTwistActionElementsToBlack();
             const rolla1 = roll1d6();
             const rolla2 = roll1d6();
             const result = (rolla1 >= rolla2) ? rolla2 : rolla1;
