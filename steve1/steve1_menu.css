@@ -1,3 +1,7 @@
+html {
+    padding: 10px;
+}
+
 details[open] > *:not(summary) {
     margin-left: 2em;
     /*cursor: pointer;*/
