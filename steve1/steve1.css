@@ -1,5 +1,6 @@
 /* Reset some defaults */
 body {
+  max-width: 400px;
   margin: 0;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -8,7 +9,6 @@ body {
 }
 
 header {
-  padding: 20px;
   background: #85b178;
 }
 
@@ -24,11 +24,13 @@ h2 {
 }
 
 button {
+  margin: 2px;
+  padding: 4px;
   font-size: 12px;
 }
 
 .btn-lists {
-  width: 100px;
+  width: 160px;
 }
 
 #btn-random-difficulty {

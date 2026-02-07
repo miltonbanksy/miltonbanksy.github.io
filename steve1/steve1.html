@@ -6,21 +6,24 @@
   <title>Steve's Page</title>
   <link rel="stylesheet" href="steve1.css">
 </head>
-<body>
-    <a href="../index.html">Our Home Page</a>
-    <br>
-    <a href="../steve1/adventure_keeper.html">Adventure Keeper</a>
-    <br>
-    <a href="../steve_reading.html">My Reading Diary</a>
-    <br>
-    <a href="../steve_smoke/smoking.html">Steve's Smoking Tracker</a>
-    <br><br>
+<body>    
   <header>
     <h1>Story Sparks</h1>
   </header>
 
+  <div class="card" id="uni-dice">
+      <h2>Dice Roller</h2>
+      <br>
+      <input id="inputNumberOfDice" class="inputNumber" type="number">
+      <span>d</span>
+      <input id="inputSizeOfDice" class="inputNumber" type="number">
+      <button onclick="rollDice()">Roll!</button>
+      <div id="dice-scroll-box">
+        <p id="displayHistory"></p>
+      </div>
+    </div>
 
-  <div class="flexbox-container">
+
     <div class="card" id="frame-fate_dice">
       <h2>Fate Dice</h2>
       <br>
@@ -39,42 +42,27 @@
         </div>
       </div>
     </div>
-  </div>
 
 
 
-  <div class="flexbox-container">
-    <div class="card" id="uni-dice">
-      <h2>Dice Roller</h2>
-      <br>
-      Enter dice (e.g. 2d6)
-      <input id="inputNumberOfDice" class="inputNumber" type="number">
-      <span>d</span>
-      <input id="inputSizeOfDice" class="inputNumber" type="number">
-      <button onclick="rollDice()">Roll!</button>
-      <div id="dice-scroll-box">
-        <p id="displayHistory"></p>
-      </div>
-    </div>
-  </div>
+    
   
 
-  <div class="flexbox-container"></div>
     <div class="card" id="oracleCard">
-      <h2>Likelihood</h2>
+      <h2>Likelihood or Difficulty
+      </h2>
       <br>
-      <button class="btn-lists btn-oracle" data-value="very likely">V Likely</button>
+      <button class="btn-lists btn-oracle" data-value="very likely">Very Likely || Very Easy</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="likely">Likely</button>
+      <button class="btn-lists btn-oracle" data-value="likely">Likely || Easy</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="50/50">50/50</button>
+      <button class="btn-lists btn-oracle" data-value="50/50">50/50 || Moderate</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="unlikely">Unlikely</button>
+      <button class="btn-lists btn-oracle" data-value="unlikely">Unlikely || Hard</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="very unlikely">V Unlikely</button>
+      <button class="btn-lists btn-oracle" data-value="very unlikely">Very Unlikely || Very Hard</button>
       <p id="display_iron_oracle"></p>
     </div>
-  </div>
 
   <div class="flexbox-container"></div>
     <div class="card" id="difficultyCard">
