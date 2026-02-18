@@ -315,39 +315,43 @@
       return shuffled.slice(0, count);
     }
 
-    // Generate an Oracle Result
-    function generateOracle() {
-      const verb = getRandom("verbs");
-      const adjective_object = getRandom("adjectives_object");
-      const adjective_character = getRandom("adjectives_character");
-      const noun_concrete = getRandom("nouns_concrete");
-      const noun_abstract = getRandom("nouns_abstract");
-      const poi_dungeon = getRandom("poi_dungeon");
-      const poi_wilderness = getRandom("poi_wilderness");
-      const poi_settlement = getRandom("poi_settlement");
-      const trap_action = getRandom("trap_action");
-      const trap_trigger = getRandom("trap_trigger");
-      const spell_action = getRandom("spell_action");
-      const spell_target = getRandom("spell_target");
-      const lenormand = drawMultiple("lenormand_classic", 3, true);
-      // add more oracle items here...
+    const oracleFields = [
+      ["Verb", "verbs"],
+      ["Adjective (Scenery / Prop)", "adjectives_object"],
+      ["Adjective (Actor)", "adjectives_character"],
+      ["Noun (Concrete)", "nouns_concrete"],
+      ["Noun (Abstract)", "nouns_abstract"],
+      ["P.O.I (Dungeon)", "poi_dungeon"],
+      ["P.O.I (Wilderness)", "poi_wilderness"],
+      ["P.O.I (Settlement)", "poi_settlement"],
+      ["Trap (Trigger)", "trap_trigger"],
+      ["Trap (Action)", "trap_action"],
+      ["Spell (Action)", "spell_action"],
+      ["Spell (Target)", "spell_target"]
+    ];
 
-      return `
+    function generateOracle() {
+      // Draw Lenormand
+      const lenormand = drawMultiple("lenormand_classic", 3, true);
+
+      let html = `
         <div class="oracle-grid">
-          <span class="label">Lenormand (Classic)</span><span>${lenormand}</span>
-          <span class="label">Verb</span><span>${verb}</span>
-          <span class="label">Adjective (Scenery / Prop)</span><span>${adjective_object}</span>
-          <span class="label">Adjective (Actor)</span><span>${adjective_character}</span>
-          <span class="label">Noun (Concrete)</span><span>${noun_concrete}</span>
-          <span class="label">Noun (Abstract)</span><span>${noun_abstract}</span>
-          <span class="label">P.O.I (Dungeon)</span><span>${poi_dungeon}</span>
-          <span class="label">P.O.I (Wilderness)</span><span>${poi_wilderness}</span>
-          <span class="label">P.O.I (Settlement)</span><span>${poi_settlement}</span>
-          <span class="label">Trap (Trigger)</span><span>${trap_trigger}</span>
-          <span class="label">Trap (Action)</span><span>${trap_action}</span>
-          <span class="label">Spell (Action)</span><span>${spell_action}</span>
-          <span class="label">Spell (Target)</span><span>${spell_target}</span>
+          <span class="label">Lenormand (Classic)</span>
+          <span>${lenormand.join(", ")}</span>
       `;
+
+      // Generate rest of oracle results
+      oracleFields.forEach(([label, deckName]) => {
+        const value = getRandom(deckName);
+        html += `
+          <span class="label">${label}</span>
+          <span>${value}</span>
+        `;
+      });
+
+      html += `</div>`;
+
+      return html;
     }
 
     // Button Click
