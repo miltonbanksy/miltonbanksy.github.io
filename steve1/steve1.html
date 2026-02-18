@@ -300,6 +300,108 @@
       `;
     }
 
+
+    // NEW JSON EXPERIMENT
+    const oracleData = {};
+
+    async function fetchJsonFile(path) {
+      const response = await fetch(path);
+
+      if (!response.ok) {
+        throw new Error("Failed to load: " + path);
+      }
+
+      return await response.json();
+    }
+
+    async function loadDeck(name, path) {
+      const data = await fetchJsonFile(path);
+      oracleData[name] = data;
+    }
+
+    async function loadAllDecks() {
+      await Promise.all([
+        loadDeck("verbs", "./json/verbs_36.json"),
+        loadDeck("adjectives_object", "./json/adjectives_object_36.json"),
+        loadDeck("adjectives_character", "./json/adjectives_character_36.json"),
+        loadDeck("nouns_concrete", "./json/nouns_concrete_36.json"),
+        loadDeck("nouns_abstract", "./json/nouns_abstract_36.json"),
+        loadDeck("poi_dungeon", "./json/POI_dungeon_36.json"),
+        loadDeck("poi_wilderness", "./json/POI_wilderness_36.json"),
+        loadDeck("poi_settlement", "./json/POI_settlement_36.json"),
+        loadDeck("trap_action", "./json/trap_action_36.json"),
+        loadDeck("trap_trigger", "./json/trap_trigger_36.json"),
+        loadDeck("spell_action", "./json/spell_action_36.json"),
+        loadDeck("spell_target", "./json/spell_target_36.json")
+        // load more oracle decks here...
+      ]);
+    }
+
+    loadAllDecks();
+
+    // Random Picker (reusable for all decks)
+    function getRandom(deckName) {
+      const deck = oracleData[deckName];
+
+      if (!deck || deck.length === 0) {
+        console.warn("Deck not loaded:", deckName);
+        return "";
+      }
+
+      const index = Math.floor(Math.random() * deck.length);
+      return deck[index];
+    }
+
+    // Generate an Oracle Result
+    function generateOracle() {
+      const verb = getRandom("verbs");
+      const adjective_object = getRandom("adjectives_object");
+      const adjective_character = getRandom("adjectives_character");
+      const noun_concrete = getRandom("nouns_concrete");
+      const noun_abstract = getRandom("nouns_abstract");
+      const poi_dungeon = getRandom("poi_dungeon");
+      const poi_wilderness = getRandom("poi_wilderness");
+      const poi_settlement = getRandom("poi_settlement");
+      const trap_action = getRandom("trap_action");
+      const trap_trigger = getRandom("trap_trigger");
+      const spell_action = getRandom("spell_action");
+      const spell_target = getRandom("spell_target");
+      // add more oracle items here...
+
+      return `
+      Verb: ${verb}
+      <br>Adjective (Env / Prop): ${adjective_object}
+      <br>Adjective (Actor): ${adjective_character}
+      <br>Noun (Concrete): ${noun_concrete}
+      <br>Noun (Abstract): ${noun_abstract}
+      <br>POI (Dungeon): ${poi_dungeon}
+      <br>POI (Wilderness): ${poi_wilderness}
+      <br>POI (Settlement): ${poi_settlement}
+      <br>Trap Action: ${trap_action}
+      <br>Trap Trigger: ${trap_trigger}
+      <br>Spell Action: ${spell_action}
+      <br>Spell Target: ${spell_target}
+      `;
+    }
+
+    // Button Click
+    btnOracle2.addEventListener('click', () => {
+      const result = generateOracle();
+      displayOracle2.innerHTML = result;
+    });
+
+    btnOracle2.disabled = true;
+
+    async function init() {
+      await loadAllDecks();
+      btnOracle2.disabled = false;
+    }
+
+    init();
+
+
+
+
     function btnTarot(){
       // Get card direction
       const cardDirection = checkTarotCardDirection();
