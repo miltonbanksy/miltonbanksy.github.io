@@ -369,18 +369,19 @@
       // add more oracle items here...
 
       return `
-      Verb: ${verb}
-      <br>Adjective (Env / Prop): ${adjective_object}
-      <br>Adjective (Actor): ${adjective_character}
-      <br>Noun (Concrete): ${noun_concrete}
-      <br>Noun (Abstract): ${noun_abstract}
-      <br>POI (Dungeon): ${poi_dungeon}
-      <br>POI (Wilderness): ${poi_wilderness}
-      <br>POI (Settlement): ${poi_settlement}
-      <br>Trap Action: ${trap_action}
-      <br>Trap Trigger: ${trap_trigger}
-      <br>Spell Action: ${spell_action}
-      <br>Spell Target: ${spell_target}
+        <div class="oracle-grid">
+          <span class="label">Verb</span><span>${verb}</span>
+          <span class="label">Adjective (Scenery / Prop)</span><span>${adjective_object}</span>
+          <span class="label">Adjective (Actor)</span><span>${adjective_character}</span>
+          <span class="label">Noun (Concrete)</span><span>${noun_concrete}</span>
+          <span class="label">Noun (Abstract)</span><span>${noun_abstract}</span>
+          <span class="label">P.O.I (Dungeon)</span><span>${poi_dungeon}</span>
+          <span class="label">P.O.I (Wilderness)</span><span>${poi_wilderness}</span>
+          <span class="label">P.O.I (Settlement)</span><span>${poi_settlement}</span>
+          <span class="label">Trap (Trigger)</span><span>${trap_trigger}</span>
+          <span class="label">Trap (Action)</span><span>${trap_action}</span>
+          <span class="label">Spell (Action)</span><span>${spell_action}</span>
+          <span class="label">Spell (Target)</span><span>${spell_target}</span>
       `;
     }
 
