@@ -11,21 +11,17 @@
     <h1>Story Sparks</h1>
   </header>
 
-  <div class="card" id="uni-dice">
-      <h2>Dice Roller</h2>
-      <br>
-      <input id="inputNumberOfDice" class="inputNumber" type="number">
-      <span>d</span>
-      <input id="inputSizeOfDice" class="inputNumber" type="number">
-      <button onclick="rollDice()">Roll!</button>
-      <div id="dice-scroll-box">
-        <p id="displayHistory"></p>
-      </div>
-    </div>
+  <h2>Dice Roller</h2>
+  <br>
+  <input id="inputNumberOfDice" class="inputNumber" type="number">
+  <span>d</span>
+  <input id="inputSizeOfDice" class="inputNumber" type="number">
+  <button onclick="rollDice()">Roll!</button>
+  <div id="dice-scroll-box">
+    <p id="displayHistory"></p>
+  </div>
 
-
-    <div class="card" id="frame-fate_dice">
-      <h2>Fate Dice</h2>
+  <h2>Fate Dice</h2>
       <br>
       <div class="container" onclick="rollFateDice()">
         <div class="square">
@@ -41,7 +37,6 @@
           <img class="dice_image" id="dice_img4" src="fate_start.png">
         </div>
       </div>
-    </div>
 
 
 
@@ -64,16 +59,8 @@
       <p id="display_iron_oracle"></p>
     </div>
 
+
   
-
-
-
-  <div class="flexbox-container">
-    <div class="card" id="lenormandExpanded">
-      <button id="btnLenormandExpanded">Pythia Oracle</button>
-      <p id="displayLenormandExpanded"></p>
-    </div>
-  </div>
 
   <!--NEW ORACLE BOX-->
   <div class="flexbox-container">
@@ -465,9 +452,6 @@
 
     // Overland button
     document.getElementById("btnOverland").addEventListener("click", btnIronOverland);
-
-    // Lenormand Expanded button
-    document.getElementById('btnLenormandExpanded').addEventListener("click", btnLenormandExpanded);
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
