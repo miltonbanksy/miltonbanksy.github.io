@@ -94,6 +94,14 @@
     </div>
   </div>
 
+  <!--NEW ORACLE BOX-->
+  <div class="flexbox-container">
+    <div class="card" id="oracle2">
+      <button id="btn-oracle2">Oracle</button>
+      <div id="display-oracle2"></div>
+    </div>
+  </div>
+
 
   <div class="flexbox-container">
     <div class="card" id="tarotCard">
@@ -192,6 +200,8 @@
     const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
     const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
     const displayLenormandExpanded = document.getElementById('displayLenormandExpanded');
+    const btnOracle2 = document.getElementById('btn-oracle2');
+    const displayOracle2 = document.getElementById('display-oracle2');
     const displayTarot = document.getElementById('displayTarot');
     const displayAnimal = document.getElementById('display_animal_symbols');
     const displayColor = document.getElementById('display_color_symbols');
@@ -213,20 +223,16 @@
       "very difficult": 6
     };
 
+    function btnIronDetails() {
+      let ironResults = [];
 
-    
-
-
-  function btnIronDetails() {
-    let ironResults = [];
-
-    for (let list of iron_details_lists) {
-      const randomIndex = Math.floor(Math.random() * list.length);
-      ironResults.push(list[randomIndex]);
+      for (let list of iron_details_lists) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        ironResults.push(list[randomIndex]);
+      }
+      return ironResults;
+      document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
     }
-    return ironResults;
-    document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
-  }
 
     function btnIronOverland() {
       let results = [];
