@@ -38,11 +38,6 @@
         </div>
       </div>
 
-
-
-    
-  
-
     <div class="card" id="oracleCard">
       <h2>Likelihood or Difficulty
       </h2>
@@ -59,38 +54,22 @@
       <p id="display_iron_oracle"></p>
     </div>
 
-
-  
-
-  <!--NEW ORACLE BOX-->
-  <div class="flexbox-container">
     <div class="card" id="oracle2">
       <button id="btn-oracle2">Oracle</button>
       <div id="display-oracle2"></div>
     </div>
-  </div>
 
-
-  <div class="flexbox-container">
     <div class="card" id="tarotCard">
       <button id="btnTarot">Tarot</button>
       <p id="display-tarot-card"></p>
       <p id="displayTarot"></p>
     </div>
-  </div>
 
-
-  <div class="flexbox-container">
     <div class="card" id="characterCreator">
       <button id="btnCharacterCreator">Character Creator</button>
       <p id="displayCharacterCreator"></p>
     </div>
-  </div>
 
-
-  
-
-  <div class="flexbox-container">
     <div class="card" id="frame-names">
       <h2>Names</h2>
       <br>
@@ -109,70 +88,31 @@
       <button class="btn-name" id="name_surname_odd">Odd Surnames</button>
       <p id="display-name"></p>
     </div>
-  </div> <!--End of Names block-->
 
-
-  <div class="flexbox-container">
-    <div class="card">
-      <button id="btn-sci-fi-sparks">Sci-Fi Sparks</button>
-      <p id="display-sci-fi-sparks"></p>
-    </div>
-  </div>
-  
-  
-
-  <div class="flexbox-container">
-    <div class="card" id="overland">
-      <button id="btnOverland">Overland Travel</button>
-      <p id="display_iron_overland"></p>
-    </div>
-  </div>
-
-
-  <div class="flexbox-container">
     <div class="card" id="tricube_deck">
       <p>Tricube Tales Solo</p>
       <button id="newTricubeCard">Draw Card</button>
       <p id="display_new_tricube_card"></p>
     </div>
-  </div> <!--End of Tricube Block-->
-  
 
-  <div class="flexbox-container">
     <div class="card" id="card_favorite_links">
       <p>Favorite Links</p>
       <a href="https://itch.io/c/2376434/free-kriegsspiel-revolution" target="_blank">FKR Collection on itch.io</a>
     </div>
-  </div>
   
-
-  <script src="iron_action.js"></script>
-  <script src="iron_descriptor.js"></script>
-  <script src="iron_focus.js"></script>
-  <script src="iron_theme.js"></script>
-  <script src="iron_overland_landmark.js"></script>
-  <script src="iron_overland_waypoint.js"></script>
   <script src="fate_dice.js"></script>
   <script src="lenormandExpanded.js"></script>
   <script src="tarot.js"></script>
-  <script src="animal_symbols.js"></script>
-  <script src="colors.js"></script>
   <script src="tricube_card_oracle.js"></script>
   <script src="uni_dice.js"></script>
   <script src="names_british.js"></script>
   <script src="names_filipino.js"></script>
   <script src="personalities.js"></script>
-  <script src="lists_science_fiction.js"></script>
   
   <script>
-    const iron_details_lists = [ironactionList, ironthemeList, irondescriptorList, ironfocusList];
-    const iron_overland_lists = [ironoverlandwaypointList, ironoverlandlandmarkList];
-    const displayLenormandExpanded = document.getElementById('displayLenormandExpanded');
     const btnOracle2 = document.getElementById('btn-oracle2');
     const displayOracle2 = document.getElementById('display-oracle2');
     const displayTarot = document.getElementById('displayTarot');
-    const displayAnimal = document.getElementById('display_animal_symbols');
-    const displayColor = document.getElementById('display_color_symbols');
     const displayName = document.getElementById('display-name');
 
     const dict_iron_oracle = {
@@ -182,29 +122,6 @@
       "unlikely": 25,
       "very unlikely": 10
     };
-
-    function btnIronDetails() {
-      let ironResults = [];
-
-      for (let list of iron_details_lists) {
-        const randomIndex = Math.floor(Math.random() * list.length);
-        ironResults.push(list[randomIndex]);
-      }
-      return ironResults;
-      document.getElementById("display_iron_details").innerHTML = ironResults.join(", ");
-    }
-
-    function btnIronOverland() {
-      let results = [];
-
-      for (let list of iron_overland_lists) {
-        const randomIndex = Math.floor(Math.random() * list.length);
-        results.push(list[randomIndex]);
-      }
-      
-      document.getElementById("display_iron_overland").innerHTML = results.join("<br>");
-    }
-
 
     function btnIronOracle(event) {
       const button = event.target;
@@ -220,24 +137,7 @@
       }
     }
 
-    function btnLenormandExpanded() {
-      const randomIndex = Math.floor(Math.random() * lenormandExpanded.length);
-      const randomItem = lenormandExpanded[randomIndex];
-
-      // Get animal...
-      randomAnimal = btnAnimalSymbol();
-      randomColor = btnColorSymbol();
-      ironResults = btnIronDetails();
-      displayLenormandExpanded.innerHTML = `
-        Ironsworn: ${ironResults.join(", ")}
-        <br><br>Lenormand: ${randomItem}
-        <br><br>Animal: ${randomAnimal}
-        <br><br>Color: ${randomColor}
-      `;
-    }
-
-
-    // NEW JSON EXPERIMENT
+    // FETCH AND DISPLAY JSON DATA
     const oracleData = {};
 
     async function fetchJsonFile(path) {
@@ -357,8 +257,6 @@
     init();
 
 
-
-
     function btnTarot(){
       // Get card direction
       const cardDirection = checkTarotCardDirection();
@@ -427,20 +325,6 @@
       `<b>Imagery</b><br>${symbols.join('<br>')}`
     }
 
-    function btnAnimalSymbol(){
-      const randomIndex = Math.floor(Math.random() * animalSymbols.length);
-      const randomAnimal = animalSymbols[randomIndex];
-      return randomAnimal;
-      //displayAnimal.innerHTML = randomItem;
-    }
-
-    function btnColorSymbol(){
-      const randomIndex = Math.floor(Math.random() * color_symbols.length);
-      const randomColor = color_symbols[randomIndex];
-      return randomColor;
-      //displayColor.innerHTML = randomItem;
-    }
-
     
 
     // Listeners
@@ -449,9 +333,6 @@
     document.querySelectorAll("#oracleCard .btn-oracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
     });
-
-    // Overland button
-    document.getElementById("btnOverland").addEventListener("click", btnIronOverland);
 
     // Tarot button
     document.getElementById('btnTarot').addEventListener("click", btnTarot);
@@ -698,15 +579,6 @@
       `;
 
       
-    });
-
-    // Sci Fi Card
-    const btnSciFiSparks = document.getElementById("btn-sci-fi-sparks");
-    const displaySciFiSparks = document.getElementById("display-sci-fi-sparks");
-    btnSciFiSparks.addEventListener("click", () => {
-      const sci_fi_descriptor_index = Math.floor(Math.random() * array_scifi_descriptors.length);
-      const sci_fi_descriptor = array_scifi_descriptors[sci_fi_descriptor_index];
-      displaySciFiSparks.innerText = sci_fi_descriptor;
     });
 
     // Tricube Card

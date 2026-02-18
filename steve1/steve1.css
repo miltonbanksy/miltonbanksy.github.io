@@ -47,14 +47,6 @@ button {
   font-size: 12px;
 }
 
-/* Card Group Containers */
-.flexbox-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px; /* default 10px */
-  padding: 4px;
-}
-
 /* Each card */
 .card {
   background-color: rgb(243, 255, 173);
@@ -65,8 +57,6 @@ button {
   box-shadow: 1px 1px 1px black;
   width: 380px; /* default 370px */
 }
-
-
 
 #difficultyCard {
   margin:auto;
@@ -80,7 +70,6 @@ button {
 .card {
   font-size: 1em;
 }
-
 
 #dice-scroll-box {
   height: 100px;
