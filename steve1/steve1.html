@@ -64,26 +64,7 @@
       <p id="display_iron_oracle"></p>
     </div>
 
-  <div class="flexbox-container"></div>
-    <div class="card" id="difficultyCard">
-      <h2>Difficulty</h2>
-      <br>
-      <button class="btn-lists" id="btn-random-difficulty">Random</button>
-      <br><br>
-      <button class="btn-lists btn-difficulty" data-value="very easy">V Easy</button>
-      <br>
-      <button class="btn-lists btn-difficulty" data-value="easy">Easy</button>
-      <br>
-      <button class="btn-lists btn-difficulty" data-value="moderate">Moderate</button>
-      <br>
-      <button class="btn-lists btn-difficulty" data-value="difficult">Difficult</button>
-      <br>
-      <button class="btn-lists btn-difficulty" data-value="very difficult">V Difficult</button>
-      <h3>Modifiers</h3>
-      <p>Position: <i>Controlled, Risky, Desperate</i></p>
-      <p id="display_difficulty"></p>
-    </div>
-  </div>
+  
 
 
 
@@ -215,14 +196,6 @@
       "very unlikely": 10
     };
 
-    const difficulties = {
-      "very easy": 2,
-      "easy": 3,
-      "moderate": 4,
-      "difficult": 5,
-      "very difficult": 6
-    };
-
     function btnIronDetails() {
       let ironResults = [];
 
@@ -258,30 +231,6 @@
       } else {
         document.getElementById("display_iron_oracle").innerHTML = `No`;
       }
-    }
-
-    function btnDifficulty(event) {
-      let difficultyResult = "";
-      let difficultyTwist = "";
-      const button = event.target;
-      const choice = button.dataset.value;
-      const target = difficulties[choice];
-
-      let d6 = roll1d6();
-      let d6_2 = roll1d6();
-
-      if (d6 >= target) {
-        difficultyResult = `Target: ${target}, Roll: ${d6}<br><br><b>Result: Yes</b>`;
-      } else {
-        difficultyResult = `Target: ${target}, Roll: ${d6}<br><br><b>Result: No</b>`;
-      }
-
-      if (d6 == d6_2) {
-        difficultyTwist = `<b style="color:purple">Random Event, Interruption or Twist!</b>`
-      } else {
-        difficultyTwist = "No Event"
-      }
-      document.getElementById("display_difficulty").innerHTML = `${difficultyResult}<br><br>${difficultyTwist}`;
     }
 
     function btnLenormandExpanded() {
@@ -332,7 +281,8 @@
         loadDeck("trap_action", "./json/trap_action_36.json"),
         loadDeck("trap_trigger", "./json/trap_trigger_36.json"),
         loadDeck("spell_action", "./json/spell_action_36.json"),
-        loadDeck("spell_target", "./json/spell_target_36.json")
+        loadDeck("spell_target", "./json/spell_target_36.json"),
+        loadDeck("lenormand_classic", "./json/lenormand_classic.json")
         // load more oracle decks here...
       ]);
     }
@@ -366,10 +316,14 @@
       const trap_trigger = getRandom("trap_trigger");
       const spell_action = getRandom("spell_action");
       const spell_target = getRandom("spell_target");
+      const lenormand_classic1 = getRandom("lenormand_classic");
+      const lenormand_classic2 = getRandom("lenormand_classic");
+      const lenormand_classic3 = getRandom("lenormand_classic");
       // add more oracle items here...
 
       return `
         <div class="oracle-grid">
+          <span class="label">Lenormand (Classic)</span><span>${lenormand_classic1}, ${lenormand_classic2}, ${lenormand_classic3}</span>
           <span class="label">Verb</span><span>${verb}</span>
           <span class="label">Adjective (Scenery / Prop)</span><span>${adjective_object}</span>
           <span class="label">Adjective (Actor)</span><span>${adjective_character}</span>
@@ -492,19 +446,6 @@
     // Likelihood Buttons
     document.querySelectorAll("#oracleCard .btn-oracle").forEach(btn => {
       btn.addEventListener("click", btnIronOracle);
-    });
-
-    // Random Difficulty
-    document.getElementById("btn-random-difficulty").addEventListener("click", () => {
-      difficultiesKeys = Object.keys(difficulties);
-      randomDifficultiesIndex = Math.floor(Math.random() * difficultiesKeys.length);
-      randomDifficultiesKey = difficultiesKeys[randomDifficultiesIndex];
-      alert(randomDifficultiesKey);
-    });
-
-    // Difficulty Buttons
-    document.querySelectorAll("#difficultyCard .btn-difficulty").forEach(btn => {
-      btn.addEventListener("click", btnDifficulty);
     });
 
     // Overland button
