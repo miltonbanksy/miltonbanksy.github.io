@@ -302,6 +302,19 @@
       return deck[index];
     }
 
+    function drawMultiple(deckName, count, unique = false) {
+      const deck = oracleData[deckName];
+      if (!deck) return [];
+
+      if (!unique) {
+        return Array.from({ length: count }, () => getRandom(deckName));
+      }
+
+      // Unique draw (no duplicates)
+      const shuffled = [...deck].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
     // Generate an Oracle Result
     function generateOracle() {
       const verb = getRandom("verbs");
@@ -316,14 +329,12 @@
       const trap_trigger = getRandom("trap_trigger");
       const spell_action = getRandom("spell_action");
       const spell_target = getRandom("spell_target");
-      const lenormand_classic1 = getRandom("lenormand_classic");
-      const lenormand_classic2 = getRandom("lenormand_classic");
-      const lenormand_classic3 = getRandom("lenormand_classic");
+      const lenormand = drawMultiple("lenormand_classic", 3, true);
       // add more oracle items here...
 
       return `
         <div class="oracle-grid">
-          <span class="label">Lenormand (Classic)</span><span>${lenormand_classic1}, ${lenormand_classic2}, ${lenormand_classic3}</span>
+          <span class="label">Lenormand (Classic)</span><span>${lenormand}</span>
           <span class="label">Verb</span><span>${verb}</span>
           <span class="label">Adjective (Scenery / Prop)</span><span>${adjective_object}</span>
           <span class="label">Adjective (Actor)</span><span>${adjective_character}</span>
