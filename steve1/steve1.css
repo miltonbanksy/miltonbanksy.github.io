@@ -119,3 +119,7 @@ button {
 details {
   cursor: default;
 }
+
+.max-width {
+  max-width: 350px;
+}
