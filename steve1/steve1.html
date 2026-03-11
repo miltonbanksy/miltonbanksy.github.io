@@ -42,15 +42,15 @@
       <h2>Likelihood or Difficulty
       </h2>
       <br>
-      <button class="btn-lists btn-oracle" data-value="very likely">Very Likely || Very Easy</button>
+      <button class="btn-lists btn-oracle" data-value="very likely">Very Likely / Very Easy</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="likely">Likely || Easy</button>
+      <button class="btn-lists btn-oracle" data-value="likely">Likely / Easy</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="50/50">50/50 || Moderate</button>
+      <button class="btn-lists btn-oracle" data-value="50/50">50/50 / Moderate</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="unlikely">Unlikely || Hard</button>
+      <button class="btn-lists btn-oracle" data-value="unlikely">Unlikely / Hard</button>
       <br>
-      <button class="btn-lists btn-oracle" data-value="very unlikely">Very Unlikely || Very Hard</button>
+      <button class="btn-lists btn-oracle" data-value="very unlikely">Very Unlikely / Very Hard</button>
       <p id="display_iron_oracle"></p>
     </div>
 
@@ -163,9 +163,9 @@
       let d100 = Math.floor(Math.random() * 100) +1;
       
       if (d100 <= target) {
-        document.getElementById("display_iron_oracle").innerHTML = `Yes`;
+        document.getElementById("display_iron_oracle").innerHTML = `Yes / Option A`;
       } else {
-        document.getElementById("display_iron_oracle").innerHTML = `No`;
+        document.getElementById("display_iron_oracle").innerHTML = `No / Option B`;
       }
     }
 
