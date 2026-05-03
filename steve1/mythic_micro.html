@@ -27,6 +27,8 @@
                 box-shadow: 1px 1px 1px;
             }
             .column_left {
+                min-width: 180px;
+                min-height: 150px;
                 max-width: fit-content;
                 background-color: plum;
             }
@@ -55,12 +57,13 @@
     </head>
     
     <body>
-    <h1>Mythic GM Emulator (Micro Hack)</h1>
+    <h1>Mythic Micro</h1>
     
     <!-- Experimenting with Flexbox -->
-    <h2>Fate Check</h2>
+    
     <div class="container">
         <div class="column column_left">
+            <h2>Fate Check</h2>
             <div id="frame-fate-check-buttons"></div>
         </div>
         <div class="column column_right">
@@ -68,29 +71,31 @@
             <p id="display-yes-no-outcome"></p>
         </div>
     </div>
-    <h2>Random Event</h2>
     <div class="container">
         <div class="column column_left">
+            <h2>Random Event</h2>
             <button id="btn-random-event">Random Event!</button>
             <p id="display-random-event-details"></p>
         </div>
         <div class="column column_right">
-            
+            <h2>Spark Tables</h2>
+            <p id="display-spark"></p>
+            <button class="spark-button" id="btn-spark-locations">Location</button>
+            <br>
+            <button class="spark-button" id="btn-spark-characters">Character</button>
+            <br>
+            <button class="spark-button" id="btn-spark-objects">Object</button>
         </div>
     </div>
 
-    <h2>Spark Tables</h2>
+    
     <table>
         <tr>
             <td>
-                <button class="spark-button" id="btn-spark-locations">Locations</button>
-                <br>
-                <button class="spark-button" id="btn-spark-characters">Characters</button>
-                <br>
-                <button class="spark-button" id="btn-spark-objects">Objects</button>
+                
             </td>
             <td>
-                <p id="display-spark"></p>
+                
             </td>
         </tr>
     </table>
@@ -132,9 +137,9 @@
         ];
 
         const sparkGroups = {
-            Locations: mythicSparksLocations,
-            Characters: mythicSparksCharacters,
-            Objects: mythicSparksObjects
+            Location: mythicSparksLocations,
+            Character: mythicSparksCharacters,
+            Object: mythicSparksObjects
         };
         
 
@@ -230,7 +235,7 @@
                 let key = button.textContent.trim();
                 let sparkArray = sparkGroups[key];
                 let spark = getRandomSparks(sparkArray);
-                displaySpark.innerHTML = spark;
+                displaySpark.innerHTML = `<b>${spark}</b>`;
             });
         });
 
