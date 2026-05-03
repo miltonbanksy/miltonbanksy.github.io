@@ -72,9 +72,10 @@
     <div class="container">
         <div class="column column_left">
             <button id="btn-random-event">Random Event!</button>
+            <p id="display-random-event-details"></p>
         </div>
         <div class="column column_right">
-            <p id="display-random-event-details"></p>
+            
         </div>
     </div>
 
@@ -174,6 +175,7 @@
         function displayRandomEvent() {
             displayRandomEventDetails.innerHTML = `
             <br><b>${eventOutcome}
+            <br>
             <br>${action1}
             <br>${action2}
             <br>${descriptor1}
