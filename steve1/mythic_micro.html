@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Mythic GM Emulator (Micro Hack)</title>
+        <title>Mythic Micro</title>
         <!-- <link rel="stylesheet" href="style.css"> -->
         <style>
             html {
@@ -27,6 +27,7 @@
                 box-shadow: 1px 1px 1px;
             }
             .column_left {
+                max-width: fit-content;
                 background-color: plum;
             }
 
@@ -100,11 +101,11 @@
     <script>
 
         const fateCheckModifiers = [
-            { value: "Very Likely", modifier: 2},
-            { value: "Likely", modifier: 1},
-            { value: "50/50", modifier: 0},
-            { value: "Unlikely", modifier: -1},
-            { value: "Very Unlikely", modifier: -2}
+            { value: "Very Likely (+2)", modifier: 2},
+            { value: "Likely (+1)", modifier: 1},
+            { value: "50/50 (+0)", modifier: 0},
+            { value: "Unlikely (-1)", modifier: -1},
+            { value: "Very Unlikely (-2)", modifier: -2}
         ];
 
         const fateCheckOutcomes = [
@@ -172,11 +173,11 @@
 
         function displayRandomEvent() {
             displayRandomEventDetails.innerHTML = `
-            <br>${eventOutcome}
-            <br>Verb: ${action1}
-            <br>Noun: ${action2}
-            <br>Adverb: ${descriptor1}
-            <br>Adjective: ${descriptor2}
+            <br><b>${eventOutcome}
+            <br>${action1}
+            <br>${action2}
+            <br>${descriptor1}
+            <br>${descriptor2}</b>
             `;
         };
 
@@ -227,7 +228,7 @@
                 let key = button.textContent.trim();
                 let sparkArray = sparkGroups[key];
                 let spark = getRandomSparks(sparkArray);
-                displaySpark.innerHTML = `${key}<br>${spark}`;
+                displaySpark.innerHTML = spark;
             });
         });
 
@@ -237,7 +238,7 @@
                                 
                 const fateCheckLikelihood = event.target.textContent;
                 const fateCheckModifier = event.target.value;
-                const fatecheckModifierAsNumber = Number(fateCheckModifier);
+                let fatecheckModifierAsNumber = Number(fateCheckModifier);
 
                 const numberOfDice = 2;
                 const dicePool = [];
@@ -282,15 +283,18 @@
                 }
                 
                 // Display the results...
+                if (fatecheckModifierAsNumber >= 0) {
+                    fatecheckModifierAsNumber = "+" + fatecheckModifierAsNumber
+                }
                 displayFatecheckResults.innerHTML = `
-                Likelihood: ${fateCheckLikelihood}
-                <br>Roll Results: ${dicePool} = ${sum}
-                <br>Roll Total: ${sum}
-                <br>Modifier: ${fatecheckModifierAsNumber}
-                <br>Final Result: ${modifiedSum}
+                Chance: ${fateCheckLikelihood} (${fatecheckModifierAsNumber})
+                <br>
+                <br>Roll: ${sum}, Mod: ${fatecheckModifierAsNumber}
+                <br>
+                <br><b>Result: ${modifiedSum}</b>
                 `;
 
-                displayYesNoOutcome.innerHTML = `<b>${outcome}</b>`;
+                displayYesNoOutcome.innerHTML = `<div style="-webkit-text-stroke: 1px black; font-size: 20px;">${outcome}</div>`;
 
                 displayRandomEvent();
             }
