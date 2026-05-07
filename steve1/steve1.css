@@ -123,3 +123,7 @@ details {
 .max-width {
   max-width: 350px;
 }
+
+.left-align {
+  text-align: left;
+}
