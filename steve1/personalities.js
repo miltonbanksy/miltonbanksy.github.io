@@ -1,162 +1,194 @@
 const personalities2 = [
     {
         code: "INTJ",
-        type: "architect",
-        class: "analyst",
+        type: "Architect",
+        class: "(analyst)",
         energy: "introverted",
         mind: "intuitive",
         nature: "thinking",
         tactics: "judging",
-        summary: "Imaginative and strategic thinkers, with a plan for everything."
+        summary: "Imaginative and strategic thinker, with a plan for everything.",
+        strengths: "rational, informed, independent, determined, curious, original",
+        weaknesses: "arrogant, dismissive of emotions, overly critical, combative, socially clueless"
     },
     {
         code: "INTP",
-        type: "logician",
-        class: "analyst",
+        type: "Logician",
+        class: "(analyst)",
         energy: "introverted",
         mind: "intuitive",
         nature: "thinking",
         tactics: "prospecting",
-        summary: "Innovative inventors with an unquenchable thirst for knowledge."
+        summary: "Innovative inventor with an unquenchable thirst for knowledge.",
+        strengths: "analytical, original, open-minded, curious, honest",
+        weaknesses: "disconnected, insensitive, dissatisfied, overthinker, impatient"
     },
     {
         code: "ENTJ",
-        type: "commander",
-        class: "analyst",
+        type: "Commander",
+        class: "(analyst)",
         energy: "extroverted",
         mind: "intuitive",
         nature: "thinking",
         tactics: "judging",
-        summary: "Bold, imaginative and strong-willed leaders, always finding a way...or making one."
+        summary: "Bold, imaginative and strong-willed leader, always finding a way...or making one.",
+        strengths: "efficient, energetic, self-confident, strong-willed, strategic thinker, charismatic, inspiring",
+        weaknesses: "stubborn, dominant, intolerant, impatient, arrogant, poor handling of emotions, cold, ruthless"
     },
     {
         code: "INTP",
-        type: "debater",
-        class: "analyst",
+        type: "Debater",
+        class: "(analyst)",
         energy: "extroverted",
         mind: "intuitive",
         nature: "thinking",
         tactics: "prospecting",
-        summary: "Smart and curious thinkers who cannot resist an intellectual challenge."
+        summary: "Smart and curious thinker who cannot resist an intellectual challenge.",
+        strengths: "knowledgeable, quick thinker, original, excellent brainstormer, charismatic, energetic",
+        weaknesses: "argumentative, insensitive, intolerant, difficulty focusing, dislike practical matters"
     },
     {
         code: "INFJ",
-        type: "advocate",
-        class: "diplomat",
+        type: "Advocate",
+        class: "(diplomat)",
         energy: "introverted",
         mind: "intuitive",
         nature: "feeling",
         tactics: "judging",
-        summary: "Quiet and mystical, yet very inspiring and tireless idealists."
+        summary: "Quiet and mystical, yet very inspiring and tireless idealist.",
+        strengths: "insightful, principled, passionate, altruistic, creative",
+        weaknesses: "sensitive to criticism, reluctant to open up, perfectionist, avoiding the ordinary, prone to burnout"
     },
     {
         code: "INFP",
-        type: "mediator",
-        class: "diplomat",
+        type: "Mediator",
+        class: "(diplomat)",
         energy: "introverted",
         mind: "intuitive",
         nature: "feeling",
         tactics: "prospecting",
-        summary: "Poetic, kind and altruistic people, always eager to help a good cause."
+        summary: "A poetic, kind and altruistic person, always eager to help a good cause.",
+        strengths: "empathetic, generous, open-minded, creative, passionate, idealistic",
+        weaknesses: "unrealistic, self-isolating, unfocused, emotionally vulnerable, too eager to please, self-critical"
     },
     {
         code: "ENFJ",
-        type: "protagonist",
-        class: "diplomat",
+        type: "Protagonist",
+        class: "(diplomat)",
         energy: "extroverted",
         mind: "intuitive",
         nature: "feeling",
         tactics: "judging",
-        summary: "Charismatic and inspiring leaders, able to mesmerize their listeners."
+        summary: "Charismatic and inspiring leader, able to mesmerize their listeners.",
+        strengths: "receptive, reliable, passionate, altruistic, charismatic",
+        weaknesses: "unrealistic, overly idealistic, condescending, intense, overly empathetic"
     },
     {
         code: "ENFP",
-        type: "campaigner",
-        class: "diplomat",
+        type: "Campaigner",
+        class: "(diplomat)",
         energy: "extroverted",
         mind: "intuitive",
         nature: "feeling",
         tactics: "prospecting",
-        summary: "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
+        summary: "Enthusiastic, creative and sociable free spirit, who can always find a reason to smile.",
+        strengths: "curious, perceptive, enthusiastic, excellent communicators, easygoing, good-natured, positive",
+        weaknesses: "people-pleasing, unfocused, disorganized, overly accommodating, overly optimistic, restless"
     },
     {
         code: "ISTJ",
-        type: "logistician",
-        class: "sentinel",
+        type: "Logistician",
+        class: "(sentinel)",
         energy: "introverted",
         mind: "observant",
         nature: "thinking",
         tactics: "judging",
-        summary: "Practical and fact-minded individuals, whose reliability cannot be doubted."
+        summary: "Practical and fact-minded individual, whose reliability cannot be doubted.",
+        strengths: "honest, direct, disciplined, very responsible, calm, practical, organized, effective, research-oriented",
+        weaknesses: "stubborn, insensitive, always by the book, judgemental, prone to burnout"
     },
     {
         code: "ISFJ",
-        type: "defender",
-        class: "sentinel",
+        type: "Defender",
+        class: "(sentinel)",
         energy: "introverted",
         mind: "observant",
         nature: "feeling",
         tactics: "judging",
-        summary: "Very dedicated and warm protectors, always ready to defend their loved ones."
+        summary: "Very dedicated and warm protector, always ready to defend their loved ones.",
+        strengths: "supportive, reliable, observant, enthusiastic, hardworking, good practical skills",
+        weaknesses: "overly humble, take things personally, repress feelings, reluctant to change, too altruistic"
     },
     {
         code: "ESTJ",
-        type: "executive",
-        class: "sentinel",
+        type: "Executive",
+        class: "(sentinel)",
         energy: "extroverted",
         mind: "observant",
         nature: "thinking",
         tactics: "judging",
-        summary: "Excellent administrators, unsurpassed at managing things...or people."
+        summary: "Excellent administrator, unsurpassed at managing things...or people.",
+        strengths: "dedicated, strong-willed, direct, honest, loyal, patient, reliable, enjoy creating order, excellent organizers",
+        weaknesses: "inflexible, stubborn, uncomfortable with change, judgemental, too focused on social status, difficulty relaxing, difficulty expressing emotion"
     },
     {
         code: "ESFJ",
-        type: "consul",
-        class: "sentinel",
+        type: "Consul",
+        class: "(sentinel)",
         energy: "extroverted",
         mind: "observant",
         nature: "feeling",
         tactics: "judging",
-        summary: "Extraordinarily caring, social and popular people, always eager to help."
+        summary: "An extraordinarily caring, social and popular person, always eager to help.",
+        strengths: "strong practical skills, strong sense of duty, very loyal, sensitive, warm, good at connecting with others",
+        weaknesses: "worried about their social status, inflexible, vulnerable to criticism, often too needy, too selfless"
     },
     {
         code: "ISTP",
-        type: "virtuoso",
-        class: "explorer",
+        type: "Virtuoso",
+        class: "(explorer)",
         energy: "introverted",
         mind: "observant",
         nature: "thinking",
         tactics: "prospecting",
-        summary: "Bold and practical experimenters, masters of all kinds of tools."
+        summary: "Bold and practical experimenter, masters of all kinds of tools.",
+        strengths: "diligent, observant, handy, resourceful, spontaneous, direct, authentic, independent, grounded",
+        weaknesses: "unapologetic, insensitive, private, reserved, easily bored, independent, overly skeptical"
     },
     {
         code: "ISFP",
-        type: "adventurer",
-        class: "explorer",
+        type: "Adventurer",
+        class: "(explorer)",
         energy: "introverted",
         mind: "observant",
         nature: "feeling",
         tactics: "prospecting",
-        summary: "Flexible and charming artists, always ready to explore and experience something new."
+        summary: "Flexible and charming artist, always ready to explore and experience something new.",
+        strengths: "charming, sensitive to others, kind, encouraging, imaginitive, passionate",
+        weaknesses: "difficulty with structure, unpredictable, easily stressed, difficulty with technical problem-solving, fluctuating self-esteem"
     },
     {
         code: "ESTP",
-        type: "entrepreneur",
-        class: "explorer",
+        type: "Entrepreneur",
+        class: "(explorer)",
         energy: "extroverted",
         mind: "observant",
         nature: "thinking",
         tactics: "prospecting",
-        summary: "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
+        summary: "A smart, energetic and very perceptive person, who truly enjoy living on the edge.",
+        strengths: "bold, rational, practical, original, perceptive, direct, sociable",
+        weaknesses: "insensitive, impatient, impulsive, unstructured, may miss the bigger picture, defiant"
     },
     {
         code: "ESFP",
-        type: "entertainer",
-        class: "explorer",
+        type: "Entertainer",
+        class: "(explorer)",
         energy: "extroverted",
         mind: "observant",
         nature: "feeling",
         tactics: "prospecting",
-        summary: "Spontaneous, energetic and enthusiastic people. Life is never boring around them."
+        summary: "A spontaneous, energetic and enthusiastic person. Life is never boring around them.",
+        strengths: "bold, original, positive, enthusiastic, hands-on, observant, excellent people skills",
+        weaknesses: "sensitive, conflict-averse, easily bored, poor long-term planner, unfocused"
     }
 ]

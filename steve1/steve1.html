@@ -678,6 +678,8 @@
       let characterMind = personalities2[personalityIndex]["mind"];
       let characterNature = personalities2[personalityIndex]["nature"];
       let characterTactics = personalities2[personalityIndex]["tactics"];
+      const characterStrengths = personalities2[personalityIndex]["strengths"];
+      const characterWeaknesses = personalities2[personalityIndex]["weaknesses"];
       let characterSummary = personalities2[personalityIndex]["summary"];
 
 
@@ -696,8 +698,10 @@
         <br> CURRENT EXPRESSION: ${characterExpression}
         <br><br><b style="color:blue">PERSONALITY</b>
         <br>TYPE: ${characterType}, ${characterClass}
-        <br>${characterCode}-${confidenceLetter} - ${characterEnergy}, ${characterMind}, ${characterNature}, ${characterTactics}
+        <br><br>${characterCode}-${confidenceLetter} - ${characterEnergy}, ${characterMind}, ${characterNature}, ${characterTactics}
         <br><br>SELF CONFIDENCE: ${characterIdentityConfidence}
+        <br><br>STRENGTHS: ${characterStrengths}
+        <br><br>WEAKNESSES: ${characterWeaknesses}
         <br><br>SUMMARY: ${characterSummary}
       `;
 
