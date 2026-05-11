@@ -101,7 +101,7 @@
     <div class="card" id="sceneCreator">
       <div style="font-size: 16px; width:100%; text-align: left;">
         <details>
-          <summary><b>Scene Commandments!</b></summary>
+          <summary><b>Adventure & Scene Commandments</b></summary>
           <br>
           <b>1. Inciting Incident</b>
           <ul>
@@ -165,6 +165,11 @@
             </li>
           </ul>
 
+        </details>
+
+        <details>
+          <summary><b>Scene Elements</b></summary>
+          <ul id="ul-scene-elements"></ul>
         </details>
       </div>
     </div>
@@ -707,6 +712,29 @@
 
       
     });
+
+    // SCENE ELEMENTS
+    const arraySceneElements = [
+      "Location", 
+      "Zones", 
+      "Characters (active, passive, etc.)",
+      "Scene Aspects (tone, mood, weather, impediments, cover, obstructions, dangers, usable objects, etc.)",
+      "Goals (for all characters)",
+      "Complications / Action Risks",
+      "Rewards",
+      "Difficulty",
+      "Urgency",
+      "Reactions, Ripples, & Waves"
+    ];
+
+    const ulSceneElements = document.querySelector('#ul-scene-elements');
+
+    arraySceneElements.forEach(elem => {
+      const listItem = document.createElement('li');
+      listItem.textContent = elem;
+      ulSceneElements.appendChild(listItem);
+    });
+
 
     // Tricube Card
     document.getElementById('newTricubeCard').addEventListener('click', function() {
