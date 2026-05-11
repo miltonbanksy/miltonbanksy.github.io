@@ -101,6 +101,10 @@
     <div class="card" id="sceneCreator">
       <div style="font-size: 16px; width:100%; text-align: left;">
         <details>
+          <summary><b>Lazy DM's Adventure Prep</b></summary>
+          <ul id="ul-lazy-adventure-prep"></ul>
+        </details>
+        <details>
           <summary><b>Adventure & Scene Commandments</b></summary>
           <br>
           <b>1. Inciting Incident</b>
@@ -170,6 +174,12 @@
         <details>
           <summary><b>Scene Elements</b></summary>
           <ul id="ul-scene-elements"></ul>
+        </details>
+
+        <details>
+          <summary><b>Scene Adversaries</b></summary>
+          <ul id="ul-scene-adversaries">
+          </ul>
         </details>
       </div>
     </div>
@@ -713,6 +723,27 @@
       
     });
 
+    // Helper function - List array items as bullet points
+    function convertArrayElementsToBulletList(array, htmlParent) {
+      array.forEach(elem => {
+        const listItem = document.createElement('li');
+        listItem.textContent = elem;
+        htmlParent.appendChild(listItem);
+      });
+    }
+
+    // ADVENTURE PREP
+    const arrayLazyAdventurePrep = [
+      "Review the characters",
+      "Create a strong start",
+      "Outline potential scenes",
+      "Define secrets and clues",
+      "Develop fantastic locations",
+      "Outline important NPCs",
+      "Choose relevant monsters",
+      "Select magic item rewards"
+    ];
+
     // SCENE ELEMENTS
     const arraySceneElements = [
       "Location", 
@@ -727,14 +758,21 @@
       "Reactions, Ripples, & Waves"
     ];
 
+    const arraySceneAdversaries = [
+      "Enemies (threats, hitters, bosses, fillers)",
+      "Bystanders",
+      "Obstacles (hazards, blocks, distractions)",
+      "Constraints (countdowns, limitations, resistances)"
+    ];
+
     const ulSceneElements = document.querySelector('#ul-scene-elements');
+    const ulSceneAdversaries = document.querySelector('#ul-scene-adversaries');
+    const ulLazyAdventurePrep = document.querySelector('#ul-lazy-adventure-prep')
 
-    arraySceneElements.forEach(elem => {
-      const listItem = document.createElement('li');
-      listItem.textContent = elem;
-      ulSceneElements.appendChild(listItem);
-    });
-
+    convertArrayElementsToBulletList(arraySceneElements, ulSceneElements);
+    convertArrayElementsToBulletList(arraySceneAdversaries, ulSceneAdversaries);
+    convertArrayElementsToBulletList(arrayLazyAdventurePrep, ulLazyAdventurePrep);
+    
 
     // Tricube Card
     document.getElementById('newTricubeCard').addEventListener('click', function() {
