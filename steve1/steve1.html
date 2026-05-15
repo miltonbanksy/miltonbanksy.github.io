@@ -178,8 +178,12 @@
 
         <details>
           <summary><b>Scene Adversaries</b></summary>
-          <ul id="ul-scene-adversaries">
-          </ul>
+          <ul id="ul-scene-adversaries"></ul>
+        </details>
+
+        <details>
+          <summary><b>Scene Setup</b></summary>
+          <ul id="ul-scene-setup"></ul>
         </details>
       </div>
     </div>
@@ -766,13 +770,19 @@
       "Constraints (countdowns, limitations, resistances)"
     ];
 
+    const arraySceneSetup = [
+      "Establish the purpose of the scene. For example: 'In this scene we will find out if...'"
+    ];
+
     const ulSceneElements = document.querySelector('#ul-scene-elements');
     const ulSceneAdversaries = document.querySelector('#ul-scene-adversaries');
-    const ulLazyAdventurePrep = document.querySelector('#ul-lazy-adventure-prep')
+    const ulLazyAdventurePrep = document.querySelector('#ul-lazy-adventure-prep');
+    const ulSceneSetup = document.querySelector('#ul-scene-setup');
 
     convertArrayElementsToBulletList(arraySceneElements, ulSceneElements);
     convertArrayElementsToBulletList(arraySceneAdversaries, ulSceneAdversaries);
     convertArrayElementsToBulletList(arrayLazyAdventurePrep, ulLazyAdventurePrep);
+    convertArrayElementsToBulletList(arraySceneSetup, ulSceneSetup);
     
 
     // Tricube Card
